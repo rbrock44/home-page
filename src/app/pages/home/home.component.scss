@@ -1,0 +1,79 @@
+@import '../../../styles.scss';
+
+.header-div {
+  text-align: center;
+}
+
+[data-header-title] {
+  font-size: xx-large;
+  padding: 5px;
+}
+
+img {
+  height: 2vh;
+  cursor: pointer;
+}
+
+.cursor {
+  cursor: pointer;
+  display: inline-block;
+}
+
+.sport-ctn {
+  display: flex;
+  flex-direction: column;
+}
+
+.column {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.sport-title {
+  font-size: x-large;
+  font-weight: 500;
+  padding: 5px;
+  align-self: center;
+}
+
+.right {
+  align-items: end;
+}
+
+.person-label {
+  width: 13vw;
+}
+
+.date-label {
+  align-self: center;
+  padding: 1vw 0;
+}
+
+.at-label, .time-label {
+  padding: 0 .5vw;
+}
+
+.away-label, .home-label {
+  width: 8vw;
+}
+
+[data-content-div] {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50px;
+}
+
+.game-label {
+  min-width: 8vw;
+  border-radius: 5vw;
+  margin-bottom: 0.25vh;
+}
+
+.sport-game-ctn {
+  display: flex;
+  align-self: center;
+  flex-direction: column;
+  //align-items: center;
+  flex-wrap: wrap;
+  align-content: center;
+}
