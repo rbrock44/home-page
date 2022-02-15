@@ -177,17 +177,17 @@ export class SettingsService implements OnDestroy {
 
   private getWhichBasketballOrDefault(): string {
     const whichBasketball: string = window.localStorage.getItem('home-page-which-basketball');
-    return !this.isNullOrUndefined(whichBasketball) ? whichBasketball : _.cloneDeep(this.SHOW_SPORTS_DEFAULT);
+    return !this.isNullOrUndefined(whichBasketball) ? whichBasketball : _.cloneDeep(this.WHICH_SELECTION_DEFAULT);
   }
 
   private getWhichFootballOrDefault(): string {
     const whichFootball: string = window.localStorage.getItem('home-page-which-football');
-    return !this.isNullOrUndefined(whichFootball) ? whichFootball : _.cloneDeep(this.SHOW_SPORTS_DEFAULT);
+    return !this.isNullOrUndefined(whichFootball) ? whichFootball : _.cloneDeep(this.WHICH_SELECTION_DEFAULT);
   }
 
   private getWhichMmaOrDefault(): string {
     const whichMma: string = window.localStorage.getItem('home-page-which-mma');
-    return !this.isNullOrUndefined(whichMma) ? whichMma : _.cloneDeep(this.SHOW_SPORTS_DEFAULT);
+    return !this.isNullOrUndefined(whichMma) ? whichMma : _.cloneDeep(this.WHICH_SELECTION_DEFAULT);
   }
 
   //#endregion
