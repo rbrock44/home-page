@@ -1,0 +1,96 @@
+<div>
+  <div class="header-div">
+    <header data-header-title>{{this.settingsService.title}}</header>
+  </div>
+
+  <div data-content-div>
+    <div class="sport-ctn"
+         *ngIf="this.settingsService.showBasketball && basketball?.games?.length > 0">
+      <div class="sport-title">Basketball</div>
+      <div class="sport-game-ctn">
+        <span class="date-label">{{basketball.date}}</span>
+        <div *ngFor="let game of basketball.games">
+          <div class="game-label">
+            <div (click)="imgClick(game, false)" class="cursor">
+              <!--                  <span class="at-label column" *ngIf="game.opponentImageLink">-->
+              <!--                    <img src="{{game.opponentImageLink}}" alt="Visiting Team Image" (click)="imgClick(game, false)">-->
+              <!--                  </span>-->
+              <span class="away-label column">{{this.trimTeam(game.opponent)}}</span>
+            </div>
+            <span class="at-label column">@</span>
+            <div (click)="imgClick(game)" class="cursor">
+              <!--                  <span class="at-label column" *ngIf="game.homeImageLink" (click)="imgClick(game)">-->
+              <!--                    <img src="{{game.homeImageLink}}" alt="Home Team Image">-->
+              <!--                  </span>-->
+              <span class="home-label column">{{this.trimTeam(game.home)}}</span>
+            </div>
+            <span class="time-label column">{{this.liveTime(game.time)}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sport-ctn"
+         *ngIf="this.settingsService.showFootball && football?.games?.length > 0">
+      <div class="sport-title">Football</div>
+      <div class="sport-game-ctn">
+        <div class="date-label">{{football.date}}</div>
+        <div *ngFor="let game of football.games">
+          <div class="game-label">
+            <div (click)="imgClick(game, false)" class="cursor">
+              <!--    <span class="at-label column" *ngIf="game.opponentImageLink">-->
+              <!--                    <img src="{{game.opponentImageLink}}" alt="Visiting Team Image">-->
+              <!--                  </span>-->
+              <span class="away-label column">{{this.trimTeam(game.opponent)}}</span>
+            </div>
+            <span class="at-label column">@</span>
+            <div (click)="imgClick(game)" class="cursor">
+              <!--    <span class="at-label column" *ngIf="game.homeImageLink">-->
+              <!--                    <img src="{{game.homeImageLink}}" alt="Home Team Image" (click)="imgClick(game)">-->
+              <!--                  </span>-->
+              <span class="home-label column">{{this.trimTeam(game.home)}}</span>
+            </div>
+            <span class="time-label column">{{this.formatTime(game.time)}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sport-ctn" *ngIf="this.settingsService.showMma && mma?.main?.length > 0">
+      <div class="sport-title">MMA</div>
+      <div class="sport-game-ctn">
+        <div class="date-label">{{mma.date}}</div>
+
+        <!--            MAIN CARD-->
+        <div class="date-label">
+          Main Card
+        </div>
+        <div *ngFor="let fight of mma.main">
+          <div class="game-label cursor"
+               [ngStyle]="fight.titleFight && {'background-color': 'gold'}"
+               (click)="fightClick(fight)"
+          >
+            <span class="person-label column right">{{this.getPerson(fight.title)}}</span>
+            <span class="at-label column">vs.</span>
+            <span class="person-label column">{{this.getPerson(fight.title, false)}}</span>
+          </div>
+        </div>
+
+        <!--            UNDER CARD-->
+        <div class="date-label" *ngIf="mma?.under?.length > 0">
+          Under Card
+        </div>
+        <div *ngFor="let fight of mma?.under">
+          <div class="game-label cursor" (click)="fightClick(fight)">
+            <span class="person-label column right">{{this.getPerson(fight.title)}}</span>
+            <span class="at-label column">vs.</span>
+            <span class="person-label column">{{this.getPerson(fight.title, false)}}</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <span class="refresh-count">Refresh count: {{this.refreshCount}}</span>
+</div>
