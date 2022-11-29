@@ -124,6 +124,6 @@ describe('SettingsPageComponent', () => {
   it('should contain reset button', () => {
     expectElementToContainContentAtIndex(fixture, 'button', 'Reset Everything', 1);
 
-    // TODO: test rest button click - has mat dialog
+    // TODO: test reset button click - has mat dialog
   });
 });

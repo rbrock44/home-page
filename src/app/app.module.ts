@@ -16,6 +16,9 @@ import {MaterialModule} from './material.module';
 import {YesNoDropdownComponent} from "./components/yes-no-dropdown/yes-no-dropdown.component";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HomeComponent} from "./pages/home/home.component";
+import {SportWidgetComponent} from "./components/sport-widget/sport-widget.component";
+import {MmaWidgetComponent} from "./components/mma-widget/mma-widget.component";
+import {FightCardComponent} from "./components/fight-card/fight-card.component";
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import {HomeComponent} from "./pages/home/home.component";
     ConfirmationPopupComponent,
     HeaderComponent,
     HomeComponent,
+    FightCardComponent,
+    MmaWidgetComponent,
     SettingsPageComponent,
+    SportWidgetComponent,
     YesNoDropdownComponent
   ],
   entryComponents: [ConfirmationPopupComponent],

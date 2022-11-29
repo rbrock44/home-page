@@ -61,7 +61,7 @@ export const UPCOMING: string = 'Upcoming';
 
 export function isNullOrUndefined(str: string): boolean {
   return str == null || str === 'undefined' || str === 'null';
-};
+}
 
 export function toBoolean(value): boolean {
   switch (value) {
@@ -75,4 +75,12 @@ export function toBoolean(value): boolean {
     default:
       return false;
   }
-};
+}
+
+export function liveTime(time: string): string {
+  if (time.length > 0) {
+    return time;
+  } else {
+    return 'LIVE'
+  }
+}

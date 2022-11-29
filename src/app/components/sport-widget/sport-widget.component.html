@@ -1,0 +1,25 @@
+<div class="sport-ctn"
+     *ngIf="shouldShow() && gamesPerDate?.games?.length > 0">
+  <div class="sport-title">{{this.isBasketball ? 'Basketball' : 'Football'}}</div>
+  <div class="sport-game-ctn">
+    <span class="date-label">{{gamesPerDate.date}}</span>
+    <div *ngFor="let game of gamesPerDate.games">
+      <div class="game-label">
+        <div (click)="imgClick(game, false)" class="cursor">
+          <!--                  <span class="at-label column" *ngIf="game.opponentImageLink">-->
+          <!--                    <img src="{{game.opponentImageLink}}" alt="Visiting Team Image" (click)="imgClick(game, false)">-->
+          <!--                  </span>-->
+          <span class="away-label column">{{game.opponent}}</span>
+        </div>
+        <span class="at-label column">@</span>
+        <div (click)="imgClick(game)" class="cursor">
+          <!--                  <span class="at-label column" *ngIf="game.homeImageLink" (click)="imgClick(game)">-->
+          <!--                    <img src="{{game.homeImageLink}}" alt="Home Team Image">-->
+          <!--                  </span>-->
+          <span class="home-label column">{{game.home}}</span>
+        </div>
+        <span class="time-label column">{{this.liveTime(game.time)}}</span>
+      </div>
+    </div>
+  </div>
+</div>

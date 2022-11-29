@@ -1,6 +1,5 @@
 import {async, TestBed} from '@angular/core/testing';
 import {SettingsService} from "./settings.service";
-import {LocalStorageService} from "./local-storage.service";
 import {
   COLOR_DEFAULT,
   COLOR_OPTIONS,
@@ -10,10 +9,11 @@ import {
   WHICH_SELECTION_DEFAULT
 } from "../constants/constants";
 import {Item} from "../models/item.model";
+import {WindowService} from "./window.service";
 
 describe('SettingsService', () => {
   let service: SettingsService;
-  let localStorageService: LocalStorageService;
+  let windowService: WindowService;
   const booleanArray = [
     [false, true, false],
     [true, false, true],
@@ -27,7 +27,7 @@ describe('SettingsService', () => {
       declarations: [],
     }).compileComponents();
     service = TestBed.get(SettingsService);
-    localStorageService = TestBed.get(LocalStorageService);
+    windowService = TestBed.get(WindowService);
   }));
 
   it('should create the service', () => {
@@ -44,7 +44,7 @@ describe('SettingsService', () => {
       let refreshRate = 120;
       let color = COLOR_OPTIONS[3].value;
 
-      const spy = spyOn(localStorageService, 'setItem');
+      const spy = spyOn(windowService, 'setItem');
       service.applySettings(refreshRate, array, array, title);
       service.setColor(color);
 
@@ -81,7 +81,7 @@ describe('SettingsService', () => {
     let refreshRate = 120;
     let color = COLOR_OPTIONS[3].value;
 
-    const spy = spyOn(localStorageService, 'setItem');
+    const spy = spyOn(windowService, 'setItem');
     service.applySettings(refreshRate, booleanArray[3], booleanArray[2], title);
     service.setColor(color);
     service.resetEverything();

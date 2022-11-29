@@ -51,7 +51,7 @@ export class HomeApiService {
   }
 
   private getMmaUrl(today: boolean = true): string {
-    return this.getUrl(this.fightCard, today)
+    return `${this.homeUrl}/${this.fightCard}/` + (today ? 'today' : 'upcoming')
   }
 
   private getUrl(sport: string, today: boolean = true): string {

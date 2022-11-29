@@ -12,7 +12,7 @@ import {
   WHICH_SELECTION_DEFAULT
 } from "../constants/constants";
 import {Item} from "../models/item.model";
-import {LocalStorageService} from "./local-storage.service";
+import {WindowService} from "./window.service";
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +33,7 @@ export class SettingsService implements OnDestroy {
   TODAY: string = TODAY;
   UPCOMING: string = UPCOMING;
 
-  constructor(private localStorageService: LocalStorageService) {
+  constructor(private windowService: WindowService) {
     this.readFromLocalStorage();
   }
 
@@ -98,17 +98,17 @@ export class SettingsService implements OnDestroy {
   }
 
   private readFromLocalStorage(): void {
-    this.title = this.localStorageService.getItem('home-page-title', TITLE_DEFAULT);
-    this.refreshRate = +this.localStorageService.getItem('home-page-refresh-rate', REFRESH_RATE_DEFAULT);
+    this.title = this.windowService.getItem('home-page-title', TITLE_DEFAULT);
+    this.refreshRate = +this.windowService.getItem('home-page-refresh-rate', REFRESH_RATE_DEFAULT);
 
-    this.showBasketball = toBoolean(this.localStorageService.getItem('home-page-show-basketball', SHOW_SPORTS_DEFAULT));
-    this.showFootball = toBoolean(this.localStorageService.getItem('home-page-show-football', SHOW_SPORTS_DEFAULT));
-    this.showMma = toBoolean(this.localStorageService.getItem('home-page-show-mma', SHOW_SPORTS_DEFAULT));
-    this.whichBasketball = toBoolean(this.localStorageService.getItem('home-page-which-basketball', WHICH_SELECTION_DEFAULT));
-    this.whichFootball = toBoolean(this.localStorageService.getItem('home-page-which-football', WHICH_SELECTION_DEFAULT));
-    this.whichMma = toBoolean(this.localStorageService.getItem('home-page-which-mma', WHICH_SELECTION_DEFAULT));
+    this.showBasketball = toBoolean(this.windowService.getItem('home-page-show-basketball', SHOW_SPORTS_DEFAULT));
+    this.showFootball = toBoolean(this.windowService.getItem('home-page-show-football', SHOW_SPORTS_DEFAULT));
+    this.showMma = toBoolean(this.windowService.getItem('home-page-show-mma', SHOW_SPORTS_DEFAULT));
+    this.whichBasketball = toBoolean(this.windowService.getItem('home-page-which-basketball', WHICH_SELECTION_DEFAULT));
+    this.whichFootball = toBoolean(this.windowService.getItem('home-page-which-football', WHICH_SELECTION_DEFAULT));
+    this.whichMma = toBoolean(this.windowService.getItem('home-page-which-mma', WHICH_SELECTION_DEFAULT));
 
-    this.setColor(this.localStorageService.getItem('home-page-color', COLOR_DEFAULT));
+    this.setColor(this.windowService.getItem('home-page-color', COLOR_DEFAULT));
   }
 
   private saveToLocalStorage(): void {
@@ -122,12 +122,12 @@ export class SettingsService implements OnDestroy {
       new Item('home-page-title', this.title),
       new Item('home-page-refresh-rate', this.refreshRate.toString())
     ].forEach(item => {
-      this.localStorageService.setItem(item);
+      this.windowService.setItem(item);
     })
     this.saveColorToLocalStorage();
   }
 
   private saveColorToLocalStorage(): void {
-    this.localStorageService.setItem(new Item('home-page-color', this.color))
+    this.windowService.setItem(new Item('home-page-color', this.color))
   }
 }

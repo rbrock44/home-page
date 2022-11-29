@@ -6,7 +6,15 @@ import {Item} from "../models/item.model";
 @Injectable({
   providedIn: 'root'
 })
-export class LocalStorageService {
+export class WindowService {
+  public setInterval(func: () => void, timeout:number) {
+    window.setInterval(func, timeout);
+  }
+
+  public openBlank(url) {
+    window.open(url, "_blank");
+  }
+
   public getItem(item: string, defaultValue: any): any {
     const value: string = window.localStorage.getItem(item);
     return !isNullOrUndefined(value) ? value : _.cloneDeep(defaultValue);

@@ -1,0 +1,17 @@
+<div class="sport-ctn" *ngIf="this.settingsService.showMma && fightCard?.main?.length > 0">
+  <div class="sport-title">MMA</div>
+  <div class="sport-game-ctn">
+    <div class="date-label">{{fightCard.date}}</div>
+
+    <!--            MAIN CARD-->
+    <div class="date-label">Main Card</div>
+    <app-fight-card [fights]="fightCard.main"></app-fight-card>
+
+    <!--            UNDER CARD-->
+    <div class="date-label" *ngIf="fightCard?.under?.length > 0">
+      Under Card
+    </div>
+    <app-fight-card [fights]="fightCard.under"></app-fight-card>
+
+  </div>
+</div>
