@@ -1,6 +1,18 @@
 import {Injectable, OnDestroy} from '@angular/core';
 import * as _ from 'lodash';
 import {Observable, Subject} from 'rxjs';
+import {
+  COLOR_DEFAULT,
+  REFRESH_RATE_DEFAULT,
+  SHOW_SPORTS_DEFAULT,
+  TITLE_DEFAULT,
+  toBoolean,
+  TODAY,
+  UPCOMING,
+  WHICH_SELECTION_DEFAULT
+} from "../constants/constants";
+import {Item} from "../models/item.model";
+import {LocalStorageService} from "./local-storage.service";
 
 @Injectable({
   providedIn: 'root'
@@ -18,17 +30,10 @@ export class SettingsService implements OnDestroy {
   refreshRate: number;
   color: string;
 
-  TODAY: string = 'Today';
-  UPCOMING: string = 'Upcoming';
+  TODAY: string = TODAY;
+  UPCOMING: string = UPCOMING;
 
-  SHOW_SPORTS_DEFAULT = true;
-  WHICH_SELECTION_DEFAULT = false;
-
-  COLOR_DEFAULT = '--blue-color-';
-  TITLE_DEFAULT = 'Home Page';
-  REFRESH_RATE_DEFAULT = 60;
-
-  constructor() {
+  constructor(private localStorageService: LocalStorageService) {
     this.readFromLocalStorage();
   }
 
@@ -69,147 +74,60 @@ export class SettingsService implements OnDestroy {
     this.saveToLocalStorage();
   }
 
-  //#region Reset Methods
   resetEverything(): void {
     window.localStorage.clear();
 
-    this.showBasketball = _.cloneDeep(this.SHOW_SPORTS_DEFAULT);
-    this.showFootball = _.cloneDeep(this.SHOW_SPORTS_DEFAULT);
-    this.showMma = _.cloneDeep(this.SHOW_SPORTS_DEFAULT);
-    this.whichBasketball = _.cloneDeep(this.WHICH_SELECTION_DEFAULT);
-    this.whichFootball = _.cloneDeep(this.WHICH_SELECTION_DEFAULT);
-    this.whichMma = _.cloneDeep(this.WHICH_SELECTION_DEFAULT);
-    this.refreshRate = _.cloneDeep(this.REFRESH_RATE_DEFAULT);
+    this.showBasketball = _.cloneDeep(SHOW_SPORTS_DEFAULT);
+    this.showFootball = _.cloneDeep(SHOW_SPORTS_DEFAULT);
+    this.showMma = _.cloneDeep(SHOW_SPORTS_DEFAULT);
+    this.whichBasketball = _.cloneDeep(WHICH_SELECTION_DEFAULT);
+    this.whichFootball = _.cloneDeep(WHICH_SELECTION_DEFAULT);
+    this.whichMma = _.cloneDeep(WHICH_SELECTION_DEFAULT);
+    this.refreshRate = _.cloneDeep(REFRESH_RATE_DEFAULT);
 
-    this.title = _.cloneDeep(this.TITLE_DEFAULT);
-    this.setColor(_.cloneDeep(this.COLOR_DEFAULT));
+    this.title = _.cloneDeep(TITLE_DEFAULT);
+    this.setColor(_.cloneDeep(COLOR_DEFAULT));
 
     this.saveToLocalStorage();
 
     this._settingsResetSubject.next(true);
   }
 
-  //#endregion
-
-  //#region Get From Local Storage
   public readLocalStorage(): void {
     this.readFromLocalStorage();
   }
 
   private readFromLocalStorage(): void {
-    this.title = this.getTitleOrDefault();
-    this.refreshRate = this.getRefreshRateOrDefault();
+    this.title = this.localStorageService.getItem('home-page-title', TITLE_DEFAULT);
+    this.refreshRate = +this.localStorageService.getItem('home-page-refresh-rate', REFRESH_RATE_DEFAULT);
 
-    this.showBasketball = this.getBoolean(this.getShowBasketballOrDefault());
-    this.showFootball = this.getBoolean(this.getShowFootballOrDefault());
-    this.showMma = this.getBoolean(this.getShowMmaOrDefault());
-    this.whichBasketball = this.getBoolean(this.getWhichBasketballOrDefault());
-    this.whichFootball = this.getBoolean(this.getWhichFootballOrDefault());
-    this.whichMma = this.getBoolean(this.getWhichMmaOrDefault());
+    this.showBasketball = toBoolean(this.localStorageService.getItem('home-page-show-basketball', SHOW_SPORTS_DEFAULT));
+    this.showFootball = toBoolean(this.localStorageService.getItem('home-page-show-football', SHOW_SPORTS_DEFAULT));
+    this.showMma = toBoolean(this.localStorageService.getItem('home-page-show-mma', SHOW_SPORTS_DEFAULT));
+    this.whichBasketball = toBoolean(this.localStorageService.getItem('home-page-which-basketball', WHICH_SELECTION_DEFAULT));
+    this.whichFootball = toBoolean(this.localStorageService.getItem('home-page-which-football', WHICH_SELECTION_DEFAULT));
+    this.whichMma = toBoolean(this.localStorageService.getItem('home-page-which-mma', WHICH_SELECTION_DEFAULT));
 
-    this.setColor(this.getColorOrDefault());
+    this.setColor(this.localStorageService.getItem('home-page-color', COLOR_DEFAULT));
   }
 
-  private getBoolean(value): boolean {
-    switch (value) {
-      case true:
-      case 'true':
-      case 1:
-      case '1':
-      case 'on':
-      case 'yes':
-        return true;
-      default:
-        return false;
-    }
-  }
-
-  private getBooleanArray(value, defaultValue: boolean = false, minLength: number = 3): boolean[] {
-    let newArray: boolean[] = []
-    if (value.length > 0) {
-      value.forEach(item => {
-        newArray.push(this.getBoolean(item));
-      })
-    }
-
-    if (value.length < minLength) {
-      let i = 0
-      for (i; i < value.length - minLength; i++) {
-        newArray.push(defaultValue);
-      }
-    }
-    return newArray;
-  }
-
-  private isNullOrUndefined(str: string): boolean {
-    return str == null || str === 'undefined' || str === 'null';
-  }
-
-  private getTitleOrDefault(): string {
-    const title: string = window.localStorage.getItem('home-page-title');
-    return !this.isNullOrUndefined(title) ? title : _.cloneDeep(this.TITLE_DEFAULT);
-  }
-
-  private getRefreshRateOrDefault(): number {
-    const rate: string = window.localStorage.getItem('home-page-refresh-rate');
-    return !this.isNullOrUndefined(rate) ? +rate : _.cloneDeep(this.REFRESH_RATE_DEFAULT);
-  }
-
-  private getColorOrDefault(): string {
-    const color: string = window.localStorage.getItem('home-page-color');
-    return !this.isNullOrUndefined(color) ? color : _.cloneDeep(this.COLOR_DEFAULT);
-  }
-
-  private getShowBasketballOrDefault(): string {
-    const showBasketball: string = window.localStorage.getItem('home-page-show-basketball');
-    return !this.isNullOrUndefined(showBasketball) ? showBasketball : _.cloneDeep(this.SHOW_SPORTS_DEFAULT);
-  }
-
-  private getShowFootballOrDefault(): string {
-    const showFootball: string = window.localStorage.getItem('home-page-show-football');
-    return !this.isNullOrUndefined(showFootball) ? showFootball : _.cloneDeep(this.SHOW_SPORTS_DEFAULT);
-  }
-
-  private getShowMmaOrDefault(): string {
-    const showMma: string = window.localStorage.getItem('home-page-show-mma');
-    return !this.isNullOrUndefined(showMma) ? showMma : _.cloneDeep(this.SHOW_SPORTS_DEFAULT);
-  }
-
-  private getWhichBasketballOrDefault(): string {
-    const whichBasketball: string = window.localStorage.getItem('home-page-which-basketball');
-    return !this.isNullOrUndefined(whichBasketball) ? whichBasketball : _.cloneDeep(this.WHICH_SELECTION_DEFAULT);
-  }
-
-  private getWhichFootballOrDefault(): string {
-    const whichFootball: string = window.localStorage.getItem('home-page-which-football');
-    return !this.isNullOrUndefined(whichFootball) ? whichFootball : _.cloneDeep(this.WHICH_SELECTION_DEFAULT);
-  }
-
-  private getWhichMmaOrDefault(): string {
-    const whichMma: string = window.localStorage.getItem('home-page-which-mma');
-    return !this.isNullOrUndefined(whichMma) ? whichMma : _.cloneDeep(this.WHICH_SELECTION_DEFAULT);
-  }
-
-  //#endregion
-
-  //#region Save to Local Storage
   private saveToLocalStorage(): void {
-    window.localStorage.setItem('home-page-show-basketball', this.showBasketball.toString());
-    window.localStorage.setItem('home-page-show-football', this.showFootball.toString());
-    window.localStorage.setItem('home-page-show-mma', this.showMma.toString());
-    window.localStorage.setItem('home-page-which-basketball', this.whichBasketball.toString());
-    window.localStorage.setItem('home-page-which-football', this.whichFootball.toString());
-    window.localStorage.setItem('home-page-which-mma', this.whichMma.toString());
-
-    window.localStorage.setItem('home-page-title', this.title);
-    window.localStorage.setItem('home-page-refresh-rate', this.refreshRate.toString());
-
+    [
+      new Item('home-page-show-basketball', this.showBasketball.toString()),
+      new Item('home-page-show-football', this.showFootball.toString()),
+      new Item('home-page-show-mma', this.showMma.toString()),
+      new Item('home-page-which-basketball', this.whichBasketball.toString()),
+      new Item('home-page-which-football', this.whichFootball.toString()),
+      new Item('home-page-which-mma', this.whichMma.toString()),
+      new Item('home-page-title', this.title),
+      new Item('home-page-refresh-rate', this.refreshRate.toString())
+    ].forEach(item => {
+      this.localStorageService.setItem(item);
+    })
     this.saveColorToLocalStorage();
   }
 
   private saveColorToLocalStorage(): void {
-    window.localStorage.setItem('home-page-color', this.color);
+    this.localStorageService.setItem(new Item('home-page-color', this.color))
   }
-
-  //#endregion
 }

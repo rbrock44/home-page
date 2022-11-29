@@ -4,6 +4,14 @@ import {MatDialog} from '@angular/material';
 import {AlertService} from 'src/app/services/alert.service';
 import {ConfirmationPopupComponent} from 'src/app/components/confirmation-popup/confirmation-popup.component';
 import {SettingsService} from 'src/app/services/settings.service';
+import {
+  ACTION_CANCELLED_MESSAGE,
+  APPLY_SETTING_SUCCESS_MESSAGE,
+  COLOR_OPTIONS,
+  RESET_EVERYTHING_MESSAGE,
+  RESET_SETTINGS_SUCCESS_MESSAGE
+} from "../../constants/constants";
+import {DateService} from "../../services/date.service";
 
 @Component({
   selector: 'app-settings-page',
@@ -11,52 +19,7 @@ import {SettingsService} from 'src/app/services/settings.service';
   styleUrls: ['./settings-page.component.scss']
 })
 export class SettingsPageComponent implements OnInit, OnDestroy {
-  colors = [
-    {
-      name: 'Black',
-      value: '--black-color-'
-    },
-    {
-      name: 'Blue',
-      value: '--blue-color-'
-    },
-    {
-      name: 'Gray',
-      value: '--gray-color-'
-    },
-    {
-      name: 'Gray Dark',
-      value: '--gray-dark-color-'
-    },
-    {
-      name: 'Green',
-      value: '--green-color-'
-    },
-    {
-      name: 'Orange',
-      value: '--orange-color-'
-    },
-    {
-      name: 'Pink',
-      value: '--pink-color-'
-    },
-    {
-      name: 'Purple',
-      value: '--purple-color-'
-    },
-    {
-      name: 'Red',
-      value: '--red-color-'
-    },
-    {
-      name: 'Yellow',
-      value: '--yellow-color-'
-    },
-    {
-      name: 'White',
-      value: '--white-color-'
-    }
-  ];
+  colors = COLOR_OPTIONS;
 
   refreshRateControl: FormControl = new FormControl('', [
     Validators.min(1),
@@ -76,13 +39,9 @@ export class SettingsPageComponent implements OnInit, OnDestroy {
 
   settingsFormGroup: FormGroup;
 
-  RESET_EVERYTHING_MESSAGE: string = 'This will reset everything to the default settings.';
-  RESET_SETTINGS_SUCCESS_MESSAGE: string = 'Setting reset successfully.';
-  APPLY_SETTING_SUCCESS_MESSAGE: string = 'Settings applied successfully.';
-  ACTION_CANCELLED_MESSAGE: string = 'Action Cancelled.';
-
   constructor(public dialog: MatDialog,
               private alertService: AlertService,
+              private dateService: DateService,
               public settingsService: SettingsService) {
   }
 
@@ -109,7 +68,7 @@ export class SettingsPageComponent implements OnInit, OnDestroy {
   resetEverything(): void {
     const dialogRef = this.dialog.open(ConfirmationPopupComponent, {
       data: {
-        label: this.RESET_EVERYTHING_MESSAGE
+        label: RESET_EVERYTHING_MESSAGE
       },
       id: 'confirmation-modal',
       width: '35vw'
@@ -119,9 +78,9 @@ export class SettingsPageComponent implements OnInit, OnDestroy {
         if (shouldReset) {
           this.settingsService.resetEverything();
           this.applySettingsValuesToFormControls();
-          this.alertService.success(this.RESET_SETTINGS_SUCCESS_MESSAGE, Date.now());
+          this.alertService.success(RESET_SETTINGS_SUCCESS_MESSAGE, this.dateService.now());
         } else {
-          this.alertService.warn(this.ACTION_CANCELLED_MESSAGE, Date.now());
+          this.alertService.warn(ACTION_CANCELLED_MESSAGE, this.dateService.now());
         }
       });
     }
@@ -142,7 +101,7 @@ export class SettingsPageComponent implements OnInit, OnDestroy {
       ],
       this.titleControl.value,
     );
-    this.alertService.success(this.APPLY_SETTING_SUCCESS_MESSAGE, Date.now());
+    this.alertService.success(APPLY_SETTING_SUCCESS_MESSAGE, this.dateService.now());
   }
 
   applySettingsValuesToFormControls(): void {

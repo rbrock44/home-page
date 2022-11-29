@@ -11,7 +11,7 @@ import {GamesPerDate} from "../models/games-per-date.model";
 export class HomeApiService {
   homeUrl: string = environment.homePageApiUrl
   gamesPerDate = 'games-per-date/'
-  fightCard = 'fight-card/'
+  fightCard = 'fight-card'
 
   constructor(
     private http: HttpClient
@@ -19,32 +19,42 @@ export class HomeApiService {
   }
 
   getBasketballToday(): Observable<GamesPerDate> {
-    var url = `${this.gamesPerDate}basketball/today`
-    return this.http.get<GamesPerDate>(this.homeUrl + url)
+    return this.http.get<GamesPerDate>(this.getBasketballUrl());
   }
 
   getBasketballUpcoming(): Observable<GamesPerDate> {
-    var url = `${this.gamesPerDate}basketball/upcoming`
-    return this.http.get<GamesPerDate>(this.homeUrl + url)
+    return this.http.get<GamesPerDate>(this.getBasketballUrl(false))
   }
 
   getFootballToday(): Observable<GamesPerDate> {
-    var url = `${this.gamesPerDate}football/today`
-    return this.http.get<GamesPerDate>(this.homeUrl + url)
+    return this.http.get<GamesPerDate>(this.getFootballUrl());
   }
 
   getFootballUpcoming(): Observable<GamesPerDate> {
-    var url = `${this.gamesPerDate}football/upcoming`
-    return this.http.get<GamesPerDate>(this.homeUrl + url)
+    return this.http.get<GamesPerDate>(this.getFootballUrl(false));
   }
 
   getMmaToday(): Observable<FightCard> {
-    var url = `${this.fightCard}today`
-    return this.http.get<FightCard>(this.homeUrl + url)
+    return this.http.get<FightCard>(this.getMmaUrl());
   }
 
   getMmaUpcoming(): Observable<FightCard> {
-    var url = `${this.fightCard}upcoming`
-    return this.http.get<FightCard>(this.homeUrl + url)
+    return this.http.get<FightCard>(this.getMmaUrl(false));
+  }
+
+  private getBasketballUrl(today: boolean = true): string {
+    return this.getUrl('basketball', today)
+  }
+
+  private getFootballUrl(today: boolean = true): string {
+    return this.getUrl('football', today)
+  }
+
+  private getMmaUrl(today: boolean = true): string {
+    return this.getUrl(this.fightCard, today)
+  }
+
+  private getUrl(sport: string, today: boolean = true): string {
+    return `${this.homeUrl}/${this.gamesPerDate}${sport}/` + (today ? 'today' : 'upcoming')
   }
 }

@@ -1,15 +1,32 @@
-import { TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { AppComponent } from './app.component';
+import {TestBed} from '@angular/core/testing';
+import {RouterTestingModule} from '@angular/router/testing';
+import {AppComponent} from './app.component';
+import {AlertComponent} from "./components/alert/alert.component";
+import {CommonModule} from "@angular/common";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {NoopAnimationsModule} from "@angular/platform-browser/animations";
+import {MaterialModule} from "./material.module";
+import {AlertService} from "./services/alert.service";
+import {HeaderComponent} from "./components/header/header.component";
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        CommonModule,
+        FormsModule,
+        MaterialModule,
+        NoopAnimationsModule,
+        ReactiveFormsModule,
+        RouterTestingModule,
       ],
       declarations: [
-        AppComponent
+        AlertComponent,
+        AppComponent,
+        HeaderComponent
+      ],
+      providers: [
+        AlertService,
       ],
     }).compileComponents();
   });
@@ -24,12 +41,5 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app.title).toEqual('home-page');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('home-page app is running!');
   });
 });
