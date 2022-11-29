@@ -18,6 +18,10 @@ export class HomeApiService {
   ) {
   }
 
+  searchMedia(criteria: string): Observable<string[]> {
+    return this.http.get<string[]>(`${this.homeUrl}/home-media-search?criteria=${criteria}`);
+  }
+
   getBasketballToday(): Observable<GamesPerDate> {
     return this.http.get<GamesPerDate>(this.getBasketballUrl());
   }

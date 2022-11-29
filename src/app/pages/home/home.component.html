@@ -3,6 +3,8 @@
     <header data-header-title>{{this.settingsService.title}}</header>
   </div>
 
+  <app-media-search-widget></app-media-search-widget>
+
   <div data-content-div>
     <app-sport-widget [gamesPerDate]="basketball"></app-sport-widget>
     <app-sport-widget [gamesPerDate]="football" [isBasketball]="false"></app-sport-widget>

@@ -14,6 +14,7 @@ import {SportWidgetComponent} from "../../components/sport-widget/sport-widget.c
 import {REFRESH_RATE_DEFAULT} from "../../constants/constants";
 import {MmaWidgetComponent} from "../../components/mma-widget/mma-widget.component";
 import {FightCardComponent} from "../../components/fight-card/fight-card.component";
+import {MediaSearchWidgetComponent} from "../../components/media-search-widget/media-search-widget.component";
 
 describe('HomeComponent', () => {
   let fixture: ComponentFixture<HomeComponent>;
@@ -30,6 +31,7 @@ describe('HomeComponent', () => {
       declarations: [
         HomeComponent,
         FightCardComponent,
+        MediaSearchWidgetComponent,
         MmaWidgetComponent,
         SportWidgetComponent
       ],
@@ -54,6 +56,10 @@ describe('HomeComponent', () => {
 
   it('should have mmw widget', () => {
     expectElementPresent(fixture, 'app-mma-widget');
+  });
+
+  it('should have home media search widget', () => {
+    expectElementPresent(fixture, 'app-media-search-widget');
   });
 
   [

@@ -87,7 +87,7 @@ describe('HomeApiService', () => {
   it('should call url for upcoming mma fights',
     inject([HttpTestingController, HomeApiService],
       (httpMock: HttpTestingController) => {
-        const searchUrl = environment.homePageApiUrl + '/games-per-date/fight-card/upcoming';
+        const searchUrl = environment.homePageApiUrl + '/fight-card/upcoming';
 
         service.getMmaUpcoming().subscribe(fights => {
           expect(expectedFights).toEqual(fights);
@@ -102,7 +102,7 @@ describe('HomeApiService', () => {
   it('should call url for mma fights today',
     inject([HttpTestingController, HomeApiService],
       (httpMock: HttpTestingController) => {
-        const searchUrl = environment.homePageApiUrl + '/games-per-date/fight-card/today';
+        const searchUrl = environment.homePageApiUrl + '/fight-card/today';
 
         service.getMmaToday().subscribe(fights => {
           expect(expectedFights).toEqual(fights);
@@ -113,4 +113,30 @@ describe('HomeApiService', () => {
         req.flush(expectedFights);
       })
   );
+
+  [
+    'abc',
+    '123',
+    'abc123'
+  ].forEach(item => {
+    it(`should call url for home media search: ${item}`,
+      inject([HttpTestingController, HomeApiService],
+        (httpMock: HttpTestingController) => {
+          const searchUrl = environment.homePageApiUrl + `/home-media-search?criteria=${item}`;
+
+          const expected = [
+            'a',
+            'b'
+          ];
+          service.searchMedia(item).subscribe(value => {
+            expect(expected).toEqual(value);
+          });
+
+          const req = httpMock.expectOne(searchUrl);
+          expect(req.request.method).toEqual('GET');
+          req.flush(expected);
+        })
+    );
+  });
+
 });

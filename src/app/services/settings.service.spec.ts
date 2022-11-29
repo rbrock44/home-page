@@ -28,6 +28,7 @@ describe('SettingsService', () => {
     }).compileComponents();
     service = TestBed.get(SettingsService);
     windowService = TestBed.get(WindowService);
+    service.resetEverything();
   }));
 
   it('should create the service', () => {
