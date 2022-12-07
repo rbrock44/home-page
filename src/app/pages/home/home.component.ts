@@ -53,34 +53,28 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   getSubscriptionsStarted(): void {
-    if (this.settingsService.whichBasketball) {
-      this.homeApiService.getBasketballToday().subscribe(games => {
-        this.basketball = games;
-      });
-    } else {
-      this.homeApiService.getBasketballUpcoming().subscribe(games => {
-        this.basketball = games;
-      });
-    }
+    const basketball = this.settingsService.whichBasketball ?
+      this.homeApiService.getBasketballToday() :
+      this.homeApiService.getBasketballUpcoming()
 
-    if (this.settingsService.whichFootball) {
-      this.homeApiService.getFootballToday().subscribe(games => {
-        this.football = games;
-      });
-    } else {
-      this.homeApiService.getFootballUpcoming().subscribe(games => {
-        this.football = games;
-      });
-    }
+    basketball.subscribe(games => {
+      this.basketball = games;
+    });
 
-    if (this.settingsService.whichMma) {
-      this.homeApiService.getMmaToday().subscribe(mma => {
-        this.mma = mma;
-      });
-    } else {
-      this.homeApiService.getMmaUpcoming().subscribe(mma => {
-        this.mma = mma;
-      });
-    }
+    const football = this.settingsService.whichFootball ?
+      this.homeApiService.getFootballToday() :
+      this.homeApiService.getFootballUpcoming()
+
+    football.subscribe(games => {
+      this.football = games;
+    });
+
+    const mma = this.settingsService.whichMma ?
+      this.homeApiService.getMmaToday() :
+      this.homeApiService.getMmaUpcoming()
+
+    mma.subscribe(fightCard => {
+      this.mma = fightCard;
+    });
   }
 }
