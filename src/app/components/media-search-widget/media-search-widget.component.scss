@@ -1,1 +1,37 @@
 @import '../../../styles.scss';
+
+.results {
+  display: flex;
+  flex-direction: column;
+}
+
+.search {
+  display: flex;
+}
+
+input {
+  width: 200px;
+}
+
+p {
+  margin: 0 5px 0 5px;
+}
+
+#result-container {
+  border: 2px solid grey;
+  margin-top: 10px;
+  width: fit-content;
+}
+
+.expansion {
+  background-color: #3AAFA9 !important;
+}
+
+mat-accordion {
+  width: 40vw;
+}
+
+.media-search {
+  align-items: center;
+  margin: 20px 0 5px 0;
+}

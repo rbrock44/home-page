@@ -15,6 +15,9 @@ import {REFRESH_RATE_DEFAULT} from "../../constants/constants";
 import {MmaWidgetComponent} from "../../components/mma-widget/mma-widget.component";
 import {FightCardComponent} from "../../components/fight-card/fight-card.component";
 import {MediaSearchWidgetComponent} from "../../components/media-search-widget/media-search-widget.component";
+import {MaterialModule} from "../../material.module";
+import {ReactiveFormsModule} from "@angular/forms";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 describe('HomeComponent', () => {
   let fixture: ComponentFixture<HomeComponent>;
@@ -25,7 +28,10 @@ describe('HomeComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
+        BrowserAnimationsModule,
         HttpClientTestingModule,
+        MaterialModule,
+        ReactiveFormsModule,
         RouterTestingModule
       ],
       declarations: [
@@ -33,7 +39,7 @@ describe('HomeComponent', () => {
         FightCardComponent,
         MediaSearchWidgetComponent,
         MmaWidgetComponent,
-        SportWidgetComponent
+        SportWidgetComponent,
       ],
       providers: [
       ]
