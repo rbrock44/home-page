@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  homePageApiUrl: 'https://home-page-api-34607.herokuapp.com'
+  homePageApiUrl: '/home-page-api'
 };
 
 /*
