@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "gh-pages": "gh-pages -d dist/home-page",
-    "deploy": "ng build --base-href=https://rbrock44.github.io/home-page/"
+    "deploy": "ng build --base-href=https://rbrock44.github.io/home-page/ --prod"
   },
   "private": true,
   "dependencies": {

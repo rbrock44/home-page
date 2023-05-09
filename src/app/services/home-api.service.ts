@@ -9,10 +9,7 @@ import {GamesPerDate} from "../models/games-per-date.model";
   providedIn: 'root'
 })
 export class HomeApiService {
-  // FOR LOCAL
-  //   homeUrl: string = environment.homePageApiUrl
-  // FOR PROD
-  homeUrl: string = "https://home-page-api-34607.herokuapp.com"
+  homeUrl: string = environment.homePageApiUrl
   gamesPerDate = 'games-per-date/'
   fightCard = 'fight-card'
 
