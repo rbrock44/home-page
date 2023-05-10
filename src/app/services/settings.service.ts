@@ -33,6 +33,8 @@ export class SettingsService implements OnDestroy {
   TODAY: string = TODAY;
   UPCOMING: string = UPCOMING;
 
+  showHome = true;
+
   constructor(private windowService: WindowService) {
     this.readFromLocalStorage();
   }

@@ -1,9 +1,9 @@
-import {HttpClient} from '@angular/common/http'
-import {Injectable} from '@angular/core'
-import {Observable} from 'rxjs'
-import {environment} from 'src/environments/environment'
-import {FightCard} from '../models/fight-card.model'
-import {GamesPerDate} from "../models/games-per-date.model";
+import { HttpClient } from '@angular/common/http'
+import { Injectable } from '@angular/core'
+import { Observable, Subject, from, of } from 'rxjs'
+import { environment } from 'src/environments/environment'
+import { FightCard } from '../models/fight-card.model'
+import { GamesPerDate } from "../models/games-per-date.model";
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +12,8 @@ export class HomeApiService {
   homeUrl: string = environment.homePageApiUrl
   gamesPerDate = 'games-per-date/'
   fightCard = 'fight-card'
+
+  basketballGames = new Subject<GamesPerDate>();
 
   constructor(
     private http: HttpClient
