@@ -48,13 +48,19 @@ mat-accordion {
   align-items: center;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1700px) {
   mat-accordion {
-    width: 70vw;
+    width: 50vw;
   }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 1400px) {
+  mat-accordion {
+    width: 60vw;
+  }
+}
+
+@media screen and (max-width: 50px) {
   mat-accordion {
     width: 85vw;
   }
