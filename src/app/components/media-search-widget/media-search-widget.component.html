@@ -1,14 +1,20 @@
 <div class="sport-ctn media-search">
   <mat-accordion>
     <mat-expansion-panel
-      (opened)="expanded = true"
+      (opened)="expanded = true; refreshed = false"
       (closed)="close()"
       class="expansion"
     >
       <mat-expansion-panel-header>
         <mat-panel-title>
-          <div>
+          <div class="media-search-title">
             Media Search
+            <div class="refresh-media">
+              <mat-icon (click)="refresh($event)">refresh</mat-icon>
+              <div class="results" *ngIf="refreshed">
+                <p>Refreshed</p>
+              </div>
+            </div>
           </div>
         </mat-panel-title>
       </mat-expansion-panel-header>

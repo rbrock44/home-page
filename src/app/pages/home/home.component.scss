@@ -22,3 +22,14 @@
   bottom: 0;
   right: 0;
 }
+
+/* Responsive Styles */
+@media screen and (max-width: 800px) {
+  [data-content-div] {
+    flex-direction: column;;
+  }
+
+  app-sport-widget, app-mma-widget {
+    margin-bottom: 20px;
+  }
+}

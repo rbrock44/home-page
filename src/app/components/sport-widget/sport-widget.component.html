@@ -3,8 +3,8 @@
   <div class="sport-title">{{this.isBasketball ? 'Basketball' : 'Football'}}</div>
   <div class="sport-game-ctn">
     <span class="date-label">{{gamesPerDate.date}}</span>
-    <div *ngFor="let game of gamesPerDate.games">
-      <div class="game-label">
+    <span *ngFor="let game of gamesPerDate.games">
+      <span class="game-label">
         <div (click)="imgClick(game, false)" class="cursor">
           <!--                  <span class="at-label column" *ngIf="game.opponentImageLink">-->
           <!--                    <img src="{{game.opponentImageLink}}" alt="Visiting Team Image" (click)="imgClick(game, false)">-->
@@ -19,7 +19,7 @@
           <span class="home-label column">{{game.home}}</span>
         </div>
         <span class="time-label column">{{this.liveTime(game.time)}}</span>
-      </div>
-    </div>
+      </span>
+    </span>
   </div>
 </div>
