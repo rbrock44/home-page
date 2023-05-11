@@ -65,3 +65,18 @@
   display: flex;
   align-items: center;
 }
+
+@media only screen and (max-width: 500px) {
+  .settings-value-ctn {
+    display: inline;
+    min-width: 200px;
+  }
+
+  .settings-value-label, .dropdown__label {
+    min-width: 200px;
+  }
+
+  .dropdown-ctn {
+    display: inline;
+  }
+}
