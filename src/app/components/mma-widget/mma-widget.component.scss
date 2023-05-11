@@ -3,3 +3,14 @@
 .sport-ctn {
     min-width: 300px;
 }
+
+.card-label {
+    align-self: center;
+    padding: 1vh 0;
+}
+
+@media screen and (max-width: 400px) {
+    .card-label {
+        font-weight: bold;
+    }
+}

@@ -4,11 +4,11 @@
     <div class="date-label">{{fightCard.date}}</div>
 
     <!--            MAIN CARD-->
-    <div class="date-label">Main Card</div>
+    <div class="card-label">Main Card</div>
     <app-fight-card [fights]="fightCard.main"></app-fight-card>
 
     <!--            UNDER CARD-->
-    <div class="date-label" *ngIf="fightCard?.under?.length > 0">
+    <div class="card-label" *ngIf="fightCard?.under?.length > 0">
       Under Card
     </div>
     <app-fight-card [fights]="fightCard.under"></app-fight-card>

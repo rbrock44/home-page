@@ -18,20 +18,22 @@
           </div>
         </mat-panel-title>
       </mat-expansion-panel-header>
-      <div class="search">
-        <input type="text" (keyup.enter)="search()" [formControl]="control">
-        <mat-icon (click)="search()">search</mat-icon>
-      </div>
-      <div id="result-container" *ngIf="searchResults?.length > 0 || hasSearched || hasError">
-        <div class="results" *ngFor="let result of searchResults">
-          <p>{{result}}</p>
+      <div class="search-ctn">
+        <div class="search">
+          <input type="text" (keyup.enter)="search()" [formControl]="control">
+          <mat-icon (click)="search()">search</mat-icon>
         </div>
-        <div class="results" *ngIf="searchResults?.length === 0 && hasSearched">
-          <p>No Results</p>
-        </div>
-
-        <div class="results error" *ngIf="hasError">
-          <p>Error Occurred</p>
+        <div id="result-container" *ngIf="searchResults?.length > 0 || hasSearched || hasError">
+          <div class="results" *ngFor="let result of searchResults">
+            <p>{{result}}</p>
+          </div>
+          <div class="results" *ngIf="searchResults?.length === 0 && hasSearched">
+            <p>No Results</p>
+          </div>
+  
+          <div class="results error" *ngIf="hasError">
+            <p>Error Occurred</p>
+          </div>
         </div>
       </div>
     </mat-expansion-panel>
