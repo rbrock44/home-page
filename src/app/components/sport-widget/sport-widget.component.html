@@ -5,14 +5,14 @@
     <span class="date-label">{{gamesPerDate.date}}</span>
     <span *ngFor="let game of gamesPerDate.games">
       <span class="game-label">
-        <div (click)="imgClick(game, false)" class="cursor">
+        <div (click)="imgClick(game, false)" class="cursor team">
           <!--                  <span class="at-label column" *ngIf="game.opponentImageLink">-->
           <!--                    <img src="{{game.opponentImageLink}}" alt="Visiting Team Image" (click)="imgClick(game, false)">-->
           <!--                  </span>-->
-          <span class="away-label column">{{game.opponent}}</span>
+          <span class="away-label column right">{{game.opponent}}</span>
         </div>
         <span class="at-label column">@</span>
-        <div (click)="imgClick(game)" class="cursor">
+        <div (click)="imgClick(game)" class="cursor team">
           <!--                  <span class="at-label column" *ngIf="game.homeImageLink" (click)="imgClick(game)">-->
           <!--                    <img src="{{game.homeImageLink}}" alt="Home Team Image">-->
           <!--                  </span>-->

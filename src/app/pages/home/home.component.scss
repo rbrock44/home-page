@@ -28,8 +28,7 @@ app-sport-widget, app-mma-widget {
   margin: 0px;
 }
 
-/* Responsive Styles */
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1100px) {
   [data-content-div] {
     flex-direction: column;
     justify-content: center;
@@ -39,6 +38,7 @@ app-sport-widget, app-mma-widget {
     margin-bottom: 20px;
   }
 }
+
 @media screen and (max-width: 600px) {
   .refresh-count {
     display: none;

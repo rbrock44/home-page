@@ -1,1 +1,19 @@
 @import '../../../styles.scss';
+
+.person-label {
+    min-width: 180px;
+}
+
+@media screen and (max-width: 400px) {
+    .game-label {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .person-label {
+        min-width: none;
+        align-items: center;
+    }
+}
