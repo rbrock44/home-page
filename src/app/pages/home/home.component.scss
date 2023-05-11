@@ -25,15 +25,22 @@
 
 app-sport-widget, app-mma-widget {
   min-width: 300px;
+  margin: 0px;
 }
 
 /* Responsive Styles */
 @media screen and (max-width: 800px) {
   [data-content-div] {
-    flex-direction: column;;
+    flex-direction: column;
+    justify-content: center;
   }
 
   app-sport-widget, app-mma-widget {
     margin-bottom: 20px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .refresh-count {
+    display: none;
   }
 }
