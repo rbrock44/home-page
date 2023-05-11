@@ -23,6 +23,10 @@
   right: 0;
 }
 
+app-sport-widget, app-mma-widget {
+  min-width: 300px;
+}
+
 /* Responsive Styles */
 @media screen and (max-width: 800px) {
   [data-content-div] {

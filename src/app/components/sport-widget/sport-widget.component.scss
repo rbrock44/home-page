@@ -4,3 +4,14 @@ img {
   height: 2vh;
   cursor: pointer;
 }
+
+.sport-ctn, .game-label {
+  min-width: 300px !important;
+  max-width: 200px;
+  width: 200px
+}
+
+.game-label {
+  display: flex;
+  justify-content: center;
+}

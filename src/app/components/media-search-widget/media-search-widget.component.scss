@@ -47,3 +47,21 @@ mat-accordion {
   display: flex;
   align-items: center;
 }
+
+@media screen and (max-width: 1000px) {
+  mat-accordion {
+    width: 70vw;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  mat-accordion {
+    width: 85vw;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  mat-accordion {
+    width: 96vw;
+  }
+}
