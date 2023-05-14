@@ -1,5 +1,15 @@
 @import '../../../styles.scss';
 
+.center {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.bold {
+  font-weight: bold;
+}
+
 .results {
   display: flex;
   flex-direction: column;

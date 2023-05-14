@@ -24,6 +24,9 @@
           <mat-icon (click)="search()">search</mat-icon>
         </div>
         <div id="result-container" *ngIf="searchResults?.length > 0 || hasSearched || hasError">
+          <div class="center" *ngIf="searchResults?.length > 0">
+            <p class="bold">{{searchResults.length}} Result(s)</p>
+          </div>
           <div class="results" *ngFor="let result of searchResults">
             <p>{{result}}</p>
           </div>
