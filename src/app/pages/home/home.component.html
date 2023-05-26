@@ -5,9 +5,10 @@
 
   <app-media-search-widget></app-media-search-widget>
 
-  <div>
-    
-  </div>
+  <span id="gdq-banner" (click)="gdqClick()">
+    <p>{{this.gdq.name}}</p>
+    <p>{{this.gdq.dates}}</p>
+  </span>
 
   <div data-content-div>
     <app-sport-widget [gamesPerDate]="basketball"></app-sport-widget>

@@ -83,4 +83,8 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.gdq = event;
     })
   }
+
+  gdqClick(): void {
+    document.location.href = this.gdq.url;
+  }
 }
