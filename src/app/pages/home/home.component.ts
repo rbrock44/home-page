@@ -1,8 +1,9 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {SettingsService} from "../../services/settings.service";
-import {FightCard} from "../../models/fight-card.model";
-import {HomeApiService} from "../../services/home-api.service";
-import {GamesPerDate} from "../../models/games-per-date.model";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { SettingsService } from "../../services/settings.service";
+import { FightCard } from "../../models/fight-card.model";
+import { HomeApiService } from "../../services/home-api.service";
+import { GamesPerDate } from "../../models/games-per-date.model";
+import { Event } from 'src/app/models/event.model';
 
 @Component({
   selector: 'app-home-page',
@@ -13,6 +14,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   basketball: GamesPerDate = new GamesPerDate();
   football: GamesPerDate = new GamesPerDate();
   mma: FightCard = new FightCard();
+  gdq: Event = new Event();
   refreshCount = 0;
   title: string = '';
 
@@ -76,5 +78,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     mma.subscribe(fightCard => {
       this.mma = fightCard;
     });
+
+    this.homeApiService.getGdqUpcoming().subscribe(event => {
+      this.gdq = event;
+    })
   }
 }

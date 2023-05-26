@@ -4,6 +4,7 @@ import { Observable, Subject, from, of } from 'rxjs'
 import { environment } from 'src/environments/environment'
 import { FightCard } from '../models/fight-card.model'
 import { GamesPerDate } from "../models/games-per-date.model";
+import { Event } from '../models/event.model'
 
 @Injectable({
   providedIn: 'root'
@@ -50,6 +51,10 @@ export class HomeApiService {
 
   getMmaUpcoming(): Observable<FightCard> {
     return this.http.get<FightCard>(this.getMmaUrl(false));
+  }
+
+  getGdqUpcoming(): Observable<Event> {
+    return this.http.get<Event>(`${this.homeUrl}/gdq/upcoming`);
   }
 
   private getBasketballUrl(today: boolean = true): string {
