@@ -1,4 +1,5 @@
 <div>
-  <app-home-page *ngIf="service.showHome"></app-home-page>
-  <app-settings-page *ngIf="!service.showHome"></app-settings-page>
+  <app-home-page *ngIf="service.show[0]"></app-home-page>
+  <app-settings-page *ngIf="service.show[1]"></app-settings-page>
+  <app-links-page *ngIf="service.show[2]"></app-links-page>
 </div>

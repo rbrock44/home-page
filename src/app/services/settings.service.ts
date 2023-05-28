@@ -33,7 +33,9 @@ export class SettingsService implements OnDestroy {
   TODAY: string = TODAY;
   UPCOMING: string = UPCOMING;
 
+  show = [true, false, false];
   showHome = true;
+
 
   constructor(private windowService: WindowService) {
     this.readFromLocalStorage();
@@ -45,6 +47,11 @@ export class SettingsService implements OnDestroy {
 
   get settingsReset(): Observable<boolean> {
     return this._settingsResetSubject;
+  }
+
+  setShow(index: number): void {
+    this.show = [false, false, false];
+    this.show[index] = true;
   }
 
   setColor(value: string): void {

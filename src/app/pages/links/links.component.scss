@@ -1,3 +1,15 @@
+@import '../../../styles.scss';
+
+.header-div {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+[data-header-title] {
+  font-size: xx-large;
+  padding: 5px;
+}
+
 nav {
   float: left;
   width: 100%;
@@ -8,7 +20,7 @@ nav {
 }
 
 .nav-bar-link {
-  margin: 10px;
+  margin: 5px;
   border: black;
   font-size: large;
 }
@@ -26,9 +38,11 @@ a {
   display: none;
 }
 
-.first-header-row,
-.second-header-row {
+.first-link-column {
   display: flex;
+  flex-direction: column;
+  width: 200px;
+  align-items: center;
 }
 
 @media screen and (max-width: 750px) {

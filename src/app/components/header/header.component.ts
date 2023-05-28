@@ -13,14 +13,19 @@ import { WindowService } from '../../services/window.service';
             <div class="first-header-row">
               <a mat-tab-link
                 mat-theme="accent"
-                (click)="showHome(true)"
+                (click)="show(0)"
                 class="nav-bar-link"
                 data-home-nav>Home</a>
               <a mat-tab-link
                 mat-theme="accent"
-                (click)="showHome(false)"
+                (click)="show(1)"
                 class="nav-bar-link"
                 data-settings-nav>Settings</a>
+              <a mat-tab-link
+                mat-theme="accent"
+                (click)="show(2)"
+                class="nav-bar-link"
+                data-links-nav>Links</a>
             </div>
            <div class="second-header-row">
               <a mat-tab-link
@@ -64,14 +69,13 @@ import { WindowService } from '../../services/window.service';
 export class HeaderComponent {
 
   constructor(
-    private router: Router,
     private windowService: WindowService,
     public service: SettingsService
   ) {
   }
 
-  showHome(show: boolean): void {
-    this.service.showHome = show;
+  show(index: number): void {
+    this.service.setShow(index);
   }
 
   route(url: string): void {

@@ -19,6 +19,7 @@ import {MmaWidgetComponent} from "./components/mma-widget/mma-widget.component";
 import {FightCardComponent} from "./components/fight-card/fight-card.component";
 import {MediaSearchWidgetComponent} from "./components/media-search-widget/media-search-widget.component";
 import { MainComponent } from './pages/main/main.component';
+import { LinkComponent } from './pages/links/links.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { MainComponent } from './pages/main/main.component';
     FightCardComponent,
     HeaderComponent,
     HomeComponent,
+    LinkComponent,
     MainComponent,
     MediaSearchWidgetComponent,
     MmaWidgetComponent,
