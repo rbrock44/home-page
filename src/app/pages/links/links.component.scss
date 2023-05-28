@@ -25,10 +25,6 @@ nav {
   font-size: large;
 }
 
-.nav-bar-div {
-  display: flex;
-}
-
 a {
   cursor: pointer;
   text-decoration: underline;
@@ -41,7 +37,7 @@ a {
 .first-link-column {
   display: flex;
   flex-direction: column;
-  width: 200px;
+  width: 202px;
   align-items: center;
 }
 
