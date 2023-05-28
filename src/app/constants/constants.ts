@@ -84,3 +84,11 @@ export function liveTime(time: string): string {
     return 'LIVE'
   }
 }
+
+export function monthToIndex(month: string) {
+  var monthNames = [
+    "January", "February", "March", "April", "May", "June", "July",
+    "August", "September", "October", "November", "December"
+  ];
+  return monthNames.indexOf(month);
+}

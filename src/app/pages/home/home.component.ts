@@ -3,7 +3,9 @@ import { SettingsService } from "../../services/settings.service";
 import { FightCard } from "../../models/fight-card.model";
 import { HomeApiService } from "../../services/home-api.service";
 import { GamesPerDate } from "../../models/games-per-date.model";
-import { Event } from 'src/app/models/event.model';
+import { Event } from '../../models/event.model';
+import { monthToIndex } from '../../constants/constants';
+import { WindowService } from '../../services/window.service';
 
 @Component({
   selector: 'app-home-page',
@@ -20,7 +22,8 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   constructor(
     public homeApiService: HomeApiService,
-    public settingsService: SettingsService
+    public settingsService: SettingsService,
+    private windowService: WindowService
   ) {
   }
 
@@ -40,10 +43,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   setTimerLoop(): void {
     // 1 min = 60k milliseconds
     let timeout = this.settingsService.refreshRate * 60000
-    const value = (() => {
-      this.startUp(false);
-      this.refreshCount++;
-    })
+
     window.setInterval(() => {
       this.startUp(false);
       this.refreshCount++;
@@ -85,6 +85,33 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   gdqClick(): void {
-    document.location.href = this.gdq.url;
+    this.windowService.openBlank(this.gdq.url);
+  }
+
+  gdqHighlight(): boolean {
+    if (this.gdq && this.gdq.dates && this.gdq.dates.length > 0) {
+      const index = this.gdq.dates.indexOf("-")
+      if (index > -1) {
+        const start = this.gdq.dates.substring(0, index - 1).trim()
+        const end = this.gdq.dates.substring(index + 1).trim()
+        const currentDate = new Date();
+
+        const startParts = start.split(" ");
+        const endParts = end.split(" ");
+
+        const startDate = new Date(currentDate.getFullYear(), monthToIndex(startParts[0]), +startParts[1]);
+        const endDate = new Date(currentDate.getFullYear(), monthToIndex(endParts[0]), +endParts[1]);
+
+        if (currentDate > startDate && currentDate < endDate) {
+          return true;
+        } else {
+          return false;
+        }
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
   }
 }

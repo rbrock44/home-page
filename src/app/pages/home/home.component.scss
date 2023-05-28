@@ -15,6 +15,12 @@
   cursor: pointer;
 }
 
+#gdq-highlight {
+  border-radius: 10px;
+  display: inherit;
+  padding: 0 1vw 0 1vw;
+}
+
 #gdq-name {
   margin-right: 1vw;
 }
@@ -22,7 +28,6 @@
 [data-content-div] {
   display: flex;
   justify-content: space-around;
-  margin-top: 50px;
 }
 
 .refresh-count {

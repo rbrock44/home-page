@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { SettingsService } from 'src/app/services/settings.service';
+import { SettingsService } from '../../services/settings.service';
+import { WindowService } from '../../services/window.service';
 
 @Component({
   selector: 'app-header',
@@ -64,6 +65,7 @@ export class HeaderComponent {
 
   constructor(
     private router: Router,
+    private windowService: WindowService,
     public service: SettingsService
   ) {
   }
@@ -74,11 +76,11 @@ export class HeaderComponent {
 
   route(url: string): void {
     const newUrl = `https://rbrock44.github.io/${url}/`
-    document.location.href = newUrl;
+    this.windowService.openBlank(newUrl);
   }
 
   homeAssistant(): void {
     const newUrl = `http://10.0.0.15:8123/`
-    document.location.href = newUrl;
+    this.windowService.openBlank(newUrl);
   }
 }
