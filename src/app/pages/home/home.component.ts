@@ -6,6 +6,7 @@ import { GamesPerDate } from "../../models/games-per-date.model";
 import { Event } from '../../models/event.model';
 import { monthToIndex } from '../../constants/constants';
 import { WindowService } from '../../services/window.service';
+import { templateJitUrl } from '@angular/compiler';
 
 @Component({
   selector: 'app-home-page',
@@ -90,6 +91,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   gdqHighlight(): boolean {
     if (this.gdq && this.gdq.dates && this.gdq.dates.length > 0) {
+      if ("LIVE" === this.gdq.dates) {
+        return true;
+      }
+      
       const index = this.gdq.dates.indexOf("-")
       if (index > -1) {
         const start = this.gdq.dates.substring(0, index - 1).trim()
