@@ -8,7 +8,7 @@
       <div *ngFor="let link of firstColumnLinks">
         <a mat-tab-link mat-theme="accent" (click)="urlNav(link.url)" class="nav-bar-link lengthened">{{link.name}}</a>
   
-        <a mat-tab-link mat-theme="accent" (click)="urlNav(link.url)" class="nav-bar-link shortened">{{link.shortened === '' ? link.name : link.shortened}}</a>
+        <a mat-tab-link mat-theme="accent" (click)="urlNav(link.url)" class="nav-bar-link shortened">{{link.shortenedName === '' ? link.name : link.shortenedName}}</a>
       </div>
     </div>
   
@@ -16,7 +16,7 @@
       <div *ngFor="let link of secondColumnLinks">
         <a mat-tab-link mat-theme="accent" (click)="urlNav(link.url)" class="nav-bar-link lengthened">{{link.name}}</a>
   
-        <a mat-tab-link mat-theme="accent" (click)="urlNav(link.url)" class="nav-bar-link shortened">{{link.shortened === '' ? link.name : link.shortened}}</a>
+        <a mat-tab-link mat-theme="accent" (click)="urlNav(link.url)" class="nav-bar-link shortened">{{link.shortenedName === '' ? link.name : link.shortenedName}}</a>
       </div>
     </div>
   </div>

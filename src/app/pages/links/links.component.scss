@@ -55,13 +55,3 @@ a {
     display: block;
   }
 }
-
-@media screen and (max-width: 550px) {
-  .nav-bar-div {
-    flex-direction: column;
-  }
-
-  .nav-bar-link {
-    margin: 5px;
-  }
-}
