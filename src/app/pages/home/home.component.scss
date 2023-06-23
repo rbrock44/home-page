@@ -9,6 +9,19 @@
   padding: 5px;
 }
 
+p {
+  height: 20px;
+}
+
+.gdq-div {
+  display: flex;
+  height: fit-content;
+  height: 30px;
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+}
+
 #gdq-banner {
   justify-content: center;
   display: flex;
@@ -17,7 +30,8 @@
 
 #gdq-highlight {
   border-radius: 10px;
-  display: inherit;
+  display: flex;
+  flex-direction: column;
   padding: 0 1vw 0 1vw;
 }
 

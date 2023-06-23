@@ -91,30 +91,35 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   gdqHighlight(): boolean {
     if (this.gdq && this.gdq.dates && this.gdq.dates.length > 0) {
-      if ("LIVE" === this.gdq.dates) {
-        return true;
-      }
-      
-      const index = this.gdq.dates.indexOf("-")
-      if (index > -1) {
-        const start = this.gdq.dates.substring(0, index - 1).trim()
-        const end = this.gdq.dates.substring(index + 1).trim()
-        const currentDate = new Date();
-
-        const startParts = start.split(" ");
-        const endParts = end.split(" ");
-
-        const startDate = new Date(currentDate.getFullYear(), monthToIndex(startParts[0]), +startParts[1]);
-        const endDate = new Date(currentDate.getFullYear(), monthToIndex(endParts[0]), +endParts[1]);
-
-        if (currentDate > startDate && currentDate < endDate) {
+      this.gdq.dates.forEach(element => {
+        if ("LIVE" === element) {
           return true;
+        }
+      });
+
+      this.gdq.dates.forEach(element => {
+        const index = element.indexOf("-")
+        if (index > -1) {
+          const start = element.substring(0, index - 1).trim()
+          const end = element.substring(index + 1).trim()
+          const currentDate = new Date();
+
+          const startParts = start.split(" ");
+          const endParts = end.split(" ");
+
+          const startDate = new Date(currentDate.getFullYear(), monthToIndex(startParts[0]), +startParts[1]);
+          const endDate = new Date(currentDate.getFullYear(), monthToIndex(endParts[0]), +endParts[1]);
+
+          if (currentDate > startDate && currentDate < endDate) {
+            return true;
+          } else {
+            return false;
+          }
         } else {
           return false;
         }
-      } else {
-        return false;
-      }
+      });
+
     } else {
       return false;
     }

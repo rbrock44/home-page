@@ -7,8 +7,10 @@
 
   <span id="gdq-banner" (click)="gdqClick()">
     <div [ngStyle]="gdqHighlight() && {'background-color': 'gold'}" id="gdq-highlight">
-      <p id="gdq-name">{{this.gdq.name}}</p>
-      <p>{{this.gdq.dates}}</p>
+      <div class="gdq-div" *ngFor="let name of this.gdq.name; let i = index">
+        <p id="gdq-name">{{this.gdq.name[i]}}</p>
+        <p>{{this.gdq.dates[i]}}</p>
+      </div>     
     </div>
   </span>
 
