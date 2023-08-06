@@ -26,6 +26,11 @@ import { WindowService } from '../../services/window.service';
                 (click)="show(2)"
                 class="nav-bar-link"
                 data-links-nav>Links</a>
+              <a mat-tab-link
+                mat-theme="accent"
+                (click)="show(3)"
+                class="nav-bar-link"
+                data-concerts-nav>Concerts</a>
             </div>
            <div class="second-header-row">
               <a mat-tab-link

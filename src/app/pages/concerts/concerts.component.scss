@@ -1,0 +1,57 @@
+@import '../../../styles.scss';
+
+.header-div {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+[data-header-title] {
+  font-size: xx-large;
+  padding: 5px;
+}
+
+nav {
+  float: left;
+  width: 100%;
+}
+
+.nav-bar-bar {
+  height: 50px;
+}
+
+.nav-bar-link {
+  margin: 5px;
+  border: black;
+  font-size: large;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.shortened {
+  display: none;
+}
+
+.first-link-column {
+  display: flex;
+  flex-direction: column;
+  width: 202px;
+  align-items: center;
+}
+
+#link-container {
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (max-width: 750px) {
+  .lengthened {
+    display: none;
+  }
+
+  .shortened {
+    display: block;
+  }
+}

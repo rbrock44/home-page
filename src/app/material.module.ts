@@ -1,4 +1,4 @@
-import {MatDialogModule, MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule} from '@angular/material';
+import {MatDialogModule, MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule, MatSortModule, MatTableModule} from '@angular/material';
 import {NgModule} from '@angular/core';
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatIconModule} from "@angular/material/icon";
@@ -12,7 +12,9 @@ import {MatIconModule} from "@angular/material/icon";
     MatInputModule,
     MatDialogModule,
     MatOptionModule,
-    MatSelectModule
+    MatTableModule,
+    MatSelectModule,
+    MatSortModule,
   ],
   exports: [
     MatExpansionModule,
@@ -21,7 +23,9 @@ import {MatIconModule} from "@angular/material/icon";
     MatInputModule,
     MatDialogModule,
     MatOptionModule,
-    MatSelectModule
+    MatTableModule,
+    MatSelectModule,
+    MatSortModule,
   ]
 })
 export class MaterialModule {

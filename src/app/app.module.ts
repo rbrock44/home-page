@@ -20,10 +20,14 @@ import {FightCardComponent} from "./components/fight-card/fight-card.component";
 import {MediaSearchWidgetComponent} from "./components/media-search-widget/media-search-widget.component";
 import { MainComponent } from './pages/main/main.component';
 import { LinkComponent } from './pages/links/links.component';
+import { ConcertTableComponent } from './components/concert-table/concert-table.component';
+import { ConcertComponent } from './pages/concerts/concerts.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ConcertComponent,
+    ConcertTableComponent,
     ConfirmationPopupComponent,
     FightCardComponent,
     HeaderComponent,

@@ -1,0 +1,49 @@
+<div *ngIf="dataSource.data.length > 0">
+  <div class="center">
+    <p class="bold">Concerts</p>
+  </div>
+  <div class="center">
+    <mat-table [dataSource]="this.dataSource" matSort class="mat-elevation-z8" (matSortChange)="sortData()">
+      <!-- Band name Column -->
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+      </ng-container>
+
+      <!-- Openers Column -->
+      <ng-container matColumnDef="openers">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Openers</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.openers.join(", ")}} </mat-cell>
+      </ng-container>
+
+      <!-- Location Column -->
+      <ng-container matColumnDef="location">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Location</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.location}} </mat-cell>
+      </ng-container>
+
+
+      <!-- city Column -->
+      <ng-container matColumnDef="city">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>City</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.city}} </mat-cell>
+      </ng-container>
+
+
+      <ng-container matColumnDef="date">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Date</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.date}} </mat-cell>
+      </ng-container>
+
+      <!-- Attendees Column -->
+      <ng-container matColumnDef="attendees">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Attendees</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.attendees.join(", ")}} </mat-cell>
+      </ng-container>
+
+
+      <mat-header-row *matHeaderRowDef="this.displayColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: this.displayColumns;"></mat-row>
+    </mat-table>
+  </div>
+</div>

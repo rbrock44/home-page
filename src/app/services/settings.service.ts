@@ -50,7 +50,7 @@ export class SettingsService implements OnDestroy {
   }
 
   setShow(index: number): void {
-    this.show = [false, false, false];
+    this.show = [false, false, false, false];
     this.show[index] = true;
   }
 
