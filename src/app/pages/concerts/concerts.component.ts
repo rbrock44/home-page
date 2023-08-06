@@ -37,6 +37,7 @@ export class ConcertComponent {
     //2021
     new Concert('Korn', ['Staind'], hollywoodAmphitheater, STL, '2021/09/05', [ryan, addie, brandon, 'Michael Shouse']),
     new Concert('Foo Fighters', ['Radkey'], hollywoodAmphitheater, STL, '2021/08/03', [ryan, addie, brandon, aaron]),
+    new Concert('Skillet', ['Jordan Feliz', 'Colton Dixon'], 'Drive In', 'Chaffee, Missouri', '2021/05/23', [ryan, brandon, aaron, 'Natalie Clark', 'Michael Shouse', 'Will Curnell']),
 
     //2019
     new Concert('Rob Thomas', ['John K'], 'Ballpark Village', STL, '2019/12/07', [ryan, brandon]),
@@ -48,12 +49,10 @@ export class ConcertComponent {
     new Concert('Rob Thomas', ['Abby Anderson'], 'Breese Stevens Field', 'Madison, Wisconsin', '2019/06/07', [ryan, 'Landon Robert']),
     new Concert('Sabroso Fest', ['Kobayashi (the eater)', 'Dwarves', 'Black Falg', 'Strung Out', 'The Vandals', 'Bad Religion', 'The Offspring'], 'Fiddlers Green Amphitheatre', 'Eaglewood, Colorado', '2019/04/28', [ryan, zach]),
 
-
-    new Concert('Skillet', ['Jordan Feliz', 'Colton Dixon'], 'Drive In', 'Chaffee, Missouri', '2017/05/23', [ryan, brandon, 'Aaron Braswell', 'Natalie Clark', 'Michael Shouse', 'Will Curnell']),
     new Concert('Flying Lotus in 3D', ['So So Topic'], 'EXDO Event Center', 'Denver, Colorado', '2017/11/17', [ryan, zach, 'Destanie Raines']),
 
     new Concert('Judas Priest', ['Whitesnake'], 'The Family Arena', STL, '2009/07/01', [ryan, zach]),
-    new Concert('3 Doors Down', ['12 Stones', 'Sick Puppies'], 'Black River Coliseum', 'Poplar Bluff', '2008/04/02', [ryan, 'Catrina Stone', 'James Summers']),
+    new Concert('3 Doors Down', ['12 Stones', 'Sick Puppies'], 'Black River Coliseum', 'Poplar Bluff, Missouri', '2008/04/02', [ryan, 'Catrina Stone', 'James Summers']),
   ]
 
   dataSource = new MatTableDataSource<Concert>(this.concertList);
