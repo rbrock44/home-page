@@ -25,7 +25,7 @@ export class ConcertComponent {
     new Concert('Candlebox', ['Judah Taylor', 'Rubikon'], delmarHall, STL, '2023/08/13', [ryan, addie, brandon]),
     new Concert('Ghost', ['Amon Amarth'], hollywoodAmphitheater, STL, '2023/08/11', [ryan, addie, 'Jonathan Brock']),
     new Concert('Nickelback', ['Brantley Gilbert'], hollywoodAmphitheater, STL, '2023/08/03', [ryan, addie, brandon]),
-    new Concert('Paramore', ['The Linda Lindas', 'The Foals'], 'Enterprise Center', STL, '2023/07/30', [ryan, addie, 'Natalie Clark', brandon]),
+    new Concert('Paramore', ['The Linda Lindas', 'Foals'], 'Enterprise Center', STL, '2023/07/30', [ryan, addie, 'Natalie Clark', brandon]),
     new Concert('Taylor Swift', ['MUNA', 'Gracie Abrams'], 'Empower Field at Mile High', 'Denver, Colorado', '2023/07/15', [ryan, addie]),
     new Concert('String Cheese Incident', ['ft. John Fogerty'], 'Red Rock Amphitheater', 'Morrison, Colorado', '2023/07/14', [ryan, addie, zach]),
     new Concert('The Blue Stones', ['The Velveeters'], delmarHall, STL, '2023/05/24', [ryan, addie, brandon]),
