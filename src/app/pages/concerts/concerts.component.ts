@@ -22,8 +22,8 @@ export class ConcertComponent {
     // new Concert('', [], '', '', '', []),
     //2023
     new Concert('Mt. Joy', ['flipturn'], 'STL Music Park', STL, '2023/08/15', [ryan, addie]),
-    new Concert('Candlebox', ['Rubiken'], delmarHall, STL, '2023/08/13', [ryan, addie, brandon]),
-    new Concert('Ghost', ['Amon Amarth'], hollywoodAmphitheater, STL, '2023/08/11', [ryan, addie, brandon, 'Jonathan Brock']),
+    new Concert('Candlebox', ['Judah Taylor', 'Rubikon'], delmarHall, STL, '2023/08/13', [ryan, addie, brandon]),
+    new Concert('Ghost', ['Amon Amarth'], hollywoodAmphitheater, STL, '2023/08/11', [ryan, addie, 'Jonathan Brock']),
     new Concert('Nickelback', ['Brantley Gilbert'], hollywoodAmphitheater, STL, '2023/08/03', [ryan, addie, brandon]),
     new Concert('Paramore', ['The Linda Lindas', 'The Foals'], 'Enterprise Center', STL, '2023/07/30', [ryan, addie, 'Natalie Clark', brandon]),
     new Concert('Taylor Swift', ['MUNA', 'Gracie Abrams'], 'Empower Field at Mile High', 'Denver, Colorado', '2023/07/15', [ryan, addie]),
@@ -50,6 +50,9 @@ export class ConcertComponent {
     new Concert('Sabroso Fest', ['Kobayashi (the eater)', 'Dwarves', 'Black Falg', 'Strung Out', 'The Vandals', 'Bad Religion', 'The Offspring'], 'Fiddlers Green Amphitheatre', 'Eaglewood, Colorado', '2019/04/28', [ryan, zach]),
 
     new Concert('Flying Lotus in 3D', ['So So Topic'], 'EXDO Event Center', 'Denver, Colorado', '2017/11/17', [ryan, zach, 'Destanie Raines']),
+
+    new Concert('Shinedown', ['Sevendust', 'Breaking Benjamin'], 'Show Me Center', 'Cape Girardeau, MO', '2015/11/15', [ryan, 'Bjorn Preumer', 'Brett Preumer']),
+    
 
     new Concert('Judas Priest', ['Whitesnake'], 'The Family Arena', STL, '2009/07/01', [ryan, zach]),
     new Concert('3 Doors Down', ['12 Stones', 'Sick Puppies'], 'Black River Coliseum', 'Poplar Bluff, Missouri', '2008/04/02', [ryan, 'Catrina Stone', 'James Summers']),
