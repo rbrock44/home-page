@@ -13,6 +13,7 @@ export class LinkComponent {
     new Link('Bank of Missouri', '', 'https://my.bankofmissouri.com/login'),
     new Link('Elan', '', 'https://www.myaccountaccess.com/onlineCard/login.do'),
     new Link('Chase', '', 'https://www.chase.com/business/login-emob'),
+    new Link('Ameren', '', 'https://www.ameren.com/'),
     new Link('AT&T', '', 'https://caaid.att.com/isam/sps/static/signinRedirect.html'),
     new Link('Spectrum', '', 'https://www.spectrum.net/billing'),
     new Link('T. Price (GS 401k)', 'T. Price', 'https://www.troweprice.com/workplace/en/login.html?pdurl=/rws/account/participant/home'),
