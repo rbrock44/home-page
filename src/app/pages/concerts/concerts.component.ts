@@ -22,7 +22,7 @@ export class ConcertComponent {
     // new Concert('', [], '', '', '', []),
     //2023
     new Concert('Mt. Joy', ['flipturn'], 'Ascend Amphitheater', 'Nashville, TN', '2023/10/21', [ryan, addie]),
-    new Concert('Hannah Berner', [], 'The Truman', 'Kansas City, MO', '2023/10/20', [ryan, addie]),
+    new Concert('Hannah Berner', ['Sara Huntington'], 'The Truman', 'Kansas City, MO', '2023/10/20', [ryan, addie]),
     new Concert('Mt. Joy', ['flipturn'], 'STL Music Park', STL, '2023/08/15', [ryan, addie]),
     new Concert('Candlebox', ['Judah Taylor', 'Rubikon'], delmarHall, STL, '2023/08/13', [ryan, addie, brandon]),
     new Concert('Ghost', ['Amon Amarth'], hollywoodAmphitheater, STL, '2023/08/11', [ryan, addie, 'Jonathan Brock']),
