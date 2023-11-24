@@ -21,6 +21,9 @@ export class ConcertComponent {
   concertList = [
     // new Concert('', [], '', '', '', []),
     //2023
+    new Concert('Zeds Dead', ['Rusko', 'Heyz'], 'The Factory', STL, '2023/12/29', [ryan, addie]),
+    new Concert('Dirty Honey', ['Austin Meade'], 'The Hawthorn', STL, '2023/12/15', [ryan, addie]),
+    new Concert('The Urge', ['Tree One Four', 'Wisemary'], 'The Pageant', STL, '2023/11/24', [ryan, addie, brandon]),
     new Concert('Mt. Joy', ['flipturn'], 'Ascend Amphitheater', 'Nashville, TN', '2023/10/21', [ryan, addie]),
     new Concert('Hannah Berner', ['Sara Huntington'], 'The Truman', 'Kansas City, MO', '2023/10/20', [ryan, addie]),
     new Concert('Mt. Joy', ['flipturn'], 'STL Music Park', STL, '2023/08/15', [ryan, addie]),
