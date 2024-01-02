@@ -49,7 +49,7 @@ $tones: 40, 80;
   --#{$key}: #{$value};
   --#{$key}-rgb: #{red($value)},#{green($value)},#{blue($value)};
   @each $tone in $tones {
-    $scale-value: adjust-color($value, $lightness: math.div($tone, 2) * 1%);
+    $scale-value: adjust-color($value, $lightness: $tone / 2 * 1%);
     --#{$key}-#{$tone}: #{$scale-value};
     --#{$key}-#{$tone}-rgb: #{red($scale-value)},#{green($scale-value)},#{blue($scale-value)};
   }
