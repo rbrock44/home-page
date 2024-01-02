@@ -1,3 +1,4 @@
+@use "sass:math";
 /* You can add global styles to this file, and also import other style files */
 
 html, body {
@@ -49,7 +50,7 @@ $tones: 40, 80;
   --#{$key}: #{$value};
   --#{$key}-rgb: #{red($value)},#{green($value)},#{blue($value)};
   @each $tone in $tones {
-    $scale-value: adjust-color($value, $lightness: $tone / 2 * 1%);
+    $scale-value: adjust-color($value, $lightness: math.div($tone, 2) * 1%);
     --#{$key}-#{$tone}: #{$scale-value};
     --#{$key}-#{$tone}-rgb: #{red($scale-value)},#{green($scale-value)},#{blue($scale-value)};
   }
@@ -72,7 +73,6 @@ $tones: 40, 80;
 
 .cursor {
   cursor: pointer;
-  display: inline-block;
 }
 
 .sport-ctn {
@@ -81,12 +81,7 @@ $tones: 40, 80;
 }
 
 .column {
-  display: inline-flex;
-  flex-direction: column;
-}
-
-.column {
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
 }
 
@@ -114,6 +109,7 @@ $tones: 40, 80;
   min-width: 8vw;
   border-radius: 5vw;
   margin-bottom: 0.25vh;
+  display: flex;
 }
 
 .sport-game-ctn {

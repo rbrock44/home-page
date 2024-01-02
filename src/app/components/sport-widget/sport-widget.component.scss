@@ -6,11 +6,17 @@ img {
 }
 
 .sport-ctn, .game-label {
-  min-width: 200px !important;
+  min-width: 470px !important;
   // max-width: 200px;
   // width: 200px
 }
 
 .game-label {
   justify-content: center;
+}
+
+.team {
+  max-width: 150px;
+  width: 150px;
+  // display: flex;
 }
