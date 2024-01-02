@@ -1,6 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {MatDialog} from '@angular/material';
 import {AlertService} from 'src/app/services/alert.service';
 import {ConfirmationPopupComponent} from 'src/app/components/confirmation-popup/confirmation-popup.component';
 import {SettingsService} from 'src/app/services/settings.service';
@@ -12,6 +11,7 @@ import {
   RESET_SETTINGS_SUCCESS_MESSAGE
 } from "../../constants/constants";
 import {DateService} from "../../services/date.service";
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-settings-page',

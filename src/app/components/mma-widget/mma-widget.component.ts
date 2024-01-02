@@ -14,7 +14,7 @@ export class MmaWidgetComponent {
 
   addDay(dateString: string): string {
     const date = new Date(dateString);
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const options: any = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
     return date.toLocaleDateString('en-US', options);
   }

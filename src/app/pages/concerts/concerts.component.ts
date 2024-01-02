@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource } from '@angular/material/table';
 import { Concert } from 'src/app/models/concert.model';
 
 const ryan: string = 'Ryan Brock'

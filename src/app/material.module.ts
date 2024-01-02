@@ -1,7 +1,12 @@
-import {MatDialogModule, MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule, MatSortModule, MatTableModule} from '@angular/material';
 import {NgModule} from '@angular/core';
 import {MatExpansionModule} from "@angular/material/expansion";
-import {MatIconModule} from "@angular/material/icon";
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [],
@@ -11,7 +16,6 @@ import {MatIconModule} from "@angular/material/icon";
     MatIconModule,
     MatInputModule,
     MatDialogModule,
-    MatOptionModule,
     MatTableModule,
     MatSelectModule,
     MatSortModule,
@@ -22,7 +26,6 @@ import {MatIconModule} from "@angular/material/icon";
     MatIconModule,
     MatInputModule,
     MatDialogModule,
-    MatOptionModule,
     MatTableModule,
     MatSelectModule,
     MatSortModule,
