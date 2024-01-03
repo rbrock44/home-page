@@ -3,6 +3,18 @@
     <header data-header-title>Concerts</header>
   </div>
 
-  <app-concert-table [dataSource]="dataSource"></app-concert-table>
+  <div class="center">
+    <mat-form-field class="form-field">
+      <mat-label class="mat-label">Search</mat-label>
+      <div class="center input">
+        <input [formControl]="searchControl" data-search-input matInput type="text">
+        <div class="center">
+          <mat-icon (click)="this.concertService.search(this.searchControl.value)">search</mat-icon>
+        </div>
+      </div>
+    </mat-form-field>
+  </div>
+
+  <app-concert-table></app-concert-table>
   
 </div>

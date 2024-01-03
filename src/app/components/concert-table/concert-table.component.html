@@ -1,9 +1,9 @@
-<div *ngIf="dataSource.data.length > 0">
+<div *ngIf="this.concertService.dataSource.data.length > 0">
   <div class="center">
-    <p class="bold">Concerts</p>
+    <p class="bold">{{concertService.dataSource.data.length}} Concert(s)</p>
   </div>
   <div class="center">
-    <mat-table [dataSource]="this.dataSource" matSort class="mat-elevation-z8" (matSortChange)="sortData()">
+    <mat-table [dataSource]="this.concertService.dataSource" matSort class="mat-elevation-z8" (matSortChange)="this.concertService.sortData(this.sort)">
       <!-- Band name Column -->
       <ng-container matColumnDef="name">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
