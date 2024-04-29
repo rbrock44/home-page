@@ -22,7 +22,7 @@ export class ConcertService {
     // new Concert('', [], '', '', '', []),
     //2024
     new Concert('Mt. Joy', [''], 'Ascend Amphitheater', 'Nashville, TN', '2024/09/24', [ryan, addie]),
-    new Concert('King Gizzard and the Lizard Wizzard', [''], 'The Factory', STL, '2024/09/05', [ryan, addie]),
+    new Concert('King Gizzard and the Lizard Wizard', [''], 'The Factory', STL, '2024/09/05', [ryan, addie]),
     new Concert('Green Day', [''], hollywoodAmphitheater, STL, '2024/08/14', [ryan, addie]),
     new Concert('Bush', ['Candlebox'], 'STL Music Park', STL, '2024/08/10', [ryan, addie]),
     new Concert('Portugal The Man', [''], 'The Pageant', STL, '2024/05/06', [ryan, addie]),

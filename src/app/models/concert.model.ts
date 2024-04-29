@@ -15,7 +15,7 @@ export class Concert {
     this.attendees = attendees;
   }
 
-  static getValue(column: string, recipe: Concert): any {
-    return recipe[column]
+  static getValue(column: string, concert: Concert): any {
+    return concert[column]
   }
 }
