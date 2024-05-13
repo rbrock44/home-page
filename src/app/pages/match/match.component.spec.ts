@@ -13,10 +13,10 @@ import { AlertService } from "../../services/alert.service";
 import { DateService } from "../../services/date.service";
 import { HomeApiService } from "../../services/home-api.service";
 import { SettingsService } from "../../services/settings.service";
-import { ConcertComponent } from "./concerts.component";
+import { MatchComponent } from "./match.component";
 
-describe('ConcertsComponent', () => {
-  let fixture: ComponentFixture<ConcertComponent>;
+describe('MatchComponent', () => {
+  let fixture: ComponentFixture<MatchComponent>;
   let component;
   let router: Router;
   let settingsService: SettingsService;
@@ -33,7 +33,7 @@ describe('ConcertsComponent', () => {
         MaterialModule
       ],
       declarations: [
-        ConcertComponent,
+        MatchComponent,
         YesNoDropdownComponent
       ],
       providers: [
@@ -47,7 +47,7 @@ describe('ConcertsComponent', () => {
     dateService = TestBed.get(DateService);
     spyOn(dateService, 'now').and.returnValue(1);
     settingsService = TestBed.get(SettingsService);
-    fixture = TestBed.createComponent(ConcertComponent);
+    fixture = TestBed.createComponent(MatchComponent);
     component = fixture.debugElement.componentInstance;
   }));
 

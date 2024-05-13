@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { SettingsService } from '../../services/settings.service';
 import { WindowService } from '../../services/window.service';
 
@@ -31,6 +30,11 @@ import { WindowService } from '../../services/window.service';
                 (click)="show(3)"
                 class="nav-bar-link"
                 data-concerts-nav>Concerts</a>
+              <a mat-tab-link
+                mat-theme="accent"
+                (click)="show(4)"
+                class="nav-bar-link"
+                data-concerts-nav>Matches</a>
             </div>
            <div class="second-header-row">
               <a mat-tab-link

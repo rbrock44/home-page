@@ -33,8 +33,13 @@ export class SettingsService implements OnDestroy {
   TODAY: string = TODAY;
   UPCOMING: string = UPCOMING;
 
-  show = [true, false, false];
-  showHome = true;
+  // this show array controls which page is showed at a time
+  // 1st: Home
+  // 2nd: Settings
+  // 3rd: Links
+  // 4th: Concerts
+  // 5th: Matches
+  show = [true, false, false, false, false];
 
 
   constructor(private windowService: WindowService) {

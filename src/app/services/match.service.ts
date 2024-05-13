@@ -85,10 +85,12 @@ export class MatchService {
     let value = true;
     
     criteria.forEach(it => {
-      value = value && (match.home.toUpperCase().indexOf(it) > -1 ||
+      value = value && (
+        match.home.toUpperCase().indexOf(it) > -1 ||
         match.away.toUpperCase().indexOf(it) > -1 ||
         match.attendees.filter(x => x.toUpperCase().indexOf(it) > -1).length > 0 ||
-        match.location.toUpperCase().indexOf(it) > -1 ||
+        match.arena.toUpperCase().indexOf(it) > -1 ||
+        match.sport.toUpperCase().indexOf(it) > -1 ||
         match.city.toUpperCase().indexOf(it) > -1)
     })
 

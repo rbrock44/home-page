@@ -1,24 +1,24 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { debounceTime } from 'rxjs';
-import { ConcertService } from 'src/app/services/concert.service';
+import { MatchService } from 'src/app/services/match.service';
 
 @Component({
-  selector: 'app-concerts-page',
-  templateUrl: './concerts.component.html',
-  styleUrls: ['./concerts.component.scss']
+  selector: 'app-match-page',
+  templateUrl: './match.component.html',
+  styleUrls: ['./match.component.scss']
 })
-export class ConcertComponent {
+export class MatchComponent {
   searchControl: FormControl = new FormControl('');
 
   ngOnInit(): void {
     this.searchControl.valueChanges.pipe(
       debounceTime(300)
     ).subscribe(value => {
-      this.concertService.search(value);
+      this.matchService.search(value);
     });
   }
   
-  constructor(public concertService: ConcertService) {
+  constructor(public matchService: MatchService) {
   }
 }

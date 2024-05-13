@@ -25,7 +25,8 @@ export class ConcertService {
     new Concert('King Gizzard and the Lizard Wizard', [''], 'The Factory', STL, '2024/09/05', [ryan, addie]),
     new Concert('Green Day', [''], hollywoodAmphitheater, STL, '2024/08/14', [ryan, addie]),
     new Concert('Bush', ['Candlebox'], 'STL Music Park', STL, '2024/08/10', [ryan, addie]),
-    new Concert('Portugal The Man', [''], 'The Pageant', STL, '2024/05/06', [ryan, addie]),
+    new Concert('Phish', [''], 'Chaifetz Arena', STL, '2024/07/30', [ryan, addie]),
+    new Concert('Portugal The Man', ['Reyna Tropical'], 'The Pageant', STL, '2024/05/06', [ryan, addie]),
     new Concert('Greta van Fleet', ['Geese'], 'Chaifetz Arena', STL, '2024/04/27', [ryan, addie, 'Abagail Estes', 'Ty Householder']),
     new Concert('Hannah Berner', ['Sara Huntington'], 'The Factory', STL, '2024/04/17', [ryan, addie]),
 

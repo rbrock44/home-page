@@ -22,6 +22,8 @@ import { MainComponent } from './pages/main/main.component';
 import { LinkComponent } from './pages/links/links.component';
 import { ConcertTableComponent } from './components/concert-table/concert-table.component';
 import { ConcertComponent } from './pages/concerts/concerts.component';
+import { MatchComponent } from './pages/match/match.component';
+import { MatchTableComponent } from './components/match-table/match-table.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { ConcertComponent } from './pages/concerts/concerts.component';
     HomeComponent,
     LinkComponent,
     MainComponent,
+    MatchComponent,
+    MatchTableComponent,
     MediaSearchWidgetComponent,
     MmaWidgetComponent,
     SettingsPageComponent,
