@@ -23,8 +23,8 @@ export class ConcertService {
     //2024
     new Concert('Mt. Joy', [''], 'Ascend Amphitheater', 'Nashville, TN', '2024/09/24', [ryan, addie]),
     new Concert('King Gizzard and the Lizard Wizard', [''], 'The Factory', STL, '2024/09/05', [ryan, addie]),
-    new Concert('Green Day', [''], hollywoodAmphitheater, STL, '2024/08/14', [ryan, addie]),
     new Concert('Black Pistol Fire', [''], 'The Basement', 'Nashville, TN', '2024/08/28', [ryan, addie]),
+    new Concert('Green Day', [''], hollywoodAmphitheater, STL, '2024/08/14', [ryan, addie]),
     new Concert('Bush', ['Jerry Cantrell', 'Candlebox'], 'STL Music Park', STL, '2024/08/10', [ryan, 'Will Curnell', 'Justin Darnell']),
     new Concert('P!NK', ['Sheryl Crow', 'KidCutUp'], 'The Dome', STL, '2024/08/10', [addie, 'Mary Evans']),
     new Concert('Phish', [''], 'Chaifetz Arena', STL, '2024/07/30', [ryan, addie]),
