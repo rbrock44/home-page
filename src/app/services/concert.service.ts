@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
-import { Concert } from '../models/concert.model';
-import * as _ from 'lodash';
 import { MatTableDataSource } from '@angular/material/table';
+import * as _ from 'lodash';
+import { Concert } from '../models/concert.model';
 
 const ryan: string = 'Ryan Brock'
 const addie: string = 'Addie Evans'
 const brandon: string = 'Brandon Clark'
 const aaron: string = 'Aaron Braswell'
 const zach: string = 'Zach Haynes'
+const will: string = 'Will Curnell'
+const justin: string = 'Justin Darnell'
 
 const STL: string = 'STL'
 const delmarHall: string = 'Delmar Hall'
@@ -24,8 +26,8 @@ export class ConcertService {
     new Concert('Mt. Joy', [''], 'Ascend Amphitheater', 'Nashville, TN', '2024/09/24', [ryan, addie]),
     new Concert('King Gizzard and the Lizard Wizard', [''], 'The Factory', STL, '2024/09/05', [ryan, addie]),
     new Concert('Black Pistol Fire', [''], 'The Basement', 'Nashville, TN', '2024/08/28', [ryan, addie]),
-    new Concert('Green Day', [''], hollywoodAmphitheater, STL, '2024/08/14', [ryan, addie]),
-    new Concert('Bush', ['Jerry Cantrell', 'Candlebox'], 'STL Music Park', STL, '2024/08/10', [ryan, 'Will Curnell', 'Justin Darnell']),
+    new Concert('Green Day', [''], hollywoodAmphitheater, STL, '2024/08/15', [ryan, addie]),
+    new Concert('Bush', ['Jerry Cantrell', 'Candlebox'], 'STL Music Park', STL, '2024/08/10', [ryan, will, justin]),
     new Concert('P!NK', ['Sheryl Crow', 'KidCutUp'], 'The Dome', STL, '2024/08/10', [addie, 'Mary Evans']),
     new Concert('Phish', [''], 'Chaifetz Arena', STL, '2024/07/30', [ryan, addie]),
     new Concert('Portugal The Man', ['Reyna Tropical'], 'The Pageant', STL, '2024/05/06', [ryan, addie]),
