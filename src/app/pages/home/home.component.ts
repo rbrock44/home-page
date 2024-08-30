@@ -6,7 +6,6 @@ import { GamesPerDate } from "../../models/games-per-date.model";
 import { Event } from '../../models/event.model';
 import { monthToIndex } from '../../constants/constants';
 import { WindowService } from '../../services/window.service';
-import { templateJitUrl } from '@angular/compiler';
 
 @Component({
   selector: 'app-home-page',

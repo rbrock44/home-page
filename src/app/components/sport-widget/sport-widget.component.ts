@@ -13,6 +13,7 @@ import {liveTime} from "../../constants/constants";
 export class SportWidgetComponent {
   @Input() gamesPerDate: GamesPerDate = new GamesPerDate({games: []});
   @Input() isBasketball: boolean = true;
+  atSymbol: string = '@';
 
   constructor(
     public settingsService: SettingsService,

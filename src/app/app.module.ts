@@ -44,14 +44,12 @@ import { MatchTableComponent } from './components/match-table/match-table.compon
     SportWidgetComponent,
     YesNoDropdownComponent
   ],
-  entryComponents: [ConfirmationPopupComponent],
   imports: [
     AlertModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
     CommonModule,
-    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     MaterialModule
