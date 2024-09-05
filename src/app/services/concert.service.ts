@@ -24,10 +24,10 @@ export class ConcertService {
     // new Concert('', [], '', '', '', []),
     //2024
     new Concert('Mt. Joy', [''], 'Ascend Amphitheater', 'Nashville, TN', '2024/09/24', [ryan, addie]),
-    new Concert('King Gizzard and the Lizard Wizard', [''], 'The Factory', STL, '2024/09/05', [ryan, addie]),
-    new Concert('Black Pistol Fire', [''], 'The Basement', 'Nashville, TN', '2024/08/28', [ryan, addie]),
-    new Concert('Green Day', [''], hollywoodAmphitheater, STL, '2024/08/15', [ryan, addie]),
-    new Concert('Bush', ['Jerry Cantrell', 'Candlebox'], 'STL Music Park', STL, '2024/08/10', [ryan, will, justin]),
+    new Concert('King Gizzard and the Lizard Wizard', ['Geese'], 'The Factory', STL, '2024/09/05', [ryan, addie]),
+    new Concert('Black Pistol Fire', ['Dan Spencer'], 'The Basement', 'Nashville, TN', '2024/08/28', [ryan, addie]),
+    new Concert('Green Day', ['The Linda Lindas', 'Rancid'], hollywoodAmphitheater, STL, '2024/08/15', [ryan, addie]),
+    new Concert('Bush', ['Candlebox', 'Jerry Cantrell'], 'STL Music Park', STL, '2024/08/10', [ryan, will, justin]),
     new Concert('P!NK', ['Sheryl Crow', 'KidCutUp'], 'The Dome', STL, '2024/08/10', [addie, 'Mary Evans']),
     new Concert('Phish', [''], 'Chaifetz Arena', STL, '2024/07/30', [ryan, addie]),
     new Concert('Portugal The Man', ['Reyna Tropical'], 'The Pageant', STL, '2024/05/06', [ryan, addie]),
@@ -71,7 +71,7 @@ export class ConcertService {
     new Concert('Flying Lotus in 3D', ['So So Topic'], 'EXDO Event Center', 'Denver, Colorado', '2017/11/17', [ryan, zach, 'Destanie Raines']),
 
     new Concert('Shinedown', ['Sevendust', 'Breaking Benjamin'], 'Show Me Center', 'Cape Girardeau, MO', '2015/11/15', [ryan, 'Bjorn Preumer', 'Brett Preumer']),
-    
+
 
     new Concert('Judas Priest', ['Whitesnake'], 'The Family Arena', STL, '2009/07/01', [ryan, zach]),
     new Concert('3 Doors Down', ['12 Stones', 'Sick Puppies'], 'Black River Coliseum', 'Poplar Bluff, Missouri', '2008/04/02', [ryan, 'Catrina Stone', 'James Summers']),
@@ -96,7 +96,7 @@ export class ConcertService {
         break;
       default:
         data = this.sortConcerts(data, "date", false)
-        if (sort?.direction) 
+        if (sort?.direction)
           sort.direction = '';
     }
 
@@ -125,7 +125,7 @@ export class ConcertService {
 
   private matchesAllCriteria(criteria: string[], concert: Concert): boolean {
     let value = true;
-    
+
     criteria.forEach(it => {
       value = value && (concert.name.toUpperCase().indexOf(it) > -1 ||
         concert.openers.filter(x => x.toUpperCase().indexOf(it) > -1).length > 0 ||
