@@ -39,24 +39,9 @@ import { WindowService } from '../../services/window.service';
            <div class="second-header-row">
               <a mat-tab-link
                 mat-theme="accent"
-                (click)="route('family-recipes')"
-                 class="nav-bar-link lengthened"
-                 >Family Recipes</a>
-              <a mat-tab-link
-                 mat-theme="accent"
-                 (click)="route('family-recipes')"
-                 class="nav-bar-link shortened"
-                 >Recipes</a>
-              <a mat-tab-link
-                 mat-theme="accent"
-                 (click)="route('scorekeeping-by-rounds')"
-                 class="nav-bar-link lengthened"
-                 >Scorekeeping By Rounds</a>
-              <a mat-tab-link
-                 mat-theme="accent"
-                 (click)="route('scorekeeping-by-rounds')"
-                 class="nav-bar-link shortened"
-                 >Scorekeeping</a>
+                (click)="route('directory')"
+                 class="nav-bar-link"
+                 >Directory</a>
               <a mat-tab-link
                  mat-theme="accent"
                  (click)="homeAssistant()"
