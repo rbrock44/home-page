@@ -24,6 +24,11 @@ jobs:
     - name: Build project
       run: npm run deploy
 
+    - name: Set up Git config
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+
     - name: Deploy to GitHub Pages
       run: npm run gh-pages
       env:
