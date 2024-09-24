@@ -30,7 +30,9 @@ jobs:
         git config user.email "github-actions[bot]@users.noreply.github.com"
 
     - name: Upload Artifact
-      run: actions/upload-pages-artifact@v3
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: .
 
     - name: Deploy to GitHub Pages
-      run: actions/deploy-pages@v3
+      uses: actions/deploy-pages@v3
