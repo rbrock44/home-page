@@ -29,5 +29,8 @@ jobs:
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
 
+    - name: Install gh-pages
+      run: npm install gh-pages 
+
     - name: Deploy to GitHub Pages
-      run: gh-pages -d dist/home-page --repo https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/rbrock44/home-page.git
+      run: npx gh-pages -d dist/home-page --repo https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/rbrock44/home-page.git
