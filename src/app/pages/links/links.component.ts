@@ -20,6 +20,7 @@ export class LinkComponent {
     new Link('T. Price (GS 401k)', 'T. Price', 'https://www.troweprice.com/workplace/en/login.html?pdurl=/rws/account/participant/home'),
     new Link('Vanguard (Vizient 401k)', 'Vanguard', 'https://ownyourfuture.vanguard.com/home/login#/'),
     new Link('Flatbranch (Home Loan)', 'Flatbranch', 'https://flatbranchservicing.com/'),
+    new Link('Truist (Home Loan)', 'Truist', 'https://www.truist.com/'),
   ]
 
   secondColumnLinks: Link[] = [
