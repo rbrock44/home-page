@@ -23,6 +23,8 @@ export class ConcertService {
   concertList = [
     // new Concert('', [], '', '', '', []),
     //2024
+    new Concert('Kacey Musgraves (Deeper Well Tour)', ['Nickel Creek, Lord Huron'], 'Ascend Amphitheater', 'Nashville, TN', '2024/12/06', [ryan, addie]),
+    new Concert('Kacey Musgraves (Deeper Well Tour)', ['Nickel Creek, Lord Huron'], 'KFC Yum! Center', 'Lousville, KY', '2024/11/12', [ryan, addie]),
     new Concert('Mt. Joy', [''], 'Ascend Amphitheater', 'Nashville, TN', '2024/09/24', [ryan, addie]),
     new Concert('King Gizzard and the Lizard Wizard', ['Geese'], 'The Factory', STL, '2024/09/05', [ryan, addie]),
     new Concert('Black Pistol Fire', ['Dan Spencer'], 'The Basement', 'Nashville, TN', '2024/08/28', [ryan, addie]),
@@ -45,7 +47,7 @@ export class ConcertService {
     new Concert('Ghost', ['Amon Amarth'], hollywoodAmphitheater, STL, '2023/08/11', [ryan, addie, 'Jonathan Brock']),
     new Concert('Nickelback', ['Brantley Gilbert'], hollywoodAmphitheater, STL, '2023/08/03', [ryan, addie, brandon]),
     new Concert('Paramore', ['The Linda Lindas', 'Foals'], 'Enterprise Center', STL, '2023/07/30', [ryan, addie, 'Natalie Clark', brandon]),
-    new Concert('Taylor Swift', ['MUNA', 'Gracie Abrams'], 'Empower Field at Mile High', 'Denver, Colorado', '2023/07/15', [ryan, addie]),
+    new Concert('Taylor Swift (Eras Tour)', ['MUNA', 'Gracie Abrams'], 'Empower Field at Mile High', 'Denver, Colorado', '2023/07/15', [ryan, addie]),
     new Concert('String Cheese Incident', ['ft. John Fogerty'], 'Red Rock Amphitheater', 'Morrison, Colorado', '2023/07/14', [ryan, addie, zach]),
     new Concert('The Blue Stones', ['The Velveeters'], delmarHall, STL, '2023/05/24', [ryan, addie, brandon]),
     new Concert('Aries Spears', [], 'Heliem Comedy Club', 'STL', '2023/01/06', [ryan, addie, 'Sara Snider', 'Tanya', 'Alivia Collier']),
