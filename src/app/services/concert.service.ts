@@ -62,9 +62,9 @@ export class ConcertService {
 
     //2019
     new Concert('Rob Thomas', ['John K'], 'Ballpark Village', STL, '2019/12/07', [ryan, brandon]),
-    new Concert('Rusko', ['Cromatik'], 'The Old Rock House', STL, '2019/11/27', [ryan, zach, 'Sara Hovis', 'Ariel ']),
+    new Concert('Rusko', ['Cromatik'], 'The Old Rock House', STL, '2019/11/27', [ryan, zach, 'Sara Hovis', 'Ariel']),
     new Concert('Nick Offerman', [], 'Stiefel', STL, '2019/11/07', [ryan, 'Katilyn Wieberg']),
-    new Concert('Sluggtopia III', ['Kill The Noise', 'Rusko', 'Snails'], 'Red Rock Amphitheater', 'Morrison, Colorado', '2019/10/04', [ryan, zach, 'Ray', 'Ryan', 'Nick', '']),
+    new Concert('Sluggtopia III', ['Kill The Noise', 'Rusko', 'Snails'], 'Red Rock Amphitheater', 'Morrison, Colorado', '2019/10/04', [ryan, zach, 'Ray', 'Ryan', 'Nick', 'Others...']),
     new Concert('Halestorm', ['Godsmack'], 'Show Me Center', 'Cape Girardeau', '2019/10/27', [ryan, brandon]),
     new Concert('Wayback Pointfest', ['Cowboy Mouth', 'Stir', 'Goldfinger', 'Living Colour', 'Gin Blossoms', 'Everclear', 'The Urge', 'Collective Soul'], hollywoodAmphitheater, STL, '2019/08/31', [ryan, brandon, 'Kaitlyn Wieberg']),
     new Concert('Rob Thomas', ['Abby Anderson'], 'Breese Stevens Field', 'Madison, Wisconsin', '2019/06/07', [ryan, 'Landon Robert']),
