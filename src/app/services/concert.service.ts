@@ -22,6 +22,8 @@ const hollywoodAmphitheater: string = 'Hollywood Casino Amphitheatre'
 export class ConcertService {
   concertList = [
     // new Concert('', [], '', '', '', []),
+    new Concert('flipturn', [''], 'The Hawthorn', STL, '2025/03/19', [ryan, addie, 'Abagail Estes', 'Ty Householder']),
+
     //2024
     new Concert('Kacey Musgraves (Deeper Well Tour)', ['Nickel Creek, Lord Huron'], 'Ascend Amphitheater', 'Nashville, TN', '2024/12/06', [ryan, addie]),
     new Concert('Kacey Musgraves (Deeper Well Tour)', ['Nickel Creek, Lord Huron'], 'KFC Yum! Center', 'Lousville, KY', '2024/11/12', [ryan, addie]),
