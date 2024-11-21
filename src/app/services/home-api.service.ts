@@ -53,10 +53,6 @@ export class HomeApiService {
     return this.http.get<FightCard>(this.getMmaUrl(false));
   }
 
-  getGdqUpcoming(): Observable<Event> {
-    return this.http.get<Event>(`${this.homeUrl}/gdq/upcoming`);
-  }
-
   private getBasketballUrl(today: boolean = true): string {
     return this.getUrl('basketball', today)
   }

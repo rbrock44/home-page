@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { monthToIndex } from '../../constants/constants';
-import { Event } from '../../models/event.model';
+import { SingleEvent } from 'src/app/models/single-event.model';
 import { FightCard } from "../../models/fight-card.model";
 import { GamesPerDate } from "../../models/games-per-date.model";
 import { HomeApiService } from "../../services/home-api.service";
@@ -16,7 +15,20 @@ export class HomeComponent implements OnInit, OnDestroy {
   basketball: GamesPerDate = new GamesPerDate();
   football: GamesPerDate = new GamesPerDate();
   mma: FightCard = new FightCard();
-  gdq: Event = new Event();
+  gdqEvents: SingleEvent[] = [
+    new SingleEvent({
+      name: 'Disaster Relief Done Quick 2024',
+      startDate: '20241011',
+      endDate: '20241013',
+      url: 'https://gamesdonequick.com/marathons/cm06694cj010zw401cwatx1zo',
+    }),
+    new SingleEvent({
+      name: 'AGDQ25',
+      startDate: '20250105',
+      endDate: '20250212',
+      url: 'https://gamesdonequick.com/marathons/cm06694cj010zw401cwatx1zo',
+    })
+  ];
   refreshCount = 0;
   title: string = '';
 
@@ -78,49 +90,42 @@ export class HomeComponent implements OnInit, OnDestroy {
     mma.subscribe(fightCard => {
       this.mma = fightCard;
     });
-
-    this.homeApiService.getGdqUpcoming().subscribe(event => {
-      this.gdq = event;
-    })
   }
 
-  gdqClick(): void {
-    this.windowService.openBlank(this.gdq.url);
+  gdqClick(url: string): void {
+    this.windowService.openBlank(url);
   }
 
-  gdqHighlight(): boolean {
-    if (this.gdq && this.gdq.dates && this.gdq.dates.length > 0) {
-      this.gdq.dates.forEach(element => {
-        if ("LIVE" === element) {
-          return true;
-        }
-      });
+  gdqHighlight(event: SingleEvent): boolean {
+    const currentDate = new Date();
+    const startDate = this.parseDate(event.startDate);
+    const endDate = this.parseDate(event.endDate);
 
-      this.gdq.dates.forEach(element => {
-        const index = element.indexOf("-")
-        if (index > -1) {
-          const start = element.substring(0, index - 1).trim()
-          const end = element.substring(index + 1).trim()
-          const currentDate = new Date();
+    // Check if the current date is within the range of startDate and endDate
+    return currentDate >= startDate && currentDate <= endDate;
+  }
 
-          const startParts = start.split(" ");
-          const endParts = end.split(" ");
+  upcomingOrOngoingEvents(): SingleEvent[] {
+    const currentDate = new Date();
 
-          const startDate = new Date(currentDate.getFullYear(), monthToIndex(startParts[0]), +startParts[1]);
-          const endDate = new Date(currentDate.getFullYear(), monthToIndex(endParts[0]), +endParts[1]);
+    return this.gdqEvents.filter(event => {
+      const endDate = this.parseDate(event.endDate);
+      console.log(endDate)
+      return currentDate <= endDate; // Show events that are ongoing or in the future
+    });
+  }
 
-          if (currentDate > startDate && currentDate < endDate) {
-            return true;
-          } else {
-            return false;
-          }
-        } else {
-          return false;
-        }
-      });
+  parseDate(dateStr: string): Date {
+    const year = parseInt(dateStr.substring(0, 4), 10);
+    const month = parseInt(dateStr.substring(4, 6), 10) - 1;
+    const day = parseInt(dateStr.substring(6, 8), 10);
+    return new Date(year, month, day);
+  }
 
-    } else {
-      return false;
-    }
+  public formatDate(date: Date): string {
+    return new Intl.DateTimeFormat('en-US', {
+      month: 'short',
+      day: 'numeric',
+    }).format(date);
   }
 }

@@ -5,16 +5,15 @@
 
   <app-media-search-widget></app-media-search-widget>
 
-  <div class="gdq-banner-wrapper" *ngIf="this.gdq.name?.length > 0">
-    <div id="gdq-banner" (click)="gdqClick()">
-      <div [ngStyle]="gdqHighlight() && {'background-color': 'gold'}" id="gdq-highlight">
-        <div class="gdq-div" *ngFor="let name of this.gdq.name; let i = index">
-          <div id="gdq-name">{{this.gdq.name[i]}} - {{this.gdq.dates[i]}}</div>
-        </div>     
+  <div class="gdq-banner-wrapper" *ngIf="upcomingOrOngoingEvents().length > 0">
+    <div class="gdq-banner" *ngFor="let event of upcomingOrOngoingEvents()">
+      <div class="gdq-highlight" [ngStyle]="gdqHighlight(event) && {'background-color': 'gold', 'border-radius':'6px'}" (onClick)="gdqClick(event.url)">
+        <div class="gdq-div">
+          {{ event.name }}&nbsp;{{ formatDate(parseDate(event.startDate)) }} - {{ formatDate(parseDate(event.endDate)) }}
+        </div>
       </div>
     </div>
   </div>
-
 
   <div data-content-div>
     <app-sport-widget [gamesPerDate]="basketball"></app-sport-widget>
