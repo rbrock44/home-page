@@ -5,12 +5,18 @@
 
   <app-media-search-widget></app-media-search-widget>
 
-  <div class="gdq-banner-wrapper" *ngIf="upcomingOrOngoingEvents().length > 0">
-    <div class="gdq-banner" *ngFor="let event of upcomingOrOngoingEvents()">
-      <div class="gdq-highlight" [ngStyle]="gdqHighlight(event) && {'background-color': 'gold', 'border-radius':'6px'}" (onClick)="gdqClick(event.url)">
-        <div class="gdq-div">
-          {{ event.name }}&nbsp;{{ formatDate(parseDate(event.startDate)) }} - {{ formatDate(parseDate(event.endDate)) }}
+  <div class="gdq-banner-wrapper" >
+    <div class="gdq-banner">
+      <div *ngFor="let event of upcomingOrOngoingEvents()">
+        <div class="gdq-highlight" [ngStyle]="gdqHighlight(event) && {'background-color': 'gold', 'border-radius':'6px'}" (onClick)="gdqClick(event.url)">
+          <div class="gdq-div">
+            {{ event.name }}&nbsp;&nbsp;{{ formatDate(parseDate(event.startDate)) }} - {{ formatDate(parseDate(event.endDate)) }}
+          </div>
         </div>
+      </div>
+
+      <div *ngIf="upcomingOrOngoingEvents().length == 0">
+        Go Add GDQ Events to list
       </div>
     </div>
   </div>
