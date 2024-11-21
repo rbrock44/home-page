@@ -1,18 +1,20 @@
-<div>
+<div class="home-ctn">
   <div class="header-div">
     <header data-header-title>{{this.settingsService.title}}</header>
   </div>
 
   <app-media-search-widget></app-media-search-widget>
 
-  <span id="gdq-banner" (click)="gdqClick()">
-    <div [ngStyle]="gdqHighlight() && {'background-color': 'gold'}" id="gdq-highlight">
-      <div class="gdq-div" *ngFor="let name of this.gdq.name; let i = index">
-        <p id="gdq-name">{{this.gdq.name[i]}}</p>
-        <p>{{this.gdq.dates[i]}}</p>
-      </div>     
+  <div class="gdq-banner-wrapper" *ngIf="this.gdq.name?.length > 0">
+    <div id="gdq-banner" (click)="gdqClick()">
+      <div [ngStyle]="gdqHighlight() && {'background-color': 'gold'}" id="gdq-highlight">
+        <div class="gdq-div" *ngFor="let name of this.gdq.name; let i = index">
+          <div id="gdq-name">{{this.gdq.name[i]}} - {{this.gdq.dates[i]}}</div>
+        </div>     
+      </div>
     </div>
-  </span>
+  </div>
+
 
   <div data-content-div>
     <app-sport-widget [gamesPerDate]="basketball"></app-sport-widget>
@@ -20,5 +22,7 @@
     <app-mma-widget [fightCard]="mma"></app-mma-widget>
   </div>
 
-  <span class="refresh-count">Refresh count: {{this.refreshCount}}</span>
+  <div class="refresh-count-wrapper">
+    <span class="refresh-count">Refresh count: {{this.refreshCount}}</span>
+  </div>
 </div>

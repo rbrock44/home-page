@@ -13,30 +13,39 @@ p {
   height: 20px;
 }
 
-.gdq-div {
-  display: flex;
-  height: fit-content;
-  height: 30px;
-  justify-items: center;
-  align-items: center;
-  justify-content: center;
-}
-
 #gdq-banner {
-  justify-content: center;
   display: flex;
+  width: 75%;
+  background-color: #056e60bb; 
+  color: #302f2f;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 8px; 
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Shadow for pop-out effect */
+  pointer-events: auto;
+  text-align: center; 
+  justify-content: center;
   cursor: pointer;
 }
 
-#gdq-highlight {
-  border-radius: 10px;
+.gdq-banner-wrapper {
   display: flex;
-  flex-direction: column;
-  padding: 0 1vw 0 1vw;
+  justify-content: center;
+  padding: 16px;
+}
+
+#gdq-highlight {
+  padding: 6px;
+  border-radius: 6px;
+}
+
+.gdq-div {
+  margin: 8px 0; /* Add spacing between entries */
 }
 
 #gdq-name {
-  margin-right: 1vw;
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
 [data-content-div] {
@@ -44,12 +53,31 @@ p {
   justify-content: space-around;
 }
 
-.refresh-count {
-  margin-right: 3vw;
-  margin-bottom: 3vh;
+.refresh-count-wrapper {
   position: fixed;
   bottom: 0;
   right: 0;
+  width: 100%; 
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem 3vw; 
+  pointer-events: none;
+}
+
+.refresh-count {
+  background-color: #056e60bb; 
+  color: #302f2f;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  pointer-events: auto; 
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.home-ctn {
+  padding-bottom: 4rem;
 }
 
 app-sport-widget,
@@ -58,7 +86,7 @@ app-mma-widget {
   margin: 0px;
 }
 
-@media screen and (max-width: 1100px) {
+@media (max-width: 1100px) {
   [data-content-div] {
     flex-direction: column;
     justify-content: center;
@@ -68,9 +96,15 @@ app-mma-widget {
   app-mma-widget {
     margin-bottom: 20px;
   }
-}
+}  
 
-@media screen and (max-width: 600px) {
+@media (max-width: 768px) {
+  #gdq-banner {
+    width: 90%; /* Adjust width for smaller screens */
+    font-size: 0.9rem; /* Smaller font size */
+    padding: 12px; /* Reduce padding */
+  }
+
   .refresh-count {
     display: none;
   }

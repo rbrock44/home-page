@@ -1,12 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { SettingsService } from "../../services/settings.service";
-import { FightCard } from "../../models/fight-card.model";
-import { HomeApiService } from "../../services/home-api.service";
-import { GamesPerDate } from "../../models/games-per-date.model";
-import { Event } from '../../models/event.model';
 import { monthToIndex } from '../../constants/constants';
+import { Event } from '../../models/event.model';
+import { FightCard } from "../../models/fight-card.model";
+import { GamesPerDate } from "../../models/games-per-date.model";
+import { HomeApiService } from "../../services/home-api.service";
+import { SettingsService } from "../../services/settings.service";
 import { WindowService } from '../../services/window.service';
-import { templateJitUrl } from '@angular/compiler';
 
 @Component({
   selector: 'app-home-page',
