@@ -1,16 +1,63 @@
 @import '../../../styles.scss';
 
-.sport-ctn {
-    min-width: 300px;
-}
+// .sport-ctn {
+//     min-width: 300px;
+// }
 
-.card-label {
-    align-self: center;
-    padding: 1vh 0;
-}
+// .card-label {
+//     align-self: center;
+//     padding: 1vh 0;
+// }
 
 @media screen and (max-width: 400px) {
     .card-label {
         font-weight: bold;
     }
+}
+
+.sport-ctn {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #056e60bb;
+    /* Match the Basketball/Football style */
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.sport-ctn:hover {
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.sport-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #302f2f;
+}
+
+.sport-game-ctn {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.date-label {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #302f2f;
+}
+
+.card-label {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 10px 0 5px 0;
+    text-align: center;
+    color: #302f2f;
+    padding: 4px 8px;
+    /* Match the row style */
+    border-radius: 4px;
 }

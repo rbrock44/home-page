@@ -5,18 +5,77 @@ img {
   cursor: pointer;
 }
 
-.sport-ctn, .game-label {
-  min-width: 470px !important;
-  // max-width: 200px;
-  // width: 200px
+// .sport-ctn, .game-label {
+//   min-width: 470px !important;
+//   // max-width: 200px;
+//   // width: 200px
+// }
+
+// .game-label {
+//   justify-content: center;
+// }
+
+// .team {
+//   max-width: 150px;
+//   width: 150px;
+//   // display: flex;
+// }
+
+.sport-ctn {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #056e60bb;
+  /* Soft coral background for pop-out effect */
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  /* Shadow for pop-out effect */
+  padding: 16px;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.game-label {
-  justify-content: center;
+.sport-ctn:hover {
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+  /* Stronger shadow on hover */
 }
 
-.team {
-  max-width: 150px;
-  width: 150px;
-  // display: flex;
+.sport-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+  color: #302f2f;
+}
+
+.sport-game-ctn {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.game-row {
+  display: grid;
+  grid-template-columns: 5fr 1fr 5fr 2.5fr;
+  /* Adjust ratios as needed */
+  align-items: center;
+  gap: 2px;
+  background-color: #ece2e2;
+  padding: 2px;
+  border-radius: 4px;
+}
+
+.column {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #302f2f;
+}
+
+.date-label {
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #302f2f;
+}
+
+.left {
+  text-align: left;
 }

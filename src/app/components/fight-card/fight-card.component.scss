@@ -1,8 +1,54 @@
 @import '../../../styles.scss';
 
-.person-label {
-    min-width: 180px;
+.fight-card-ctn {
+    display: flex;
+    flex-direction: column;
+    background-color: #056e60bb;
+    /* Match parent background */
+    border-radius: 8px;
+    padding: 2px;
 }
+
+.fight-row {
+    display: grid;
+    grid-template-columns: 4fr 1fr 4fr;
+    /* Equal spacing for fighter names and "vs." */
+    align-items: center;
+    gap: 2px;
+    background-color: #ece2e2;
+    /* Light background for each fight */
+    padding: 2px;
+    border-radius: 4px;
+    transition: background-color 0.2s, transform 0.2s;
+    cursor: pointer;
+}
+
+.fight-row:hover {
+    transform: scale(1.02);
+    /* Slightly enlarge on hover */
+    background-color: #dcd2d2;
+    /* Slightly darker on hover */
+}
+
+.column {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #302f2f;
+}
+
+.person-label {
+    font-weight: bold;
+}
+
+.vs-label {
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+.left {
+    text-align: left;
+}
+
 
 @media screen and (max-width: 400px) {
     .game-label {
