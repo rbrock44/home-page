@@ -59,7 +59,7 @@ img {
   /* Adjust ratios as needed */
   align-items: center;
   gap: 2px;
-  background-color: #ece2e2;
+  background-color: #FFFAE6;
   padding: 2px;
   border-radius: 4px;
 }
@@ -78,6 +78,7 @@ img {
 
 .away-label, .home-label {
   font-weight: bold;
+  cursor: pointer;
 }
 
 .left {

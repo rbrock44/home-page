@@ -5,6 +5,7 @@ import { GamesPerDate } from "../../models/games-per-date.model";
 import { HomeApiService } from "../../services/home-api.service";
 import { SettingsService } from "../../services/settings.service";
 import { WindowService } from '../../services/window.service';
+import { Auction } from 'src/app/models/auction.model';
 
 @Component({
   selector: 'app-home-page',
@@ -15,6 +16,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   basketball: GamesPerDate = new GamesPerDate();
   football: GamesPerDate = new GamesPerDate();
   mma: FightCard = new FightCard();
+  auctions: Auction[] = [];
   gdqEvents: SingleEvent[] = [
     new SingleEvent({
       name: 'Disaster Relief Done Quick 2024',
@@ -90,6 +92,11 @@ export class HomeComponent implements OnInit, OnDestroy {
     mma.subscribe(fightCard => {
       this.mma = fightCard;
     });
+
+    this.homeApiService.getAuctionsUpcoming().subscribe(auctions => {
+      this.auctions = auctions;
+      console.log('AUCTIONS: ', this.auctions);
+    });
   }
 
   gdqClick(url: string): void {
@@ -110,7 +117,6 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     return this.gdqEvents.filter(event => {
       const endDate = this.parseDate(event.endDate);
-      console.log(endDate)
       return currentDate <= endDate; // Show events that are ongoing or in the future
     });
   }

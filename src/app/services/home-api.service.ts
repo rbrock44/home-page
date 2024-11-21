@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment'
 import { FightCard } from '../models/fight-card.model'
 import { GamesPerDate } from "../models/games-per-date.model";
 import { Event } from '../models/event.model'
+import { Auction } from '../models/auction.model'
 
 @Injectable({
   providedIn: 'root'
@@ -51,6 +52,10 @@ export class HomeApiService {
 
   getMmaUpcoming(): Observable<FightCard> {
     return this.http.get<FightCard>(this.getMmaUrl(false));
+  }
+
+  getAuctionsUpcoming(): Observable<Auction[]> {
+    return this.http.get<Auction[]>(`${this.homeUrl}/auction/upcoming`);
   }
 
   private getBasketballUrl(today: boolean = true): string {

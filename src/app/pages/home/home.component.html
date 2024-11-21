@@ -7,24 +7,28 @@
 
   <div class="gdq-banner-wrapper" >
     <div class="gdq-banner">
-      <div *ngFor="let event of upcomingOrOngoingEvents()">
-        <div class="gdq-highlight" [ngStyle]="gdqHighlight(event) && {'background-color': 'gold', 'border-radius':'6px'}" (onClick)="gdqClick(event.url)">
+      <div *ngFor="let event of this.upcomingOrOngoingEvents()">
+        <div class="gdq-highlight" [ngStyle]="this.gdqHighlight(event) && {'background-color': 'gold', 'border-radius':'6px'}" (click)="gdqClick(event.url)">
           <div class="gdq-div">
-            {{ event.name }}&nbsp;&nbsp;{{ formatDate(parseDate(event.startDate)) }} - {{ formatDate(parseDate(event.endDate)) }}
+            {{ event.name }}&nbsp;&nbsp;{{ this.formatDate(this.parseDate(event.startDate)) }} - {{ this.formatDate(this.parseDate(event.endDate)) }}
           </div>
         </div>
       </div>
 
-      <div *ngIf="upcomingOrOngoingEvents().length == 0">
+      <div *ngIf="this.upcomingOrOngoingEvents().length == 0">
         Go Add GDQ Events to list
       </div>
     </div>
   </div>
 
   <div data-content-div>
-    <app-sport-widget [gamesPerDate]="basketball"></app-sport-widget>
-    <app-sport-widget [gamesPerDate]="football" [isBasketball]="false"></app-sport-widget>
-    <app-mma-widget [fightCard]="mma"></app-mma-widget>
+    <app-sport-widget [gamesPerDate]="this.basketball"></app-sport-widget>
+    <app-sport-widget [gamesPerDate]="this.football" [isBasketball]="false"></app-sport-widget>
+    <app-mma-widget [fightCard]="this.mma"></app-mma-widget>
+  </div>
+
+  <div data-content-div>
+     <app-auction-widget [auctions]="this.auctions"></app-auction-widget>
   </div>
 
   <div class="refresh-count-wrapper">

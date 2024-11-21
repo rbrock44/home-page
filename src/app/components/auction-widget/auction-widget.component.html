@@ -1,0 +1,19 @@
+<div class="auctions-ctn" *ngIf="this.settingsService.showAuctions && this.auctions.length > 0">
+  <div class="auction-title">Auctions</div>
+  <div *ngFor="let auction of this.auctions">
+    <div class="auction-card" (click)="this.navigate(auction.url)">
+      <div class="auction-name">{{ auction.name }}</div>
+      <div class="auction-service">{{ auction.service }}</div>
+      <div class="auction-details">
+        <div *ngIf="auction.internetBidding">
+          <span>Ends: {{ auction.endDate }}</span>
+          <span *ngIf="auction.closingTime"> | Closing: {{ auction.closingTime }}</span>
+        </div>
+        <div *ngIf="auction.internetBidding">
+          <span>ONLINE</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -14,6 +14,7 @@ import {MaterialModule} from './material.module';
 import {YesNoDropdownComponent} from "./components/yes-no-dropdown/yes-no-dropdown.component";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HomeComponent} from "./pages/home/home.component";
+import {AuctionWidgetComponent} from "./components/auction-widget/auction-widget.component";
 import {SportWidgetComponent} from "./components/sport-widget/sport-widget.component";
 import {MmaWidgetComponent} from "./components/mma-widget/mma-widget.component";
 import {FightCardComponent} from "./components/fight-card/fight-card.component";
@@ -28,6 +29,7 @@ import { MatchTableComponent } from './components/match-table/match-table.compon
 @NgModule({
   declarations: [
     AppComponent,
+    AuctionWidgetComponent,
     ConcertComponent,
     ConcertTableComponent,
     ConfirmationPopupComponent,

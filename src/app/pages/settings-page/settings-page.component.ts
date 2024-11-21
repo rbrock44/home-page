@@ -32,6 +32,7 @@ export class SettingsPageComponent implements OnInit, OnDestroy {
   showFootballControl: FormControl = new FormControl('', [Validators.required]);
   showBasketballControl: FormControl = new FormControl('', [Validators.required]);
   showMmaControl: FormControl = new FormControl('', [Validators.required]);
+  showAuctionsControl: FormControl = new FormControl('', [Validators.required]);
   whichFootballControl: FormControl = new FormControl('', [Validators.required]);
   whichBasketballControl: FormControl = new FormControl('', [Validators.required]);
   whichMmaControl: FormControl = new FormControl('', [Validators.required]);
@@ -52,6 +53,7 @@ export class SettingsPageComponent implements OnInit, OnDestroy {
       showFootball: this.showFootballControl,
       showBasketball: this.showBasketballControl,
       showMma: this.showMmaControl,
+      showAuctions: this.showAuctionsControl,
       whichFootball: this.whichFootballControl,
       whichBasketball: this.whichBasketballControl,
       whichMma: this.whichMmaControl,
@@ -93,6 +95,7 @@ export class SettingsPageComponent implements OnInit, OnDestroy {
         this.showBasketballControl.value,
         this.showFootballControl.value,
         this.showMmaControl.value,
+        this.showAuctionsControl.value,
       ],
       [
         this.whichBasketballControl.value,
@@ -108,6 +111,7 @@ export class SettingsPageComponent implements OnInit, OnDestroy {
     this.showBasketballControl.setValue(this.settingsService.showBasketball);
     this.showFootballControl.setValue(this.settingsService.showFootball);
     this.showMmaControl.setValue(this.settingsService.showMma);
+    this.showAuctionsControl.setValue(this.settingsService.showAuctions);
     this.whichBasketballControl.setValue(this.settingsService.whichBasketball);
     this.whichFootballControl.setValue(this.settingsService.whichFootball);
     this.whichMmaControl.setValue(this.settingsService.whichMma);

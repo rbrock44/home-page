@@ -16,14 +16,14 @@ p {
 .gdq-banner {
   display: flex;
   width: 75%;
-  background-color: #056e60bb; 
+  background-color: #056e60bb;
   color: #302f2f;
   font-size: 1rem;
   font-weight: bold;
-  border-radius: 8px; 
+  border-radius: 8px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Shadow for pop-out effect */
   pointer-events: auto;
-  text-align: center; 
+  text-align: center;
   justify-content: center;
   cursor: pointer;
 }
@@ -57,22 +57,22 @@ p {
   position: fixed;
   bottom: 0;
   right: 0;
-  width: 100%; 
+  width: 100%;
   display: flex;
   justify-content: flex-end;
-  padding: 1rem 3vw; 
+  padding: 1rem 3vw;
   pointer-events: none;
 }
 
 .refresh-count {
-  background-color: #056e60bb; 
+  background-color: #056e60bb;
   color: #302f2f;
   font-size: 1rem;
   font-weight: bold;
   padding: 8px 16px;
   border-radius: 8px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  pointer-events: auto; 
+  pointer-events: auto;
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
@@ -86,6 +86,10 @@ app-mma-widget {
   margin: 0px;
 }
 
+app-auction-widget {
+  padding: 16px;
+}
+
 @media (max-width: 1100px) {
   [data-content-div] {
     flex-direction: column;
@@ -96,7 +100,7 @@ app-mma-widget {
   app-mma-widget {
     margin-bottom: 20px;
   }
-}  
+}
 
 @media (max-width: 768px) {
   #gdq-banner {
