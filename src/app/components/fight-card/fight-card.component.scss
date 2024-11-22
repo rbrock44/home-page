@@ -1,63 +1,66 @@
 @import '../../../styles.scss';
 
 .fight-card-ctn {
-    display: flex;
-    flex-direction: column;
-    background-color: #056e60bb;
-    /* Match parent background */
-    border-radius: 8px;
-    padding: 2px;
+  width: 100%;
+  justify-self: center;
+  flex-direction: column;
+  padding: 2px;
 }
 
 .fight-row {
-    display: grid;
-    grid-template-columns: 4fr 1fr 4fr;
-    /* Equal spacing for fighter names and "vs." */
-    align-items: center;
-    gap: 2px;
-    background-color: #FFFAE6;
-    /* Light background for each fight */
-    padding: 2px;
-    border-radius: 4px;
-    transition: background-color 0.2s, transform 0.2s;
-    cursor: pointer;
+  width: 100%;
+  display: inline-grid;
+  grid-template-columns: 4fr 1fr 4fr;
+  /* Equal spacing for fighter names and "vs." */
+  align-items: center;
+  gap: 2px;
+  background-color: #FFFAE6;
+  /* Light background for each fight */
+  padding: 2px;
+  border-radius: 4px;
+  transition: background-color 0.2s, transform 0.2s;
+  cursor: pointer;
 }
 
 .fight-row:hover {
-    transform: scale(1.02);
-    background-color: #dcd2d2;
+  transform: scale(1.02);
+  background-color: #dcd2d2;
 }
 
 .column {
-    text-align: center;
-    font-size: 0.9rem;
-    color: #302f2f;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #302f2f;
 }
 
 .person-label {
-    font-weight: bold;
+  font-weight: bold;
+  width: fit-content;
+  //display: flex;
 }
 
 .vs-label {
-    font-style: italic;
-    font-size: 0.9rem;
+  font-style: italic;
+  font-size: 0.9rem;
 }
 
 .left {
-    text-align: left;
+  text-align: left;
 }
 
+.right {
+  justify-self: end;
+}
 
 @media screen and (max-width: 400px) {
-    .game-label {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
+  .game-label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 
-    .person-label {
-        min-width: none;
-        align-items: center;
-    }
+  .person-label {
+    align-items: center;
+  }
 }

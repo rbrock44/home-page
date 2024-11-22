@@ -82,11 +82,13 @@ p {
 
 app-sport-widget,
 app-mma-widget {
-  min-width: 300px;
+  //min-width: 300px;
   margin: 0px;
 }
 
-app-auction-widget {
+app-auction-widget,
+app-sport-widget,
+app-mma-widget {
   padding: 16px;
 }
 
@@ -94,11 +96,6 @@ app-auction-widget {
   [data-content-div] {
     flex-direction: column;
     justify-content: center;
-  }
-
-  app-sport-widget,
-  app-mma-widget {
-    margin-bottom: 20px;
   }
 }
 
