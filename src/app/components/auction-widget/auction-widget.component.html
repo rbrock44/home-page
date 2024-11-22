@@ -5,10 +5,9 @@
       <div class="auction-name">{{ auction.name }}</div>
       <div class="auction-service">{{ auction.service }}</div>
       <div class="auction-details">
-        <div *ngIf="auction.internetBidding">
-          <span>Ends: {{ auction.endDate }}</span>
-          <span *ngIf="auction.closingTime"> | Closing: {{ auction.closingTime }}</span>
-        </div>
+        <span>Starts: {{ auction.startDate }}</span>
+        <span *ngIf="auction.internetBidding"> | Ends: {{ auction.endDate }}</span>
+        <span *ngIf="auction.note"> | Note: {{ auction.note }}</span>
         <div *ngIf="auction.internetBidding">
           <span>ONLINE</span>
         </div>

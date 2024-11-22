@@ -7,6 +7,7 @@ export class Auction {
   endDate: string;
   location: string;
   closingTime: string;
+  note: string;
 
   constructor(init?: Partial<Auction>) {
     Object.assign(this, init);
