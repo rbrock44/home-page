@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     new SingleEvent({
       name: 'AGDQ25',
       startDate: '20250105',
-      endDate: '20250212',
+      endDate: '20250112',
       url: 'https://gamesdonequick.com/marathons/cm06694cj010zw401cwatx1zo',
     })
   ];
