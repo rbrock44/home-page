@@ -33,3 +33,5 @@ jobs:
 
     - name: Build project
       run: npm run prod
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
