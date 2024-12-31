@@ -31,7 +31,8 @@ jobs:
     - name: Install dependencies
       run: npm ci
 
-    - name: Build project
+    - name: Configure npm Authentication
+      run: echo "//registry.npmjs.org/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
+
+    - name: Build Project
       run: npm run prod
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
