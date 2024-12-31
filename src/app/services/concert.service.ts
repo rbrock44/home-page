@@ -22,10 +22,13 @@ const hollywoodAmphitheater: string = 'Hollywood Casino Amphitheatre'
 export class ConcertService {
   concertList = [
     // new Concert('', [], '', '', '', []),
+    //2025
+    new Concert('Wheatus', [''], 'Blueberry Hill Duck Room', STL, '2025/04/15', [ryan, addie]),
+    new Concert('ZZ Ward (The Dirty Sun Rour)', ['Liam St. John'], 'City Winery', STL, '2025/04/01', [ryan, addie]),
     new Concert('flipturn', [''], 'The Hawthorn', STL, '2025/03/19', [ryan, addie, 'Abagail Estes', 'Ty Householder']),
 
     //2024
-    new Concert('Kacey Musgraves (Deeper Well Tour)', ['Nickel Creek, Lord Huron'], 'Ascend Amphitheater', 'Nashville, TN', '2024/12/06', [ryan, addie]),
+    new Concert('Kacey Musgraves (Deeper Well Tour)', ['Nickel Creek, Lord Huron'], 'Bridgestone Arena', 'Nashville, TN', '2024/12/06', [ryan, addie]),
     new Concert('Kacey Musgraves (Deeper Well Tour)', ['Nickel Creek, Lord Huron'], 'KFC Yum! Center', 'Lousville, KY', '2024/11/12', [ryan, addie]),
     new Concert('Mt. Joy', [''], 'Ascend Amphitheater', 'Nashville, TN', '2024/09/24', [ryan, addie]),
     new Concert('King Gizzard and the Lizard Wizard', ['Geese'], 'The Factory', STL, '2024/09/05', [ryan, addie]),
