@@ -73,7 +73,7 @@ export class HeaderComponent {
   }
 
   route(url: string): void {
-    const newUrl = `https://rbrock44.github.io/${url}/`
+    const newUrl = `https://${url}.ryan-brock.com/`;
     this.windowService.openBlank(newUrl);
   }
 
