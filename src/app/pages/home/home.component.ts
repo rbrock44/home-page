@@ -29,6 +29,24 @@ export class HomeComponent implements OnInit, OnDestroy {
       startDate: '20250105',
       endDate: '20250112',
       url: 'https://gamesdonequick.com/marathons/cm06694cj010zw401cwatx1zo',
+    }),
+    new SingleEvent({
+      name: 'Back to Black 2025',
+      startDate: '20250206',
+      endDate: '20250209',
+      url: 'https://gamesdonequick.com/schedule/54',
+    }),
+    new SingleEvent({
+      name: 'AGDQ25',
+      startDate: '20250309',
+      endDate: '20250317',
+      url: 'https://gamesdonequick.com/schedule/55',
+    }),
+    new SingleEvent({
+      name: 'SGDQ25',
+      startDate: '20250706',
+      endDate: '20250713',
+      url: 'https://gamesdonequick.com',
     })
   ];
   refreshCount = 0;
