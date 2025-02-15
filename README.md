@@ -1,6 +1,6 @@
 # HomePage
-
-https://rbrock44.github.io/home-page/ <br/>
+[Live Website](https://home-page.ryan-brock.com/)<br/>
+This angular web application was created to centralize the information I wanted to a single webpage. It communicates with [Home Page Api](https://github.com/rbrock44/home-page-api) for Basketball, Football, MMA and Auction data. It was expanded to hold the concerts attended and matches (think sports games, like Cardinals vs Cubs (baseball)). Overall it's a very handy tool used daily in my life 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.2.
 
