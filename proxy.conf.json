@@ -1,6 +1,6 @@
 {
   "/home-page-api": {
-    "target": "https://home-page-api-34607.herokuapp.com",
+    "target": "https://home-page-api.ryan-brock.com",
     "secure": true,
     "changeOrigin": true,
     "pathRewrite": {
