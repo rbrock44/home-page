@@ -23,7 +23,7 @@ export class ConcertService {
   concertList = [
     // new Concert('', [], '', '', '', []),
     //2025
-    new Concert('Wheatus', [''], 'Blueberry Hill Duck Room', STL, '2025/04/15', [ryan, addie]),
+    new Concert('Wheatus (25th Anniversary Tour)', ['Rematch'], 'Blueberry Hill Duck Room', STL, '2025/04/15', [ryan, addie]),
     new Concert('ZZ Ward (The Dirty Sun Rour)', ['Liam St. John'], 'City Winery', STL, '2025/04/01', [ryan, addie]),
     new Concert('flipturn', [''], 'The Hawthorn', STL, '2025/03/19', [ryan, addie, 'Abagail Estes', 'Ty Householder']),
 
