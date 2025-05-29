@@ -44,14 +44,9 @@ import { WindowService } from '../../services/window.service';
                  >Directory</a>
               <a mat-tab-link
                  mat-theme="accent"
-                 (click)="homeAssistant()"
-                 class="nav-bar-link lengthened"
-                 >Home Assistant</a>
-              <a mat-tab-link
-                 mat-theme="accent"
-                 (click)="homeAssistant()"
-                 class="nav-bar-link shortened"
-                 >Assistant</a>
+                 (click)="homarr()"
+                 class="nav-bar-link"
+                 >Homarr</a>
            </div>
           </div>
         </nav>
@@ -77,8 +72,8 @@ export class HeaderComponent {
     this.windowService.openBlank(newUrl);
   }
 
-  homeAssistant(): void {
-    const newUrl = `http://10.0.0.15:8123/`
+  homarr(): void {
+    const newUrl = `http://10.0.0.150:7575/boards/Home`
     this.windowService.openBlank(newUrl);
   }
 }
