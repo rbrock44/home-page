@@ -45,7 +45,12 @@ import { WindowService } from '../../services/window.service';
               <a mat-tab-link
                  mat-theme="accent"
                  (click)="homarr()"
-                 class="nav-bar-link"
+                 class="nav-bar-link lengthened"
+                 >Homarr</a>
+              <a mat-tab-link
+                 mat-theme="accent"
+                 (click)="homarr()"
+                 class="nav-bar-link shortened"
                  >Homarr</a>
            </div>
           </div>
@@ -72,8 +77,10 @@ export class HeaderComponent {
     this.windowService.openBlank(newUrl);
   }
 
-  homarr(): void {
-    const newUrl = `http://10.0.0.150:7575/boards/Home`
-    this.windowService.openBlank(newUrl);
+  homarr(mobile: boolean = false): void {
+    const baseUrl = `http://10.0.0.150:7575/boards/`
+    const newUrl = `Home`
+    const mobileUrl = `Mobile`
+    this.windowService.openBlank(newUrl + mobile ? mobileUrl : newUrl);
   }
 }
