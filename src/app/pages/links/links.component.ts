@@ -9,7 +9,6 @@ import { Link } from '../../models/link.model';
 })
 export class LinkComponent {
   firstColumnLinks: Link[] = [
-    new Link('Home Assistant', 'Assistant', 'http://10.0.0.15:8123/'),
     new Link('Bank of Missouri', '', 'https://my.bankofmissouri.com/login'),
     new Link('Marcus HYSA', 'HYSA', 'https://www.marcus.com/us/en/login'),
     new Link('Elan', '', 'https://www.myaccountaccess.com/onlineCard/login.do'),
