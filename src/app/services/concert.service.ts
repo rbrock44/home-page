@@ -23,6 +23,8 @@ export class ConcertService {
   concertList = [
     // new Concert('', [], '', '', '', []),
     //2025
+    new Concert('The Blue Stones (North America Tour `25)', ['Meltt'], delmarHall, STL, '2025/06/24', [ryan, addie]),
+    new Concert('Caamp', ['Gardener, Blind Pilot'], 'Stifel Theatre', STL, '2025/06/03', [ryan, addie]),
     new Concert('Wheatus (25th Anniversary Tour)', ['Rematch'], 'Blueberry Hill Duck Room', STL, '2025/04/15', [ryan, addie]),
     new Concert('ZZ Ward (The Dirty Sun Rour)', ['Liam St. John'], 'City Winery', STL, '2025/04/01', [ryan, addie]),
     new Concert('flipturn', [''], 'The Hawthorn', STL, '2025/03/19', [ryan, addie, 'Abagail Estes', 'Ty Householder']),
@@ -68,7 +70,7 @@ export class ConcertService {
     //2019
     new Concert('Rob Thomas', ['John K'], 'Ballpark Village', STL, '2019/12/07', [ryan, brandon]),
     new Concert('Rusko', ['Cromatik'], 'The Old Rock House', STL, '2019/11/27', [ryan, zach, 'Sara Hovis', 'Ariel']),
-    new Concert('Nick Offerman', [], 'Stiefel', STL, '2019/11/07', [ryan, 'Katilyn Wieberg']),
+    new Concert('Nick Offerman', [], 'Stifel Theatre', STL, '2019/11/07', [ryan, 'Katilyn Wieberg']),
     new Concert('Sluggtopia III', ['Kill The Noise', 'Rusko', 'Snails'], 'Red Rock Amphitheater', 'Morrison, Colorado', '2019/10/04', [ryan, zach, 'Ray', 'Ryan', 'Nick', 'Others...']),
     new Concert('Halestorm', ['Godsmack'], 'Show Me Center', 'Cape Girardeau', '2019/10/27', [ryan, brandon]),
     new Concert('Wayback Pointfest', ['Cowboy Mouth', 'Stir', 'Goldfinger', 'Living Colour', 'Gin Blossoms', 'Everclear', 'The Urge', 'Collective Soul'], hollywoodAmphitheater, STL, '2019/08/31', [ryan, brandon, 'Kaitlyn Wieberg']),
