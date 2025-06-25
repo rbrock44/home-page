@@ -49,6 +49,7 @@ export class ConcertService {
     new Concert('The Urge', ['Tree One Four', 'Wisemary'], 'The Pageant', STL, '2023/11/24', [ryan, addie, brandon]),
     new Concert('Mt. Joy', ['flipturn'], 'Ascend Amphitheater', 'Nashville, TN', '2023/10/21', [ryan, addie]),
     new Concert('Hannah Berner', ['Sara Huntington'], 'The Truman', 'Kansas City, MO', '2023/10/20', [ryan, addie]),
+    new Concert('ZZ Ward', ['Jamie Wyatt'], delmarHall, STL, '2023/09/23', [ryan, addie]),
     new Concert('Mt. Joy', ['flipturn'], 'STL Music Park', STL, '2023/08/15', [ryan, addie]),
     new Concert('Candlebox', ['Judah Taylor', 'Rubikon'], delmarHall, STL, '2023/08/13', [ryan, addie, brandon]),
     new Concert('Ghost', ['Amon Amarth'], hollywoodAmphitheater, STL, '2023/08/11', [ryan, addie, 'Jonathan Brock']),
