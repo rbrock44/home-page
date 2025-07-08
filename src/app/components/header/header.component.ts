@@ -77,6 +77,8 @@ export class HeaderComponent {
       const queryParams = new URLSearchParams()
       queryParams.set('page', urlParam);
       this.location.replaceState(`${location.pathname}?${queryParams.toString()}`);
+    } else {
+      this.location.replaceState(`${location.pathname}`);
     }
     this.service.setShow(index);
   }
