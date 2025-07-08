@@ -92,3 +92,11 @@ export function monthToIndex(month: string) {
   ];
   return monthNames.indexOf(month);
 }
+
+export enum Pages {
+ Home,
+ Settings,
+ Links,
+ Concerts,
+ Matches
+}

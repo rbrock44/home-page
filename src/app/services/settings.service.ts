@@ -9,7 +9,8 @@ import {
   toBoolean,
   TODAY,
   UPCOMING,
-  WHICH_SELECTION_DEFAULT
+  WHICH_SELECTION_DEFAULT,
+  Pages
 } from "../constants/constants";
 import {Item} from "../models/item.model";
 import {WindowService} from "./window.service";
@@ -42,7 +43,6 @@ export class SettingsService implements OnDestroy {
   // 5th: Matches
   show = [true, false, false, false, false];
 
-
   constructor(private windowService: WindowService) {
     this.readFromLocalStorage();
   }
@@ -58,6 +58,11 @@ export class SettingsService implements OnDestroy {
   setShow(index: number): void {
     this.show = [false, false, false, false];
     this.show[index] = true;
+  }
+
+  setShowWithUrlParam(param: string): void {
+    const index = Pages[param];
+    this.setShow(index);
   }
 
   setColor(value: string): void {

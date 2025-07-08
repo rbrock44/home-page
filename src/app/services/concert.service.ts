@@ -23,6 +23,7 @@ export class ConcertService {
   concertList = [
     // new Concert('', [], '', '', '', []),
     //2025
+    new Concert('The Lumineers (The Automatic World Tour)', ['Hippo Campus'], hollywoodAmphitheater, STL, '2025/07/23', [ryan, addie, 'Abagail Estes', 'Ty Householder']),
     new Concert('The Blue Stones (North America Tour `25)', ['Meltt'], delmarHall, STL, '2025/06/24', [ryan, addie]),
     new Concert('Caamp', ['Gardener, Blind Pilot'], 'Stifel Theatre', STL, '2025/06/03', [ryan, addie]),
     new Concert('Wheatus (25th Anniversary Tour)', ['Rematch'], 'Blueberry Hill Duck Room', STL, '2025/04/15', [ryan, addie]),

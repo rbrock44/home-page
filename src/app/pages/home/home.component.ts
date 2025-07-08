@@ -6,6 +6,8 @@ import { HomeApiService } from "../../services/home-api.service";
 import { SettingsService } from "../../services/settings.service";
 import { WindowService } from '../../services/window.service';
 import { Auction } from 'src/app/models/auction.model';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-home-page',
@@ -55,7 +57,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   constructor(
     public homeApiService: HomeApiService,
     public settingsService: SettingsService,
-    private windowService: WindowService
+    private location: Location,
+    private route: ActivatedRoute,
+    private windowService: WindowService,
   ) {
   }
 
@@ -64,6 +68,13 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.settingsService.settingsReset.subscribe(() => {
       this.startUp()
     });
+
+    const queryParams = new URLSearchParams(window.location.search);
+    const pageParam = queryParams.get('page');
+
+    if (pageParam) {
+      this.settingsService.setShowWithUrlParam(pageParam);
+    }
   }
 
   startUp(doLoop: boolean = true): void {
