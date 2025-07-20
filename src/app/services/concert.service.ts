@@ -164,8 +164,6 @@ export class ConcertService {
   }
 
   private getList(): Concert[] {
-    return _.cloneDeep(this.concertList.forEach(concert => {
-      concert.attendees = concert.attendees.map(name => name.split(' ')[0]);
-    }));
+    return _.cloneDeep(this.concertList);
   }
 }
