@@ -47,6 +47,12 @@ export class HomeComponent implements OnInit, OnDestroy {
       startDate: '20250706',
       endDate: '20250713',
       url: 'https://gamesdonequick.com',
+    }),
+    new SingleEvent({
+      name: 'Flame Fatales 2025',
+      startDate: '20250907',
+      endDate: '20250914',
+      url: 'https://gamesdonequick.com',
     })
   ];
   refreshCount = 0;
