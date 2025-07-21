@@ -38,7 +38,7 @@
       <!-- Attendees Column -->
       <ng-container matColumnDef="attendees">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Attendees</mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.attendees.map(name => name.split(' ')[0]).join(", ")}} </mat-cell>
+        <mat-cell *matCellDef="let element"> {{ getFirstNames(element.attendees) }} </mat-cell>
       </ng-container>
 
 
