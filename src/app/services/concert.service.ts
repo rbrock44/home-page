@@ -23,6 +23,7 @@ export class ConcertService {
   concertList = [
     // new Concert('', [], '', '', '', []),
     //2025
+    new Concert('Black Pistol Fire (Flagrant Act of Bliss Tour)', [''], 'Bottom Lounge', 'Chicago, IL', '2025/10/16', [ryan, addie]),
     new Concert('HARBOUR', ['Sam MacPherson'], delmarHall, STL, '2025/07/31', [ryan, addie, 'Abagail Estes', 'Ty Householder']),
     new Concert('Amber Autry', [], 'Heliem Comedy Club', 'STL', '2025/07/20', [ryan, addie]),
     new Concert('The Blue Stones (North America Tour `25)', ['Meltt'], delmarHall, STL, '2025/06/24', [ryan, addie]),
