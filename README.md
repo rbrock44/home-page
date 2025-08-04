@@ -37,7 +37,7 @@ List the tools, languages, or frameworks used.
 ## 🚀 Getting Started (Local Setup)
 
 * Install [node](https://nodejs.org/en) - v16 is needed
-* Clone [repo](https://github.com/rbrock44/directory)
+* Clone [repo](https://github.com/rbrock44/home-page)
 
 ### Run Locally
 
