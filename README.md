@@ -26,8 +26,6 @@ This single-page angular web application was created to centralize the informati
 
 ## 🛠 Technologies
 
-List the tools, languages, or frameworks used.
-
 - Framework: `Angular 12`
 - Testing: `Karma`
 - Deployment: `GitHub Pages`
