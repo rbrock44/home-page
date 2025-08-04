@@ -29,8 +29,7 @@ This single-page angular web application was created to centralize the informati
 List the tools, languages, or frameworks used.
 
 - Framework: `Angular 12`
-<!-- - Styles: `Tailwind CSS` -->
-- Testing: `Karma`, `Cypress`
+- Testing: `Jasmine`
 - Deployment: `GitHub Pages`
 
 ---
