@@ -37,12 +37,16 @@ This single-page angular web application was created to centralize the informati
 * Install [node](https://nodejs.org/en) - v16 is needed
 * Clone [repo](https://github.com/rbrock44/home-page)
 
+---
+
 ### Run Locally
 
 ```
 npm install
 npm start
 ```
+
+---
 
 ### Test
 
@@ -51,16 +55,24 @@ npm start
 - Integration
     - `ng e2e` || `npm run e2e`
 
+---
+
 ### Github Hooks
 
 - Build
     - Trigger: On Push to Main
     - Action(s): Builds application then kicks off gh page action to deploy build output
 
+---
+
 ### Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
+---
+
 ### Deploy
 
 Run `npm run prod` to build and deploy the project. Make sure to be on `master` and that it is up to date before running the command. It's really meant to be a CI/CD action
+
+---
