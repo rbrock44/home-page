@@ -53,6 +53,12 @@ export class HomeComponent implements OnInit, OnDestroy {
       startDate: '20250907',
       endDate: '20250914',
       url: 'https://gamesdonequick.com',
+    }),
+    new SingleEvent({
+      name: 'Games Done Quick Express 2025',
+      startDate: '20251017',
+      endDate: '20251019',
+      url: 'https://gamesdonequick.com',
     })
   ];
   refreshCount = 0;
