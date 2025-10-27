@@ -36,5 +36,11 @@ export const GDQ_EVENTS: SingleEvent[] = [
     startDate: '20250907',
     endDate: '20250914',
     url: 'https://gamesdonequick.com',
+  }),
+  new SingleEvent({
+    name: 'Games Done Queer 2025',
+    startDate: '20251031',
+    endDate: '20251103',
+    url: 'https://gamesdonequick.com',
   })
 ];
