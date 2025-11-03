@@ -15,6 +15,7 @@ const hollywoodAmphitheater: string = 'Hollywood Casino Amphitheatre'
 export const CONCERTS: Concert[] = [
     // new Concert('', [], '', '', '', []),
     //2025
+    new Concert('Nikki Glaser (Alive and Unwell Tour - Filmed Hulu Special)', [''], 'The Fabouous Fox', STL, '2025/10/25', [ryan, addie]),
     new Concert('Black Pistol Fire (Flagrant Act of Bliss Tour)', [''], 'Bottom Lounge', 'Chicago, IL', '2025/10/16', [ryan, addie]),
     new Concert('HARBOUR', ['Sam MacPherson'], delmarHall, STL, '2025/07/31', [ryan, addie, 'Abagail Estes', 'Ty Householder']),
     new Concert('Amber Autry', [], 'Heliem Comedy Club', 'STL', '2025/07/20', [ryan, addie]),
