@@ -42,5 +42,11 @@ export const GDQ_EVENTS: SingleEvent[] = [
     startDate: '20251031',
     endDate: '20251103',
     url: 'https://gamesdonequick.com',
+  }),
+  new SingleEvent({
+    name: 'Frost Fatalis 2026',
+    startDate: '20260308',
+    endDate: '20260315',
+    url: 'https://gamesdonequick.com',
   })
 ];
