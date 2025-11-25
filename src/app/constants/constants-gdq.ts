@@ -44,6 +44,12 @@ export const GDQ_EVENTS: SingleEvent[] = [
     url: 'https://gamesdonequick.com',
   }),
   new SingleEvent({
+    name: 'Back to Black 2026',
+    startDate: '20250205',
+    endDate: '20250209',
+    url: 'https://gamesdonequick.com',
+  }),
+  new SingleEvent({
     name: 'Frost Fatalis 2026',
     startDate: '20260308',
     endDate: '20260315',
