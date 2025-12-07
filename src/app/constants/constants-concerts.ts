@@ -14,11 +14,15 @@ const hollywoodAmphitheater: string = 'Hollywood Casino Amphitheatre'
 
 export const CONCERTS: Concert[] = [
     // new Concert('', [], '', '', '', []),
+    //
+    new Concert('Black Pistol Fire (Flagrant Act of Bliss Tour)', [], delmarHall, STL, '2026/04/10', [ryan, addie]),
+    new Concert('Zach Bryan', ['Caamp', 'J.R. Carroll'], 'The Dome at Americas Center', STL, '2026/03/07', [ryan, addie]),
+
     //2025
     new Concert('Nikki Glaser (Alive and Unwell Tour - Filmed Hulu Special)', [''], 'The Fabouous Fox', STL, '2025/10/25', [ryan, addie]),
     new Concert('Black Pistol Fire (Flagrant Act of Bliss Tour)', [''], 'Bottom Lounge', 'Chicago, IL', '2025/10/16', [ryan, addie]),
     new Concert('HARBOUR', ['Sam MacPherson'], delmarHall, STL, '2025/07/31', [ryan, addie, 'Abagail Estes', 'Ty Householder']),
-    new Concert('Amber Autry', [], 'Heliem Comedy Club', 'STL', '2025/07/20', [ryan, addie]),
+    new Concert('Amber Autry', [], 'Heliem Comedy Club', STL, '2025/07/20', [ryan, addie]),
     new Concert('The Blue Stones (North America Tour `25)', ['Meltt'], delmarHall, STL, '2025/06/24', [ryan, addie]),
     new Concert('Caamp', ['Gardener, Blind Pilot'], 'Stifel Theatre', STL, '2025/06/03', [ryan, addie]),
     new Concert('Wheatus (25th Anniversary Tour)', ['Rematch'], 'Blueberry Hill Duck Room', STL, '2025/04/15', [ryan, addie]),
