@@ -20,4 +20,8 @@ export class MatchTableComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     this.matchService.sort = this.sort;
   }
+
+  getFirstNames(attendees: string[]): string {
+    return attendees.map(name => name.split(' ')[0]).join(', ');
+  }
 }
