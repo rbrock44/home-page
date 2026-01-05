@@ -44,9 +44,15 @@ export const GDQ_EVENTS: SingleEvent[] = [
     url: 'https://gamesdonequick.com',
   }),
   new SingleEvent({
+    name: 'Awesome Games Done Quick 2026',
+    startDate: '20260104',
+    endDate: '20260110',
+    url: 'https://gamesdonequick.com/schedule/62',
+  }),
+  new SingleEvent({
     name: 'Back to Black 2026',
-    startDate: '20250205',
-    endDate: '20250209',
+    startDate: '20260205',
+    endDate: '20260209',
     url: 'https://gamesdonequick.com',
   }),
   new SingleEvent({
