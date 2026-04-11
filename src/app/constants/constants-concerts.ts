@@ -15,7 +15,9 @@ const hollywoodAmphitheater: string = 'Hollywood Casino Amphitheatre'
 export const CONCERTS: Concert[] = [
     // new Concert('', [], '', '', '', []),
     //2026
-    new Concert('Black Pistol Fire (Flagrant Act of Bliss Tour)', [], delmarHall, STL, '2026/04/10', [ryan, addie]),
+    new Concert('Breakway Music Festival 2026', ['Control Freak', 'DJ Mandy', 'Dom Dolla Eptic', 'Juelz', 'Kettama', 'Muzz', 'Omri. Partiboi69', 'Pauline Herr', 'Roddy Lima'], 'Raymond James Stadium North Grounds', 'Tampa, FL', '2026/04/18', [ryan, addie, 'Kaylea Bard', 'Jake Vanskike']),
+    new Concert('Breakway Music Festival 2026', ['Champagne Drip', 'Chris Lorenzo', 'Cloonee', 'Jigitz', 'Kaivon', 'Klo', 'Nghtmre', 'Nikita', 'The Wicked', 'Tazu', 'Tiesto'], 'Raymond James Stadium North Grounds', 'Tampa, FL', '2026/04/17', [ryan, addie, 'Kaylea Bard', 'Jake Vanskike']),
+    new Concert('Black Pistol Fire (Flagrant Act of Bliss Tour)', [], delmarHall, STL, '2026/04/10', [ryan, addie, 'Alyssa Stone']),
     new Concert('Zach Bryan', ['Caamp', 'J.R. Carroll'], 'The Dome at Americas Center', STL, '2026/03/07', [ryan, addie]),
 
     //2025
