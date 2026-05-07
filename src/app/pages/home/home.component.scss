@@ -43,6 +43,30 @@ p {
   margin: 8px 0; /* Add spacing between entries */
 }
 
+.spot-prices-banner {
+  display: flex;
+  width: 75%;
+  background-color: #056e60bb;
+  color: #302f2f;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Shadow for pop-out effect */
+  pointer-events: auto;
+  text-align: center;
+  justify-content: center;
+}
+
+.spot-prices-banner-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+}
+
+.spot-prices-div {
+  margin: 8px 0; /* Add spacing between entries */
+}
+
 #gdq-name {
   font-size: 1.2rem;
   font-weight: bold;

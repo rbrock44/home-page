@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
-import { Observable, Subject, from, of } from 'rxjs'
+import { Observable, Subject } from 'rxjs'
 import { environment } from 'src/environments/environment'
-import { FightCard } from '../models/fight-card.model'
-import { GamesPerDate } from "../models/games-per-date.model";
-import { Event } from '../models/event.model'
 import { Auction } from '../models/auction.model'
+import { FightCard } from '../models/fight-card.model'
+import { GamesPerDate } from "../models/games-per-date.model"
+import { SpotPrice } from '../models/spot-price.model'
 
 @Injectable({
   providedIn: 'root'
@@ -56,6 +56,10 @@ export class HomeApiService {
 
   getAuctionsUpcoming(): Observable<Auction[]> {
     return this.http.get<Auction[]>(`${this.homeUrl}/auction/upcoming`);
+  }
+
+  getSpotPrices(): Observable<SpotPrice> {
+    return this.http.get<SpotPrice>(`${this.homeUrl}/spot-price`);
   }
 
   private getBasketballUrl(today: boolean = true): string {

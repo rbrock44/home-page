@@ -6,6 +6,7 @@ import { HomeApiService } from "../../services/home-api.service";
 import { SettingsService } from "../../services/settings.service";
 import { WindowService } from '../../services/window.service';
 import { Auction } from 'src/app/models/auction.model';
+import { SpotPrice } from 'src/app/models/spot-price.model';
 import { GDQ_EVENTS } from 'src/app/constants/constants-gdq';
 
 @Component({
@@ -18,6 +19,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   football: GamesPerDate = new GamesPerDate();
   mma: FightCard = new FightCard();
   auctions: Auction[] = [];
+  spotPrices: SpotPrice = new SpotPrice();
   gdqEvents: SingleEvent[] = GDQ_EVENTS;
   refreshCount = 0;
   title: string = '';
@@ -90,8 +92,16 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     this.homeApiService.getAuctionsUpcoming().subscribe(auctions => {
       this.auctions = auctions;
-      console.log('AUCTIONS: ', this.auctions);
     });
+
+    this.homeApiService.getSpotPrices().subscribe(prices => {
+      this.spotPrices = prices;
+    });
+  }
+
+  formatSpotPrice(pricePerToz: number): string {
+    const pricePerGram = pricePerToz / 31.1035; // 1 troy ounce = 31.1035 grams
+    return `${pricePerToz.toFixed(2)}/toz ${pricePerGram.toFixed(2)}/g`;
   }
 
   gdqClick(url: string): void {

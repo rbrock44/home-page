@@ -21,6 +21,16 @@
     </div>
   </div>
 
+  <div class="spot-prices-banner-wrapper">
+    <div class="spot-prices-banner">
+      <div class="spot-prices-div">
+        Gold: {{ this.formatSpotPrice(this.spotPrices.gold) }}, 
+        Silver: {{ this.formatSpotPrice(this.spotPrices.silver) }}, 
+        Platinum: {{ this.formatSpotPrice(this.spotPrices.platinum) }}
+      </div>
+    </div>
+  </div>
+
   <div data-content-div>
     <app-sport-widget [gamesPerDate]="this.basketball"></app-sport-widget>
     <app-sport-widget [gamesPerDate]="this.football" [isBasketball]="false"></app-sport-widget>
