@@ -15,9 +15,17 @@ const hollywoodAmphitheater: string = 'Hollywood Casino Amphitheatre'
 export const CONCERTS: Concert[] = [
     // new Concert('', [], '', '', '', []),
     //2026
+    new Concert('CAAMP', [], 'Starlight Theater', 'Kansas City', '2026/08/24', [ryan, addie]),
+    new Concert('Simple Plan: Bigger Than you Think! Tour - The Sequel!', ['Bowling for Soup', '3OH!3'], 'STL Music Park', STL, '2026/08/09', [ryan, addie]),
+    new Concert('Noah Kahn: The Great Divide Tour', ['Gigi Perez', 'Annabelle Dinda'], 'Busch Stadium', STL, '2026/08/02', [ryan, addie]),
+    new Concert('Bonnaroo Music & Arts Festical 2026', 
+      ['RÜFÜS DU SOL', 'Teddy Swims', 'The Neighbourhood', 'Alabama Shakes', 'Chase & Status', 'Sara Landry', 'Rainbow Kitten Surprise', 'Freddie Gibbs & The Alchemist', 'Amyl and the Sniffers', 'Sub Focus', 'Gorgon City', 'Flipturn', 'Passion Pit', 'Snow Strippers', 'Tash Sultana', 'Wyatt Flores', 'Boys Noize', 'Holly Humberstone', 'Deathpact', 'SG Lewis', 'Osees', 'Waylon Wyatt', 'The Runarounds', 'DJ Trixie Mattel', 'Confidence Man', 'Arcy Drive', 'Mountain Grass Unit', 'Juelz', 'The Stews', 'Congress the Band', 'Midnight Generation', 'Steph Strings', 'Sunami', 'Nikita, the Wicked', 'Kesha Presents: Superjam Esotérica: The Alchemy of Pop'], 
+      'Bonnaroo', 'Manchester, TN', '2026/06/13', [ryan, addie, 'Kaylea Bard', 'Jake Vanskike']),
+    new Concert('Black Pistol Fire (Flagrant Act of Bliss Tour)', ['Teddy at Night'], 'The Basement', 'Nashville, TN', '2026/04/20', [ryan, addie]),
     new Concert('Breakway Music Festival 2026', ['Control Freak', 'DJ Mandy', 'Dom Dolla Eptic', 'Juelz', 'Kettama', 'Muzz', 'Omri. Partiboi69', 'Pauline Herr', 'Roddy Lima'], 'Raymond James Stadium North Grounds', 'Tampa, FL', '2026/04/18', [ryan, addie, 'Kaylea Bard', 'Jake Vanskike']),
     new Concert('Breakway Music Festival 2026', ['Champagne Drip', 'Chris Lorenzo', 'Cloonee', 'Jigitz', 'Kaivon', 'Klo', 'Nghtmre', 'Nikita', 'The Wicked', 'Tazu', 'Tiesto'], 'Raymond James Stadium North Grounds', 'Tampa, FL', '2026/04/17', [ryan, addie, 'Kaylea Bard', 'Jake Vanskike']),
-    new Concert('Black Pistol Fire (Flagrant Act of Bliss Tour)', [], delmarHall, STL, '2026/04/10', [ryan, addie, 'Alyssa Stone']),
+    new Concert('Black Pistol Fire (Flagrant Act of Bliss Tour)', ['Never Ending Fall'], delmarHall, STL, '2026/04/10', [ryan, addie, 'Alyssa Stone']),
+    new Concert('Legally Blonde (Musical)', [], 'Donald C. Bedell Perfomance Hall', 'Cape Girardeau', '2026/04/09', [ryan, addie]),
     new Concert('Zach Bryan', ['Caamp', 'J.R. Carroll'], 'The Dome at Americas Center', STL, '2026/03/07', [ryan, addie]),
 
     //2025
