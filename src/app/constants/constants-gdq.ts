@@ -64,7 +64,7 @@ export const GDQ_EVENTS: SingleEvent[] = [
   new SingleEvent({
     name: 'SGDQ26',
     startDate: '20260705',
-    endDate: '20250711',
+    endDate: '20260711',
     url: 'https://gamesdonequick.com',
   })
 ];
