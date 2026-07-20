@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
-import { MatLegacyTableDataSource as MatTableDataSource } from '@angular/material/legacy-table';
+import { MatTableDataSource } from '@angular/material/table';
 import * as _ from 'lodash';
 import { Match } from '../models/match.model';
 import { MATCHES } from '../constants/constants-matches';

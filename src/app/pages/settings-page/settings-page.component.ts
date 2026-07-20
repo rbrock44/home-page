@@ -11,7 +11,7 @@ import {
   RESET_SETTINGS_SUCCESS_MESSAGE
 } from "../../constants/constants";
 import {DateService} from "../../services/date.service";
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-settings-page',
