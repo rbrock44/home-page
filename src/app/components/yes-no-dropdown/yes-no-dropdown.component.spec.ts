@@ -1,4 +1,4 @@
-import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {YesNoDropdownComponent} from './yes-no-dropdown.component';
 import {MaterialModule} from '../../material.module';
 import {CommonModule} from '@angular/common';
@@ -15,8 +15,8 @@ describe('YesNoDropdownComponent', () => {
   let htmlId = 'htmlId';
   let control = new UntypedFormControl('');
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       imports: [
         CommonModule,
         NoopAnimationsModule,
@@ -37,7 +37,7 @@ describe('YesNoDropdownComponent', () => {
     component.noOption = noOption;
     component.control = control;
     fixture.detectChanges();
-  }));
+  });
 
   it('should create the component', () => {
     expect(component).toBeTruthy();

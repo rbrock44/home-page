@@ -1,4 +1,4 @@
-import {waitForAsync, TestBed} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {SettingsService} from "./settings.service";
 import {
   COLOR_DEFAULT,
@@ -15,21 +15,21 @@ describe('SettingsService', () => {
   let service: SettingsService;
   let windowService: WindowService;
   const booleanArray = [
-    [false, true, false],
-    [true, false, true],
-    [true, true, true],
-    [false, false, false]
+    [false, true, false, true],
+    [true, false, true, false],
+    [true, true, true, true],
+    [false, false, false, false]
   ]
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       imports: [],
       declarations: [],
     }).compileComponents();
     service = TestBed.inject(SettingsService);
     windowService = TestBed.inject(WindowService);
     service.resetEverything();
-  }));
+  });
 
   it('should create the service', () => {
     expect(service).toBeTruthy();

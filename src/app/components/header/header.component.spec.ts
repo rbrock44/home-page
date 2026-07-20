@@ -1,4 +1,4 @@
-import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {HeaderComponent} from './header.component';
 import {expectElementToContainContentAtIndex} from '../../constants/expectations.spec';
 import {RouterTestingModule} from '@angular/router/testing';
@@ -13,8 +13,8 @@ describe('HeaderComponent', () => {
     'Settings'
   ];
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       imports: [
         RouterTestingModule
       ],
@@ -26,7 +26,7 @@ describe('HeaderComponent', () => {
     router = TestBed.inject(Router);
     fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.debugElement.componentInstance;
-  }));
+  });
 
   it('should create the component', () => {
     expect(component).toBeTruthy();

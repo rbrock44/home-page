@@ -1,4 +1,4 @@
-import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {AlertComponent} from './alert.component';
 import {RouterTestingModule} from '@angular/router/testing';
 import {AlertService} from "../../services/alert.service";
@@ -8,8 +8,8 @@ describe('AlertComponent', () => {
   let component;
   let service: AlertService;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       imports: [
         RouterTestingModule
       ],
@@ -24,7 +24,7 @@ describe('AlertComponent', () => {
     service = TestBed.inject(AlertService);
     fixture = TestBed.createComponent(AlertComponent);
     component = fixture.debugElement.componentInstance;
-  }));
+  });
 
   it('should create the component', () => {
     expect(component).toBeTruthy();

@@ -1,4 +1,4 @@
-import {waitForAsync, inject, TestBed} from '@angular/core/testing';
+import {inject, TestBed} from '@angular/core/testing';
 import {HomeApiService} from "./home-api.service";
 import { HttpTestingController, provideHttpClientTesting } from "@angular/common/http/testing";
 import {environment} from "../../environments/environment";
@@ -11,14 +11,14 @@ describe('HomeApiService', () => {
   const expectedGames = new GamesPerDate({date: 'today'})
   const expectedFights = new FightCard({date: 'today'})
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
     declarations: [],
     imports: [],
     providers: [provideHttpClient(withXhr(), withInterceptorsFromDi()), provideHttpClientTesting()]
 }).compileComponents();
     service = TestBed.inject(HomeApiService);
-  }));
+  });
 
   it('should create the service', () => {
     expect(service).toBeTruthy();

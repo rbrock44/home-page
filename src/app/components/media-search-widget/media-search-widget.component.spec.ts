@@ -1,4 +1,4 @@
-import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {HomeApiService} from "../../services/home-api.service";
 import {MediaSearchWidgetComponent} from "./media-search-widget.component";
 import { provideHttpClientTesting } from "@angular/common/http/testing";
@@ -22,8 +22,8 @@ describe('MediaSearchWidgetComponent', () => {
   const results = ['anything', 'other'];
   const criteria = 'search for this';
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
     declarations: [
         MediaSearchWidgetComponent
     ],
@@ -41,7 +41,7 @@ describe('MediaSearchWidgetComponent', () => {
     service = TestBed.inject(HomeApiService);
     fixture = TestBed.createComponent(MediaSearchWidgetComponent);
     component = fixture.debugElement.componentInstance;
-  }));
+  });
 
   it('should create the component', () => {
     expect(component).toBeTruthy();

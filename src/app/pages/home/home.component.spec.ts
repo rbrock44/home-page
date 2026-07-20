@@ -13,6 +13,7 @@ import {HEADER} from "../../constants/constants.spec";
 import {SportWidgetComponent} from "../../components/sport-widget/sport-widget.component";
 import {REFRESH_RATE_DEFAULT} from "../../constants/constants";
 import {MmaWidgetComponent} from "../../components/mma-widget/mma-widget.component";
+import {AuctionWidgetComponent} from "../../components/auction-widget/auction-widget.component";
 import {FightCardComponent} from "../../components/fight-card/fight-card.component";
 import {MediaSearchWidgetComponent} from "../../components/media-search-widget/media-search-widget.component";
 import {MaterialModule} from "../../material.module";
@@ -26,10 +27,11 @@ describe('HomeComponent', () => {
   let router: Router;
   let service: SettingsService;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
     declarations: [
         HomeComponent,
+        AuctionWidgetComponent,
         FightCardComponent,
         MediaSearchWidgetComponent,
         MmaWidgetComponent,
@@ -49,7 +51,7 @@ describe('HomeComponent', () => {
     service = TestBed.inject(SettingsService);
     fixture = TestBed.createComponent(HomeComponent);
     component = fixture.debugElement.componentInstance;
-  }));
+  });
 
   it('should create the component', () => {
     expect(component).toBeTruthy();
@@ -76,6 +78,7 @@ describe('HomeComponent', () => {
       service.applySettings(
         REFRESH_RATE_DEFAULT,
         [
+          true,
           true,
           true,
           true

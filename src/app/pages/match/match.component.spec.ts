@@ -1,5 +1,5 @@
 import { provideHttpClientTesting } from "@angular/common/http/testing";
-import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -24,8 +24,8 @@ describe('MatchComponent', () => {
   let alertService: AlertService;
   let dateService: DateService;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
     declarations: [
         MatchComponent,
         YesNoDropdownComponent
@@ -49,7 +49,7 @@ describe('MatchComponent', () => {
     settingsService = TestBed.inject(SettingsService);
     fixture = TestBed.createComponent(MatchComponent);
     component = fixture.debugElement.componentInstance;
-  }));
+  });
 
   it('should create the component', () => {
     expect(component).toBeTruthy();

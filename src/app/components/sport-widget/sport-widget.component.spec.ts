@@ -1,4 +1,4 @@
-import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {Router} from '@angular/router';
 import {HomeApiService} from "../../services/home-api.service";
@@ -51,8 +51,8 @@ describe('SportWidgetComponent', () => {
     '.home-label'
   ]
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       imports: [
         RouterTestingModule
       ],
@@ -69,7 +69,7 @@ describe('SportWidgetComponent', () => {
     router = TestBed.inject(Router);
     fixture = TestBed.createComponent(SportWidgetComponent);
     component = fixture.debugElement.componentInstance;
-  }));
+  });
 
   it('should create the component', () => {
     expect(component).toBeTruthy();

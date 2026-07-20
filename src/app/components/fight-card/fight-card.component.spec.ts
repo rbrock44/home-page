@@ -1,4 +1,4 @@
-import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FightCardComponent} from "./fight-card.component";
 import {
   clickElementAtIndex,
@@ -30,8 +30,8 @@ describe('FightCardComponent', () => {
     '.at-label'
   ];
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       declarations: [
         FightCardComponent
       ],
@@ -40,7 +40,7 @@ describe('FightCardComponent', () => {
     windowService = TestBed.inject(WindowService)
     fixture = TestBed.createComponent(FightCardComponent);
     component = fixture.debugElement.componentInstance;
-  }));
+  });
 
   it('should create the component', () => {
     expect(component).toBeTruthy();
