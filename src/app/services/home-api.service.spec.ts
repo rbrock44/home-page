@@ -17,7 +17,7 @@ describe('HomeApiService', () => {
     imports: [],
     providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
 }).compileComponents();
-    service = TestBed.get(HomeApiService);
+    service = TestBed.inject(HomeApiService);
   }));
 
   it('should create the service', () => {

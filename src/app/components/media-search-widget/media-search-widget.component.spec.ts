@@ -38,7 +38,7 @@ describe('MediaSearchWidgetComponent', () => {
     ]
 }).compileComponents();
 
-    service = TestBed.get(HomeApiService);
+    service = TestBed.inject(HomeApiService);
     fixture = TestBed.createComponent(MediaSearchWidgetComponent);
     component = fixture.debugElement.componentInstance;
   }));

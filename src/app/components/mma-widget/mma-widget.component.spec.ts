@@ -70,8 +70,8 @@ describe('MmaWidgetComponent', () => {
       ]
     }).compileComponents();
 
-    service = TestBed.get(SettingsService);
-    router = TestBed.get(Router);
+    service = TestBed.inject(SettingsService);
+    router = TestBed.inject(Router);
     fixture = TestBed.createComponent(MmaWidgetComponent);
     component = fixture.debugElement.componentInstance;
   }));

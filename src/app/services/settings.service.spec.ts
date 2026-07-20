@@ -26,8 +26,8 @@ describe('SettingsService', () => {
       imports: [],
       declarations: [],
     }).compileComponents();
-    service = TestBed.get(SettingsService);
-    windowService = TestBed.get(WindowService);
+    service = TestBed.inject(SettingsService);
+    windowService = TestBed.inject(WindowService);
     service.resetEverything();
   }));
 

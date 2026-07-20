@@ -45,8 +45,8 @@ describe('HomeComponent', () => {
     ]
 }).compileComponents();
 
-    router = TestBed.get(Router);
-    service = TestBed.get(SettingsService);
+    router = TestBed.inject(Router);
+    service = TestBed.inject(SettingsService);
     fixture = TestBed.createComponent(HomeComponent);
     component = fixture.debugElement.componentInstance;
   }));

@@ -47,11 +47,11 @@ describe('LinksPageComponent', () => {
     ]
 }).compileComponents();
 
-    router = TestBed.get(Router);
-    alertService = TestBed.get(AlertService);
-    dateService = TestBed.get(DateService);
+    router = TestBed.inject(Router);
+    alertService = TestBed.inject(AlertService);
+    dateService = TestBed.inject(DateService);
     spyOn(dateService, 'now').and.returnValue(1);
-    settingsService = TestBed.get(SettingsService);
+    settingsService = TestBed.inject(SettingsService);
     fixture = TestBed.createComponent(LinkComponent);
     component = fixture.debugElement.componentInstance;
   }));

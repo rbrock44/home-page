@@ -37,7 +37,7 @@ describe('FightCardComponent', () => {
       ],
     }).compileComponents();
 
-    windowService = TestBed.get(WindowService)
+    windowService = TestBed.inject(WindowService)
     fixture = TestBed.createComponent(FightCardComponent);
     component = fixture.debugElement.componentInstance;
   }));

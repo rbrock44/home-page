@@ -64,9 +64,9 @@ describe('SportWidgetComponent', () => {
       ]
     }).compileComponents();
 
-    service = TestBed.get(SettingsService);
-    windowService = TestBed.get(WindowService)
-    router = TestBed.get(Router);
+    service = TestBed.inject(SettingsService);
+    windowService = TestBed.inject(WindowService)
+    router = TestBed.inject(Router);
     fixture = TestBed.createComponent(SportWidgetComponent);
     component = fixture.debugElement.componentInstance;
   }));
