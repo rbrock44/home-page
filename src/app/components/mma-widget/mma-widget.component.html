@@ -1,19 +1,20 @@
-<div class="sport" *ngIf="this.settingsService.showMma && fightCard?.main?.length > 0">
-  <div class="sport-ctn">
-    <div class="sport-title">MMA</div>
-    <div class="sport-game-ctn">
-      <div class="date-label">{{ addDay(fightCard.date) }}</div>
-
-      <!--            MAIN CARD-->
-      <div class="card-label">Main Card</div>
-      <app-fight-card [fights]="fightCard.main"></app-fight-card>
-
-      <!--            UNDER CARD-->
-      <div class="card-label" *ngIf="fightCard?.under?.length > 0">
-        Under Card
+@if (this.settingsService.showMma && fightCard?.main?.length > 0) {
+  <div class="sport">
+    <div class="sport-ctn">
+      <div class="sport-title">MMA</div>
+      <div class="sport-game-ctn">
+        <div class="date-label">{{ addDay(fightCard.date) }}</div>
+        <!--            MAIN CARD-->
+        <div class="card-label">Main Card</div>
+        <app-fight-card [fights]="fightCard.main"></app-fight-card>
+        <!--            UNDER CARD-->
+        @if (fightCard?.under?.length > 0) {
+          <div class="card-label">
+            Under Card
+          </div>
+        }
+        <app-fight-card [fights]="fightCard.under"></app-fight-card>
       </div>
-      <app-fight-card [fights]="fightCard.under"></app-fight-card>
-
     </div>
   </div>
-</div>
+}

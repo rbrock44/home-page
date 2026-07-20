@@ -4,16 +4,18 @@
       (opened)="expanded = true; refreshed = false"
       (closed)="close()"
       class="expansion"
-    >
+      >
       <mat-expansion-panel-header>
         <mat-panel-title>
           <div class="media-search-title">
             Media Search
             <div class="refresh-media">
               <mat-icon (click)="refresh($event)">refresh</mat-icon>
-              <div class="results" *ngIf="refreshed">
-                <p>Refreshed</p>
-              </div>
+              @if (refreshed) {
+                <div class="results">
+                  <p>Refreshed</p>
+                </div>
+              }
             </div>
           </div>
         </mat-panel-title>
@@ -23,21 +25,30 @@
           <input type="text" (keyup.enter)="search()" [formControl]="control">
           <mat-icon (click)="search()">search</mat-icon>
         </div>
-        <div id="result-container" *ngIf="searchResults?.length > 0 || hasSearched || hasError">
-          <div class="center" *ngIf="searchResults?.length > 0">
-            <p class="bold">{{searchResults.length}} Result(s)</p>
+        @if (searchResults?.length > 0 || hasSearched || hasError) {
+          <div id="result-container">
+            @if (searchResults?.length > 0) {
+              <div class="center">
+                <p class="bold">{{searchResults.length}} Result(s)</p>
+              </div>
+            }
+            @for (result of searchResults; track result) {
+              <div class="results">
+                <p>{{result}}</p>
+              </div>
+            }
+            @if (searchResults?.length === 0 && hasSearched) {
+              <div class="results">
+                <p>No Results</p>
+              </div>
+            }
+            @if (hasError) {
+              <div class="results error">
+                <p>Error Occurred</p>
+              </div>
+            }
           </div>
-          <div class="results" *ngFor="let result of searchResults">
-            <p>{{result}}</p>
-          </div>
-          <div class="results" *ngIf="searchResults?.length === 0 && hasSearched">
-            <p>No Results</p>
-          </div>
-  
-          <div class="results error" *ngIf="hasError">
-            <p>Error Occurred</p>
-          </div>
-        </div>
+        }
       </div>
     </mat-expansion-panel>
   </mat-accordion>

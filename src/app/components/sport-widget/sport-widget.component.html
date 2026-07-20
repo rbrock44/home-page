@@ -1,20 +1,24 @@
-<div class="sport" *ngIf="shouldShow() && gamesPerDate?.games?.length > 0">
-  <div class="sport-ctn">
-    <div class="sport-title">{{ this.isBasketball ? 'Basketball' : 'Football' }}</div>
-    <div class="sport-game-ctn">
-      <span class="date-label">{{ gamesPerDate.date }}</span>
-      <div class="game-row" *ngFor="let game of gamesPerDate.games">
-        <!--                  <span class="at-label column" *ngIf="game.opponentImageLink">-->
-        <!--                    <img src="{{game.opponentImageLink}}" alt="Visiting Team Image" (click)="imgClick(game, false)">-->
-        <!--                  </span>-->
-        <div class="column away-label right" (click)="imgClick(game, false)">{{ game.opponent }}</div>
-        <div class="column at-label">&#64;</div>
-        <!--                  <span class="at-label column" *ngIf="game.homeImageLink" (click)="imgClick(game)">-->
-        <!--                    <img src="{{game.homeImageLink}}" alt="Home Team Image">-->
+@if (shouldShow() && gamesPerDate?.games?.length > 0) {
+  <div class="sport">
+    <div class="sport-ctn">
+      <div class="sport-title">{{ this.isBasketball ? 'Basketball' : 'Football' }}</div>
+      <div class="sport-game-ctn">
+        <span class="date-label">{{ gamesPerDate.date }}</span>
+        @for (game of gamesPerDate.games; track game) {
+          <div class="game-row">
+            <!--                  <span class="at-label column" *ngIf="game.opponentImageLink">-->
+            <!--                    <img src="{{game.opponentImageLink}}" alt="Visiting Team Image" (click)="imgClick(game, false)">-->
+          <!--                  </span>-->
+          <div class="column away-label right" (click)="imgClick(game, false)">{{ game.opponent }}</div>
+          <div class="column at-label">&#64;</div>
+          <!--                  <span class="at-label column" *ngIf="game.homeImageLink" (click)="imgClick(game)">-->
+          <!--                    <img src="{{game.homeImageLink}}" alt="Home Team Image">-->
         <!--                  </span>-->
         <div class="column home-label left" (click)="imgClick(game)">{{ game.home }}</div>
         <div class="column time-label">{{ this.liveTime(game.time) }}</div>
       </div>
-    </div>
+    }
   </div>
 </div>
+</div>
+}

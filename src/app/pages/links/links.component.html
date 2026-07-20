@@ -5,20 +5,22 @@
 
   <div id="link-container">
     <div class="first-link-column">
-      <div *ngFor="let link of firstColumnLinks">
-        <a mat-tab-link mat-theme="accent" (click)="urlNav(link.url)" class="nav-bar-link lengthened">{{link.name}}</a>
-  
-        <a mat-tab-link mat-theme="accent" (click)="urlNav(link.url)" class="nav-bar-link shortened">{{link.shortenedName === '' ? link.name : link.shortenedName}}</a>
-      </div>
+      @for (link of firstColumnLinks; track link) {
+        <div>
+          <a mat-tab-link mat-theme="accent" (click)="urlNav(link.url)" class="nav-bar-link lengthened">{{link.name}}</a>
+          <a mat-tab-link mat-theme="accent" (click)="urlNav(link.url)" class="nav-bar-link shortened">{{link.shortenedName === '' ? link.name : link.shortenedName}}</a>
+        </div>
+      }
     </div>
-  
+
     <div class="second-link-column">
-      <div *ngFor="let link of secondColumnLinks">
-        <a mat-tab-link mat-theme="accent" (click)="urlNav(link.url)" class="nav-bar-link lengthened">{{link.name}}</a>
-  
-        <a mat-tab-link mat-theme="accent" (click)="urlNav(link.url)" class="nav-bar-link shortened">{{link.shortenedName === '' ? link.name : link.shortenedName}}</a>
-      </div>
+      @for (link of secondColumnLinks; track link) {
+        <div>
+          <a mat-tab-link mat-theme="accent" (click)="urlNav(link.url)" class="nav-bar-link lengthened">{{link.name}}</a>
+          <a mat-tab-link mat-theme="accent" (click)="urlNav(link.url)" class="nav-bar-link shortened">{{link.shortenedName === '' ? link.name : link.shortenedName}}</a>
+        </div>
+      }
     </div>
   </div>
-  
+
 </div>

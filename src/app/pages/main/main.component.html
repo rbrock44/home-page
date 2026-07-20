@@ -1,7 +1,17 @@
 <div>
-  <app-home-page *ngIf="service.show[0]"></app-home-page>
-  <app-settings-page *ngIf="service.show[1]"></app-settings-page>
-  <app-links-page *ngIf="service.show[2]"></app-links-page>
-  <app-concerts-page *ngIf="service.show[3]"></app-concerts-page>
-  <app-match-page *ngIf="service.show[4]"></app-match-page>
+  @if (service.show[0]) {
+    <app-home-page></app-home-page>
+  }
+  @if (service.show[1]) {
+    <app-settings-page></app-settings-page>
+  }
+  @if (service.show[2]) {
+    <app-links-page></app-links-page>
+  }
+  @if (service.show[3]) {
+    <app-concerts-page></app-concerts-page>
+  }
+  @if (service.show[4]) {
+    <app-match-page></app-match-page>
+  }
 </div>

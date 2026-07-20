@@ -1,10 +1,12 @@
-<div class="fight-card-ctn" *ngFor="let fight of fights">
-  <div class="fight-row cursor"
-       [ngStyle]="fight.titleFight && {'background-color': 'gold'}"
-       (click)="fightClick(fight)"
-  >
-    <div class="column person-label right">{{this.getPerson(fight.title)}}</div>
-    <div class="vs-label column">vs.</div>
-    <div class="column person-label left">{{this.getPerson(fight.title, false)}}</div>
+@for (fight of fights; track fight) {
+  <div class="fight-card-ctn">
+    <div class="fight-row cursor"
+      [ngStyle]="fight.titleFight && {'background-color': 'gold'}"
+      (click)="fightClick(fight)"
+      >
+      <div class="column person-label right">{{this.getPerson(fight.title)}}</div>
+      <div class="vs-label column">vs.</div>
+      <div class="column person-label left">{{this.getPerson(fight.title, false)}}</div>
+    </div>
   </div>
-</div>
+}
