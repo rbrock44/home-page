@@ -9,7 +9,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "gh-pages": "gh-pages -d dist/home-page",
-    "deploy": "ng build --prod --base-href=https://home-page.ryan-brock.com",
+    "deploy": "ng build --configuration production --base-href=https://home-page.ryan-brock.com",
     "prod": "npm run deploy && npm run gh-pages"
   },
   "private": true,
