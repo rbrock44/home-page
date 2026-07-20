@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { debounceTime } from 'rxjs';
 import { MatchService } from 'src/app/services/match.service';
 
@@ -9,7 +9,7 @@ import { MatchService } from 'src/app/services/match.service';
   styleUrls: ['./match.component.scss']
 })
 export class MatchComponent {
-  searchControl: FormControl = new FormControl('');
+  searchControl: UntypedFormControl = new UntypedFormControl('');
 
   ngOnInit(): void {
     this.searchControl.valueChanges.pipe(

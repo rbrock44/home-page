@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {HomeApiService} from "../../services/home-api.service";
-import {FormControl} from "@angular/forms";
+import {UntypedFormControl} from "@angular/forms";
 
 @Component({
   selector: 'app-media-search-widget',
@@ -13,7 +13,7 @@ export class MediaSearchWidgetComponent {
   hasSearched = false;
   hasError = false;
   searchResults: string[] = [];
-  control: FormControl = new FormControl('');
+  control: UntypedFormControl = new UntypedFormControl('');
 
   constructor(
     private apiService: HomeApiService,

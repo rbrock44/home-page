@@ -99,37 +99,11 @@
             "scripts": []
           }
         },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        },
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "home-page:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "home-page:serve:production"
-            }
-          }
-        },
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
           "options": {}
         }
       }
     }
-  },
-  "defaultProject": "home-page"
+  }
 }

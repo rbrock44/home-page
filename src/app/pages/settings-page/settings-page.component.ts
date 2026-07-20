@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup, Validators} from '@angular/forms';
 import {AlertService} from 'src/app/services/alert.service';
 import {ConfirmationPopupComponent} from 'src/app/components/confirmation-popup/confirmation-popup.component';
 import {SettingsService} from 'src/app/services/settings.service';
@@ -21,24 +21,24 @@ import { MatDialog } from '@angular/material/dialog';
 export class SettingsPageComponent implements OnInit, OnDestroy {
   colors = COLOR_OPTIONS;
 
-  refreshRateControl: FormControl = new FormControl('', [
+  refreshRateControl: UntypedFormControl = new UntypedFormControl('', [
     Validators.min(1),
     Validators.max(1000),
     Validators.pattern('^[0-9.]*$'),
     Validators.required
   ]);
 
-  titleControl: FormControl = new FormControl('', [Validators.required]);
-  showFootballControl: FormControl = new FormControl('', [Validators.required]);
-  showBasketballControl: FormControl = new FormControl('', [Validators.required]);
-  showMmaControl: FormControl = new FormControl('', [Validators.required]);
-  showAuctionsControl: FormControl = new FormControl('', [Validators.required]);
-  whichFootballControl: FormControl = new FormControl('', [Validators.required]);
-  whichBasketballControl: FormControl = new FormControl('', [Validators.required]);
-  whichMmaControl: FormControl = new FormControl('', [Validators.required]);
-  colorControl: FormControl = new FormControl('', [Validators.required]);
+  titleControl: UntypedFormControl = new UntypedFormControl('', [Validators.required]);
+  showFootballControl: UntypedFormControl = new UntypedFormControl('', [Validators.required]);
+  showBasketballControl: UntypedFormControl = new UntypedFormControl('', [Validators.required]);
+  showMmaControl: UntypedFormControl = new UntypedFormControl('', [Validators.required]);
+  showAuctionsControl: UntypedFormControl = new UntypedFormControl('', [Validators.required]);
+  whichFootballControl: UntypedFormControl = new UntypedFormControl('', [Validators.required]);
+  whichBasketballControl: UntypedFormControl = new UntypedFormControl('', [Validators.required]);
+  whichMmaControl: UntypedFormControl = new UntypedFormControl('', [Validators.required]);
+  colorControl: UntypedFormControl = new UntypedFormControl('', [Validators.required]);
 
-  settingsFormGroup: FormGroup;
+  settingsFormGroup: UntypedFormGroup;
 
   constructor(public dialog: MatDialog,
               private alertService: AlertService,
@@ -47,7 +47,7 @@ export class SettingsPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.settingsFormGroup = new FormGroup({
+    this.settingsFormGroup = new UntypedFormGroup({
       refreshRate: this.refreshRateControl,
       title: this.titleControl,
       showFootball: this.showFootballControl,

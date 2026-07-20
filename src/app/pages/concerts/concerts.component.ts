@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { debounceTime } from 'rxjs';
 import { ConcertService } from 'src/app/services/concert.service';
 
@@ -9,7 +9,7 @@ import { ConcertService } from 'src/app/services/concert.service';
   styleUrls: ['./concerts.component.scss']
 })
 export class ConcertComponent {
-  searchControl: FormControl = new FormControl('');
+  searchControl: UntypedFormControl = new UntypedFormControl('');
 
   ngOnInit(): void {
     this.searchControl.valueChanges.pipe(
