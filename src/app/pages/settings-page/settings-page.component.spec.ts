@@ -83,7 +83,8 @@ describe('SettingsPageComponent', () => {
   });
 
   it('should have color dropdown', () => {
-    const index = 6;
+    // 7 yes/no dropdowns render their own label before the Color one
+    const index = 7;
 
     expectElementToContainContentAtIndex(fixture, '[data-dropdown-label]', 'Color - *Applies Immediately', index);
     // verifyDropdownOptions(fixture, options, values, index);
@@ -110,6 +111,7 @@ describe('SettingsPageComponent', () => {
         component.showBasketballControl.value,
         component.showFootballControl.value,
         component.showMmaControl.value,
+        component.showAuctionsControl.value,
       ],
       [
         component.whichBasketballControl.value,

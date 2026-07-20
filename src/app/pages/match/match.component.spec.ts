@@ -56,6 +56,6 @@ describe('MatchComponent', () => {
   });
 
   it('should contain a title', () => {
-    expectElementToContainContent(fixture, HEADER, 'Links');
+    expectElementToContainContent(fixture, HEADER, 'Matches');
   });
 });

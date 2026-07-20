@@ -6,6 +6,7 @@ import {MaterialModule} from "../../material.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {
   clickElement,
+  clickElementAtIndex,
   expectElementAbsent,
   expectElementPresent,
   expectElementToContainContent,
@@ -62,7 +63,7 @@ describe('MediaSearchWidgetComponent', () => {
     expectElementPresent(fixture, 'input');
     expectElementPresent(fixture, '.search');
     expectElementAbsent(fixture, '.results');
-    expectElementToContainContent(fixture, 'mat-icon', 'search');
+    expectElementToContainContentAtIndex(fixture, 'mat-icon', 'search', 1);
   });
 
   it('should show results when they exist', () => {
@@ -70,19 +71,21 @@ describe('MediaSearchWidgetComponent', () => {
 
     clickElement(fixture, 'mat-expansion-panel-header');
     component.searchResults = results;
+    fixture.changeDetectorRef.markForCheck();
 
     fixture.detectChanges();
 
     expectElementPresent(fixture, '.results');
-    expectElementToContainContentAtIndex(fixture, 'p', results[0], 0);
-    expectElementToContainContentAtIndex(fixture, 'p', results[1], 1);
+    // index 0 is the "N Result(s)" count paragraph
+    expectElementToContainContentAtIndex(fixture, 'p', results[0], 1);
+    expectElementToContainContentAtIndex(fixture, 'p', results[1], 2);
   });
 
   it('should search for media results', () => {
     const spy = spyOn(service, 'searchMedia').and.returnValue(of(results))
 
     component.control.setValue(criteria);
-    clickElement(fixture, 'mat-icon');
+    clickElementAtIndex(fixture, 'mat-icon', 1);
     fixture.detectChanges();
 
     expect(spy).toHaveBeenCalledWith(criteria);
@@ -92,6 +95,7 @@ describe('MediaSearchWidgetComponent', () => {
     expectElementAbsent(fixture, '.error');
 
     component.hasError = true;
+    fixture.changeDetectorRef.markForCheck();
     fixture.detectChanges();
 
     expectElementToContainContent(fixture, 'p', 'Error Occurred')
@@ -102,7 +106,7 @@ describe('MediaSearchWidgetComponent', () => {
     spyOn(service, 'searchMedia').and.returnValue(of([]))
 
     component.control.setValue(criteria);
-    clickElement(fixture, 'mat-icon');
+    clickElementAtIndex(fixture, 'mat-icon', 1);
     fixture.detectChanges();
 
     expectElementToContainContent(fixture, 'p', 'No Results')
@@ -114,9 +118,11 @@ describe('MediaSearchWidgetComponent', () => {
     component.hasError = true;
     component.searchResults = results;
     component.control.setValue(results[0])
+    fixture.changeDetectorRef.markForCheck();
     fixture.detectChanges();
 
     component.close();
+    fixture.changeDetectorRef.markForCheck();
     fixture.detectChanges();
 
     expect(component.expanded).toBeFalsy();
