@@ -1,9 +1,10 @@
 import {async, inject, TestBed} from '@angular/core/testing';
 import {HomeApiService} from "./home-api.service";
-import {HttpClientTestingModule, HttpTestingController} from "@angular/common/http/testing";
+import { HttpTestingController, provideHttpClientTesting } from "@angular/common/http/testing";
 import {environment} from "../../environments/environment";
 import {GamesPerDate} from "../models/games-per-date.model";
 import {FightCard} from "../models/fight-card.model";
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('HomeApiService', () => {
   let service: HomeApiService;
@@ -12,11 +13,10 @@ describe('HomeApiService', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        HttpClientTestingModule
-      ],
-      declarations: [],
-    }).compileComponents();
+    declarations: [],
+    imports: [],
+    providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+}).compileComponents();
     service = TestBed.get(HomeApiService);
   }));
 

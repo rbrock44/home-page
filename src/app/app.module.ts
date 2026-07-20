@@ -1,5 +1,5 @@
 import {CommonModule} from '@angular/common';
-import {HttpClientModule} from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
@@ -26,40 +26,34 @@ import { ConcertComponent } from './pages/concerts/concerts.component';
 import { MatchComponent } from './pages/match/match.component';
 import { MatchTableComponent } from './components/match-table/match-table.component';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    AuctionWidgetComponent,
-    ConcertComponent,
-    ConcertTableComponent,
-    ConfirmationPopupComponent,
-    FightCardComponent,
-    HeaderComponent,
-    HomeComponent,
-    LinkComponent,
-    MainComponent,
-    MatchComponent,
-    MatchTableComponent,
-    MediaSearchWidgetComponent,
-    MmaWidgetComponent,
-    SettingsPageComponent,
-    SportWidgetComponent,
-    YesNoDropdownComponent
-  ],
-  imports: [
-    AlertModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    BrowserModule,
-    CommonModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MaterialModule
-  ],
-  providers: [
-    SettingsService
-  ],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        AuctionWidgetComponent,
+        ConcertComponent,
+        ConcertTableComponent,
+        ConfirmationPopupComponent,
+        FightCardComponent,
+        HeaderComponent,
+        HomeComponent,
+        LinkComponent,
+        MainComponent,
+        MatchComponent,
+        MatchTableComponent,
+        MediaSearchWidgetComponent,
+        MmaWidgetComponent,
+        SettingsPageComponent,
+        SportWidgetComponent,
+        YesNoDropdownComponent
+    ],
+    bootstrap: [AppComponent], imports: [AlertModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        BrowserModule,
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MaterialModule], providers: [
+        SettingsService,
+        provideHttpClient(withInterceptorsFromDi())
+    ] })
 export class AppModule { }

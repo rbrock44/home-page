@@ -1,7 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {HomeApiService} from "../../services/home-api.service";
 import {MediaSearchWidgetComponent} from "./media-search-widget.component";
-import {HttpClientTestingModule} from "@angular/common/http/testing";
+import { provideHttpClientTesting } from "@angular/common/http/testing";
 import {MaterialModule} from "../../material.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {
@@ -13,6 +13,7 @@ import {
 } from "../../constants/expectations.spec";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {of} from "rxjs";
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('MediaSearchWidgetComponent', () => {
   let fixture: ComponentFixture<MediaSearchWidgetComponent>;
@@ -23,20 +24,19 @@ describe('MediaSearchWidgetComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        BrowserAnimationsModule,
-        FormsModule,
-        HttpClientTestingModule,
-        MaterialModule,
-        ReactiveFormsModule,
-      ],
-      declarations: [
+    declarations: [
         MediaSearchWidgetComponent
-      ],
-      providers: [
+    ],
+    imports: [BrowserAnimationsModule,
+        FormsModule,
+        MaterialModule,
+        ReactiveFormsModule],
+    providers: [
         HomeApiService,
-      ]
-    }).compileComponents();
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting(),
+    ]
+}).compileComponents();
 
     service = TestBed.get(HomeApiService);
     fixture = TestBed.createComponent(MediaSearchWidgetComponent);

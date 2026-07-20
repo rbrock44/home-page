@@ -2,7 +2,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {Router} from '@angular/router';
 import {HomeComponent} from "./home.component";
-import {HttpClientTestingModule} from "@angular/common/http/testing";
+import { provideHttpClientTesting } from "@angular/common/http/testing";
 import {SettingsService} from "../../services/settings.service";
 import {
   expectElementPresent,
@@ -18,6 +18,7 @@ import {MediaSearchWidgetComponent} from "../../components/media-search-widget/m
 import {MaterialModule} from "../../material.module";
 import {ReactiveFormsModule} from "@angular/forms";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('HomeComponent', () => {
   let fixture: ComponentFixture<HomeComponent>;
@@ -27,23 +28,22 @@ describe('HomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        BrowserAnimationsModule,
-        HttpClientTestingModule,
-        MaterialModule,
-        ReactiveFormsModule,
-        RouterTestingModule
-      ],
-      declarations: [
+    declarations: [
         HomeComponent,
         FightCardComponent,
         MediaSearchWidgetComponent,
         MmaWidgetComponent,
         SportWidgetComponent,
-      ],
-      providers: [
-      ]
-    }).compileComponents();
+    ],
+    imports: [BrowserAnimationsModule,
+        MaterialModule,
+        ReactiveFormsModule,
+        RouterTestingModule],
+    providers: [
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting()
+    ]
+}).compileComponents();
 
     router = TestBed.get(Router);
     service = TestBed.get(SettingsService);

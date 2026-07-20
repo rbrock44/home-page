@@ -1,7 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {Router} from '@angular/router';
-import {HttpClientTestingModule} from "@angular/common/http/testing";
+import { provideHttpClientTesting } from "@angular/common/http/testing";
 import {HomeApiService} from "../../services/home-api.service";
 import {SettingsService} from "../../services/settings.service";
 import {SettingsPageComponent} from "./settings-page.component";
@@ -19,6 +19,7 @@ import {HEADER} from "../../constants/constants.spec";
 import {AlertService} from "../../services/alert.service";
 import {APPLY_SETTING_SUCCESS_MESSAGE} from "../../constants/constants";
 import {DateService} from "../../services/date.service";
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('SettingsPageComponent', () => {
   let fixture: ComponentFixture<SettingsPageComponent>;
@@ -30,22 +31,21 @@ describe('SettingsPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        FormsModule,
-        HttpClientTestingModule,
-        ReactiveFormsModule,
-        RouterTestingModule,
-        MaterialModule
-      ],
-      declarations: [
+    declarations: [
         SettingsPageComponent,
         YesNoDropdownComponent
-      ],
-      providers: [
+    ],
+    imports: [FormsModule,
+        ReactiveFormsModule,
+        RouterTestingModule,
+        MaterialModule],
+    providers: [
         HomeApiService,
-        SettingsService
-      ]
-    }).compileComponents();
+        SettingsService,
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting()
+    ]
+}).compileComponents();
 
     router = TestBed.get(Router);
     alertService = TestBed.get(AlertService);

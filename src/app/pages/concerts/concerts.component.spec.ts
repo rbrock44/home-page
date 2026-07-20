@@ -1,4 +1,4 @@
-import { HttpClientTestingModule } from "@angular/common/http/testing";
+import { provideHttpClientTesting } from "@angular/common/http/testing";
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { Router } from '@angular/router';
@@ -14,6 +14,7 @@ import { DateService } from "../../services/date.service";
 import { HomeApiService } from "../../services/home-api.service";
 import { SettingsService } from "../../services/settings.service";
 import { ConcertComponent } from "./concerts.component";
+import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 
 describe('ConcertsComponent', () => {
   let fixture: ComponentFixture<ConcertComponent>;
@@ -25,22 +26,21 @@ describe('ConcertsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        FormsModule,
-        HttpClientTestingModule,
-        ReactiveFormsModule,
-        RouterTestingModule,
-        MaterialModule
-      ],
-      declarations: [
+    declarations: [
         ConcertComponent,
         YesNoDropdownComponent
-      ],
-      providers: [
+    ],
+    imports: [FormsModule,
+        ReactiveFormsModule,
+        RouterTestingModule,
+        MaterialModule],
+    providers: [
         HomeApiService,
-        SettingsService
-      ]
-    }).compileComponents();
+        SettingsService,
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting()
+    ]
+}).compileComponents();
 
     router = TestBed.get(Router);
     alertService = TestBed.get(AlertService);
