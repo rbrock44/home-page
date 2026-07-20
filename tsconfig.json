@@ -1,11 +1,12 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "strict": false,
     "baseUrl": "./",
+    "ignoreDeprecations": "6.0",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
-    "downlevelIteration": true,
     "experimentalDecorators": true,
     "module": "esnext",
     "moduleResolution": "bundler",

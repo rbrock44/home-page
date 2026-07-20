@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { WindowService } from '../../services/window.service';
 import { Link } from '../../models/link.model';
 import { LINKS_FIRST_COLUMN, LINKS_SECOND_COLUMN } from 'src/app/constants/constants';
@@ -7,6 +7,7 @@ import { LINKS_FIRST_COLUMN, LINKS_SECOND_COLUMN } from 'src/app/constants/const
     selector: 'app-links-page',
     templateUrl: './links.component.html',
     styleUrls: ['./links.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class LinkComponent {

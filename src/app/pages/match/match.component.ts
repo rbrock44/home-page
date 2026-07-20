@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
 import { debounceTime } from 'rxjs';
 import { MatchService } from 'src/app/services/match.service';
@@ -7,6 +7,7 @@ import { MatchService } from 'src/app/services/match.service';
     selector: 'app-match-page',
     templateUrl: './match.component.html',
     styleUrls: ['./match.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class MatchComponent {

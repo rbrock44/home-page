@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Auction } from 'src/app/models/auction.model';
 import { SettingsService } from "../../services/settings.service";
 import { WindowService } from '../../services/window.service';
@@ -7,6 +7,7 @@ import { WindowService } from '../../services/window.service';
     selector: 'app-auction-widget',
     templateUrl: './auction-widget.component.html',
     styleUrls: ['./auction-widget.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class AuctionWidgetComponent {

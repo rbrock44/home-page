@@ -1,5 +1,5 @@
 import {CommonModule} from '@angular/common';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
@@ -54,6 +54,6 @@ import { MatchTableComponent } from './components/match-table/match-table.compon
         ReactiveFormsModule,
         MaterialModule], providers: [
         SettingsService,
-        provideHttpClient(withInterceptorsFromDi())
+        provideHttpClient(withXhr(), withInterceptorsFromDi())
     ] })
 export class AppModule { }

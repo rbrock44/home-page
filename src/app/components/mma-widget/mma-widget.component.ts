@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { SettingsService } from "../../services/settings.service";
 import { FightCard } from "../../models/fight-card.model";
 
@@ -6,6 +6,7 @@ import { FightCard } from "../../models/fight-card.model";
     selector: 'app-mma-widget',
     templateUrl: './mma-widget.component.html',
     styleUrls: ['./mma-widget.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class MmaWidgetComponent {

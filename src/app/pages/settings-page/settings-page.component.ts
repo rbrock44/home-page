@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {UntypedFormControl, UntypedFormGroup, Validators} from '@angular/forms';
 import {AlertService} from 'src/app/services/alert.service';
 import {ConfirmationPopupComponent} from 'src/app/components/confirmation-popup/confirmation-popup.component';
@@ -17,6 +17,7 @@ import { MatDialog } from '@angular/material/dialog';
     selector: 'app-settings-page',
     templateUrl: './settings-page.component.html',
     styleUrls: ['./settings-page.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class SettingsPageComponent implements OnInit, OnDestroy {

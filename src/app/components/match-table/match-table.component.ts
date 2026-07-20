@@ -1,4 +1,4 @@
-import { Component, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, OnChanges, SimpleChanges, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatchService } from 'src/app/services/match.service';
 
@@ -6,6 +6,7 @@ import { MatchService } from 'src/app/services/match.service';
     selector: 'app-match-table',
     templateUrl: './match-table.component.html',
     styleUrls: ['./match-table.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class MatchTableComponent implements OnChanges {

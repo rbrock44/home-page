@@ -18,7 +18,7 @@ import {MediaSearchWidgetComponent} from "../../components/media-search-widget/m
 import {MaterialModule} from "../../material.module";
 import {ReactiveFormsModule} from "@angular/forms";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 
 describe('HomeComponent', () => {
   let fixture: ComponentFixture<HomeComponent>;
@@ -40,7 +40,7 @@ describe('HomeComponent', () => {
         ReactiveFormsModule,
         RouterTestingModule],
     providers: [
-        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClient(withXhr(), withInterceptorsFromDi()),
         provideHttpClientTesting()
     ]
 }).compileComponents();

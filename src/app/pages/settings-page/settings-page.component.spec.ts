@@ -19,7 +19,7 @@ import {HEADER} from "../../constants/constants.spec";
 import {AlertService} from "../../services/alert.service";
 import {APPLY_SETTING_SUCCESS_MESSAGE} from "../../constants/constants";
 import {DateService} from "../../services/date.service";
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 
 describe('SettingsPageComponent', () => {
   let fixture: ComponentFixture<SettingsPageComponent>;
@@ -42,7 +42,7 @@ describe('SettingsPageComponent', () => {
     providers: [
         HomeApiService,
         SettingsService,
-        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClient(withXhr(), withInterceptorsFromDi()),
         provideHttpClientTesting()
     ]
 }).compileComponents();

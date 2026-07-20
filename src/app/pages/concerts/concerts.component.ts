@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
 import { debounceTime } from 'rxjs';
 import { ConcertService } from 'src/app/services/concert.service';
@@ -7,6 +7,7 @@ import { ConcertService } from 'src/app/services/concert.service';
     selector: 'app-concerts-page',
     templateUrl: './concerts.component.html',
     styleUrls: ['./concerts.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class ConcertComponent {

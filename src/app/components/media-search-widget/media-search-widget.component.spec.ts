@@ -13,7 +13,7 @@ import {
 } from "../../constants/expectations.spec";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {of} from "rxjs";
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 
 describe('MediaSearchWidgetComponent', () => {
   let fixture: ComponentFixture<MediaSearchWidgetComponent>;
@@ -33,7 +33,7 @@ describe('MediaSearchWidgetComponent', () => {
         ReactiveFormsModule],
     providers: [
         HomeApiService,
-        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClient(withXhr(), withInterceptorsFromDi()),
         provideHttpClientTesting(),
     ]
 }).compileComponents();

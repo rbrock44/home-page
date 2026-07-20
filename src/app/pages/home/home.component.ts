@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { SingleEvent } from 'src/app/models/single-event.model';
 import { FightCard } from "../../models/fight-card.model";
 import { GamesPerDate } from "../../models/games-per-date.model";
@@ -13,6 +13,7 @@ import { GDQ_EVENTS } from 'src/app/constants/constants-gdq';
     selector: 'app-home-page',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class HomeComponent implements OnInit, OnDestroy {

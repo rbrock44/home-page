@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, ChangeDetectionStrategy} from '@angular/core';
 import {SettingsService} from "../../services/settings.service";
 import {GamesPerDate} from "../../models/games-per-date.model";
 import {Game} from '../../models/game.model';
@@ -9,6 +9,7 @@ import {liveTime} from "../../constants/constants";
     selector: 'app-sport-widget',
     templateUrl: './sport-widget.component.html',
     styleUrls: ['./sport-widget.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class SportWidgetComponent {

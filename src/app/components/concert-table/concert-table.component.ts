@@ -1,4 +1,4 @@
-import { Component, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, OnChanges, SimpleChanges, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { ConcertService } from 'src/app/services/concert.service';
 
@@ -6,6 +6,7 @@ import { ConcertService } from 'src/app/services/concert.service';
     selector: 'app-concert-table',
     templateUrl: './concert-table.component.html',
     styleUrls: ['./concert-table.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class ConcertTableComponent implements OnChanges {

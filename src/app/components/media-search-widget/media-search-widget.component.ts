@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ChangeDetectionStrategy} from '@angular/core';
 import {HomeApiService} from "../../services/home-api.service";
 import {UntypedFormControl} from "@angular/forms";
 
@@ -6,6 +6,7 @@ import {UntypedFormControl} from "@angular/forms";
     selector: 'app-media-search-widget',
     templateUrl: './media-search-widget.component.html',
     styleUrls: ['./media-search-widget.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class MediaSearchWidgetComponent {
