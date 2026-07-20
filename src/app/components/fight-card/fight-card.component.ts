@@ -3,9 +3,10 @@ import {Fight} from '../../models/fight.model';
 import {WindowService} from "../../services/window.service";
 
 @Component({
-  selector: 'app-fight-card',
-  templateUrl: './fight-card.component.html',
-  styleUrls: ['./fight-card.component.scss']
+    selector: 'app-fight-card',
+    templateUrl: './fight-card.component.html',
+    styleUrls: ['./fight-card.component.scss'],
+    standalone: false
 })
 export class FightCardComponent {
   @Input() fights: Fight[] = [];

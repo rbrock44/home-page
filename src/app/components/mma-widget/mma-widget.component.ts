@@ -3,9 +3,10 @@ import { SettingsService } from "../../services/settings.service";
 import { FightCard } from "../../models/fight-card.model";
 
 @Component({
-  selector: 'app-mma-widget',
-  templateUrl: './mma-widget.component.html',
-  styleUrls: ['./mma-widget.component.scss']
+    selector: 'app-mma-widget',
+    templateUrl: './mma-widget.component.html',
+    styleUrls: ['./mma-widget.component.scss'],
+    standalone: false
 })
 export class MmaWidgetComponent {
   @Input() fightCard: FightCard = new FightCard();

@@ -4,9 +4,10 @@ import { Link } from '../../models/link.model';
 import { LINKS_FIRST_COLUMN, LINKS_SECOND_COLUMN } from 'src/app/constants/constants';
 
 @Component({
-  selector: 'app-links-page',
-  templateUrl: './links.component.html',
-  styleUrls: ['./links.component.scss']
+    selector: 'app-links-page',
+    templateUrl: './links.component.html',
+    styleUrls: ['./links.component.scss'],
+    standalone: false
 })
 export class LinkComponent {
   firstColumnLinks: Link[] = LINKS_FIRST_COLUMN;

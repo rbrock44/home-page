@@ -3,9 +3,10 @@ import { MatSort } from '@angular/material/sort';
 import { MatchService } from 'src/app/services/match.service';
 
 @Component({
-  selector: 'app-match-table',
-  templateUrl: './match-table.component.html',
-  styleUrls: ['./match-table.component.scss']
+    selector: 'app-match-table',
+    templateUrl: './match-table.component.html',
+    styleUrls: ['./match-table.component.scss'],
+    standalone: false
 })
 export class MatchTableComponent implements OnChanges {
   // @ts-ignore

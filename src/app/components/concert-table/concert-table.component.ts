@@ -3,9 +3,10 @@ import { MatSort } from '@angular/material/sort';
 import { ConcertService } from 'src/app/services/concert.service';
 
 @Component({
-  selector: 'app-concert-table',
-  templateUrl: './concert-table.component.html',
-  styleUrls: ['./concert-table.component.scss']
+    selector: 'app-concert-table',
+    templateUrl: './concert-table.component.html',
+    styleUrls: ['./concert-table.component.scss'],
+    standalone: false
 })
 export class ConcertTableComponent implements OnChanges {
   // @ts-ignore

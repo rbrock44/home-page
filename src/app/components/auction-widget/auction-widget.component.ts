@@ -4,9 +4,10 @@ import { SettingsService } from "../../services/settings.service";
 import { WindowService } from '../../services/window.service';
 
 @Component({
-  selector: 'app-auction-widget',
-  templateUrl: './auction-widget.component.html',
-  styleUrls: ['./auction-widget.component.scss']
+    selector: 'app-auction-widget',
+    templateUrl: './auction-widget.component.html',
+    styleUrls: ['./auction-widget.component.scss'],
+    standalone: false
 })
 export class AuctionWidgetComponent {
   @Input() auctions: Auction[] = [];

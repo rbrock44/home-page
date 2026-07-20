@@ -14,9 +14,10 @@ import {DateService} from "../../services/date.service";
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-settings-page',
-  templateUrl: './settings-page.component.html',
-  styleUrls: ['./settings-page.component.scss']
+    selector: 'app-settings-page',
+    templateUrl: './settings-page.component.html',
+    styleUrls: ['./settings-page.component.scss'],
+    standalone: false
 })
 export class SettingsPageComponent implements OnInit, OnDestroy {
   colors = COLOR_OPTIONS;

@@ -6,9 +6,10 @@ import {WindowService} from "../../services/window.service";
 import {liveTime} from "../../constants/constants";
 
 @Component({
-  selector: 'app-sport-widget',
-  templateUrl: './sport-widget.component.html',
-  styleUrls: ['./sport-widget.component.scss']
+    selector: 'app-sport-widget',
+    templateUrl: './sport-widget.component.html',
+    styleUrls: ['./sport-widget.component.scss'],
+    standalone: false
 })
 export class SportWidgetComponent {
   @Input() gamesPerDate: GamesPerDate = new GamesPerDate({games: []});

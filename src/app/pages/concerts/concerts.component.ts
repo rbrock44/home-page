@@ -4,9 +4,10 @@ import { debounceTime } from 'rxjs';
 import { ConcertService } from 'src/app/services/concert.service';
 
 @Component({
-  selector: 'app-concerts-page',
-  templateUrl: './concerts.component.html',
-  styleUrls: ['./concerts.component.scss']
+    selector: 'app-concerts-page',
+    templateUrl: './concerts.component.html',
+    styleUrls: ['./concerts.component.scss'],
+    standalone: false
 })
 export class ConcertComponent {
   searchControl: UntypedFormControl = new UntypedFormControl('');

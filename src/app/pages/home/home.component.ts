@@ -10,9 +10,10 @@ import { SpotPrice } from 'src/app/models/spot-price.model';
 import { GDQ_EVENTS } from 'src/app/constants/constants-gdq';
 
 @Component({
-  selector: 'app-home-page',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+    selector: 'app-home-page',
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.scss'],
+    standalone: false
 })
 export class HomeComponent implements OnInit, OnDestroy {
   basketball: GamesPerDate = new GamesPerDate();

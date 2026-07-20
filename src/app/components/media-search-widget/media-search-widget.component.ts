@@ -3,9 +3,10 @@ import {HomeApiService} from "../../services/home-api.service";
 import {UntypedFormControl} from "@angular/forms";
 
 @Component({
-  selector: 'app-media-search-widget',
-  templateUrl: './media-search-widget.component.html',
-  styleUrls: ['./media-search-widget.component.scss']
+    selector: 'app-media-search-widget',
+    templateUrl: './media-search-widget.component.html',
+    styleUrls: ['./media-search-widget.component.scss'],
+    standalone: false
 })
 export class MediaSearchWidgetComponent {
   expanded = false;
