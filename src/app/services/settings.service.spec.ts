@@ -1,4 +1,4 @@
-import {async, TestBed} from '@angular/core/testing';
+import {waitForAsync, TestBed} from '@angular/core/testing';
 import {SettingsService} from "./settings.service";
 import {
   COLOR_DEFAULT,
@@ -21,7 +21,7 @@ describe('SettingsService', () => {
     [false, false, false]
   ]
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [],
       declarations: [],

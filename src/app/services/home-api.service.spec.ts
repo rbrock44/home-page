@@ -1,4 +1,4 @@
-import {async, inject, TestBed} from '@angular/core/testing';
+import {waitForAsync, inject, TestBed} from '@angular/core/testing';
 import {HomeApiService} from "./home-api.service";
 import { HttpTestingController, provideHttpClientTesting } from "@angular/common/http/testing";
 import {environment} from "../../environments/environment";
@@ -11,7 +11,7 @@ describe('HomeApiService', () => {
   const expectedGames = new GamesPerDate({date: 'today'})
   const expectedFights = new FightCard({date: 'today'})
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
     declarations: [],
     imports: [],

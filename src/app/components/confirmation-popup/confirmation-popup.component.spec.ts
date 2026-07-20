@@ -1,6 +1,6 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {ConfirmationPopupComponent} from './confirmation-popup.component';
-import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material';
+import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import {clickElement, expectElementToContainContent} from '../../constants/expectations.spec';
 import {PERFORM_THIS_ACTION} from '../../constants/constants';
 
@@ -11,7 +11,7 @@ describe('ConfirmationPopupComponent', () => {
   let cancelButton: string = '[data-cancel-button]';
   let confirmButton: string = '[data-confirm-button]';
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         MatDialogModule,
