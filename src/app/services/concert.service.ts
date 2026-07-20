@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatLegacyTableDataSource as MatTableDataSource } from '@angular/material/legacy-table';
 import * as _ from 'lodash';
 import { Concert } from '../models/concert.model';
 import { CONCERTS } from '../constants/constants-concerts';
