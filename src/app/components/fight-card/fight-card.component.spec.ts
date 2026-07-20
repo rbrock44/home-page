@@ -51,20 +51,20 @@ describe('FightCardComponent', () => {
       expectElementAbsent(fixture, element);
     });
 
-    component.fights = expected;
+    fixture.componentRef.setInput('fights', expected);
     fixture.detectChanges();
 
     expectElementToContainContentAtIndex(fixture, '.person-label', 'fight 1', 0);
     expectElementToContainContentAtIndex(fixture, '.person-label', 'title 1', 1);
-    expectElementToContainContentAtIndex(fixture, '.at-label', 'vs.', 0);
+    expectElementToContainContentAtIndex(fixture, '.vs-label', 'vs.', 0);
     expectElementToContainContentAtIndex(fixture, '.person-label', 'fight 2', 2);
     expectElementToContainContentAtIndex(fixture, '.person-label','title 2', 3);
-    expectElementToContainContentAtIndex(fixture, '.at-label', 'vs.', 1);
+    expectElementToContainContentAtIndex(fixture, '.vs-label', 'vs.', 1);
   });
 
   it('should route when fight clicked', () => {
     const spy = spyOn(windowService, 'openBlank');
-    component.fights = expected;
+    fixture.componentRef.setInput('fights', expected);
     fixture.detectChanges();
     clickElementAtIndex(fixture, '.cursor', 0);
     expect(spy).toHaveBeenCalledWith(expected[0].link);

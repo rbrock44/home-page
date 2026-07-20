@@ -95,7 +95,7 @@ describe('MmaWidgetComponent', () => {
       expectElementAbsent(fixture, element);
     });
 
-    component.fightCard = expected;
+    fixture.componentRef.setInput('fightCard', expected);
     fixture.detectChanges();
 
     expectElementToContainContent(fixture, '.sport-title', 'MMA');
@@ -103,10 +103,9 @@ describe('MmaWidgetComponent', () => {
   });
 
   function expectGames() {
-    expectElementToContainContent(fixture, '.date-label', expected.date);
-    expectElementToContainContentAtIndex(fixture, '.date-label', expected.date, 0);
-    expectElementToContainContentAtIndex(fixture, '.date-label', 'Main Card', 1);
-    expectElementToContainContentAtIndex(fixture, '.date-label', 'Under Card', 2);
+    expectElementToContainContent(fixture, '.date-label', 'November 28, 2022');
+    expectElementToContainContentAtIndex(fixture, '.card-label', 'Main Card', 0);
+    expectElementToContainContentAtIndex(fixture, '.card-label', 'Under Card', 1);
     expectElementPresentAtIndex(fixture, 'app-fight-card', 0);
     expectElementPresentAtIndex(fixture, 'app-fight-card', 1);
   }

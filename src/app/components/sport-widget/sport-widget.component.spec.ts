@@ -90,7 +90,7 @@ describe('SportWidgetComponent', () => {
       expectElementAbsent(fixture, element);
     });
 
-    component.gamesPerDate = expected;
+    fixture.componentRef.setInput('gamesPerDate', expected);
     fixture.detectChanges();
 
     expectElementToContainContent(fixture, '.sport-title', 'Basketball');
@@ -99,7 +99,7 @@ describe('SportWidgetComponent', () => {
 
   it('should show football games when told so and games exist', () => {
     service.showFootball = false;
-    component.isBasketball = false;
+    fixture.componentRef.setInput('isBasketball', false);
     fixture.detectChanges();
 
     elements.forEach(element => {
@@ -113,7 +113,7 @@ describe('SportWidgetComponent', () => {
       expectElementAbsent(fixture, element);
     });
 
-    component.gamesPerDate = expected;
+    fixture.componentRef.setInput('gamesPerDate', expected);
     fixture.detectChanges();
 
     expectElementToContainContent(fixture, '.sport-title', 'Football');
@@ -123,11 +123,11 @@ describe('SportWidgetComponent', () => {
   it('should route when team clicked', () => {
     const spy = spyOn(windowService, 'openBlank');
     service.showBasketball = true;
-    component.gamesPerDate = expected;
+    fixture.componentRef.setInput('gamesPerDate', expected);
     fixture.detectChanges();
-    clickElementAtIndex(fixture, '.cursor', 0);
+    clickElementAtIndex(fixture, '.away-label', 0);
     expect(spy).toHaveBeenCalledWith(expected.games[0].opponentTeamLink);
-    clickElementAtIndex(fixture, '.cursor', 1);
+    clickElementAtIndex(fixture, '.home-label', 0);
     expect(spy).toHaveBeenCalledWith(expected.games[0].homeTeamLink);
   });
 
