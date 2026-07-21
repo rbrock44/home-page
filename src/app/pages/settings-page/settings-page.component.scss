@@ -6,14 +6,11 @@
   padding: 40px 20px 64px;
 }
 
-// A white mat sized to the widget, not the page: the teal stays the page's
-// background and this just backs the grey panel, like paper under a card.
 .settings-backdrop {
   box-sizing: border-box;
   width: 100%;
   max-width: 752px;
   border-radius: 20px;
-  background: #ffffff;
   box-shadow:
     0 1px 2px rgba(6, 48, 46, 0.12),
     0 18px 40px -18px rgba(6, 48, 46, 0.55);
@@ -176,6 +173,7 @@
   }
 
   .settings-backdrop {
+    padding: 8px;
     border-radius: 16px;
   }
 
