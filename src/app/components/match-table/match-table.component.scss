@@ -1,16 +1,22 @@
+@use '../../../theme' as *;
+
 .center {
   justify-content: center;
   align-items: center;
   display: flex;
+  padding: 0 40px;
 }
 
 .results {
   margin-top: 50px;
 }
 
-.results-box {
-  height: 55vh;
-  width: 60%;
+mat-table {
+  width: 100%;
+  max-width: 1500px;
+  border-radius: $table-radius;
+  // Clips the header and last row into the rounded corners.
+  overflow: hidden;
 }
 
 .bold {
@@ -19,17 +25,50 @@
 
 .mat-mdc-header-row {
   display: flex;
+  background: $table-header-color;
+}
+
+mat-header-cell {
+  font-weight: 600;
 }
 
 .mat-mdc-row {
   cursor: pointer;
   display: flex;
+  // Capped height, so one long cell can't outgrow its neighbours.
+  height: 144px;
+}
+
+mat-cell {
+  overflow: hidden;
+}
+
+// The cell is a flex container, so the clamp has to live on an inner element
+// that is allowed to shrink below its content width.
+.truncate {
+  min-width: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  line-clamp: 5;
+}
+
+// Alternating row shades. nth-of-type counts only mat-row elements, so the
+// header row doesn't shift the striping and the first data row is always
+// the base shade.
+mat-row:nth-of-type(odd) {
+  background: $table-row-color;
+}
+
+mat-row:nth-of-type(even) {
+  background: $table-row-alt-color;
 }
 
 .mat-mdc-table,
 mat-expansion-panel,
 input {
-  background: #D1C4E9;
+  background: $table-row-color;
 }
 
 .mat-column-name {
@@ -37,24 +76,24 @@ input {
 }
 
 /* Responsive Styles */
-@media screen and (max-width: 1400px) {
-  .results-box {
-    width: 80%;
-  }
-
-  input, .form-field {
-    width: 200px;
-  }
-}
-
 @media screen and (max-width: 1100px) {
-  .results-box {
-    width: 90%;
+  .center {
+    padding: 0 16px;
   }
 }
 
 @media screen and (max-width: 550px) {
+  .center {
+    padding: 0 4px;
+  }
+
   .mat-column-name {
     width: auto;
+  }
+
+  // Drop the lower-value columns so the teams, score and date stay readable.
+  .mat-column-sport,
+  .mat-column-city {
+    display: none;
   }
 }

@@ -5,15 +5,15 @@
     </div>
     <div class="center">
       <mat-table [dataSource]="this.matchService.dataSource" matSort class="mat-elevation-z8" (matSortChange)="this.matchService.sortData(this.sort)">
-        <!--home team Column -->
-        <ng-container matColumnDef="home">
-          <mat-header-cell *matHeaderCellDef mat-sort-header>Home</mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.home}} </mat-cell>
-        </ng-container>
         <!-- away team Column -->
         <ng-container matColumnDef="away">
           <mat-header-cell *matHeaderCellDef mat-sort-header>Away</mat-header-cell>
           <mat-cell *matCellDef="let element"> {{element.away}} </mat-cell>
+        </ng-container>
+        <!--home team Column -->
+        <ng-container matColumnDef="home">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Home</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.home}} </mat-cell>
         </ng-container>
         <!-- final score Column -->
         <ng-container matColumnDef="finalScore">
@@ -42,7 +42,9 @@
         <!-- Attendees Column -->
         <ng-container matColumnDef="attendees">
           <mat-header-cell *matHeaderCellDef mat-sort-header>Attendees</mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{getFirstNames(element.attendees)}} </mat-cell>
+          <mat-cell *matCellDef="let element">
+            <span class="truncate" [matTooltip]="getFirstNames(element.attendees)" matTooltipClass="wrapped-tooltip">{{getFirstNames(element.attendees)}}</span>
+          </mat-cell>
         </ng-container>
         <mat-header-row *matHeaderRowDef="this.displayColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: this.displayColumns;"></mat-row>

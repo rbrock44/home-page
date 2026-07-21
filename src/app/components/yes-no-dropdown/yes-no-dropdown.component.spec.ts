@@ -4,7 +4,7 @@ import {MaterialModule} from '../../material.module';
 import {CommonModule} from '@angular/common';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {UntypedFormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {expectElementToContainContent} from '../../constants/expectations.spec';
+import {expectElementPresent, expectElementToContainContent} from '../../constants/expectations.spec';
 
 describe('YesNoDropdownComponent', () => {
   let fixture: ComponentFixture<YesNoDropdownComponent>;
@@ -45,7 +45,7 @@ describe('YesNoDropdownComponent', () => {
 
   it('should have dropdown', () => {
     expectElementToContainContent(fixture, '[data-dropdown-label]', name);
-    expectElementToContainContent(fixture, 'mat-label', 'Select Value');
+    expectElementPresent(fixture, 'mat-select');
     // verifyDropdownOptions(fixture, options, values, index);
   });
 });

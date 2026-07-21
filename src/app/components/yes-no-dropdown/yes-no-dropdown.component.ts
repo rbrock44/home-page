@@ -4,13 +4,12 @@ import {UntypedFormControl} from '@angular/forms';
 @Component({
     selector: 'app-yes-no-dropdown',
     template: `
-    <div class="dropdown-ctn">
-      <div data-dropdown-label class="dropdown__label">
+    <div class="setting-row">
+      <div data-dropdown-label class="setting-row__label">
         {{name}}
       </div>
-      <div class="dropdown__data">
-        <mat-form-field class="dropdown-form-field">
-          <mat-label>Select Value</mat-label>
+      <div class="setting-row__control">
+        <mat-form-field appearance="outline" subscriptSizing="dynamic">
           <mat-select [formControl]="control" (selectionChange)="onChange()"
             [id]="htmlId">
             <mat-option data-dropdown-option [value]="true" [ngClass]="className">
@@ -20,9 +19,9 @@ import {UntypedFormControl} from '@angular/forms';
               {{noOption}}
             </mat-option>
           </mat-select>
-          @if (!control.valid) {
+          @if (control.invalid && control.touched) {
             <mat-error data-basic-error>
-              {{name}} is required
+              Choose a value
             </mat-error>
           }
         </mat-form-field>

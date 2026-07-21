@@ -8,9 +8,16 @@ nav {
 }
 
 .nav-bar-link {
-  margin: 10px;
+  margin: 2px;
+  padding: 4px 8px;
   border: black;
+  border-radius: 8px;
   font-size: large;
+  transition: background-color 0.15s ease;
+
+  &:hover {
+    background-color: var(--blue-color-80);
+  }
 }
 
 .nav-bar-div {

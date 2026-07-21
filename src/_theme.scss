@@ -1,0 +1,56 @@
+@use "sass:color";
+@use "sass:math";
+
+@mixin box($height: 60px, $width: 60px) {
+  height: $height;
+  width: $width;
+}
+
+@mixin largeFont {
+  font-size: large;
+  font-weight: 400;
+}
+
+@mixin centerFlex {
+  display: flex;
+  align-items: center;
+}
+
+@mixin buttonStyling {
+  background: var(--buttonColor);
+  border-style: groove;
+}
+
+$target-colors: (
+  blue-color: #236367,
+  white-color: #fff,
+  black-color: #42413d,
+  gray-color: #A9A9A9,
+  gray-dark-color: #808080,
+  green-color: #20ae44,
+  pink-color: #ff4124,
+  red-color: #FF0000,
+  purple-color: #4A235A,
+  orange-color: #FF6600,
+  yellow-color: #fae361,
+);
+
+// 40 -> button fill. 60 -> app background: a wash of the button color, not
+// the near-white you'd get by reusing 80's +40% lightness swing.
+$tones: 40, 60, 80;
+
+// Data table palette (Material Deep Purple)
+$table-header-color: #9575CD;
+$table-row-color: #D1C4E9;
+$table-row-alt-color: #EDE7F6;
+$table-radius: 12px;
+
+@mixin generate-color-var($key, $value) {
+  --#{$key}: #{$value};
+  --#{$key}-rgb: #{color.channel($value, "red", $space: rgb)},#{color.channel($value, "green", $space: rgb)},#{color.channel($value, "blue", $space: rgb)};
+  @each $tone in $tones {
+    $scale-value: color.adjust($value, $lightness: math.div($tone, 2) * 1%, $space: hsl);
+    --#{$key}-#{$tone}: #{$scale-value};
+    --#{$key}-#{$tone}-rgb: #{color.channel($scale-value, "red", $space: rgb)},#{color.channel($scale-value, "green", $space: rgb)},#{color.channel($scale-value, "blue", $space: rgb)};
+  }
+}

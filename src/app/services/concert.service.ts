@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import * as _ from 'lodash';
 import { Concert } from '../models/concert.model';
 import { CONCERTS } from '../constants/constants-concerts';
 
@@ -85,6 +84,6 @@ export class ConcertService {
   }
 
   private getList(): Concert[] {
-    return _.cloneDeep(this.concertList);
+    return structuredClone(this.concertList);
   }
 }

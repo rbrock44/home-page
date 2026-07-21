@@ -71,7 +71,7 @@ describe('SettingsPageComponent', () => {
   });
 
   it('should have refresh rate input', () => {
-    expectElementToContainContent(fixture, '[data-refresh-rate-input-label]', 'Refresh Rate');
+    expectElementToContainContent(fixture, '[data-refresh-rate-input-label]', 'Refresh rate');
     expectElementPresent(fixture, '[data-refresh-rate-input]');
     expectElementPresentAtIndex(fixture, 'input', 1);
   });
@@ -86,7 +86,7 @@ describe('SettingsPageComponent', () => {
     // 7 yes/no dropdowns render their own label before the Color one
     const index = 7;
 
-    expectElementToContainContentAtIndex(fixture, '[data-dropdown-label]', 'Color - *Applies Immediately', index);
+    expectElementToContainContentAtIndex(fixture, '[data-dropdown-label]', 'Color', index);
     // verifyDropdownOptions(fixture, options, values, index);
   });
 
@@ -124,7 +124,7 @@ describe('SettingsPageComponent', () => {
   });
 
   it('should contain reset button', () => {
-    expectElementToContainContentAtIndex(fixture, 'button', 'Reset Everything', 1);
+    expectElementToContainContentAtIndex(fixture, 'button', 'Reset everything', 1);
 
     // TODO: test reset button click - has mat dialog
   });

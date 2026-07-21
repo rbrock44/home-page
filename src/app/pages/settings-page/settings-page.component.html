@@ -1,98 +1,128 @@
-<div>
-  <div class="header-div">
-    <header data-header-title>Settings</header>
-  </div>
+<div class="settings-page">
+  <div class="settings-backdrop">
+  <section class="settings-panel">
 
-  <div data-settings-input>
-    <!-- TITLE  -->
-    <div class="settings-value-ctn">
-      <div data-title-label class="settings-value-label">Title</div>
-      <mat-form-field class="settings-value-form-field">
-        <input matInput data-title
-          type="text"
-          rows="1"
-          [formControl]="titleControl"
-          >
-          @if (!titleControl.valid) {
-            <mat-error data-basic-error>
-              Title is required
-            </mat-error>
-          }
-        </mat-form-field>
-      </div>
-      <!-- REFRESH RATE  -->
-      <div class="settings-value-ctn">
-        <div data-refresh-rate-input-label class="settings-value-label">Refresh Rate (min)</div>
-        <mat-form-field class="settings-value-form-field">
-          <input matInput data-refresh-rate-input
-            type="number"
-            rows="1"
-            [formControl]="refreshRateControl"
-            >
-            @if (!refreshRateControl.hasError('required')) {
-              <mat-error data-basic-error>
-                Refresh Rate is required
-              </mat-error>
-            }
-            @if (!refreshRateControl.hasError('max')) {
-              <mat-error data-max-error>
-                Refresh Rate cannot exceed 1000
-              </mat-error>
-            }
-          </mat-form-field>
+    <div class="header-div">
+      <header data-header-title>Settings</header>
+      <p class="panel-subhead">Choose what the dashboard shows and how often it reloads.</p>
+    </div>
+
+    <div data-settings-input>
+
+      <!-- PAGE -->
+      <div class="settings-section">
+        <h2 class="section-eyebrow">Page</h2>
+
+        <!-- TITLE -->
+        <div class="setting-row">
+          <label data-title-label class="setting-row__label" for="settings-title">
+            Title
+            <span class="setting-row__hint">Shown in the header at the top of every page.</span>
+          </label>
+          <div class="setting-row__control">
+            <mat-form-field appearance="outline" subscriptSizing="dynamic">
+              <input matInput data-title
+                id="settings-title"
+                type="text"
+                [formControl]="titleControl"
+                >
+              @if (titleControl.invalid && titleControl.touched) {
+                <mat-error data-basic-error>Enter a title</mat-error>
+              }
+            </mat-form-field>
+          </div>
         </div>
 
-        <!-- show basketball?  -->
+        <!-- REFRESH RATE -->
+        <div class="setting-row setting-row--last">
+          <label data-refresh-rate-input-label class="setting-row__label" for="settings-refresh-rate">
+            Refresh rate
+            <span class="setting-row__hint">How long the dashboard waits before reloading its data.</span>
+          </label>
+          <div class="setting-row__control">
+            <mat-form-field appearance="outline" subscriptSizing="dynamic">
+              <input matInput data-refresh-rate-input
+                id="settings-refresh-rate"
+                type="number"
+                [formControl]="refreshRateControl"
+                >
+              <span matTextSuffix>min</span>
+              @if (refreshRateControl.hasError('required') && refreshRateControl.touched) {
+                <mat-error data-basic-error>Enter a refresh rate</mat-error>
+              }
+              @if (refreshRateControl.hasError('max')) {
+                <mat-error data-max-error>Use 1000 or less</mat-error>
+              }
+              @if (refreshRateControl.hasError('min') || refreshRateControl.hasError('pattern')) {
+                <mat-error data-min-error>Use a whole number, 1 or more</mat-error>
+              }
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <!-- WHAT TO SHOW -->
+      <div class="settings-section">
+        <h2 class="section-eyebrow">What to show</h2>
+
         <app-yes-no-dropdown [control]="showBasketballControl"
           [htmlId]="'show-basketball'"
-          [name]="'Show Basketball Games'"
+          [name]="'Basketball games'"
         ></app-yes-no-dropdown>
-        <!-- show football?  -->
         <app-yes-no-dropdown [control]="showFootballControl"
           [htmlId]="'show-football'"
-          [name]="'Show Football Games'"
+          [name]="'Football games'"
         ></app-yes-no-dropdown>
-        <!-- show mma?  -->
         <app-yes-no-dropdown [control]="showMmaControl"
           [htmlId]="'show-mma'"
-          [name]="'Show MMA Fights'"
+          [name]="'MMA fights'"
         ></app-yes-no-dropdown>
-
         <app-yes-no-dropdown [control]="showAuctionsControl"
           [htmlId]="'show-auctions'"
-          [name]="'Show Auctions'"
+          [name]="'Auctions'"
         ></app-yes-no-dropdown>
-        <!-- which basketball?  -->
+      </div>
+
+      <!-- WHICH EVENTS -->
+      <div class="settings-section">
+        <h2 class="section-eyebrow">Which events to list</h2>
+
         <app-yes-no-dropdown [control]="whichBasketballControl"
           [htmlId]="'which-basketball'"
           [yesOption]="this.settingsService.TODAY"
           [noOption]="this.settingsService.UPCOMING"
-          [name]="'Which Basketball Games'"
+          [name]="'Basketball games'"
         ></app-yes-no-dropdown>
-        <!-- which football?  -->
         <app-yes-no-dropdown [control]="whichFootballControl"
           [htmlId]="'which-football'"
           [yesOption]="this.settingsService.TODAY"
           [noOption]="this.settingsService.UPCOMING"
-          [name]="'Which Football Games'"
+          [name]="'Football games'"
         ></app-yes-no-dropdown>
-        <!-- which mma?  -->
         <app-yes-no-dropdown [control]="whichMmaControl"
           [htmlId]="'which-mma'"
           [yesOption]="this.settingsService.TODAY"
           [noOption]="this.settingsService.UPCOMING"
-          [name]="'Which MMA Fights'"
+          [name]="'MMA fights'"
         ></app-yes-no-dropdown>
-        <!-- COLOR  -->
-        <div class="dropdown-ctn">
-          <div data-dropdown-label class="dropdown__label">
-            Color - *Applies Immediately
+      </div>
+
+      <!-- APPEARANCE -->
+      <div class="settings-section">
+        <h2 class="section-eyebrow">Appearance</h2>
+
+        <div class="setting-row setting-row--last">
+          <div data-dropdown-label class="setting-row__label">
+            Color
+            <span class="setting-row__hint">Applies immediately — no need to apply changes.</span>
           </div>
-          <div class="dropdown__data">
-            <mat-form-field class="dropdown-form-field">
-              <mat-label>Select Value</mat-label>
-              <mat-select [formControl]="colorControl" (selectionChange)="setColor()"
-                [ngStyle]="{'background-color': getBackgroundColor(this.colorControl.value)}">
+          <div class="setting-row__control">
+            <mat-form-field appearance="outline" subscriptSizing="dynamic" class="color-field">
+              <mat-select [formControl]="colorControl" (selectionChange)="setColor()">
+                <mat-select-trigger>
+                  <span class="color-swatch"
+                    [ngStyle]="{'background-color': getBackgroundColor(this.colorControl.value)}"></span>{{selectedColorName}}
+                </mat-select-trigger>
                 @for (color of this.colors; track color) {
                   <mat-option data-dropdown-option [value]="color.value"
                     [ngStyle]="{'background-color': getBackgroundColor(color.value)}"
@@ -105,18 +135,22 @@
           </div>
         </div>
       </div>
-
-      <div class="buttons">
-        <button data-button-apply
-          (click)="applyToSettings()"
-          [disabled]="!this.settingsFormGroup.valid"
-          class="apply-button">Apply
-        </button>
-        <div>
-          <button data-button-reset-everything
-            (click)="resetEverything()"
-            class="reset-button">Reset Everything
-          </button>
-        </div>
-      </div>
     </div>
+
+    <div class="buttons">
+      <button data-button-apply
+        type="button"
+        (click)="applyToSettings()"
+        [disabled]="!this.settingsFormGroup.valid"
+        class="btn btn--primary apply-button">Apply changes
+      </button>
+      <button data-button-reset-everything
+        type="button"
+        (click)="resetEverything()"
+        class="btn btn--danger reset-button">Reset everything
+      </button>
+    </div>
+
+  </section>
+  </div>
+</div>

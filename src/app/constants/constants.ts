@@ -54,6 +54,11 @@ export const COLOR_OPTIONS = [
   }
 ];
 
+// The Apply button's fill tracks the chosen color, so its label needs to
+// flip to light text for the couple of tints too dark for ink text to pass
+// contrast against.
+export const BUTTON_LIGHT_TEXT_COLORS = new Set(['--black-color-', '--purple-color-']);
+
 export const TITLE_DEFAULT = 'Home Page';
 export const COLOR_DEFAULT = '--blue-color-';
 export const REFRESH_RATE_DEFAULT = 60;

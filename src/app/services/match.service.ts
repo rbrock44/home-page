@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import * as _ from 'lodash';
 import { Match } from '../models/match.model';
 import { MATCHES } from '../constants/constants-matches';
 
@@ -87,6 +86,6 @@ export class MatchService {
   }
 
   private getList(): Match[] {
-    return _.cloneDeep(this.matchList);
+    return structuredClone(this.matchList);
   }
 }

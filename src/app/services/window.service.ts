@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import * as _ from 'lodash';
 import {isNullOrUndefined} from "../constants/constants";
 import {Item} from "../models/item.model";
 
@@ -17,7 +16,7 @@ export class WindowService {
 
   public getItem(item: string, defaultValue: any): any {
     const value: string = window.localStorage.getItem(item);
-    return !isNullOrUndefined(value) ? value : _.cloneDeep(defaultValue);
+    return !isNullOrUndefined(value) ? value : defaultValue;
   }
 
   public setItem(item: Item) {

@@ -13,7 +13,9 @@
         <!-- Openers Column -->
         <ng-container matColumnDef="openers">
           <mat-header-cell *matHeaderCellDef mat-sort-header>Openers</mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.openers.join(", ")}} </mat-cell>
+          <mat-cell *matCellDef="let element">
+            <span class="truncate" [matTooltip]="element.openers.join(', ')" matTooltipClass="wrapped-tooltip">{{element.openers.join(", ")}}</span>
+          </mat-cell>
         </ng-container>
         <!-- Location Column -->
         <ng-container matColumnDef="location">
@@ -32,7 +34,9 @@
         <!-- Attendees Column -->
         <ng-container matColumnDef="attendees">
           <mat-header-cell *matHeaderCellDef mat-sort-header>Attendees</mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{ getFirstNames(element.attendees) }} </mat-cell>
+          <mat-cell *matCellDef="let element">
+            <span class="truncate" [matTooltip]="getFirstNames(element.attendees)" matTooltipClass="wrapped-tooltip">{{ getFirstNames(element.attendees) }}</span>
+          </mat-cell>
         </ng-container>
         <mat-header-row *matHeaderRowDef="this.displayColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: this.displayColumns;"></mat-row>

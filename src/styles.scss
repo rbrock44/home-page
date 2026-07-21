@@ -1,4 +1,4 @@
-@use "sass:math";
+@use "theme" as *;
 /* You can add global styles to this file, and also import other style files */
 
 html, body {
@@ -8,52 +8,7 @@ html, body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-
-@mixin box($height: 60px, $width: 60px) {
-  height: $height;
-  width: $width;
-}
-
-@mixin largeFont {
-  font-size: large;
-  font-weight: 400;
-}
-
-@mixin centerFlex {
-  display: flex;
-  align-items: center;
-}
-
-@mixin buttonStyling {
-  background: var(--buttonColor);
-  border-style: groove;
-}
-
-$target-colors: (
-  blue-color: #236367,
-  white-color: #fff,
-  black-color: #42413d,
-  gray-color: #A9A9A9,
-  gray-dark-color: #808080,
-  green-color: #20ae44,
-  pink-color: #ff4124,
-  red-color: #FF0000,
-  purple-color: #4A235A,
-  orange-color: #FF6600,
-  yellow-color: #fae361,
-);
-
-$tones: 40, 80;
-
-@mixin generate-color-var($key, $value) {
-  --#{$key}: #{$value};
-  --#{$key}-rgb: #{red($value)},#{green($value)},#{blue($value)};
-  @each $tone in $tones {
-    $scale-value: adjust-color($value, $lightness: math.div($tone, 2) * 1%);
-    --#{$key}-#{$tone}: #{$scale-value};
-    --#{$key}-#{$tone}-rgb: #{red($scale-value)},#{green($scale-value)},#{blue($scale-value)};
-  }
+  background-color: var(--backgroundColor);
 }
 
 // Color Palette: Triadic Scheme
@@ -64,11 +19,19 @@ $tones: 40, 80;
   }
 
   --buttonColor: var(--blue-color-40);
-  --backgroundColor: var(--blue-color-80);
+  --backgroundColor: var(--blue-color-60);
 }
 
 .right {
   align-items: end;
+}
+
+// Tooltips render in the CDK overlay, outside any component's styles, so the
+// class for long wrapping lists has to be global.
+.wrapped-tooltip .mdc-tooltip__surface {
+  white-space: normal;
+  max-width: 320px;
+  text-align: left;
 }
 
 .cursor {

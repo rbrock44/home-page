@@ -1,82 +1,205 @@
-@import '../../../styles.scss';
+@use '../../../settings-controls' as *;
 
-.header-div {
-  text-align: center;
-  margin-bottom: 50px;
+.settings-page {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px 64px;
 }
 
-[data-settings-input] {
-  @include centerFlex();
-  flex-direction: column;
+// A white mat sized to the widget, not the page: the teal stays the page's
+// background and this just backs the grey panel, like paper under a card.
+.settings-backdrop {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 752px;
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow:
+    0 1px 2px rgba(6, 48, 46, 0.12),
+    0 18px 40px -18px rgba(6, 48, 46, 0.55);
+}
+
+.settings-panel {
+  @include settingsTokens;
+
+  box-sizing: border-box;
+  width: 100%;
+  padding: 28px 34px 22px;
+  border-radius: 14px;
+  background: var(--set-panel);
+  color: var(--set-ink);
+}
+
+.header-div {
+  margin-bottom: 20px;
 }
 
 [data-header-title] {
-  font-size: xx-large;
-  padding: 5px;
+  display: block;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--set-ink);
+}
+
+.panel-subhead {
+  max-width: 54ch;
+  margin: 5px 0 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--set-muted);
+}
+
+.settings-section + .settings-section {
+  margin-top: 18px;
+}
+
+// The lit indicator and the rule running to the panel edge: each group reads as
+// a labelled band on an instrument face.
+.section-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 4px;
+  font-family: $settings-mono;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--set-muted);
+
+  &::before {
+    content: "";
+    flex: none;
+    width: 5px;
+    height: 5px;
+    background: var(--set-accent);
+  }
+
+  &::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--set-line);
+  }
+}
+
+@include settingsRow;
+@include settingsFormField;
+
+// Closing rule of a section is the section break itself, so drop the row rule.
+.settings-section > .setting-row--last,
+.settings-section > app-yes-no-dropdown:last-child {
+  --set-row-rule: none;
+}
+
+.color-swatch {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  margin-right: 9px;
+  border-radius: 3px;
+  border: 1px solid rgba(6, 48, 46, 0.25);
+  vertical-align: -2px;
 }
 
 .buttons {
-  text-align: center;
-  margin-top: 50px;
-}
-
-.apply-button {
-  height: 30px;
-  margin: 10px;
-  width: 100px;
-  font-size: large;
-  @include buttonStyling();
-}
-
-[data-button-export] {
-  height: 30px;
-  margin: 10px;
-  font-size: large;
-  @include buttonStyling();
-}
-
-.reset-button {
-  margin: 15px;
-  font-size: large;
-  @include buttonStyling();
-}
-
-.settings-value-label {
-  font-weight: 500;
-  min-width: 260px;
-}
-
-.settings-value-form-field {
-  min-width: 100px;
-  word-wrap: break-word;
-  white-space: pre-wrap;
-}
-
-.settings-value-ctn {
-  @include centerFlex();
-}
-
-.dropdown__label {
-  font-weight: 500;
-  min-width: 260px;
-}
-
-.dropdown-ctn {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid var(--set-line);
 }
 
-@media only screen and (max-width: 500px) {
-  .settings-value-ctn {
-    display: inline;
-    min-width: 200px;
+.btn {
+  box-sizing: border-box;
+  min-height: 42px;
+  padding: 0 22px;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease, transform 0.05s ease;
+
+  &:focus-visible {
+    outline: 2px solid var(--set-ink);
+    outline-offset: 2px;
   }
 
-  .settings-value-label, .dropdown__label {
-    min-width: 200px;
+  &:not(:disabled):active {
+    transform: translateY(1px);
+  }
+}
+
+// Fill tracks the color picker below, so it doubles as a live preview of the
+// choice. The border is fixed dark ink regardless of fill — that's what
+// stops the button from ever blending into the panel again, since some
+// tints (Gray, White) sit close in lightness to the panel background.
+.btn--primary {
+  background: var(--buttonColor, var(--set-ink));
+  border-color: var(--set-ink);
+  color: var(--buttonTextColor, var(--set-panel));
+  box-shadow: 0 1px 2px rgba(6, 48, 46, 0.35);
+
+  &:hover:not(:disabled) {
+    filter: brightness(0.92);
   }
 
-  .dropdown-ctn {
-    display: inline;
+  &:disabled {
+    background: transparent;
+    border-color: var(--set-line-strong);
+    color: var(--set-muted);
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+}
+
+.btn--danger {
+  background: transparent;
+  border-color: var(--set-signal);
+  color: var(--set-signal);
+
+  &:hover {
+    background: var(--set-signal);
+    color: #fff;
+  }
+}
+
+@media only screen and (max-width: 620px) {
+  .settings-page {
+    padding: 16px 12px 36px;
+  }
+
+  .settings-backdrop {
+    border-radius: 16px;
+  }
+
+  .settings-panel {
+    padding: 22px 18px 18px;
+    border-radius: 10px;
+  }
+
+  [data-header-title] {
+    font-size: 25px;
+  }
+
+  .buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition: none;
+  }
+
+  .btn:not(:disabled):active {
+    transform: none;
   }
 }

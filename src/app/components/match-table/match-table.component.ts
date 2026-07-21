@@ -13,7 +13,7 @@ export class MatchTableComponent implements OnChanges {
   // @ts-ignore
   @ViewChild(MatSort) sort: MatSort;
 
-  displayColumns: string[] = ['home', 'away', 'finalScore', 'sport', 'arena', 'city', 'date', 'attendees'];
+  displayColumns: string[] = ['away', 'home', 'finalScore', 'sport', 'arena', 'city', 'date', 'attendees'];
 
   constructor(public matchService: MatchService) {
     this.matchService.sort = this.sort;

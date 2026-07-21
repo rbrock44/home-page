@@ -131,4 +131,8 @@ export class SettingsPageComponent implements OnInit, OnDestroy {
   getBackgroundColor(value: string): string {
     return 'var(' + value + 40 + ')';
   }
+
+  get selectedColorName(): string {
+    return this.colors.find(color => color.value === this.colorControl.value)?.name ?? '';
+  }
 }

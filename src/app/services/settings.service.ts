@@ -1,7 +1,7 @@
 import {Injectable, OnDestroy} from '@angular/core';
-import * as _ from 'lodash';
 import {Observable, Subject} from 'rxjs';
 import {
+  BUTTON_LIGHT_TEXT_COLORS,
   COLOR_DEFAULT,
   REFRESH_RATE_DEFAULT,
   SHOW_SPORTS_DEFAULT,
@@ -70,9 +70,10 @@ export class SettingsService implements OnDestroy {
     this.saveColorToLocalStorage();
     const root = document.documentElement;
     let buttonValue: string = value + 40;
-    let backgroundValue: string = value + 80;
+    let backgroundValue: string = value + 60;
     root.style.setProperty('--buttonColor', `var(${buttonValue})`);
     root.style.setProperty('--backgroundColor', `var(${backgroundValue})`);
+    root.style.setProperty('--buttonTextColor', BUTTON_LIGHT_TEXT_COLORS.has(value) ? '#f2f7f5' : '#06302e');
   }
 
   applySettings(
@@ -98,17 +99,17 @@ export class SettingsService implements OnDestroy {
   resetEverything(): void {
     window.localStorage.clear();
 
-    this.showBasketball = _.cloneDeep(SHOW_SPORTS_DEFAULT);
-    this.showFootball = _.cloneDeep(SHOW_SPORTS_DEFAULT);
-    this.showMma = _.cloneDeep(SHOW_SPORTS_DEFAULT);
-    this.showAuctions = _.cloneDeep(SHOW_SPORTS_DEFAULT);
-    this.whichBasketball = _.cloneDeep(WHICH_SELECTION_DEFAULT);
-    this.whichFootball = _.cloneDeep(WHICH_SELECTION_DEFAULT);
-    this.whichMma = _.cloneDeep(WHICH_SELECTION_DEFAULT);
-    this.refreshRate = _.cloneDeep(REFRESH_RATE_DEFAULT);
+    this.showBasketball = SHOW_SPORTS_DEFAULT;
+    this.showFootball = SHOW_SPORTS_DEFAULT;
+    this.showMma = SHOW_SPORTS_DEFAULT;
+    this.showAuctions = SHOW_SPORTS_DEFAULT;
+    this.whichBasketball = WHICH_SELECTION_DEFAULT;
+    this.whichFootball = WHICH_SELECTION_DEFAULT;
+    this.whichMma = WHICH_SELECTION_DEFAULT;
+    this.refreshRate = REFRESH_RATE_DEFAULT;
 
-    this.title = _.cloneDeep(TITLE_DEFAULT);
-    this.setColor(_.cloneDeep(COLOR_DEFAULT));
+    this.title = TITLE_DEFAULT;
+    this.setColor(COLOR_DEFAULT);
 
     this.saveToLocalStorage();
 

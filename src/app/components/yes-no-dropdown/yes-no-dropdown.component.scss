@@ -1,71 +1,8 @@
-.dropdown-ctn {
-  display: flex;
-  align-items: center;
+@use '../../../settings-controls' as *;
+
+:host {
+  display: block;
 }
 
-.dropdown {
-  display: flex;
-  align-items: center;
-}
-
-.dropdown__label {
-  font-weight: 500;
-  min-width: 260px;
-}
-
-.dropdown-form-field {
-  min-width: 100px;
-  word-wrap: break-word;
-  white-space: pre-wrap;
-}
-
-::ng-deep .mat-mdc-option {
-  white-space: pre-wrap !important;
-  text-indent: 0;
-}
-
-/* TODO(mdc-migration): The following rule targets internal classes of option that may no longer apply for the MDC version. */
-::ng-deep .mat-option-text {
-  line-height: 1.5em !important;
-  padding: 8px;
-  box-sizing: content-box;
-}
-
-::ng-deep .mat-mdc-select {
-  overflow: visible;
-}
-
-/* TODO(mdc-migration): The following rule targets internal classes of select that may no longer apply for the MDC version. */
-::ng-deep .mat-select-value-text {
-  word-wrap: break-word !important;
-  white-space: pre-wrap !important;
-  box-sizing: content-box;
-  padding: 5px;
-}
-
-::ng-deep .mat-mdc-form-field {
-  .mat-mdc-select {
-    height: 24px;
-    overflow: visible;
-    /* TODO(mdc-migration): The following rule targets internal classes of select that may no longer apply for the MDC version. */
-    .mat-select-value-text {
-      overflow: visible;
-      display: flex;
-    }
-  }
-  /* TODO(mdc-migration): The following rule targets internal classes of select that may no longer apply for the MDC version. */
-  .mat-select-value {
-    overflow: visible;
-  }
-}
-
-@media only screen and (max-width: 500px) {
-  .dropdown-ctn {
-    display: inline;
-    min-width: 200px;
-  }
-
-  .dropdown__label {
-    min-width: 200px;
-  }
-}
+@include settingsRow;
+@include settingsFormField;
