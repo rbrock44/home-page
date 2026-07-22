@@ -66,5 +66,11 @@ export const GDQ_EVENTS: SingleEvent[] = [
     startDate: '20260705',
     endDate: '20260711',
     url: 'https://gamesdonequick.com',
-  })
+  }),
+  new SingleEvent({
+    name: 'Flame Fatales 2026',
+    startDate: '20260913',
+    endDate: '20260919',
+    url: 'https://gamesdonequick.com',
+  }),
 ];
