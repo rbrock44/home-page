@@ -1,19 +1,57 @@
+@use '../../../theme' as *;
+
 [data-alert-container] {
-  background-color: antiquewhite;
-  max-width: 600px;
-  border-radius: 10px;
+  @include panelCard;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 420px;
+  margin-top: 10px;
+  padding: 10px 14px;
+  border-top-width: 1px;
+  font-family: $mono-font;
+  font-size: 0.85rem;
   position: fixed;
   bottom: 10px;
-  right: 50px;
+  right: 20px;
+  z-index: 30;
+  transition: opacity 0.25s ease;
+
+  &.fade {
+    opacity: 0;
+  }
+
+  &.alert-success {
+    border-top-color: #35c98f;
+  }
+
+  &.alert-danger {
+    border-top-color: #ff6b4a;
+  }
+
+  &.alert-warning {
+    border-top-color: #f0b83c;
+  }
+
+  &.alert-info {
+    border-top-color: var(--buttonColor);
+  }
 }
 
 [data-a] {
-  font-size: xx-large;
-  padding-right: 5px;
-  padding-left: 5px;
-  cursor: default;
+  font-size: 1.1rem;
+  line-height: 1;
+  padding: 0 2px;
+  color: var(--panel-text-muted);
+  cursor: pointer;
+
+  &:hover {
+    color: var(--panel-text);
+  }
 }
 
 [data-span] {
-  font-size: xx-large;
+  font-size: 0.85rem;
+  color: var(--panel-text);
 }

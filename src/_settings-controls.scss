@@ -8,15 +8,19 @@
 
 $settings-mono: ui-monospace, "Cascadia Mono", "Segoe UI Mono", Consolas, "SF Mono", monospace;
 
+// Fixed dark palette — the settings panel is always the dark instrument
+// face, independent of light/dark preference or the app's own accent
+// picker, so it reads consistently regardless of what color the rest of
+// the dashboard is wearing.
 @mixin settingsTokens {
-  --set-ink: #06302e;
-  --set-panel: #e7ebe9;
-  --set-surface: #ffffff;
-  --set-line: #d0d8d5;
-  --set-line-strong: #adb9b5;
-  --set-muted: #456763;
-  --set-signal: #a8360a;
-  --set-accent: #16857f;
+  --set-ink: #eef6f3;
+  --set-panel: #0e1f1d;
+  --set-surface: #16302c;
+  --set-line: rgba(238, 246, 243, 0.1);
+  --set-line-strong: rgba(238, 246, 243, 0.24);
+  --set-muted: #8fa8a3;
+  --set-signal: #ff6b4a;
+  --set-accent: #2dd4c5;
 }
 
 // One setting: label (plus optional hint) on the left, control on the right.

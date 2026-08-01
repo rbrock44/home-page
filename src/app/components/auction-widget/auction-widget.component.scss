@@ -1,63 +1,79 @@
-﻿// .auction-ctn {
-//     min-width: 300px;
-// }
+@use '../../../theme' as *;
 
-// .card-label {
-//     align-self: center;
-//     padding: 1vh 0;
-// }
-
-.auctions-ctn {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  background-color: #056e60bb;
-  border-radius: 8px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 16px;
-  transition: transform 0.2s, box-shadow 0.2s;
+:host {
+  display: block;
 }
 
-.auction-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 8px;
-  color: #302f2f;
+.sport-panel {
+  @include panelCard;
+
+  background: #056e60bb;
+  --panel-text: #302f2f;
+  --panel-text-muted: #4b4b47;
+  padding: 18px 20px 20px;
+}
+
+.auctions-panel {
+  width: min(680px, 100%);
+}
+
+.sport-title {
+  @include signalLabel;
+
+  margin-bottom: 14px;
+  color: var(--panel-text);
+}
+
+.auction-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .auction-card {
-  background-color: #FFFAE6;
-  border-radius: 8px;
-  padding: 10px;
-  transition: box-shadow 0.2s;
+  background: var(--panel-row-bg);
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 10px 12px;
   cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
 }
 
 .auction-card:hover {
-  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
-}
-
-.auction-card:hover {
-  transform: scale(1.01);
-  /* Slightly enlarge on hover */
-  background-color: #dcd2d2;
-  /* Slightly darker on hover */
+  background: var(--panel-row-bg-hover);
+  border-color: var(--panel-border-strong);
 }
 
 .auction-name {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #056e60;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--panel-text);
 }
 
 .auction-service {
-  font-size: 0.9rem;
-  color: #777;
-  margin-bottom: 8px;
+  font-family: $mono-font;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--panel-text-muted);
+  margin-bottom: 6px;
 }
 
 .auction-details {
-  font-size: 0.9rem;
-  color: #444;
+  font-size: 0.82rem;
+  color: var(--panel-text-muted);
+}
+
+.online-badge {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: var(--buttonColor);
+  color: var(--buttonTextColor, #06302e);
+  font-family: $mono-font;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  vertical-align: middle;
 }

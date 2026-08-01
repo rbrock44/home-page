@@ -1,45 +1,57 @@
-﻿.fight-card-ctn {
+@use '../../../theme' as *;
+
+.fight-card-ctn {
   width: 100%;
-  justify-self: center;
-  flex-direction: column;
-  padding: 2px;
+  padding: 0;
 }
 
 .fight-row {
   width: 100%;
-  display: inline-grid;
-  grid-template-columns: 4fr 1fr 4fr;
-  /* Equal spacing for fighter names and "vs." */
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) auto minmax(0, 4fr);
   align-items: center;
-  gap: 2px;
-  background-color: #FFFAE6;
-  /* Light background for each fight */
-  padding: 2px;
-  border-radius: 4px;
-  transition: background-color 0.2s, transform 0.2s;
-  cursor: pointer;
+  gap: 6px;
+  background: var(--panel-row-bg);
+  border: 1px solid transparent;
+  padding: 7px 10px;
+  border-radius: 6px;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
 }
 
 .fight-row:hover {
-  transform: scale(1.02);
-  background-color: #dcd2d2;
+  background: var(--panel-row-bg-hover);
+  border-color: var(--panel-border-strong);
+}
+
+// Title fights keep the "gold" highlight from ngStyle, but re-tuned so the
+// text still reads against a dark panel instead of the old light-mode fill.
+.fight-row[style*="background-color"] {
+  color: #2a2005;
+
+  .column,
+  .vs-label {
+    color: inherit;
+  }
 }
 
 .column {
   text-align: center;
-  font-size: 0.9rem;
-  color: #302f2f;
+  font-size: 0.85rem;
+  color: var(--panel-text);
 }
 
 .person-label {
-  font-weight: bold;
-  width: fit-content;
-  //display: flex;
+  font-weight: 600;
+  min-width: 0;
+  overflow-wrap: break-word;
 }
 
 .vs-label {
-  font-style: italic;
-  font-size: 0.9rem;
+  font-family: $mono-font;
+  font-style: normal;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--panel-text-muted);
 }
 
 .left {
@@ -51,14 +63,9 @@
 }
 
 @media screen and (max-width: 400px) {
-  .game-label {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .person-label {
-    align-items: center;
+  .fight-row {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
   }
 }

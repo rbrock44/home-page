@@ -1,38 +1,29 @@
-﻿img {
-  height: 2vh;
-  cursor: pointer;
+@use '../../../theme' as *;
+
+:host {
+  display: block;
 }
 
-.sport-ctn {
-  width: fit-content;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  background-color: #056e60bb;
-  /* Soft coral background for pop-out effect */
-  border-radius: 8px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  /* Shadow for pop-out effect */
-  padding: 16px;
-  transition: transform 0.2s, box-shadow 0.2s;
+.sport-panel {
+  @include panelCard;
+
+  background: #056e60bb;
+  --panel-text: #302f2f;
+  --panel-text-muted: #4b4b47;
+  width: 300px;
+  padding: 18px 20px 20px;
 }
 
-.sport-ctn:hover {
-  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
-  /* Stronger shadow on hover */
-}
-
-.sport {
-  justify-content: center;
-  display: flex;
+.sport-panel:hover {
+  border-color: var(--panel-border-strong);
+  box-shadow: var(--panel-shadow), 0 0 0 1px var(--buttonColor);
 }
 
 .sport-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 5px;
-  color: #302f2f;
+  @include signalLabel;
+
+  margin-bottom: 14px;
+  color: var(--panel-text);
 }
 
 .sport-game-ctn {
@@ -41,34 +32,75 @@
   gap: 8px;
 }
 
+.date-label {
+  font-family: $mono-font;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--panel-text-muted);
+  margin-bottom: 2px;
+}
+
 .game-row {
   display: grid;
-  grid-template-columns: 5fr 1fr 5fr 3fr;
-  /* Adjust ratios as needed */
+  grid-template-columns: minmax(0, 5fr) auto minmax(0, 5fr) minmax(0, 3fr);
   align-items: center;
-  gap: 2px;
-  background-color: #FFFAE6;
-  padding: 2px;
-  border-radius: 4px;
+  gap: 6px;
+  background: var(--panel-row-bg);
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 7px 10px;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.game-row:hover {
+  background: var(--panel-row-bg-hover);
+  border-color: var(--panel-border-strong);
 }
 
 .column {
   text-align: center;
-  font-size: 0.9rem;
-  color: #302f2f;
+  font-size: 0.85rem;
+  color: var(--panel-text);
 }
 
-.date-label {
-  font-weight: bold;
-  margin-bottom: 8px;
-  color: #302f2f;
+.at-label,
+.time-label {
+  font-family: $mono-font;
+  color: var(--panel-text-muted);
 }
 
-.away-label, .home-label {
-  font-weight: bold;
+.away-label,
+.home-label {
+  font-weight: 600;
   cursor: pointer;
+
+  &:hover {
+    color: var(--buttonColor);
+  }
 }
 
 .left {
   text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+@media screen and (max-width: 400px) {
+  .sport-panel {
+    width: 100%;
+  }
+
+  .game-row {
+    grid-template-columns: 1fr;
+    text-align: center;
+    justify-items: center;
+  }
+
+  .left,
+  .right {
+    text-align: center;
+  }
 }

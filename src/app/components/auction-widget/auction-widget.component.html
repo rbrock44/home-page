@@ -1,8 +1,8 @@
 @if (this.settingsService.showAuctions && this.auctions.length > 0) {
-  <div class="auctions-ctn">
-    <div class="auction-title">Auctions</div>
-    @for (auction of this.auctions; track auction) {
-      <div>
+  <div class="sport-panel auctions-panel">
+    <div class="sport-title">Auctions</div>
+    <div class="auction-list">
+      @for (auction of this.auctions; track auction) {
         <div class="auction-card" (click)="this.navigate(auction.url)">
           <div class="auction-name">{{ auction.name }}</div>
           <div class="auction-service">{{ auction.service }}</div>
@@ -17,14 +17,12 @@
               <span> | Note: {{ auction.note }}</span>
             }
             @if (auction.internetBidding) {
-              <div>
-                <span>ONLINE</span>
-              </div>
+              <span class="online-badge">Online</span>
             }
           </div>
         </div>
-      </div>
-    }
+      }
+    </div>
   </div>
 }
 

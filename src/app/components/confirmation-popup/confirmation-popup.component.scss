@@ -1,9 +1,21 @@
 @use '../../../theme' as *;
 
+:host {
+  display: block;
+  padding: 22px 24px;
+}
+
 .confirm-label {
   padding: 5px;
-  font-size: x-large;
-  font-weight: 400;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--panel-text);
+  text-align: center;
+}
+
+[data-perform-action] {
+  color: var(--panel-text-muted);
+  font-size: 0.9rem;
 }
 
 [data-popup-ctn] {
@@ -13,15 +25,36 @@
 }
 
 .button-div {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
   text-align: center;
   font-size: large;
 }
 
-[data-confirm-button], [data-cancel-button] {
-  height: 30px;
-  margin: 10px;
-  width: 100px;
-  font-size: large;
-  font-weight: 400;
-  @include buttonStyling();
+[data-confirm-button],
+[data-cancel-button] {
+  height: 36px;
+  width: 110px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+[data-confirm-button] {
+  background: var(--buttonColor);
+  color: var(--buttonTextColor, #06302e);
+  border: none;
+}
+
+[data-cancel-button] {
+  background: transparent;
+  color: var(--panel-text-muted);
+  border: 1px solid var(--panel-border-strong);
+
+  &:hover {
+    color: var(--panel-text);
+    border-color: var(--panel-text-muted);
+  }
 }

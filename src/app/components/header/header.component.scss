@@ -1,41 +1,145 @@
-nav {
-  float: left;
-  width: 100%;
+@use '../../../theme' as *;
+
+.console-bar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--panel-bg);
+  border-bottom: 2px solid var(--buttonColor);
+  box-shadow: 0 12px 24px -18px rgba(2, 8, 7, 0.75);
 }
 
-.nav-bar-bar {
-  height: 50px;
-}
-
-.nav-bar-link {
-  margin: 2px;
-  padding: 4px 8px;
-  border: black;
-  border-radius: 8px;
-  font-size: large;
-  transition: background-color 0.15s ease;
-
-  &:hover {
-    background-color: var(--blue-color-80);
-  }
-}
-
-.nav-bar-div {
+.console-inner {
+  box-sizing: border-box;
   display: flex;
+  align-items: center;
+  gap: 28px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 56px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex: none;
+  font-family: $display-font;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--panel-text);
+  white-space: nowrap;
+}
+
+.brand-dot {
+  width: 8px;
+  height: 8px;
+  flex: none;
+  background: var(--buttonColor);
+  box-shadow: 0 0 8px 1px var(--buttonColor);
+}
+
+.primary-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+}
+
+.secondary-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+}
+
+.ext-divider {
+  color: var(--panel-border-strong);
+  font-size: 12px;
+  line-height: 1;
+  user-select: none;
 }
 
 a {
   cursor: pointer;
-  text-decoration: underline;
+}
+
+.nav-bar-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 56px;
+  padding: 0 12px;
+  font-family: $mono-font;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--panel-text-muted);
+  transition: color 0.15s ease;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    bottom: 0;
+    height: 2px;
+    background: var(--buttonColor);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.15s ease;
+  }
+
+  &:hover {
+    color: var(--panel-text);
+  }
+
+  &.active {
+    color: var(--panel-text);
+
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--buttonColor);
+    outline-offset: -2px;
+  }
+}
+
+.ext-link {
+  padding: 6px 12px;
+  border: 1px solid var(--panel-border-strong);
+  border-radius: 999px;
+  font-family: $mono-font;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--panel-text-muted);
+  white-space: nowrap;
+  transition: border-color 0.15s ease, color 0.15s ease, background-color 0.15s ease;
+
+  &:hover {
+    color: var(--panel-text);
+    border-color: var(--buttonColor);
+    background: var(--panel-bg-raised);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--buttonColor);
+    outline-offset: 1px;
+  }
 }
 
 .shortened {
   display: none;
-}
-
-.first-header-row,
-.second-header-row {
-  display: flex;
 }
 
 @media screen and (max-width: 750px) {
@@ -44,16 +148,59 @@ a {
   }
 
   .shortened {
-    display: block;
+    display: inline-flex;
   }
 }
 
-@media screen and (max-width: 550px) {
-  .nav-bar-div {
-    flex-direction: column;
+@media screen and (max-width: 680px) {
+  .console-inner {
+    height: auto;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    padding: 12px 16px;
+  }
+
+  .brand {
+    order: 1;
+    width: 100%;
+  }
+
+  // mat-tab-nav-bar is a horizontal-scrolling tab strip by design, not a
+  // wrapping one, so on narrow screens it stays one line and scrolls
+  // instead of fighting Material for a multi-row layout.
+  .primary-nav {
+    order: 2;
+    width: 100%;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   .nav-bar-link {
-    margin: 5px;
+    height: 38px;
+    flex: none;
+  }
+
+  .secondary-nav {
+    order: 3;
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .console-bar {
+    position: static;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-bar-link::after,
+  .ext-link {
+    transition: none;
   }
 }
