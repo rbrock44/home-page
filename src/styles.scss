@@ -1,5 +1,4 @@
 @use "theme" as *;
-/* You can add global styles to this file, and also import other style files */
 
 html, body {
   height: 100%;
@@ -33,27 +32,18 @@ h1, h2, h3 {
   align-items: end;
 }
 
-// Tooltips render in the CDK overlay, outside any component's styles, so the
-// class for long wrapping lists has to be global.
 .wrapped-tooltip .mdc-tooltip__surface {
   white-space: normal;
   max-width: 320px;
   text-align: left;
 }
 
-// The only MatDialog in the app is the settings page's reset-confirmation
-// popup, so it can share the dark panel treatment unconditionally.
 .mat-mdc-dialog-surface {
   background: var(--panel-bg) !important;
   border: 1px solid var(--panel-border);
   border-top: 2px solid var(--buttonColor);
 }
 
-// The Settings page's dropdowns (color picker, the yes/no controls) open in
-// the CDK overlay too, so their option list can't be reached by the
-// settings panel's own scoped styles. Every mat-select in the app today
-// belongs to Settings, so this can live globally without leaking into
-// pages that haven't opted into the dark panel.
 .mat-mdc-select-panel {
   background: var(--panel-bg-raised) !important;
   border: 1px solid var(--panel-border-strong);

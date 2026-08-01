@@ -23,8 +23,6 @@
   border-color: var(--panel-border-strong);
 }
 
-// Title fights keep the "gold" highlight from ngStyle, but re-tuned so the
-// text still reads against a dark panel instead of the old light-mode fill.
 .fight-row[style*="background-color"] {
   color: #2a2005;
 

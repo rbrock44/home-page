@@ -1,17 +1,5 @@
-// Shared control primitives for the settings panel.
-//
-// The settings rows are split across two components (the page itself and
-// app-yes-no-dropdown), so the row grid and the Material form-field overrides
-// have to live in a partial both can `@use`. The colors come from custom
-// properties declared once on `.settings-panel`; they inherit down into the
-// child component at runtime.
-
 $settings-mono: ui-monospace, "Cascadia Mono", "Segoe UI Mono", Consolas, "SF Mono", monospace;
 
-// Fixed dark palette — the settings panel is always the dark instrument
-// face, independent of light/dark preference or the app's own accent
-// picker, so it reads consistently regardless of what color the rest of
-// the dashboard is wearing.
 @mixin settingsTokens {
   --set-ink: #eef6f3;
   --set-panel: #0e1f1d;
@@ -23,7 +11,6 @@ $settings-mono: ui-monospace, "Cascadia Mono", "Segoe UI Mono", Consolas, "SF Mo
   --set-accent: #2dd4c5;
 }
 
-// One setting: label (plus optional hint) on the left, control on the right.
 @mixin settingsRow {
   .setting-row {
     box-sizing: border-box;
@@ -32,7 +19,6 @@ $settings-mono: ui-monospace, "Cascadia Mono", "Segoe UI Mono", Consolas, "SF Mo
     align-items: center;
     gap: 6px 24px;
     padding: 7px 0;
-    // The page sets this to `none` on the last row of each section.
     border-bottom: var(--set-row-rule, 1px solid var(--set-line));
   }
 
@@ -68,9 +54,6 @@ $settings-mono: ui-monospace, "Cascadia Mono", "Segoe UI Mono", Consolas, "SF Mo
   }
 }
 
-// Compact the Material field: 40px tall, no floating label, no reserved
-// subscript. Everything here is a design token, so it inherits into the
-// component's internal DOM without ::ng-deep.
 @mixin settingsFormField {
   .setting-row__control .mat-mdc-form-field {
     width: 100%;
@@ -107,7 +90,6 @@ $settings-mono: ui-monospace, "Cascadia Mono", "Segoe UI Mono", Consolas, "SF Mo
       letter-spacing: 0;
     }
 
-    // Units read as part of the readout, so they sit inside the field.
     .mat-mdc-form-field-text-suffix {
       padding-left: 8px;
       font-family: $settings-mono;
@@ -115,7 +97,6 @@ $settings-mono: ui-monospace, "Cascadia Mono", "Segoe UI Mono", Consolas, "SF Mo
       color: var(--set-muted);
     }
 
-    // The value is typed, not stepped; the spinner only adds noise.
     input[type="number"] {
       -moz-appearance: textfield;
 

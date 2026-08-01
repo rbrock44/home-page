@@ -52,8 +52,6 @@
   margin-top: 18px;
 }
 
-// The lit indicator and the rule running to the panel edge: each group reads as
-// a labelled band on an instrument face.
 .section-eyebrow {
   display: flex;
   align-items: center;
@@ -85,7 +83,6 @@
 @include settingsRow;
 @include settingsFormField;
 
-// Closing rule of a section is the section break itself, so drop the row rule.
 .settings-section > .setting-row--last,
 .settings-section > app-yes-no-dropdown:last-child {
   --set-row-rule: none;
@@ -133,10 +130,6 @@
   }
 }
 
-// Fill tracks the color picker below, so it doubles as a live preview of the
-// choice. The border is fixed dark ink regardless of fill — that's what
-// stops the button from ever blending into the panel again, since some
-// tints (Gray, White) sit close in lightness to the panel background.
 .btn--primary {
   background: var(--buttonColor, var(--set-ink));
   border-color: var(--set-ink);

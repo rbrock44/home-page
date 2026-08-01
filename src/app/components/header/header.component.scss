@@ -165,9 +165,6 @@ a {
     width: 100%;
   }
 
-  // mat-tab-nav-bar is a horizontal-scrolling tab strip by design, not a
-  // wrapping one, so on narrow screens it stays one line and scrolls
-  // instead of fighting Material for a multi-row layout.
   .primary-nav {
     order: 2;
     width: 100%;
