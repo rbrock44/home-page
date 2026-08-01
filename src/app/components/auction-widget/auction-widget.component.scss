@@ -2,6 +2,8 @@
 
 :host {
   display: block;
+  width: 100%;
+  max-width: 820px;
 }
 
 .sport-panel {
@@ -12,7 +14,7 @@
 }
 
 .auctions-panel {
-  width: min(680px, 100%);
+  width: 100%;
 }
 
 .sport-title {
