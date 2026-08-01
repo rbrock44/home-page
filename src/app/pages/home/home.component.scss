@@ -24,9 +24,7 @@ p {
 .spot-prices-banner {
   @include panelCard;
 
-  background: #056e60bb;
-  --panel-text: #302f2f;
-  --panel-text-muted: #4b4b47;
+  background: var(--panel-bg-raised);
   display: flex;
   flex-direction: column;
   gap: 4px;

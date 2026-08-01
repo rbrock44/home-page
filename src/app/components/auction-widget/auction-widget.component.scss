@@ -7,9 +7,7 @@
 .sport-panel {
   @include panelCard;
 
-  background: #056e60bb;
-  --panel-text: #302f2f;
-  --panel-text-muted: #4b4b47;
+  background: var(--panel-bg-raised);
   padding: 18px 20px 20px;
 }
 

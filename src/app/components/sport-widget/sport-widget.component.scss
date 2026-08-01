@@ -7,9 +7,7 @@
 .sport-panel {
   @include panelCard;
 
-  background: #056e60bb;
-  --panel-text: #302f2f;
-  --panel-text-muted: #4b4b47;
+  background: var(--panel-bg-raised);
   width: 300px;
   padding: 18px 20px 20px;
 }
@@ -70,6 +68,10 @@
   color: var(--panel-text-muted);
 }
 
+.at-label {
+  padding: 0 4px;
+}
+
 .away-label,
 .home-label {
   font-weight: 600;
@@ -89,6 +91,10 @@
 }
 
 @media screen and (max-width: 400px) {
+  :host {
+    width: 100%;
+  }
+
   .sport-panel {
     width: 100%;
   }
