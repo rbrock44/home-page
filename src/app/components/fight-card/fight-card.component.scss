@@ -6,6 +6,7 @@
 }
 
 .fight-row {
+  box-sizing: border-box;
   width: 100%;
   display: grid;
   grid-template-columns: minmax(0, 4fr) auto minmax(0, 4fr);
