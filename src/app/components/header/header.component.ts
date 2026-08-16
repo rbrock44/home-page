@@ -81,10 +81,7 @@ export class HeaderComponent {
     this.windowService.openBlank(newUrl);
   }
 
-  homarr(mobile: boolean = false): void {
-    const baseUrl = `http://10.0.0.150:7575/boards/`
-    const newUrl = `Home`
-    const mobileUrl = `Mobile`
-    this.windowService.openBlank(newUrl + mobile ? mobileUrl : newUrl);
+  homarr(): void {
+    this.windowService.openBlank('http://10.0.0.150:7575/boards/Home');
   }
 }
