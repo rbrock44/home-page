@@ -1,10 +1,12 @@
 ﻿.header-div {
   text-align: center;
+  padding-top: 32px;
   margin-bottom: 50px;
 }
 
 .end-of-month-container {
-  text-align: center;
+  display: flex;
+  justify-content: center;
   margin-bottom: 30px;
 }
 

@@ -113,12 +113,22 @@ export function toBoolean(value): boolean {
   }
 }
 
+const ISO_DATE_TIME = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}/;
+
 export function liveTime(time: string): string {
-  if (time.length > 0) {
-    return time;
-  } else {
-    return 'LIVE'
+  if (time.length === 0) {
+    return 'LIVE';
   }
+
+  // Scheduled games come back as a raw UTC timestamp
+  if (ISO_DATE_TIME.test(time)) {
+    const parsed = new Date(time);
+    if (!isNaN(parsed.getTime())) {
+      return parsed.toLocaleTimeString([], {hour: 'numeric', minute: '2-digit'});
+    }
+  }
+
+  return time;
 }
 
 export function monthToIndex(month: string) {
