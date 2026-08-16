@@ -8,7 +8,7 @@
   @include panelCard;
 
   background: var(--panel-bg-raised);
-  width: 410px;
+  width: 460px;
   padding: 18px 20px 20px;
 }
 
@@ -41,7 +41,7 @@
 
 .game-row {
   display: grid;
-  grid-template-columns: minmax(0, 5fr) auto minmax(0, 5fr) minmax(0, 3fr);
+  grid-template-columns: minmax(0, 6fr) auto minmax(0, 6fr) minmax(0, 2fr);
   align-items: center;
   gap: 6px;
   background: var(--panel-row-bg);
