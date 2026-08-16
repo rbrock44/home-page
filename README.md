@@ -43,7 +43,7 @@ Pages
         - `Concerts` - goes to concerts page, this holds a table of concerts attended
         - `Matches` - goes to matches page, this holds a table of matches (Basketball, Football, Hockey, etc) attended
         - `Directory` - link to [Ryan's Website Directory](https://directory.ryan-brock.com/)
-        - `Homarr` - link to local network Hommar docker image
+        - `Homarr` - link to local Homarr dashboard (only reachable while on the home network)
     - Media Search
         - use this to see if the movie (or tv show) is in my collection
         - Refresh button - refreshes database with source (will take a minute or so to fully update)
@@ -84,15 +84,16 @@ Screenshots:
 
 ## 🛠 Technologies
 
-- Framework: `Angular 12`
-- Testing: `Karma`
+- Framework: `Angular 22`
+- UI: `Angular Material`
+- Testing: `Karma` + `Jasmine`
 - Deployment: `GitHub Pages`
 
 ---
 
 ## 🚀 Getting Started (Local Setup)
 
-* Install [node](https://nodejs.org/en) - v16 is needed
+* Install [node](https://nodejs.org/en) - v24 is needed
 * Clone [repo](https://github.com/rbrock44/home-page)
 
 ---
@@ -110,16 +111,14 @@ npm start
 
 - Unit
     - `ng test` || `npm run test`
-- Integration
-    - `ng e2e` || `npm run e2e`
 
 ---
 
 ### Github Hooks
 
-- Build
-    - Trigger: On Push to Main
-    - Action(s): Builds application then kicks off gh page action to deploy build output
+- Build & Deploy
+    - Trigger: On Push to `master`
+    - Action(s): Installs dependencies, runs unit tests (`ng test --watch=false --browsers=ChromeHeadless`), builds the project, then deploys the build output to GitHub Pages
 
 ---
 
@@ -131,6 +130,6 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ### Deploy
 
-Run `npm run prod` to build and deploy the project. Make sure to be on `master` and that it is up to date before running the command. It's really meant to be a CI/CD action
+Deployment happens automatically via the GitHub Actions workflow (`.github/workflows/deploy.yml`) on every push to `master`. To deploy manually instead, run `npm run prod` to build and push to the `gh-pages` branch directly - make sure `master` is up to date first.
 
 ---
