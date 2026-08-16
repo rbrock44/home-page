@@ -5,9 +5,9 @@
       <span class="date-label">{{ gamesPerDate.date }}</span>
       @for (game of gamesPerDate.games; track game) {
         <div class="game-row">
-          <div class="column away-label right" (click)="imgClick(game, false)">{{ game.opponent }}</div>
+          <div class="column away-label right" [title]="game.opponent" (click)="imgClick(game, false)">{{ game.opponent }}</div>
           <div class="column at-label">&#64;</div>
-          <div class="column home-label left" (click)="imgClick(game)">{{ game.home }}</div>
+          <div class="column home-label left" [title]="game.home" (click)="imgClick(game)">{{ game.home }}</div>
           <div class="column time-label">{{ this.liveTime(game.time) }}</div>
         </div>
       }

@@ -8,12 +8,12 @@
         <!-- away team Column -->
         <ng-container matColumnDef="away">
           <mat-header-cell *matHeaderCellDef mat-sort-header>Away</mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.away}} </mat-cell>
+          <mat-cell *matCellDef="let element"><span class="team-name" [matTooltip]="element.away" matTooltipClass="wrapped-tooltip">{{element.away}}</span></mat-cell>
         </ng-container>
         <!--home team Column -->
         <ng-container matColumnDef="home">
           <mat-header-cell *matHeaderCellDef mat-sort-header>Home</mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.home}} </mat-cell>
+          <mat-cell *matCellDef="let element"><span class="team-name" [matTooltip]="element.home" matTooltipClass="wrapped-tooltip">{{element.home}}</span></mat-cell>
         </ng-container>
         <!-- final score Column -->
         <ng-container matColumnDef="finalScore">

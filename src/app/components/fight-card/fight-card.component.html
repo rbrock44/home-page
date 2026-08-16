@@ -4,9 +4,9 @@
       [ngStyle]="fight.titleFight && {'background-color': 'gold'}"
       (click)="fightClick(fight)"
       >
-      <div class="column person-label right">{{this.getPerson(fight.title)}}</div>
+      <div class="column person-label right" [title]="this.getPerson(fight.title)">{{this.getPerson(fight.title)}}</div>
       <div class="vs-label column">vs.</div>
-      <div class="column person-label left">{{this.getPerson(fight.title, false)}}</div>
+      <div class="column person-label left" [title]="this.getPerson(fight.title, false)">{{this.getPerson(fight.title, false)}}</div>
     </div>
   </div>
 }

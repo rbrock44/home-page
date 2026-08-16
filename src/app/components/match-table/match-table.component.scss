@@ -75,6 +75,19 @@ input {
   width: 300px;
 }
 
+.mat-column-away,
+.mat-column-home {
+  flex: 1.4;
+}
+
+.team-name {
+  min-width: 0;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 /* Responsive Styles */
 @media screen and (max-width: 1100px) {
   .center {
