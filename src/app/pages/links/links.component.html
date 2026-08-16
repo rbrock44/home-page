@@ -3,6 +3,10 @@
     <header data-header-title>Links</header>
   </div>
 
+  <div class="end-of-month-container">
+    <button mat-tab-link mat-theme="accent" (click)="openEndOfMonth()" class="nav-bar-link end-of-month-button">Open End of Month</button>
+  </div>
+
   <div id="link-container">
     <div class="first-link-column">
       @for (link of firstColumnLinks; track link) {

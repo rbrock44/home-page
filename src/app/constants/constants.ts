@@ -75,13 +75,24 @@ export const LINKS_FIRST_COLUMN: Link[] = [
   new Link('Ameren', '', 'https://www.ameren.com/'),
   new Link('AT&T', '', 'https://caaid.att.com/isam/sps/static/signinRedirect.html'),
   new Link('Spectrum', '', 'https://www.spectrum.net/billing'),
+  new Link('Circle Fiber', '', 'https://circlefiber.myservicemanager.net/#/login'),
   new Link('T. Price (GS 401k)', 'T. Price', 'https://www.troweprice.com/workplace/en/login.html?pdurl=/rws/account/participant/home'),
   new Link('Vanguard (Vizient 401k)', 'Vanguard', 'https://ownyourfuture.vanguard.com/home/login#/'),
+  new Link('Fidelity (eSim 401k)', 'Fidelity', 'https://www.netbenefits.com'),
   new Link('Flatbranch (Home Loan)', 'Flatbranch', 'https://flatbranchservicing.com/'),
   new Link('Truist (Home Loan)', 'Truist', 'https://www.truist.com/'),
 ]
 
 export const LINKS_SECOND_COLUMN: Link[] = [
+]
+
+export const END_OF_MONTH_LINKS: string[] = [
+  'https://www.marcus.com/us/en/login',
+  'https://www.troweprice.com/workplace/en/login.html?pdurl=/rws/account/participant/home',
+  'https://ownyourfuture.vanguard.com/home/login#/',
+  'https://flatbranchservicing.com/',
+  'https://www.truist.com/',
+  'https://www.netbenefits.com',
 ]
 
 export function isNullOrUndefined(str: string): boolean {

@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { WindowService } from '../../services/window.service';
 import { Link } from '../../models/link.model';
-import { LINKS_FIRST_COLUMN, LINKS_SECOND_COLUMN } from 'src/app/constants/constants';
+import { END_OF_MONTH_LINKS, LINKS_FIRST_COLUMN, LINKS_SECOND_COLUMN } from 'src/app/constants/constants';
 
 @Component({
     selector: 'app-links-page',
@@ -19,5 +19,9 @@ export class LinkComponent {
 
   urlNav(url: string): void {
     this.windowService.openBlank(url);
+  }
+
+  openEndOfMonth(): void {
+    END_OF_MONTH_LINKS.forEach(url => this.windowService.openBlank(url));
   }
 }
