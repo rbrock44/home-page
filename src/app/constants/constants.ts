@@ -78,7 +78,7 @@ export const LINKS_FIRST_COLUMN: Link[] = [
   new Link('Spectrum', '', 'https://www.spectrum.net/billing'),
   new Link('Circle Fiber', '', 'https://circlefiber.myservicemanager.net/#/login'),
   new Link('T. Price (GS 401k)', 'T. Price', 'https://www.troweprice.com/workplace/en/login.html?pdurl=/rws/account/participant/home'),
-  new Link('Vanguard (Vizient 401k)', 'Vanguard', 'https://ownyourfuture.vanguard.com/home/login#/'),
+  new Link('Vanguard (401k)', 'Vanguard', 'https://ownyourfuture.vanguard.com/home/login#/'),
   new Link('Fidelity (eSim 401k)', 'Fidelity', 'https://www.netbenefits.com'),
   new Link('Flatbranch (Home Loan)', 'Flatbranch', 'https://flatbranchservicing.com/'),
   new Link('Truist (Home Loan)', 'Truist', 'https://www.truist.com/'),

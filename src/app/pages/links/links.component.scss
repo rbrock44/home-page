@@ -1,7 +1,14 @@
-﻿.header-div {
+@use '../../../theme' as *;
+
+.header-div {
   text-align: center;
   padding-top: 32px;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
+}
+
+[data-header-title] {
+  font-size: xx-large;
+  padding: 5px;
 }
 
 .end-of-month-container {
@@ -10,64 +17,60 @@
   margin-bottom: 30px;
 }
 
-
-[data-header-title] {
-  font-size: xx-large;
-  padding: 5px;
+// A single flex row that wraps and re-centers itself: with one column it's
+// one item centered on the page; with two, the pair centers as a block.
+// Neither case needs its own rule because there's never a phantom empty
+// column taking up a flex slot (see the @if in the template).
+#link-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  padding: 0 24px;
 }
 
-nav {
-  float: left;
-  width: 100%;
-}
-
-.nav-bar-bar {
-  height: 50px;
+.first-link-column,
+.second-link-column {
+  display: flex;
+  flex-direction: column;
+  // Center, don't stretch: each button keeps its own content-driven width,
+  // so a short label like "Truist" reads as a smaller button than
+  // "Bank of Missouri" instead of every button matching the longest one.
+  align-items: center;
+  gap: 6px;
 }
 
 .nav-bar-link {
-  margin: 5px;
+  // The <a> sits inside a plain wrapper <div> (for the lengthened/shortened
+  // toggle), not directly in the flex column, so flexbox never blockifies
+  // it. Without an explicit block-level display, an anchor's vertical
+  // padding paints but doesn't occupy layout space. inline-block fixes
+  // that while still sizing the button to its own text.
+  box-sizing: border-box;
+  display: inline-block;
   cursor: pointer;
   text-decoration: none;
-  font-size: large;
-  font-weight: bold;
-  color: #302f2f;
-  background-color: #056e60bb; 
-  padding: 6px 10px; 
-  border-radius: 6px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for pop-out */
-  transition: transform 0.2s, box-shadow 0.2s;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--panel-text);
+  background: var(--panel-bg-raised);
+  border: 1px solid var(--panel-border);
+  border-radius: 8px;
+  padding: 6px 20px;
+  min-width: 120px;
+  max-width: 100%;
+  transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .nav-bar-link:hover {
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15); 
-  transform: scale(1.05); 
-  background-color: #034f49; 
-}
-
-a {
-  text-decoration: underline;
+  border-color: var(--buttonColor);
+  box-shadow: 0 0 0 1px var(--buttonColor);
+  transform: translateY(-1px);
 }
 
 .shortened {
   display: none;
-}
-
-.first-link-column, .second-link-column {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
-}
-
-.first-link-column {
-  width: 238px;
-}
-
-#link-container {
-  display: flex;
-  justify-content: center;
-  gap: 20px; /* Space between the two columns */
 }
 
 @media (max-width: 750px) {
@@ -80,13 +83,16 @@ a {
   }
 
   #link-container {
-    flex-direction: column; /* Stack columns vertically */
-    align-items: center; /* Center align for mobile */
-    gap: 15px; /* Adjust spacing for readability */
+    gap: 28px;
+  }
+
+  .first-link-column,
+  .second-link-column {
+    max-width: 100%;
   }
 
   .nav-bar-link {
-    font-size: medium; /* Adjust size for smaller screens */
-    padding: 5px 8px; /* Compact padding for mobile */
+    font-size: 14px;
+    padding: 5px 16px;
   }
 }

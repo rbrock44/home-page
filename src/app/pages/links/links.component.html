@@ -17,14 +17,16 @@
       }
     </div>
 
-    <div class="second-link-column">
-      @for (link of secondColumnLinks; track link) {
-        <div>
-          <a mat-tab-link mat-theme="accent" (click)="urlNav(link.url)" class="nav-bar-link lengthened">{{link.name}}</a>
-          <a mat-tab-link mat-theme="accent" (click)="urlNav(link.url)" class="nav-bar-link shortened">{{link.shortenedName === '' ? link.name : link.shortenedName}}</a>
-        </div>
-      }
-    </div>
+    @if (secondColumnLinks.length > 0) {
+      <div class="second-link-column">
+        @for (link of secondColumnLinks; track link) {
+          <div>
+            <a mat-tab-link mat-theme="accent" (click)="urlNav(link.url)" class="nav-bar-link lengthened">{{link.name}}</a>
+            <a mat-tab-link mat-theme="accent" (click)="urlNav(link.url)" class="nav-bar-link shortened">{{link.shortenedName === '' ? link.name : link.shortenedName}}</a>
+          </div>
+        }
+      </div>
+    }
   </div>
 
 </div>
