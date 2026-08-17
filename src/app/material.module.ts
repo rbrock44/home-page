@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [],
@@ -21,6 +22,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatSelectModule,
     MatSortModule,
     MatTooltipModule,
+    MatCheckboxModule,
   ],
   exports: [
     MatExpansionModule,
@@ -32,6 +34,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatSelectModule,
     MatSortModule,
     MatTooltipModule,
+    MatCheckboxModule,
   ]
 })
 export class MaterialModule {

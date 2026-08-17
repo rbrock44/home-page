@@ -12,6 +12,8 @@ import {SettingsService} from './services/settings.service';
 import {ConfirmationPopupComponent} from './components/confirmation-popup/confirmation-popup.component';
 import {MaterialModule} from './material.module';
 import {YesNoDropdownComponent} from "./components/yes-no-dropdown/yes-no-dropdown.component";
+import {ShowCheckboxComponent} from "./components/show-checkbox/show-checkbox.component";
+import {ShowWhichRowComponent} from "./components/show-which-row/show-which-row.component";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HomeComponent} from "./pages/home/home.component";
 import {AuctionWidgetComponent} from "./components/auction-widget/auction-widget.component";
@@ -42,6 +44,8 @@ import { MatchTableComponent } from './components/match-table/match-table.compon
         MediaSearchWidgetComponent,
         MmaWidgetComponent,
         SettingsPageComponent,
+        ShowCheckboxComponent,
+        ShowWhichRowComponent,
         SportWidgetComponent,
         YesNoDropdownComponent
     ],

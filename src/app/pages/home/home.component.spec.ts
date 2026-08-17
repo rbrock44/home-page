@@ -88,7 +88,8 @@ describe('HomeComponent', () => {
           true,
           true
         ],
-        item
+        item,
+        false
       );
       fixture.detectChanges();
       expectElementToContainContent(fixture, HEADER, item);

@@ -4,6 +4,7 @@ import {
   BUTTON_LIGHT_TEXT_COLORS,
   COLOR_DEFAULT,
   REFRESH_RATE_DEFAULT,
+  SHOW_LINKS_DEFAULT,
   SHOW_SPORTS_DEFAULT,
   TITLE_DEFAULT,
   toBoolean,
@@ -26,6 +27,7 @@ export class SettingsService implements OnDestroy {
   showFootball: boolean;
   showMma: boolean;
   showAuctions: boolean;
+  showLinks: boolean;
   whichBasketball: boolean;
   whichFootball: boolean;
   whichMma: boolean;
@@ -81,6 +83,7 @@ export class SettingsService implements OnDestroy {
     showSports: boolean[],
     whichSelection: boolean[],
     title: string,
+    showLinks: boolean,
   ) {
     this.title = title;
     this.refreshRate = refreshRate;
@@ -92,6 +95,7 @@ export class SettingsService implements OnDestroy {
     this.whichBasketball = whichSelection[0];
     this.whichFootball = whichSelection[1];
     this.whichMma = whichSelection[2];
+    this.showLinks = showLinks;
 
     this.saveToLocalStorage();
   }
@@ -106,6 +110,7 @@ export class SettingsService implements OnDestroy {
     this.whichBasketball = WHICH_SELECTION_DEFAULT;
     this.whichFootball = WHICH_SELECTION_DEFAULT;
     this.whichMma = WHICH_SELECTION_DEFAULT;
+    this.showLinks = SHOW_LINKS_DEFAULT;
     this.refreshRate = REFRESH_RATE_DEFAULT;
 
     this.title = TITLE_DEFAULT;
@@ -128,6 +133,7 @@ export class SettingsService implements OnDestroy {
     this.showFootball = toBoolean(this.windowService.getItem('home-page-show-football', SHOW_SPORTS_DEFAULT));
     this.showMma = toBoolean(this.windowService.getItem('home-page-show-mma', SHOW_SPORTS_DEFAULT));
     this.showAuctions = toBoolean(this.windowService.getItem('home-page-show-auctions', SHOW_SPORTS_DEFAULT));
+    this.showLinks = toBoolean(this.windowService.getItem('home-page-show-links', SHOW_LINKS_DEFAULT));
     this.whichBasketball = toBoolean(this.windowService.getItem('home-page-which-basketball', WHICH_SELECTION_DEFAULT));
     this.whichFootball = toBoolean(this.windowService.getItem('home-page-which-football', WHICH_SELECTION_DEFAULT));
     this.whichMma = toBoolean(this.windowService.getItem('home-page-which-mma', WHICH_SELECTION_DEFAULT));
@@ -141,6 +147,7 @@ export class SettingsService implements OnDestroy {
       new Item('home-page-show-football', this.showFootball.toString()),
       new Item('home-page-show-mma', this.showMma.toString()),
       new Item('home-page-show-auctions', this.showAuctions.toString()),
+      new Item('home-page-show-links', this.showLinks.toString()),
       new Item('home-page-which-basketball', this.whichBasketball.toString()),
       new Item('home-page-which-football', this.whichFootball.toString()),
       new Item('home-page-which-mma', this.whichMma.toString()),

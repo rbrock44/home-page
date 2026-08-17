@@ -7,6 +7,8 @@ import {SettingsService} from "../../services/settings.service";
 import {SettingsPageComponent} from "./settings-page.component";
 import {MaterialModule} from "../../material.module";
 import {YesNoDropdownComponent} from "../../components/yes-no-dropdown/yes-no-dropdown.component";
+import {ShowCheckboxComponent} from "../../components/show-checkbox/show-checkbox.component";
+import {ShowWhichRowComponent} from "../../components/show-which-row/show-which-row.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {
   clickElementAtIndex,
@@ -33,6 +35,8 @@ describe('SettingsPageComponent', () => {
     await TestBed.configureTestingModule({
     declarations: [
         SettingsPageComponent,
+        ShowCheckboxComponent,
+        ShowWhichRowComponent,
         YesNoDropdownComponent
     ],
     imports: [FormsModule,
@@ -76,15 +80,20 @@ describe('SettingsPageComponent', () => {
     expectElementPresentAtIndex(fixture, 'input', 1);
   });
 
-  it('should contain 6 yes no dropdowns', () => {
-    for (let i = 0; i < 6; i++) {
-      expectElementPresentAtIndex(fixture, 'app-yes-no-dropdown', i);
+  it('should contain 3 show/which rows', () => {
+    for (let i = 0; i < 3; i++) {
+      expectElementPresentAtIndex(fixture, 'app-show-which-row', i);
     }
   });
 
+  it('should contain show checkboxes for auctions and links', () => {
+    expectElementPresentAtIndex(fixture, 'app-show-checkbox', 0);
+    expectElementPresentAtIndex(fixture, 'app-show-checkbox', 1);
+  });
+
   it('should have color dropdown', () => {
-    // 7 yes/no dropdowns render their own label before the Color one
-    const index = 7;
+    // Color is the only remaining element with a top-level data-dropdown-label
+    const index = 0;
 
     expectElementToContainContentAtIndex(fixture, '[data-dropdown-label]', 'Color', index);
     // verifyDropdownOptions(fixture, options, values, index);
@@ -118,7 +127,8 @@ describe('SettingsPageComponent', () => {
         component.whichFootballControl.value,
         component.whichMmaControl.value,
       ],
-      component.titleControl.value
+      component.titleControl.value,
+      component.showLinksControl.value
     );
     expect(alertSpy).toHaveBeenCalledWith(APPLY_SETTING_SUCCESS_MESSAGE, 1)
   });

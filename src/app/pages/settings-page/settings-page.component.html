@@ -65,46 +65,38 @@
       <div class="settings-section">
         <h2 class="section-eyebrow">What to show</h2>
 
-        <app-yes-no-dropdown [control]="showBasketballControl"
-          [htmlId]="'show-basketball'"
+        <app-show-which-row [showControl]="showBasketballControl"
+          [whichControl]="whichBasketballControl"
+          [showHtmlId]="'show-basketball'"
+          [whichHtmlId]="'which-basketball'"
+          [yesOption]="this.settingsService.TODAY"
+          [noOption]="this.settingsService.UPCOMING"
           [name]="'Basketball games'"
-        ></app-yes-no-dropdown>
-        <app-yes-no-dropdown [control]="showFootballControl"
-          [htmlId]="'show-football'"
+        ></app-show-which-row>
+        <app-show-which-row [showControl]="showFootballControl"
+          [whichControl]="whichFootballControl"
+          [showHtmlId]="'show-football'"
+          [whichHtmlId]="'which-football'"
+          [yesOption]="this.settingsService.TODAY"
+          [noOption]="this.settingsService.UPCOMING"
           [name]="'Football games'"
-        ></app-yes-no-dropdown>
-        <app-yes-no-dropdown [control]="showMmaControl"
-          [htmlId]="'show-mma'"
+        ></app-show-which-row>
+        <app-show-which-row [showControl]="showMmaControl"
+          [whichControl]="whichMmaControl"
+          [showHtmlId]="'show-mma'"
+          [whichHtmlId]="'which-mma'"
+          [yesOption]="this.settingsService.TODAY"
+          [noOption]="this.settingsService.UPCOMING"
           [name]="'MMA fights'"
-        ></app-yes-no-dropdown>
-        <app-yes-no-dropdown [control]="showAuctionsControl"
+        ></app-show-which-row>
+        <app-show-checkbox [control]="showAuctionsControl"
           [htmlId]="'show-auctions'"
           [name]="'Auctions'"
-        ></app-yes-no-dropdown>
-      </div>
-
-      <!-- WHICH EVENTS -->
-      <div class="settings-section">
-        <h2 class="section-eyebrow">Which events to list</h2>
-
-        <app-yes-no-dropdown [control]="whichBasketballControl"
-          [htmlId]="'which-basketball'"
-          [yesOption]="this.settingsService.TODAY"
-          [noOption]="this.settingsService.UPCOMING"
-          [name]="'Basketball games'"
-        ></app-yes-no-dropdown>
-        <app-yes-no-dropdown [control]="whichFootballControl"
-          [htmlId]="'which-football'"
-          [yesOption]="this.settingsService.TODAY"
-          [noOption]="this.settingsService.UPCOMING"
-          [name]="'Football games'"
-        ></app-yes-no-dropdown>
-        <app-yes-no-dropdown [control]="whichMmaControl"
-          [htmlId]="'which-mma'"
-          [yesOption]="this.settingsService.TODAY"
-          [noOption]="this.settingsService.UPCOMING"
-          [name]="'MMA fights'"
-        ></app-yes-no-dropdown>
+        ></app-show-checkbox>
+        <app-show-checkbox [control]="showLinksControl"
+          [htmlId]="'show-links'"
+          [name]="'Links'"
+        ></app-show-checkbox>
       </div>
 
       <!-- APPEARANCE -->

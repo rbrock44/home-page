@@ -25,11 +25,13 @@ import { Location } from '@angular/common';
             class="nav-bar-link"
             [class.active]="service.show[1]"
             data-settings-nav>Settings</a>
-          <a mat-tab-link
-            (click)="show(2)"
-            class="nav-bar-link"
-            [class.active]="service.show[2]"
-            data-links-nav>Links</a>
+          @if (service.showLinks) {
+            <a mat-tab-link
+              (click)="show(2)"
+              class="nav-bar-link"
+              [class.active]="service.show[2]"
+              data-links-nav>Links</a>
+          }
           <a mat-tab-link
             (click)="show(3)"
             class="nav-bar-link"

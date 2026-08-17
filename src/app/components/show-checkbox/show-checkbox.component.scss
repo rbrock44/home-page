@@ -1,0 +1,27 @@
+@use '../../../settings-controls' as *;
+
+:host {
+  display: block;
+}
+
+@include settingsRow;
+
+.setting-row__control {
+  justify-self: end;
+
+  .mdc-checkbox {
+    --mdc-checkbox-selected-icon-color: var(--set-accent);
+    --mdc-checkbox-selected-hover-icon-color: var(--set-accent);
+    --mdc-checkbox-selected-focus-icon-color: var(--set-accent);
+    --mdc-checkbox-selected-pressed-icon-color: var(--set-accent);
+    --mdc-checkbox-unselected-icon-color: var(--set-line-strong);
+    --mdc-checkbox-unselected-hover-icon-color: var(--set-muted);
+    --mdc-checkbox-selected-checkmark-color: var(--set-panel);
+  }
+}
+
+@media only screen and (max-width: 620px) {
+  .setting-row__control {
+    justify-self: start;
+  }
+}
