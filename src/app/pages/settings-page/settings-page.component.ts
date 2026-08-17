@@ -1,11 +1,12 @@
 import {Component, OnDestroy, OnInit, ChangeDetectionStrategy} from '@angular/core';
-import {UntypedFormControl, UntypedFormGroup, Validators} from '@angular/forms';
+import {UntypedFormControl, Validators} from '@angular/forms';
+import {Subscription} from 'rxjs';
+import {debounceTime, filter} from 'rxjs/operators';
 import {AlertService} from 'src/app/services/alert.service';
 import {ConfirmationPopupComponent} from 'src/app/components/confirmation-popup/confirmation-popup.component';
 import {SettingsService} from 'src/app/services/settings.service';
 import {
   ACTION_CANCELLED_MESSAGE,
-  APPLY_SETTING_SUCCESS_MESSAGE,
   COLOR_OPTIONS,
   RESET_EVERYTHING_MESSAGE,
   RESET_SETTINGS_SUCCESS_MESSAGE
@@ -41,7 +42,7 @@ export class SettingsPageComponent implements OnInit, OnDestroy {
   whichMmaControl: UntypedFormControl = new UntypedFormControl('', [Validators.required]);
   colorControl: UntypedFormControl = new UntypedFormControl('', [Validators.required]);
 
-  settingsFormGroup: UntypedFormGroup;
+  private subscriptions: Subscription[] = [];
 
   constructor(public dialog: MatDialog,
               private alertService: AlertService,
@@ -50,24 +51,36 @@ export class SettingsPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.settingsFormGroup = new UntypedFormGroup({
-      refreshRate: this.refreshRateControl,
-      title: this.titleControl,
-      showFootball: this.showFootballControl,
-      showBasketball: this.showBasketballControl,
-      showMma: this.showMmaControl,
-      showAuctions: this.showAuctionsControl,
-      showLinks: this.showLinksControl,
-      whichFootball: this.whichFootballControl,
-      whichBasketball: this.whichBasketballControl,
-      whichMma: this.whichMmaControl,
-      applyNextRound: this.colorControl,
-    });
-
     this.applySettingsValuesToFormControls();
+
+    // Booleans and dropdowns are always valid, so they save the instant they change.
+    this.subscriptions.push(
+      this.showBasketballControl.valueChanges.subscribe(value => this.settingsService.updateSetting({showBasketball: value})),
+      this.showFootballControl.valueChanges.subscribe(value => this.settingsService.updateSetting({showFootball: value})),
+      this.showMmaControl.valueChanges.subscribe(value => this.settingsService.updateSetting({showMma: value})),
+      this.showAuctionsControl.valueChanges.subscribe(value => this.settingsService.updateSetting({showAuctions: value})),
+      this.showLinksControl.valueChanges.subscribe(value => this.settingsService.updateSetting({showLinks: value})),
+      this.whichBasketballControl.valueChanges.subscribe(value => this.settingsService.updateSetting({whichBasketball: value})),
+      this.whichFootballControl.valueChanges.subscribe(value => this.settingsService.updateSetting({whichFootball: value})),
+      this.whichMmaControl.valueChanges.subscribe(value => this.settingsService.updateSetting({whichMma: value})),
+    );
+
+    // Text/number fields debounce and only save once the value is valid, so a
+    // half-typed title or an out-of-range refresh rate never gets persisted.
+    this.subscriptions.push(
+      this.titleControl.valueChanges.pipe(
+        debounceTime(400),
+        filter(() => this.titleControl.valid),
+      ).subscribe(value => this.settingsService.updateSetting({title: value})),
+      this.refreshRateControl.valueChanges.pipe(
+        debounceTime(400),
+        filter(() => this.refreshRateControl.valid),
+      ).subscribe(value => this.settingsService.updateSetting({refreshRate: +value})),
+    );
   }
 
   ngOnDestroy(): void {
+    this.subscriptions.forEach(subscription => subscription.unsubscribe());
     this.settingsService.ngOnDestroy();
   }
 
@@ -90,26 +103,6 @@ export class SettingsPageComponent implements OnInit, OnDestroy {
         }
       });
     }
-  }
-
-  applyToSettings(): void {
-    this.settingsService.applySettings(
-      this.refreshRateControl.value,
-      [
-        this.showBasketballControl.value,
-        this.showFootballControl.value,
-        this.showMmaControl.value,
-        this.showAuctionsControl.value,
-      ],
-      [
-        this.whichBasketballControl.value,
-        this.whichFootballControl.value,
-        this.whichMmaControl.value,
-      ],
-      this.titleControl.value,
-      this.showLinksControl.value,
-    );
-    this.alertService.success(APPLY_SETTING_SUCCESS_MESSAGE, this.dateService.now());
   }
 
   applySettingsValuesToFormControls(): void {

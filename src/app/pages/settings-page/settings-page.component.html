@@ -4,7 +4,7 @@
 
     <div class="header-div">
       <header data-header-title>Settings</header>
-      <p class="panel-subhead">Choose what the dashboard shows and how often it reloads.</p>
+      <p class="panel-subhead">Choose what the dashboard shows and how often it reloads. Changes save instantly.</p>
     </div>
 
     <div data-settings-input>
@@ -106,7 +106,6 @@
         <div class="setting-row setting-row--last">
           <div data-dropdown-label class="setting-row__label">
             Color
-            <span class="setting-row__hint">Applies immediately — no need to apply changes.</span>
           </div>
           <div class="setting-row__control">
             <mat-form-field appearance="outline" subscriptSizing="dynamic" class="color-field">
@@ -130,12 +129,6 @@
     </div>
 
     <div class="buttons">
-      <button data-button-apply
-        type="button"
-        (click)="applyToSettings()"
-        [disabled]="!this.settingsFormGroup.valid"
-        class="btn btn--primary apply-button">Apply changes
-      </button>
       <button data-button-reset-everything
         type="button"
         (click)="resetEverything()"

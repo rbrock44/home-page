@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {Router} from '@angular/router';
 import { provideHttpClientTesting } from "@angular/common/http/testing";
@@ -11,7 +11,6 @@ import {ShowCheckboxComponent} from "../../components/show-checkbox/show-checkbo
 import {ShowWhichRowComponent} from "../../components/show-which-row/show-which-row.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {
-  clickElementAtIndex,
   expectElementPresent,
   expectElementPresentAtIndex,
   expectElementToContainContent,
@@ -19,7 +18,6 @@ import {
 } from "../../constants/expectations.spec";
 import {HEADER} from "../../constants/constants.spec";
 import {AlertService} from "../../services/alert.service";
-import {APPLY_SETTING_SUCCESS_MESSAGE} from "../../constants/constants";
 import {DateService} from "../../services/date.service";
 import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 
@@ -107,34 +105,52 @@ describe('SettingsPageComponent', () => {
     expect(settingSpy).toHaveBeenCalledWith(component.colorControl.value);
   });
 
-  it('should contain apply button', () => {
-    expectElementToContainContentAtIndex(fixture, 'button', 'Apply', 0);
-    const settingSpy = spyOn(settingsService, 'applySettings');
-    const alertSpy = spyOn(alertService, 'success');
+  it('should save show/which toggles instantly', () => {
+    fixture.detectChanges();
+    const settingSpy = spyOn(settingsService, 'updateSetting');
 
-    clickElementAtIndex(fixture, 'button', 0);
+    component.showBasketballControl.setValue(false);
+    expect(settingSpy).toHaveBeenCalledWith({showBasketball: false});
 
-    expect(settingSpy).toHaveBeenCalledWith(
-      component.refreshRateControl.value,
-      [
-        component.showBasketballControl.value,
-        component.showFootballControl.value,
-        component.showMmaControl.value,
-        component.showAuctionsControl.value,
-      ],
-      [
-        component.whichBasketballControl.value,
-        component.whichFootballControl.value,
-        component.whichMmaControl.value,
-      ],
-      component.titleControl.value,
-      component.showLinksControl.value
-    );
-    expect(alertSpy).toHaveBeenCalledWith(APPLY_SETTING_SUCCESS_MESSAGE, 1)
+    component.whichBasketballControl.setValue(true);
+    expect(settingSpy).toHaveBeenCalledWith({whichBasketball: true});
+
+    component.showLinksControl.setValue(true);
+    expect(settingSpy).toHaveBeenCalledWith({showLinks: true});
   });
 
+  it('should save a valid title after it settles', fakeAsync(() => {
+    fixture.detectChanges();
+    const settingSpy = spyOn(settingsService, 'updateSetting');
+
+    component.titleControl.setValue('new title');
+    tick(400);
+
+    expect(settingSpy).toHaveBeenCalledWith({title: 'new title'});
+  }));
+
+  it('should not save an invalid title', fakeAsync(() => {
+    fixture.detectChanges();
+    const settingSpy = spyOn(settingsService, 'updateSetting');
+
+    component.titleControl.setValue('');
+    tick(400);
+
+    expect(settingSpy).not.toHaveBeenCalled();
+  }));
+
+  it('should save a valid refresh rate after it settles', fakeAsync(() => {
+    fixture.detectChanges();
+    const settingSpy = spyOn(settingsService, 'updateSetting');
+
+    component.refreshRateControl.setValue('30');
+    tick(400);
+
+    expect(settingSpy).toHaveBeenCalledWith({refreshRate: 30});
+  }));
+
   it('should contain reset button', () => {
-    expectElementToContainContentAtIndex(fixture, 'button', 'Reset everything', 1);
+    expectElementToContainContentAtIndex(fixture, 'button', 'Reset everything', 0);
 
     // TODO: test reset button click - has mat dialog
   });

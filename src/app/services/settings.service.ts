@@ -78,6 +78,13 @@ export class SettingsService implements OnDestroy {
     root.style.setProperty('--buttonTextColor', BUTTON_LIGHT_TEXT_COLORS.has(value) ? '#f2f7f5' : '#06302e');
   }
 
+  updateSetting(setting: Partial<Pick<SettingsService,
+    'title' | 'refreshRate' | 'showBasketball' | 'showFootball' | 'showMma' | 'showAuctions' | 'showLinks' |
+    'whichBasketball' | 'whichFootball' | 'whichMma'>>): void {
+    Object.assign(this, setting);
+    this.saveToLocalStorage();
+  }
+
   applySettings(
     refreshRate: number,
     showSports: boolean[],
