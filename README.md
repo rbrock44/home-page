@@ -22,6 +22,7 @@ Screenshots:
   - [GitHub Hooks](#github-hooks)
   - [Build](#build)
   - [Deploy](#deploy)
+- [How to Contribute](#-how-to-contribute)
 
 ---
 
@@ -131,5 +132,12 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 ### Deploy
 
 Deployment happens automatically via the GitHub Actions workflow (`.github/workflows/deploy.yml`) on every push to `master`. To deploy manually instead, run `npm run prod` to build and push to the `gh-pages` branch directly - make sure `master` is up to date first.
+
+---
+
+## 🤝 How to Contribute
+
+Found a typo or a small, obvious fix? Open a PR directly.
+Want to change behavior or add something bigger? Open an issue first so we can talk it through before you put in the work.
 
 ---
