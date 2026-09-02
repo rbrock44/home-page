@@ -16,7 +16,6 @@ import {MmaWidgetComponent} from "../../components/mma-widget/mma-widget.compone
 import {AuctionWidgetComponent} from "../../components/auction-widget/auction-widget.component";
 import {FightCardComponent} from "../../components/fight-card/fight-card.component";
 import {MediaSearchWidgetComponent} from "../../components/media-search-widget/media-search-widget.component";
-import {MaterialModule} from "../../material.module";
 import {ReactiveFormsModule} from "@angular/forms";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
@@ -29,18 +28,14 @@ describe('HomeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    declarations: [
-        HomeComponent,
+    imports: [BrowserAnimationsModule,
+        ReactiveFormsModule,
+        RouterTestingModule, HomeComponent,
         AuctionWidgetComponent,
         FightCardComponent,
         MediaSearchWidgetComponent,
         MmaWidgetComponent,
-        SportWidgetComponent,
-    ],
-    imports: [BrowserAnimationsModule,
-        MaterialModule,
-        ReactiveFormsModule,
-        RouterTestingModule],
+        SportWidgetComponent],
     providers: [
         provideHttpClient(withXhr(), withInterceptorsFromDi()),
         provideHttpClientTesting()

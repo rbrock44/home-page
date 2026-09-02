@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, Output, ChangeDetectionStrategy} from '@angular/core';
-import {UntypedFormControl} from '@angular/forms';
+import { UntypedFormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatCheckbox } from '@angular/material/checkbox';
 
 @Component({
     selector: 'app-show-checkbox',
@@ -19,7 +20,7 @@ import {UntypedFormControl} from '@angular/forms';
     `,
     styleUrls: ['./show-checkbox.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MatCheckbox, FormsModule, ReactiveFormsModule]
 })
 export class ShowCheckboxComponent {
   @Input() control: UntypedFormControl;

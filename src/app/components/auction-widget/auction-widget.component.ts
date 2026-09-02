@@ -7,8 +7,7 @@ import { WindowService } from '../../services/window.service';
     selector: 'app-auction-widget',
     templateUrl: './auction-widget.component.html',
     styleUrls: ['./auction-widget.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    changeDetection: ChangeDetectionStrategy.Eager
 })
 export class AuctionWidgetComponent {
   @Input() auctions: Auction[] = [];

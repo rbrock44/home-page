@@ -9,8 +9,7 @@ import {liveTime} from "../../constants/constants";
     selector: 'app-sport-widget',
     templateUrl: './sport-widget.component.html',
     styleUrls: ['./sport-widget.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    changeDetection: ChangeDetectionStrategy.Eager
 })
 export class SportWidgetComponent {
   @Input() gamesPerDate: GamesPerDate = new GamesPerDate({games: []});

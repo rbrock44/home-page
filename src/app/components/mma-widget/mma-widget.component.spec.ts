@@ -58,17 +58,15 @@ describe('MmaWidgetComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
+    imports: [
+        RouterTestingModule,
         FightCardComponent,
-        MmaWidgetComponent,
-      ],
-      providers: [
+        MmaWidgetComponent
+    ],
+    providers: [
         HomeApiService,
-      ]
-    }).compileComponents();
+    ]
+}).compileComponents();
 
     service = TestBed.inject(SettingsService);
     router = TestBed.inject(Router);

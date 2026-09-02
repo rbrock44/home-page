@@ -53,16 +53,14 @@ describe('SportWidgetComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
+    imports: [
+        RouterTestingModule,
         SportWidgetComponent
-      ],
-      providers: [
+    ],
+    providers: [
         HomeApiService,
-      ]
-    }).compileComponents();
+    ]
+}).compileComponents();
 
     service = TestBed.inject(SettingsService);
     windowService = TestBed.inject(WindowService)

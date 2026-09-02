@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit, ChangeDetectionStrategy} from '@angular/core';
-import {UntypedFormControl, Validators} from '@angular/forms';
+import { UntypedFormControl, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {Subscription} from 'rxjs';
 import {debounceTime, filter} from 'rxjs/operators';
 import {AlertService} from 'src/app/services/alert.service';
@@ -13,13 +13,19 @@ import {
 } from "../../constants/constants";
 import {DateService} from "../../services/date.service";
 import { MatDialog } from '@angular/material/dialog';
+import { MatFormField, MatError, MatSuffix } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { ShowWhichRowComponent } from '../../components/show-which-row/show-which-row.component';
+import { ShowCheckboxComponent } from '../../components/show-checkbox/show-checkbox.component';
+import { MatSelect, MatSelectTrigger, MatOption } from '@angular/material/select';
+import { NgStyle } from '@angular/common';
 
 @Component({
     selector: 'app-settings-page',
     templateUrl: './settings-page.component.html',
     styleUrls: ['./settings-page.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MatFormField, MatInput, FormsModule, ReactiveFormsModule, MatError, MatSuffix, ShowWhichRowComponent, ShowCheckboxComponent, MatSelect, MatSelectTrigger, NgStyle, MatOption]
 })
 export class SettingsPageComponent implements OnInit, OnDestroy {
   colors = COLOR_OPTIONS;

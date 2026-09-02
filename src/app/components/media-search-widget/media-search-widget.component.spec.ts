@@ -2,7 +2,6 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {HomeApiService} from "../../services/home-api.service";
 import {MediaSearchWidgetComponent} from "./media-search-widget.component";
 import { provideHttpClientTesting } from "@angular/common/http/testing";
-import {MaterialModule} from "../../material.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {
   clickElement,
@@ -25,13 +24,9 @@ describe('MediaSearchWidgetComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    declarations: [
-        MediaSearchWidgetComponent
-    ],
     imports: [BrowserAnimationsModule,
         FormsModule,
-        MaterialModule,
-        ReactiveFormsModule],
+        ReactiveFormsModule, MediaSearchWidgetComponent],
     providers: [
         HomeApiService,
         provideHttpClient(withXhr(), withInterceptorsFromDi()),

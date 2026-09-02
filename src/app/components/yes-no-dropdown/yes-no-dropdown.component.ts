@@ -1,5 +1,8 @@
 import {Component, EventEmitter, Input, Output, ChangeDetectionStrategy} from '@angular/core';
-import {UntypedFormControl} from '@angular/forms';
+import { UntypedFormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormField, MatError } from '@angular/material/form-field';
+import { MatSelect, MatOption } from '@angular/material/select';
+import { NgClass } from '@angular/common';
 
 @Component({
     selector: 'app-yes-no-dropdown',
@@ -30,7 +33,7 @@ import {UntypedFormControl} from '@angular/forms';
     `,
     styleUrls: ['./yes-no-dropdown.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MatFormField, MatSelect, FormsModule, ReactiveFormsModule, MatOption, NgClass, MatError]
 })
 export class YesNoDropdownComponent {
   @Input() control: UntypedFormControl;

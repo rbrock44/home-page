@@ -8,13 +8,18 @@ import { WindowService } from '../../services/window.service';
 import { Auction } from 'src/app/models/auction.model';
 import { SpotPrice } from 'src/app/models/spot-price.model';
 import { GDQ_EVENTS } from 'src/app/constants/constants-gdq';
+import { MediaSearchWidgetComponent } from '../../components/media-search-widget/media-search-widget.component';
+import { NgStyle } from '@angular/common';
+import { SportWidgetComponent } from '../../components/sport-widget/sport-widget.component';
+import { MmaWidgetComponent } from '../../components/mma-widget/mma-widget.component';
+import { AuctionWidgetComponent } from '../../components/auction-widget/auction-widget.component';
 
 @Component({
     selector: 'app-home-page',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MediaSearchWidgetComponent, NgStyle, SportWidgetComponent, MmaWidgetComponent, AuctionWidgetComponent]
 })
 export class HomeComponent implements OnInit, OnDestroy {
   basketball: GamesPerDate = new GamesPerDate();

@@ -54,8 +54,7 @@ import { Location } from '@angular/common';
     </header>
   `,
     styleUrls: ['./header.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    changeDetection: ChangeDetectionStrategy.Eager
 })
 export class HeaderComponent {
 

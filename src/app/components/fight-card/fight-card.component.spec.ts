@@ -32,10 +32,8 @@ describe('FightCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [
-        FightCardComponent
-      ],
-    }).compileComponents();
+    imports: [FightCardComponent],
+}).compileComponents();
 
     windowService = TestBed.inject(WindowService)
     fixture = TestBed.createComponent(FightCardComponent);

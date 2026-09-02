@@ -22,8 +22,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
     </div>
   `,
     styleUrls: ['./confirmation-popup.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ConfirmationPopupComponent implements OnInit {
   PERFORM_THIS_ACTION: string = 'Are you sure you want to perform this action?';

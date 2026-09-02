@@ -5,7 +5,6 @@ import { provideHttpClientTesting } from "@angular/common/http/testing";
 import {HomeApiService} from "../../services/home-api.service";
 import {SettingsService} from "../../services/settings.service";
 import {SettingsPageComponent} from "./settings-page.component";
-import {MaterialModule} from "../../material.module";
 import {YesNoDropdownComponent} from "../../components/yes-no-dropdown/yes-no-dropdown.component";
 import {ShowCheckboxComponent} from "../../components/show-checkbox/show-checkbox.component";
 import {ShowWhichRowComponent} from "../../components/show-which-row/show-which-row.component";
@@ -31,16 +30,13 @@ describe('SettingsPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    declarations: [
-        SettingsPageComponent,
-        ShowCheckboxComponent,
-        ShowWhichRowComponent,
-        YesNoDropdownComponent
-    ],
     imports: [FormsModule,
         ReactiveFormsModule,
         RouterTestingModule,
-        MaterialModule],
+        SettingsPageComponent,
+        ShowCheckboxComponent,
+        ShowWhichRowComponent,
+        YesNoDropdownComponent],
     providers: [
         HomeApiService,
         SettingsService,

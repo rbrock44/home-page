@@ -5,30 +5,26 @@ import {AlertComponent} from "./components/alert/alert.component";
 import {CommonModule} from "@angular/common";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NoopAnimationsModule} from "@angular/platform-browser/animations";
-import {MaterialModule} from "./material.module";
 import {AlertService} from "./services/alert.service";
 import {HeaderComponent} from "./components/header/header.component";
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
+    imports: [
         CommonModule,
         FormsModule,
-        MaterialModule,
         NoopAnimationsModule,
         ReactiveFormsModule,
         RouterTestingModule,
-      ],
-      declarations: [
         AlertComponent,
+        HeaderComponent,
         AppComponent,
-        HeaderComponent
-      ],
-      providers: [
+    ],
+    providers: [
         AlertService,
-      ],
-    }).compileComponents();
+    ],
+}).compileComponents();
   });
 
   it('should create the app', () => {

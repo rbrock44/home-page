@@ -8,7 +8,6 @@ import { HEADER } from "../../constants/constants.spec";
 import {
   expectElementToContainContent
 } from "../../constants/expectations.spec";
-import { MaterialModule } from "../../material.module";
 import { AlertService } from "../../services/alert.service";
 import { DateService } from "../../services/date.service";
 import { HomeApiService } from "../../services/home-api.service";
@@ -26,14 +25,11 @@ describe('MatchComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    declarations: [
-        MatchComponent,
-        YesNoDropdownComponent
-    ],
     imports: [FormsModule,
         ReactiveFormsModule,
         RouterTestingModule,
-        MaterialModule],
+        MatchComponent,
+        YesNoDropdownComponent],
     providers: [
         HomeApiService,
         SettingsService,

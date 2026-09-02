@@ -15,13 +15,11 @@ describe('HeaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
+    imports: [
+        RouterTestingModule,
         HeaderComponent
-      ],
-    }).compileComponents();
+    ],
+}).compileComponents();
 
     router = TestBed.inject(Router);
     fixture = TestBed.createComponent(HeaderComponent);

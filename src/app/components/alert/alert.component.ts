@@ -15,8 +15,7 @@ import {Alert, AlertType} from "../../models/alert.model";
     }
     `,
     styleUrls: ['./alert.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    changeDetection: ChangeDetectionStrategy.Eager
 })
 export class AlertComponent implements OnInit, OnDestroy {
   @Input() id = 'default-alert';

@@ -7,8 +7,7 @@ import { END_OF_MONTH_LINKS, LINKS_FIRST_COLUMN, LINKS_SECOND_COLUMN } from 'src
     selector: 'app-links-page',
     templateUrl: './links.component.html',
     styleUrls: ['./links.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    changeDetection: ChangeDetectionStrategy.Eager
 })
 export class LinkComponent {
   firstColumnLinks: Link[] = LINKS_FIRST_COLUMN;

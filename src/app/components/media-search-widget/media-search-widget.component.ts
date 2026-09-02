@@ -1,13 +1,15 @@
 import {Component, ChangeDetectionStrategy} from '@angular/core';
 import {HomeApiService} from "../../services/home-api.service";
-import {UntypedFormControl} from "@angular/forms";
+import { UntypedFormControl, FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle } from '@angular/material/expansion';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
     selector: 'app-media-search-widget',
     templateUrl: './media-search-widget.component.html',
     styleUrls: ['./media-search-widget.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, MatIcon, FormsModule, ReactiveFormsModule]
 })
 export class MediaSearchWidgetComponent {
   expanded = false;

@@ -1,5 +1,8 @@
 import {Component, Input, ChangeDetectionStrategy} from '@angular/core';
-import {UntypedFormControl} from '@angular/forms';
+import { UntypedFormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatCheckbox } from '@angular/material/checkbox';
+import { MatFormField, MatError } from '@angular/material/form-field';
+import { MatSelect, MatOption } from '@angular/material/select';
 
 @Component({
     selector: 'app-show-which-row',
@@ -34,7 +37,7 @@ import {UntypedFormControl} from '@angular/forms';
     `,
     styleUrls: ['./show-which-row.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MatCheckbox, FormsModule, ReactiveFormsModule, MatFormField, MatSelect, MatOption, MatError]
 })
 export class ShowWhichRowComponent {
   @Input() showControl: UntypedFormControl;
