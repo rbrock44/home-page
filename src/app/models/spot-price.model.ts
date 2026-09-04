@@ -1,3 +1,15 @@
+export interface SpotPriceData {
+  gold?: number;
+  silver?: number;
+  platinum?: number;
+  goldback?: number;
+  description?: string;
+  platinumSource?: string;
+  silverSource?: string;
+  goldSource?: string;
+  timeStamp?: string;
+}
+
 export class SpotPrice {
   gold: number;
   silver: number;
@@ -9,7 +21,7 @@ export class SpotPrice {
   goldSource: string;
   timeStamp: string;
 
-  constructor(data?: any) {
+  constructor(data?: SpotPriceData) {
     this.gold = data?.gold || 0;
     this.silver = data?.silver || 0;
     this.platinum = data?.platinum || 0;

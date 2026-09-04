@@ -19,11 +19,11 @@ export class ConcertService {
   sortTable(data: Concert[], sort: MatSort): Concert[] {
     switch (sort?.direction) {
       case 'asc':
-        data = this.sortConcerts(data, sort.active)
+        data = this.sortConcerts(data, sort.active as keyof Concert)
         sort.direction = 'asc';
         break;
       case 'desc':
-        data = this.sortConcerts(data, sort.active, false)
+        data = this.sortConcerts(data, sort.active as keyof Concert, false)
         sort.direction = 'desc';
         break;
       default:
@@ -69,7 +69,7 @@ export class ConcertService {
     return value;
   }
 
-  private sortConcerts(data: Concert[], column: string, asc: boolean = true): Concert[] {
+  private sortConcerts(data: Concert[], column: keyof Concert, asc: boolean = true): Concert[] {
     return data.sort((a: Concert, b: Concert) => {
       let value1 = Concert.getValue(column, a);
       let value2 = Concert.getValue(column, b);

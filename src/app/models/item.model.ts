@@ -1,8 +1,8 @@
 export class Item {
   name: string;
-  value: any;
+  value: string;
 
-  public constructor(name: string, value: any) {
+  public constructor(name: string, value: string) {
     this.name = name;
     this.value = value;
   }

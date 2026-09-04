@@ -15,7 +15,7 @@ export class Concert {
     this.attendees = attendees;
   }
 
-  static getValue(column: string, concert: Concert): any {
+  static getValue<K extends keyof Concert>(column: K, concert: Concert): Concert[K] {
     return concert[column]
   }
 }

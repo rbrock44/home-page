@@ -103,9 +103,9 @@ export class SettingsPageComponent implements OnInit, OnDestroy {
         if (shouldReset) {
           this.settingsService.resetEverything();
           this.applySettingsValuesToFormControls();
-          this.alertService.success(RESET_SETTINGS_SUCCESS_MESSAGE, this.dateService.now());
+          this.alertService.success(RESET_SETTINGS_SUCCESS_MESSAGE);
         } else {
-          this.alertService.warn(ACTION_CANCELLED_MESSAGE, this.dateService.now());
+          this.alertService.warn(ACTION_CANCELLED_MESSAGE);
         }
       });
     }

@@ -39,7 +39,7 @@ export class MediaSearchWidgetComponent {
     );
   };
 
-  refresh(event: any): void {
+  refresh(event: Event): void {
     event.preventDefault();
     this.refreshed = false;
     this.hasError = false;

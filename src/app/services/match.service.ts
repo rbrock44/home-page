@@ -19,11 +19,11 @@ export class MatchService {
   sortTable(data: Match[], sort: MatSort): Match[] {
     switch (sort?.direction) {
       case 'asc':
-        data = this.sortMatches(data, sort.active)
+        data = this.sortMatches(data, sort.active as keyof Match)
         sort.direction = 'asc';
         break;
       case 'desc':
-        data = this.sortMatches(data, sort.active, false)
+        data = this.sortMatches(data, sort.active as keyof Match, false)
         sort.direction = 'desc';
         break;
       default:
@@ -71,7 +71,7 @@ export class MatchService {
     return value;
   }
 
-  private sortMatches(data: Match[], column: string, asc: boolean = true): Match[] {
+  private sortMatches(data: Match[], column: keyof Match, asc: boolean = true): Match[] {
     return data.sort((a: Match, b: Match) => {
       let value1 = Match.getValue(column, a);
       let value2 = Match.getValue(column, b);

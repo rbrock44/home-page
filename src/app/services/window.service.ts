@@ -10,11 +10,11 @@ export class WindowService {
     window.setInterval(func, timeout);
   }
 
-  public openBlank(url) {
+  public openBlank(url: string) {
     window.open(url, "_blank");
   }
 
-  public getItem(item: string, defaultValue: any): any {
+  public getItem<T extends string | number | boolean>(item: string, defaultValue: T): string | T {
     const value: string = window.localStorage.getItem(item);
     return !isNullOrUndefined(value) ? value : defaultValue;
   }
