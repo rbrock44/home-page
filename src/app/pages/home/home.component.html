@@ -1,6 +1,6 @@
 <div class="home-ctn">
   <div class="header-div">
-    <header data-header-title>{{this.settingsService.title}}</header>
+    <h1 data-header-title>{{this.settingsService.title}}</h1>
   </div>
 
   <app-media-search-widget></app-media-search-widget>
@@ -9,7 +9,7 @@
     <div class="gdq-banner">
       @for (event of this.upcomingOrOngoingEvents(); track event) {
         <div>
-          <div class="gdq-highlight" [ngStyle]="this.gdqHighlight(event) && {'background-color': 'gold', 'border-radius':'6px'}" (click)="gdqClick(event.url)">
+          <div class="gdq-highlight" [ngStyle]="this.gdqHighlight(event) && {'background-color': 'gold', 'border-radius':'6px'}" (click)="gdqClick(event.url)" (keydown.enter)="gdqClick(event.url)" role="link" tabindex="0" [attr.aria-label]="'Open ' + event.name">
             <div class="gdq-div">
               {{ event.name }}&nbsp;&nbsp;{{ this.formatDate(this.parseDate(event.startDate)) }} - {{ this.formatDate(this.parseDate(event.endDate)) }}
             </div>
@@ -27,7 +27,7 @@
 
   <div class="spot-prices-banner-wrapper">
     <div class="spot-prices-banner">
-      <div class="spot-prices-div">
+      <div class="spot-prices-div" aria-live="polite">
         Gold: {{ this.formatSpotPrice(this.spotPrices.gold) }},
         Silver: {{ this.formatSpotPrice(this.spotPrices.silver) }},
         Platinum: {{ this.formatSpotPrice(this.spotPrices.platinum) }}
@@ -46,6 +46,6 @@
   </div>
 
   <div class="refresh-count-wrapper">
-    <span class="refresh-count">Refresh count: {{this.refreshCount}}</span>
+    <span class="refresh-count" aria-live="polite">Refresh count: {{this.refreshCount}}</span>
   </div>
 </div>

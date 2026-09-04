@@ -10,9 +10,13 @@
           <div class="media-search-title">
             Media Search
             <div class="refresh-media">
-              <mat-icon (click)="refresh($event)">refresh</mat-icon>
+              <mat-icon (click)="refresh($event)"
+                        (keydown.enter)="refresh($event)"
+                        role="button"
+                        tabindex="0"
+                        aria-label="Refresh media library">refresh</mat-icon>
               @if (refreshed) {
-                <div class="results">
+                <div class="results" role="status">
                   <p>Refreshed</p>
                 </div>
               }
@@ -22,11 +26,15 @@
       </mat-expansion-panel-header>
       <div class="search-ctn">
         <div class="search">
-          <input type="text" (keyup.enter)="search()" [formControl]="control">
-          <mat-icon (click)="search()">search</mat-icon>
+          <input type="text" (keyup.enter)="search()" [formControl]="control" aria-label="Search media">
+          <mat-icon (click)="search()"
+                    (keydown.enter)="search()"
+                    role="button"
+                    tabindex="0"
+                    aria-label="Search">search</mat-icon>
         </div>
         @if (searchResults?.length > 0 || hasSearched || hasError) {
-          <div id="result-container">
+          <div id="result-container" aria-live="polite">
             @if (searchResults?.length > 0) {
               <div class="center">
                 <p class="bold">{{searchResults.length}} Result(s)</p>

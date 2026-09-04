@@ -1,28 +1,28 @@
 <div>
   <div class="header-div">
-    <header data-header-title>Links</header>
+    <h1 data-header-title>Links</h1>
   </div>
 
   <div class="end-of-month-container">
-    <a mat-tab-link mat-theme="accent" (click)="openEndOfMonth()" class="nav-bar-link end-of-month-button">Open End of Month</a>
+    <a mat-tab-link mat-theme="accent" (click)="openEndOfMonth()" (keydown.enter)="openEndOfMonth()" tabindex="0" role="link" class="nav-bar-link end-of-month-button">Open End of Month</a>
   </div>
 
-  <div id="link-container">
-    <div class="first-link-column">
+  <div id="link-container" role="list">
+    <div class="first-link-column" role="listitem">
       @for (link of firstColumnLinks; track link) {
         <div>
-          <a mat-tab-link mat-theme="accent" (click)="urlNav(link.url)" class="nav-bar-link lengthened">{{link.name}}</a>
-          <a mat-tab-link mat-theme="accent" (click)="urlNav(link.url)" class="nav-bar-link shortened">{{link.shortenedName === '' ? link.name : link.shortenedName}}</a>
+          <a mat-tab-link mat-theme="accent" (click)="urlNav(link.url)" (keydown.enter)="urlNav(link.url)" tabindex="0" role="link" class="nav-bar-link lengthened">{{link.name}}</a>
+          <a mat-tab-link mat-theme="accent" (click)="urlNav(link.url)" (keydown.enter)="urlNav(link.url)" tabindex="0" role="link" [attr.aria-label]="link.name" class="nav-bar-link shortened">{{link.shortenedName === '' ? link.name : link.shortenedName}}</a>
         </div>
       }
     </div>
 
     @if (secondColumnLinks.length > 0) {
-      <div class="second-link-column">
+      <div class="second-link-column" role="listitem">
         @for (link of secondColumnLinks; track link) {
           <div>
-            <a mat-tab-link mat-theme="accent" (click)="urlNav(link.url)" class="nav-bar-link lengthened">{{link.name}}</a>
-            <a mat-tab-link mat-theme="accent" (click)="urlNav(link.url)" class="nav-bar-link shortened">{{link.shortenedName === '' ? link.name : link.shortenedName}}</a>
+            <a mat-tab-link mat-theme="accent" (click)="urlNav(link.url)" (keydown.enter)="urlNav(link.url)" tabindex="0" role="link" class="nav-bar-link lengthened">{{link.name}}</a>
+            <a mat-tab-link mat-theme="accent" (click)="urlNav(link.url)" (keydown.enter)="urlNav(link.url)" tabindex="0" role="link" [attr.aria-label]="link.name" class="nav-bar-link shortened">{{link.shortenedName === '' ? link.name : link.shortenedName}}</a>
           </div>
         }
       </div>
