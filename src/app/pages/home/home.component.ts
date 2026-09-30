@@ -44,12 +44,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.startUp()
     });
 
-    const queryParams = new URLSearchParams(window.location.search);
-    const pageParam = queryParams.get('page');
-
-    if (pageParam) {
-      this.settingsService.setShowWithUrlParam(pageParam);
-    }
+    this.settingsService.restorePageFromUrl();
   }
 
   startUp(doLoop: boolean = true): void {

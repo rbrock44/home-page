@@ -7,8 +7,11 @@ import {
   SHOW_LINKS_DEFAULT,
   SHOW_SPORTS_DEFAULT,
   TITLE_DEFAULT,
-  WHICH_SELECTION_DEFAULT
+  WHICH_SELECTION_DEFAULT,
+  Pages
 } from "../constants/constants";
+import {Location} from "@angular/common";
+import {provideLocationMocks} from "@angular/common/testing";
 import {Item} from "../models/item.model";
 import {WindowService} from "./window.service";
 
@@ -139,4 +142,47 @@ describe('SettingsService', () => {
     expect(service.color).toEqual(color);
     expect(service.showLinks).toEqual(showLinks);
   }
+});
+
+describe('SettingsService page history', () => {
+  let service: SettingsService;
+  let location: Location;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [provideLocationMocks()]
+    });
+    service = TestBed.inject(SettingsService);
+    location = TestBed.inject(Location);
+  });
+
+  it('should push a history entry when navigating to a page', () => {
+    service.navigateTo(Pages.Concerts);
+    expect(service.show[Pages.Concerts]).toBeTrue();
+    expect(location.path()).toContain('page=Concerts');
+  });
+
+  it('should return to the previous page when the browser goes back', () => {
+    service.navigateTo(Pages.Concerts);
+    service.navigateTo(Pages.Links);
+    location.back();
+    expect(service.show[Pages.Concerts]).toBeTrue();
+    expect(service.show[Pages.Links]).toBeFalse();
+  });
+
+  it('should not push a duplicate entry for the page already shown', () => {
+    service.navigateTo(Pages.Concerts);
+    service.navigateTo(Pages.Concerts);
+    location.back();
+    expect(service.show[Pages.Home]).toBeTrue();
+  });
+
+  it('should restore a deep-linked page with Home underneath', () => {
+    location.replaceState('/?page=Matches');
+    service.restorePageFromUrl();
+    expect(service.show[Pages.Matches]).toBeTrue();
+
+    location.back();
+    expect(service.show[Pages.Home]).toBeTrue();
+  });
 });

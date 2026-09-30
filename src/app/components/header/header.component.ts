@@ -1,8 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { SettingsService } from '../../services/settings.service';
 import { WindowService } from '../../services/window.service';
-import { Pages } from '../../constants/constants';
-import { Location } from '@angular/common';
 
 @Component({
     selector: 'app-header',
@@ -82,22 +80,13 @@ import { Location } from '@angular/common';
 export class HeaderComponent {
 
   constructor(
-    private location: Location,
     private windowService: WindowService,
     public service: SettingsService
   ) {
   }
 
   show(index: number): void {
-    const urlParam = Pages[index];
-    if (urlParam !== 'Home') {
-      const queryParams = new URLSearchParams()
-      queryParams.set('page', urlParam);
-      this.location.replaceState(`${location.pathname}?${queryParams.toString()}`);
-    } else {
-      this.location.replaceState(`${location.pathname}`);
-    }
-    this.service.setShow(index);
+    this.service.navigateTo(index);
   }
 
   route(url: string): void {
