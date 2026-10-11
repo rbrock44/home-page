@@ -35,11 +35,6 @@ jobs:
       run: |
         cp CNAME ./dist/home-page/CNAME
 
-    # Every route is prerendered; 404.html is the client-only shell for anything else.
-    - name: Add 404 Fallback
-      run: |
-        cp ./dist/home-page/index.csr.html ./dist/home-page/404.html
-
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v4
       with:

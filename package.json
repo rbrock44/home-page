@@ -9,7 +9,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "gh-pages": "gh-pages -d dist/home-page",
-    "deploy": "ng build --configuration production",
+    "deploy": "ng build --configuration production && node scripts/finish-static-build.mjs",
     "prod": "npm run deploy && npm run gh-pages"
   },
   "private": true,
