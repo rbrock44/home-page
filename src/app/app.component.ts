@@ -1,5 +1,5 @@
-import {Component, ChangeDetectionStrategy} from '@angular/core';
-import {Location} from '@angular/common';
+import {Component, ChangeDetectionStrategy, inject, PLATFORM_ID} from '@angular/core';
+import {isPlatformBrowser, Location} from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 import { AlertComponent } from './components/alert/alert.component';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
@@ -16,7 +16,9 @@ export class AppComponent {
   title = 'home-page';
 
   constructor(private router: Router, private location: Location) {
-    this.slotHomeUnderDeepLink();
+    if (isPlatformBrowser(inject(PLATFORM_ID))) {
+      this.slotHomeUnderDeepLink();
+    }
   }
 
   /**

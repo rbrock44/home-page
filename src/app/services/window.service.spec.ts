@@ -1,4 +1,5 @@
 import {TestBed} from '@angular/core/testing';
+import {PLATFORM_ID} from '@angular/core';
 import {WindowService} from "./window.service";
 import {Item} from "../models/item.model";
 
@@ -87,5 +88,43 @@ describe('WindowService', () => {
 
       expect(window.setInterval).toHaveBeenCalledWith(callback, 5000);
     });
+  });
+});
+
+describe('WindowService during prerendering', () => {
+  let service: WindowService;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({providers: [{provide: PLATFORM_ID, useValue: 'server'}]});
+    service = TestBed.inject(WindowService);
+    window.localStorage.clear();
+  });
+
+  afterEach(() => {
+    window.localStorage.clear();
+  });
+
+  it('returns the default instead of reading storage', () => {
+    window.localStorage.setItem('home-page-title', 'Console');
+
+    expect(service.getItem('home-page-title', 'Home Page')).toBe('Home Page');
+  });
+
+  it('does not write to storage', () => {
+    service.setItem(new Item('home-page-title', 'Console'));
+
+    expect(window.localStorage.getItem('home-page-title')).toBeNull();
+  });
+
+  it('does not start timers', () => {
+    spyOn(window, 'setInterval');
+
+    service.setInterval(() => undefined, 5000);
+
+    expect(window.setInterval).not.toHaveBeenCalled();
+  });
+
+  it('reports no query params', () => {
+    expect(service.hasQueryParam('prices')).toBeFalse();
   });
 });

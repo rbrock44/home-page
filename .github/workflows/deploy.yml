@@ -35,10 +35,10 @@ jobs:
       run: |
         cp CNAME ./dist/home-page/CNAME
 
-    # Pages has no file at /concerts etc., so it serves 404.html; the app routes from there.
+    # Every route is prerendered; 404.html is the client-only shell for anything else.
     - name: Add 404 Fallback
       run: |
-        cp ./dist/home-page/index.html ./dist/home-page/404.html
+        cp ./dist/home-page/index.csr.html ./dist/home-page/404.html
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v4

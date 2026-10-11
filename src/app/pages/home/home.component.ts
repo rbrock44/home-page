@@ -39,6 +39,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    // live data and the refresh timer are browser-only; the prerendered page is just the shell
+    if (!this.windowService.isBrowser) {
+      return;
+    }
+
     this.startUp()
     this.settingsService.settingsReset.subscribe(() => {
       this.startUp()
@@ -55,7 +60,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     // 1 min = 60k milliseconds
     let timeout = this.settingsService.refreshRate * 60000
 
-    window.setInterval(() => {
+    this.windowService.setInterval(() => {
       this.startUp(false);
       this.refreshCount++;
     }, timeout);

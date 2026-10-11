@@ -1,4 +1,4 @@
-import {Injectable, OnDestroy} from '@angular/core';
+import {DOCUMENT, inject, Injectable, OnDestroy} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 import {
   BUTTON_LIGHT_TEXT_COLORS,
@@ -20,6 +20,7 @@ import {WindowService} from "./window.service";
 })
 export class SettingsService implements OnDestroy {
   private _settingsResetSubject: Subject<boolean> = new Subject<boolean>();
+  private document = inject(DOCUMENT);
 
   title: string;
   showBasketball: boolean;
@@ -56,7 +57,7 @@ export class SettingsService implements OnDestroy {
   setColor(value: string): void {
     this.color = value;
     this.saveColorToLocalStorage();
-    const root = document.documentElement;
+    const root = this.document.documentElement;
     let buttonValue: string = value + 40;
     let backgroundValue: string = value + 60;
     root.style.setProperty('--buttonColor', `var(${buttonValue})`);
@@ -94,7 +95,7 @@ export class SettingsService implements OnDestroy {
   }
 
   resetEverything(): void {
-    window.localStorage.clear();
+    this.windowService.clearStorage();
 
     this.showBasketball = SHOW_SPORTS_DEFAULT;
     this.showFootball = SHOW_SPORTS_DEFAULT;
