@@ -43,8 +43,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.settingsService.settingsReset.subscribe(() => {
       this.startUp()
     });
-
-    this.settingsService.restorePageFromUrl();
   }
 
   startUp(doLoop: boolean = true): void {

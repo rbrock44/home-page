@@ -11,11 +11,9 @@ import {
   TODAY,
   UPCOMING,
   WHICH_SELECTION_DEFAULT,
-  Pages
 } from "../constants/constants";
 import {Item} from "../models/item.model";
 import {WindowService} from "./window.service";
-import {Location} from "@angular/common";
 
 @Injectable({
   providedIn: 'root'
@@ -34,28 +32,17 @@ export class SettingsService implements OnDestroy {
   whichMma: boolean;
   refreshRate: number;
   color: string;
-  // read once on load; page navigation rewrites the query string and would drop it
+  // read once on load; router navigation drops query params
   showPrices: boolean;
 
   TODAY: string = TODAY;
   UPCOMING: string = UPCOMING;
 
-  // this show array controls which page is showed at a time
-  // 1st: Home
-  // 2nd: Settings
-  // 3rd: Links
-  // 4th: Concerts
-  // 5th: Matches
-  show = [true, false, false, false, false];
-
   constructor(
     private windowService: WindowService,
-    private location: Location,
   ) {
     this.readFromLocalStorage();
     this.showPrices = this.windowService.hasQueryParam('prices');
-    // Browser/mouse back and forward land here; show whichever page the URL now names.
-    this.location.subscribe(() => this.setShow(this.readPageFromUrl() ?? Pages.Home));
   }
 
   ngOnDestroy(): void {
@@ -64,57 +51,6 @@ export class SettingsService implements OnDestroy {
 
   get settingsReset(): Observable<boolean> {
     return this._settingsResetSubject;
-  }
-
-  setShow(index: number): void {
-    this.show = [false, false, false, false];
-    this.show[index] = true;
-  }
-
-  setShowWithUrlParam(param: string): void {
-    const index = Pages[param];
-    this.setShow(index);
-  }
-
-  /** Shows a page as a new history entry so browser/mouse back returns to the previous page. */
-  navigateTo(index: number): void {
-    if (this.show[index]) {
-      return;
-    }
-
-    this.setShow(index);
-    this.location.go(this.buildPageUrl(index));
-  }
-
-  /**
-   * Shows the page named in the URL on load. A Home entry is slotted in underneath a deep
-   * link so browser/mouse back lands on Home instead of leaving the site.
-   */
-  restorePageFromUrl(): void {
-    const index = this.readPageFromUrl();
-    if (index === null || index === Pages.Home) {
-      return;
-    }
-
-    this.location.replaceState(this.buildPageUrl(Pages.Home));
-    this.navigateTo(index);
-  }
-
-  private readPageFromUrl(): number | null {
-    const query = this.location.path().split('?')[1] ?? '';
-    const index = Pages[new URLSearchParams(query).get('page') as keyof typeof Pages];
-    return index === undefined ? null : index;
-  }
-
-  private buildPageUrl(index: number): string {
-    const urlParam = Pages[index];
-    if (index === Pages.Home) {
-      return `${location.pathname}`;
-    }
-
-    const queryParams = new URLSearchParams();
-    queryParams.set('page', urlParam);
-    return `${location.pathname}?${queryParams.toString()}`;
   }
 
   setColor(value: string): void {
