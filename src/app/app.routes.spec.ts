@@ -5,6 +5,7 @@ import {provideHttpClient, withXhr} from '@angular/common/http';
 import {provideHttpClientTesting} from '@angular/common/http/testing';
 import {provideNoopAnimations} from '@angular/platform-browser/animations';
 import {provideRouter, Router} from '@angular/router';
+import {Title} from '@angular/platform-browser';
 import {RouterTestingHarness} from '@angular/router/testing';
 import {routes} from './app.routes';
 import {AppComponent} from './app.component';
@@ -41,6 +42,22 @@ describe('routes', () => {
       const harness = await RouterTestingHarness.create();
 
       expect(await harness.navigateByUrl(url)).toBeInstanceOf(component);
+    });
+  });
+
+  [
+    {url: '/', title: "Ryan's Home Page"},
+    {url: '/settings', title: "Settings – Ryan's Home Page"},
+    {url: '/links', title: "Links – Ryan's Home Page"},
+    {url: '/concerts', title: "Concerts – Ryan's Home Page"},
+    {url: '/matches', title: "Matches – Ryan's Home Page"},
+  ].forEach(({url, title}) => {
+    it(`titles ${url} as "${title}"`, async () => {
+      const harness = await RouterTestingHarness.create();
+
+      await harness.navigateByUrl(url);
+
+      expect(TestBed.inject(Title).getTitle()).toBe(title);
     });
   });
 
