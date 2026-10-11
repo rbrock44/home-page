@@ -14,6 +14,10 @@ export class WindowService {
     window.open(url, "_blank");
   }
 
+  public hasQueryParam(name: string): boolean {
+    return new URLSearchParams(window.location.search).has(name);
+  }
+
   public getItem<T extends string | number | boolean>(item: string, defaultValue: T): string | T {
     const value: string = window.localStorage.getItem(item);
     return !isNullOrUndefined(value) ? value : defaultValue;

@@ -31,6 +31,11 @@
           <mat-header-cell *matHeaderCellDef mat-sort-header>Date</mat-header-cell>
           <mat-cell *matCellDef="let element"> {{element.date}} </mat-cell>
         </ng-container>
+        <!-- Price Column -->
+        <ng-container matColumnDef="price">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Price</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.price | currency}} </mat-cell>
+        </ng-container>
         <!-- Attendees Column -->
         <ng-container matColumnDef="attendees">
           <mat-header-cell *matHeaderCellDef mat-sort-header>Attendees</mat-header-cell>

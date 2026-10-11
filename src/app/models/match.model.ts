@@ -7,8 +7,9 @@ export class Match {
   city: string;
   date: string;
   attendees: string[];
+  price?: number;
 
-  public constructor(home: string, away: string, finalScore: string, sport: string, arena: string, city: string, date: string, attendees: string[]) {
+  public constructor(home: string, away: string, finalScore: string, sport: string, arena: string, city: string, date: string, attendees: string[], price?: number) {
     this.home = home;
     this.away = away;
     this.finalScore = finalScore;
@@ -17,6 +18,7 @@ export class Match {
     this.city = city;
     this.date = date;
     this.attendees = attendees;
+    this.price = price;
   }
 
   static getValue<K extends keyof Match>(column: K, match: Match): Match[K] {

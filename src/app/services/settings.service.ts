@@ -34,6 +34,8 @@ export class SettingsService implements OnDestroy {
   whichMma: boolean;
   refreshRate: number;
   color: string;
+  // read once on load; page navigation rewrites the query string and would drop it
+  showPrices: boolean;
 
   TODAY: string = TODAY;
   UPCOMING: string = UPCOMING;
@@ -51,6 +53,7 @@ export class SettingsService implements OnDestroy {
     private location: Location,
   ) {
     this.readFromLocalStorage();
+    this.showPrices = this.windowService.hasQueryParam('prices');
     // Browser/mouse back and forward land here; show whichever page the URL now names.
     this.location.subscribe(() => this.setShow(this.readPageFromUrl() ?? Pages.Home));
   }

@@ -112,6 +112,26 @@ describe('ConcertService', () => {
     });
   });
 
+  describe('price', () => {
+    const priced = (item: Concert, price?: number): Concert => Object.assign(structuredClone(item), { price });
+
+    it('defaults to undefined when not given', () => {
+      expect(nirvana.price).toBeUndefined();
+    });
+
+    it('sorts ascending with missing prices last', () => {
+      const sorted = service.sortTable([priced(nirvana), priced(pearlJam, 80), priced(alice, 25.5)], sortWith('price', 'asc'));
+
+      expect(sorted.map(it => it.price)).toEqual([25.5, 80, undefined]);
+    });
+
+    it('sorts descending with missing prices last', () => {
+      const sorted = service.sortTable([priced(nirvana), priced(pearlJam, 80), priced(alice, 25.5)], sortWith('price', 'desc'));
+
+      expect(sorted.map(it => it.price)).toEqual([80, 25.5, undefined]);
+    });
+  });
+
   describe('sortData', () => {
     it('reorders the data source in place', () => {
       service.dataSource.data = [nirvana, pearlJam, alice];

@@ -73,7 +73,9 @@ export class ConcertService {
     return data.sort((a: Concert, b: Concert) => {
       let value1 = Concert.getValue(column, a);
       let value2 = Concert.getValue(column, b);
-      if (value1 > value2) {
+      if (value1 == null || value2 == null) {
+        return value1 == null ? (value2 == null ? 0 : 1) : -1
+      } else if (value1 > value2) {
         return asc ? 1 : -1
       } else if (value1 < value2) {
         return asc ? -1 : 1

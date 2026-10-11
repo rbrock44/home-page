@@ -2,22 +2,27 @@ import { Component, OnChanges, SimpleChanges, ViewChild, ChangeDetectionStrategy
 import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { MatchService } from 'src/app/services/match.service';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { SettingsService } from 'src/app/services/settings.service';
 import { MatTooltip } from '@angular/material/tooltip';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
     selector: 'app-match-table',
     templateUrl: './match-table.component.html',
     styleUrls: ['./match-table.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, MatCellDef, MatCell, MatTooltip, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow]
+    imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, MatCellDef, MatCell, MatTooltip, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, CurrencyPipe]
 })
 export class MatchTableComponent implements OnChanges {
   // @ts-ignore
   @ViewChild(MatSort) sort: MatSort;
 
-  displayColumns: string[] = ['away', 'home', 'finalScore', 'sport', 'arena', 'city', 'date', 'attendees'];
+  displayColumns: string[] = ['away', 'home', 'finalScore', 'sport', 'arena', 'city', 'date', 'price', 'attendees'];
 
-  constructor(public matchService: MatchService) {
+  constructor(public matchService: MatchService, private settingsService: SettingsService) {
+    if (!this.settingsService.showPrices) {
+      this.displayColumns = this.displayColumns.filter(it => it !== 'price');
+    }
     this.matchService.sort = this.sort;
   }
 

@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MatchTableComponent } from './match-table.component';
+import { SettingsService } from 'src/app/services/settings.service';
 import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 
 describe('MatchTableComponent', () => {
@@ -22,5 +23,15 @@ describe('MatchTableComponent', () => {
 
   it('should create the app', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('hides the price column without the prices url param', () => {
+    expect(component.displayColumns).not.toContain('price');
+  });
+
+  it('shows the price column with the prices url param', () => {
+    TestBed.inject(SettingsService).showPrices = true;
+
+    expect(TestBed.createComponent(MatchTableComponent).componentInstance.displayColumns).toContain('price');
   });
 });

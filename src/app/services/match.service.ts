@@ -75,7 +75,9 @@ export class MatchService {
     return data.sort((a: Match, b: Match) => {
       let value1 = Match.getValue(column, a);
       let value2 = Match.getValue(column, b);
-      if (value1 > value2) {
+      if (value1 == null || value2 == null) {
+        return value1 == null ? (value2 == null ? 0 : 1) : -1
+      } else if (value1 > value2) {
         return asc ? 1 : -1
       } else if (value1 < value2) {
         return asc ? -1 : 1

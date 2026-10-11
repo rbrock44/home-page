@@ -118,6 +118,26 @@ describe('MatchService', () => {
     });
   });
 
+  describe('price', () => {
+    const priced = (item: Match, price?: number): Match => Object.assign(structuredClone(item), { price });
+
+    it('defaults to undefined when not given', () => {
+      expect(blues.price).toBeUndefined();
+    });
+
+    it('sorts ascending with missing prices last', () => {
+      const sorted = service.sortTable([priced(blues), priced(cards, 80), priced(chiefs, 25.5)], sortWith('price', 'asc'));
+
+      expect(sorted.map(it => it.price)).toEqual([25.5, 80, undefined]);
+    });
+
+    it('sorts descending with missing prices last', () => {
+      const sorted = service.sortTable([priced(blues), priced(cards, 80), priced(chiefs, 25.5)], sortWith('price', 'desc'));
+
+      expect(sorted.map(it => it.price)).toEqual([80, 25.5, undefined]);
+    });
+  });
+
   describe('sortData', () => {
     it('reorders the data source in place', () => {
       service.dataSource.data = [blues, cards, chiefs];
