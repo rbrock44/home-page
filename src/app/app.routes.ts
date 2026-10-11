@@ -6,21 +6,25 @@ import { LinkComponent } from './pages/links/links.component';
 import { ConcertComponent } from './pages/concerts/concerts.component';
 import { MatchComponent } from './pages/match/match.component';
 
-// Old `/?page=<Name>` links, from before each page had its own route.
+// Old `/?page=<Name>` links, from before each page had its own route. Keys are lowercase.
 const LEGACY_PAGES: Record<string, string> = {
-  Settings: 'settings',
-  Links: 'links',
-  Concerts: 'concerts',
-  Matches: 'matches',
+  home: '',
+  settings: 'settings',
+  links: 'links',
+  concerts: 'concerts',
+  matches: 'matches',
 };
 
-/** Sends old `/?page=<Name>` links to the page's own route, keeping any other params. */
+/**
+ * Sends old `/?page=<Name>` links to the page's own route, keeping any other params. An
+ * unrecognised name lands on Home, as it did before, with the stale param dropped.
+ */
 export const redirectLegacyPage: CanActivateFn = route => {
-  const path = LEGACY_PAGES[route.queryParamMap.get('page') ?? ''];
-  if (!path) {
+  if (!route.queryParamMap.has('page')) {
     return true;
   }
 
+  const path = LEGACY_PAGES[route.queryParamMap.get('page')!.toLowerCase()] ?? '';
   const { page, ...queryParams } = route.queryParams;
   return inject(Router).createUrlTree(['/', path], { queryParams });
 };

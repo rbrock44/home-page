@@ -52,12 +52,31 @@ describe('routes', () => {
     expect(location.path()).toBe('/');
   });
 
-  it('redirects legacy page links to their route', async () => {
+  [
+    {page: 'Settings', path: '/settings'},
+    {page: 'Links', path: '/links'},
+    {page: 'Concerts', path: '/concerts'},
+    {page: 'Matches', path: '/matches'},
+    {page: 'Home', path: '/'},
+    {page: 'concerts', path: '/concerts'},
+    {page: 'Nope', path: '/'},
+    {page: '', path: '/'},
+  ].forEach(({page, path}) => {
+    it(`redirects legacy ?page=${page} to ${path}`, async () => {
+      const harness = await RouterTestingHarness.create();
+
+      await harness.navigateByUrl(`/?page=${page}`);
+
+      expect(location.path()).toBe(path);
+    });
+  });
+
+  it('redirects legacy page links on an unknown path', async () => {
     const harness = await RouterTestingHarness.create();
 
-    await harness.navigateByUrl('/?page=Concerts');
+    await harness.navigateByUrl('/index.html?page=Links');
 
-    expect(location.path()).toBe('/concerts');
+    expect(location.path()).toBe('/links');
   });
 
   it('keeps other params when redirecting a legacy page link', async () => {
