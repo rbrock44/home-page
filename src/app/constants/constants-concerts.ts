@@ -18,6 +18,7 @@ export const CONCERTS: Concert[] = [
     new Concert('Jeff Arcuri: The Road Trip Tour', [], 'Stifel Theatre', STL, '2027/03/03', [ryan, addie], 55.00),
 
     //2026
+    new Concert('HARBOUR', ['The Silkies'], 'Off Broadway', STL, '2026/11/28', [ryan, addie], 32.00),
     new Concert('almost monday: Thank God It\'s Almost Monday', [], delmarHall, STL, '2026/11/17', [ryan, addie], 32.60),
     new Concert('Three Days Grace: Alianation Tour', ['I Prevail', 'The Funeral Portait'], 'Enterprise Center', STL, '2026/11/07', [ryan, addie, 'Jonathan Brock']),
     new Concert('Audrey Hobert: The Staircase to Stardom Tour', [], 'Ryman Auditorium', 'Nashville, TN', '2026/10/06', [addie, 'Maebry Enderle']),
