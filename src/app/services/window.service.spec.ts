@@ -88,6 +88,15 @@ describe('WindowService', () => {
 
       expect(window.setInterval).toHaveBeenCalledWith(callback, 5000);
     });
+
+    it('returns the id so the timer can be cleared', () => {
+      spyOn(window, 'setInterval').and.returnValue(42 as any);
+      spyOn(window, 'clearInterval');
+
+      service.clearInterval(service.setInterval(() => undefined, 5000));
+
+      expect(window.clearInterval).toHaveBeenCalledWith(42);
+    });
   });
 });
 

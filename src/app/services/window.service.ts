@@ -11,9 +11,13 @@ import {Item} from "../models/item.model";
 export class WindowService {
   readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
 
-  public setInterval(func: () => void, timeout:number) {
+  public setInterval(func: () => void, timeout:number): number | undefined {
+    return this.isBrowser ? window.setInterval(func, timeout) : undefined;
+  }
+
+  public clearInterval(id: number | undefined) {
     if (this.isBrowser) {
-      window.setInterval(func, timeout);
+      window.clearInterval(id);
     }
   }
 

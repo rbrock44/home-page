@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {HomeComponent} from "./home.component";
 import { provideHttpClientTesting } from "@angular/common/http/testing";
 import {SettingsService} from "../../services/settings.service";
+import {WindowService} from "../../services/window.service";
 import {
   expectElementPresent,
   expectElementPresentAtIndex,
@@ -46,6 +47,50 @@ describe('HomeComponent', () => {
     service = TestBed.inject(SettingsService);
     fixture = TestBed.createComponent(HomeComponent);
     component = fixture.debugElement.componentInstance;
+  });
+
+  describe('refresh timer', () => {
+    let windowService: WindowService;
+    let nextId: number;
+
+    beforeEach(() => {
+      windowService = TestBed.inject(WindowService);
+      nextId = 0;
+      spyOn(windowService, 'setInterval').and.callFake(() => ++nextId);
+      spyOn(windowService, 'clearInterval');
+    });
+
+    it('starts one refresh loop on load', () => {
+      fixture.detectChanges();
+
+      expect(windowService.setInterval).toHaveBeenCalledTimes(1);
+    });
+
+    it('stops the refresh loop when leaving the page', () => {
+      fixture.detectChanges();
+
+      fixture.destroy();
+
+      expect(windowService.clearInterval).toHaveBeenCalledWith(1);
+    });
+
+    it('replaces the refresh loop on a settings reset instead of adding one', () => {
+      fixture.detectChanges();
+
+      service.resetEverything();
+
+      expect(windowService.clearInterval).toHaveBeenCalledWith(1);
+      expect(windowService.setInterval).toHaveBeenCalledTimes(2);
+    });
+
+    it('ignores settings resets after leaving the page', () => {
+      fixture.detectChanges();
+      fixture.destroy();
+
+      service.resetEverything();
+
+      expect(windowService.setInterval).toHaveBeenCalledTimes(1);
+    });
   });
 
   it('should create the component', () => {

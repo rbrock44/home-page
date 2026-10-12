@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { SingleEvent } from 'src/app/models/single-event.model';
 import { FightCard } from "../../models/fight-card.model";
 import { GamesPerDate } from "../../models/games-per-date.model";
@@ -30,6 +31,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   gdqEvents: SingleEvent[] = GDQ_EVENTS;
   refreshCount = 0;
   title: string = '';
+  private refreshTimer: number | undefined;
+  private settingsResetSubscription: Subscription | undefined;
 
   constructor(
     public homeApiService: HomeApiService,
@@ -45,7 +48,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     this.startUp()
-    this.settingsService.settingsReset.subscribe(() => {
+    this.settingsResetSubscription = this.settingsService.settingsReset.subscribe(() => {
       this.startUp()
     });
   }
@@ -60,13 +63,17 @@ export class HomeComponent implements OnInit, OnDestroy {
     // 1 min = 60k milliseconds
     let timeout = this.settingsService.refreshRate * 60000
 
-    this.windowService.setInterval(() => {
+    // a settings reset restarts the loop, possibly at a new rate, so drop the old one first
+    this.windowService.clearInterval(this.refreshTimer);
+    this.refreshTimer = this.windowService.setInterval(() => {
       this.startUp(false);
       this.refreshCount++;
     }, timeout);
   }
 
   ngOnDestroy(): void {
+    this.windowService.clearInterval(this.refreshTimer);
+    this.settingsResetSubscription?.unsubscribe();
     this.settingsService.ngOnDestroy();
   }
 
