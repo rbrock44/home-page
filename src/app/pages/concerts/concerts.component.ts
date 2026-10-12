@@ -17,6 +17,8 @@ export class ConcertComponent {
   searchControl: UntypedFormControl = new UntypedFormControl('');
 
   ngOnInit(): void {
+    // the service outlives this page, so drop a search left over from the last visit
+    this.concertService.search('');
     this.searchControl.valueChanges.pipe(
       debounceTime(300)
     ).subscribe(value => {

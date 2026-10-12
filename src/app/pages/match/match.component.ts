@@ -17,6 +17,8 @@ export class MatchComponent {
   searchControl: UntypedFormControl = new UntypedFormControl('');
 
   ngOnInit(): void {
+    // the service outlives this page, so drop a search left over from the last visit
+    this.matchService.search('');
     this.searchControl.valueChanges.pipe(
       debounceTime(300)
     ).subscribe(value => {

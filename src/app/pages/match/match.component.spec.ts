@@ -13,6 +13,7 @@ import { DateService } from "../../services/date.service";
 import { HomeApiService } from "../../services/home-api.service";
 import { SettingsService } from "../../services/settings.service";
 import { MatchComponent } from "./match.component";
+import { MatchService } from "../../services/match.service";
 import { provideHttpClient, withInterceptorsFromDi, withXhr } from "@angular/common/http";
 
 describe('MatchComponent', () => {
@@ -45,6 +46,18 @@ describe('MatchComponent', () => {
     settingsService = TestBed.inject(SettingsService);
     fixture = TestBed.createComponent(MatchComponent);
     component = fixture.debugElement.componentInstance;
+  });
+
+  it('shows the full list again when reopened after a search', () => {
+    const service = TestBed.inject(MatchService);
+    const total = service.rowCount();
+    fixture.detectChanges();
+    service.search('zzz-no-match');
+    fixture.destroy();
+
+    TestBed.createComponent(MatchComponent).detectChanges();
+
+    expect(service.rowCount()).toBe(total);
   });
 
   it('should create the component', () => {
