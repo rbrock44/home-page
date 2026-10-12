@@ -3,10 +3,11 @@ import {Location} from '@angular/common';
 import {provideLocationMocks, SpyLocation} from '@angular/common/testing';
 import {provideHttpClient, withXhr} from '@angular/common/http';
 import {provideHttpClientTesting} from '@angular/common/http/testing';
-import {provideRouter, Router} from '@angular/router';
-import {Title} from '@angular/platform-browser';
+import {provideRouter, Router, TitleStrategy} from '@angular/router';
+import {Meta, Title} from '@angular/platform-browser';
 import {RouterTestingHarness} from '@angular/router/testing';
 import {routes} from './app.routes';
+import {PageMetaStrategy} from './services/page-meta.strategy';
 import {AppComponent} from './app.component';
 import {HomeComponent} from './pages/home/home.component';
 import {SettingsPageComponent} from './pages/settings-page/settings-page.component';
@@ -21,6 +22,7 @@ describe('routes', () => {
     TestBed.configureTestingModule({
       providers: [
         provideRouter(routes),
+        {provide: TitleStrategy, useClass: PageMetaStrategy},
         provideLocationMocks(),
         provideHttpClient(withXhr()),
         provideHttpClientTesting(),
@@ -57,6 +59,31 @@ describe('routes', () => {
 
       expect(TestBed.inject(Title).getTitle()).toBe(title);
     });
+  });
+
+  [
+    {url: '/', robots: 'index, follow'},
+    {url: '/settings', robots: 'noindex'},
+    {url: '/links', robots: 'noindex'},
+    {url: '/concerts', robots: 'index, follow'},
+    {url: '/matches', robots: 'index, follow'},
+  ].forEach(({url, robots}) => {
+    it(`marks ${url} as "${robots}"`, async () => {
+      const harness = await RouterTestingHarness.create();
+
+      await harness.navigateByUrl(url);
+
+      expect(TestBed.inject(Meta).getTag('name="robots"')?.content).toBe(robots);
+    });
+  });
+
+  it('marks a page indexable again after leaving a noindex page', async () => {
+    const harness = await RouterTestingHarness.create();
+
+    await harness.navigateByUrl('/settings');
+    await harness.navigateByUrl('/concerts');
+
+    expect(TestBed.inject(Meta).getTag('name="robots"')?.content).toBe('index, follow');
   });
 
   it('sends unknown paths home', async () => {

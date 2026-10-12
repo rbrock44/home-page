@@ -33,8 +33,8 @@ const SITE_TITLE = "Ryan's Home Page";
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent, canActivate: [redirectLegacyPage], title: SITE_TITLE },
-  { path: 'settings', component: SettingsPageComponent, title: `Settings – ${SITE_TITLE}` },
-  { path: 'links', component: LinkComponent, title: `Links – ${SITE_TITLE}` },
+  { path: 'settings', component: SettingsPageComponent, title: `Settings – ${SITE_TITLE}`, data: { noindex: true } },
+  { path: 'links', component: LinkComponent, title: `Links – ${SITE_TITLE}`, data: { noindex: true } },
   { path: 'concerts', component: ConcertComponent, title: `Concerts – ${SITE_TITLE}` },
   { path: 'matches', component: MatchComponent, title: `Matches – ${SITE_TITLE}` },
   { path: '**', redirectTo: '' },
