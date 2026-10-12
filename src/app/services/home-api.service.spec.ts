@@ -4,7 +4,7 @@ import { HttpTestingController, provideHttpClientTesting } from "@angular/common
 import {environment} from "../../environments/environment";
 import {GamesPerDate} from "../models/games-per-date.model";
 import {FightCard} from "../models/fight-card.model";
-import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
+import { provideHttpClient, withXhr } from '@angular/common/http';
 
 describe('HomeApiService', () => {
   let service: HomeApiService;
@@ -15,7 +15,7 @@ describe('HomeApiService', () => {
     await TestBed.configureTestingModule({
     declarations: [],
     imports: [],
-    providers: [provideHttpClient(withXhr(), withInterceptorsFromDi()), provideHttpClientTesting()]
+    providers: [provideHttpClient(withXhr()), provideHttpClientTesting()]
 }).compileComponents();
     service = TestBed.inject(HomeApiService);
   });

@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MatchTableComponent } from './match-table.component';
 import { SettingsService } from 'src/app/services/settings.service';
-import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
+import { provideHttpClient, withXhr } from '@angular/common/http';
 
 describe('MatchTableComponent', () => {
   let fixture: ComponentFixture<MatchTableComponent>;
@@ -12,7 +12,7 @@ describe('MatchTableComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
     imports: [RouterTestingModule, MatchTableComponent],
-    providers: [provideHttpClient(withXhr(), withInterceptorsFromDi()), provideHttpClientTesting()]
+    providers: [provideHttpClient(withXhr()), provideHttpClientTesting()]
 }).compileComponents();
 
     fixture = TestBed.createComponent(MatchTableComponent);

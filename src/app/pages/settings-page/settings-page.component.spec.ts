@@ -18,7 +18,7 @@ import {
 import {HEADER} from "../../constants/expectations";
 import {AlertService} from "../../services/alert.service";
 import {DateService} from "../../services/date.service";
-import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
+import { provideHttpClient, withXhr } from '@angular/common/http';
 
 describe('SettingsPageComponent', () => {
   let fixture: ComponentFixture<SettingsPageComponent>;
@@ -40,7 +40,7 @@ describe('SettingsPageComponent', () => {
     providers: [
         HomeApiService,
         SettingsService,
-        provideHttpClient(withXhr(), withInterceptorsFromDi()),
+        provideHttpClient(withXhr()),
         provideHttpClientTesting()
     ]
 }).compileComponents();

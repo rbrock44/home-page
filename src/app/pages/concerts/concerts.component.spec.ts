@@ -14,7 +14,7 @@ import { HomeApiService } from "../../services/home-api.service";
 import { SettingsService } from "../../services/settings.service";
 import { ConcertComponent } from "./concerts.component";
 import { ConcertService } from "../../services/concert.service";
-import { provideHttpClient, withInterceptorsFromDi, withXhr } from "@angular/common/http";
+import { provideHttpClient, withXhr } from "@angular/common/http";
 
 describe('ConcertsComponent', () => {
   let fixture: ComponentFixture<ConcertComponent>;
@@ -34,7 +34,7 @@ describe('ConcertsComponent', () => {
     providers: [
         HomeApiService,
         SettingsService,
-        provideHttpClient(withXhr(), withInterceptorsFromDi()),
+        provideHttpClient(withXhr()),
         provideHttpClientTesting()
     ]
 }).compileComponents();

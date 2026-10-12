@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ConcertTableComponent } from './concert-table.component';
 import { SettingsService } from 'src/app/services/settings.service';
-import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
+import { provideHttpClient, withXhr } from '@angular/common/http';
 
 describe('RecipeTableComponent', () => {
   let fixture: ComponentFixture<ConcertTableComponent>;
@@ -12,7 +12,7 @@ describe('RecipeTableComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
     imports: [RouterTestingModule, ConcertTableComponent],
-    providers: [provideHttpClient(withXhr(), withInterceptorsFromDi()), provideHttpClientTesting()]
+    providers: [provideHttpClient(withXhr()), provideHttpClientTesting()]
 }).compileComponents();
 
     fixture = TestBed.createComponent(ConcertTableComponent);

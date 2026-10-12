@@ -19,7 +19,7 @@ import {AuctionWidgetComponent} from "../../components/auction-widget/auction-wi
 import {FightCardComponent} from "../../components/fight-card/fight-card.component";
 import {MediaSearchWidgetComponent} from "../../components/media-search-widget/media-search-widget.component";
 import {ReactiveFormsModule} from "@angular/forms";
-import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
+import { provideHttpClient, withXhr } from '@angular/common/http';
 
 describe('HomeComponent', () => {
   let fixture: ComponentFixture<HomeComponent>;
@@ -37,7 +37,7 @@ describe('HomeComponent', () => {
         MmaWidgetComponent,
         SportWidgetComponent],
     providers: [
-        provideHttpClient(withXhr(), withInterceptorsFromDi()),
+        provideHttpClient(withXhr()),
         provideHttpClientTesting()
     ]
 }).compileComponents();

@@ -18,7 +18,7 @@ import { DateService } from "../../services/date.service";
 import { HomeApiService } from "../../services/home-api.service";
 import { SettingsService } from "../../services/settings.service";
 import { LinkComponent } from './links.component';
-import { provideHttpClient, withInterceptorsFromDi, withXhr } from "@angular/common/http";
+import { provideHttpClient, withXhr } from "@angular/common/http";
 
 describe('LinksPageComponent', () => {
   let fixture: ComponentFixture<LinkComponent>;
@@ -38,7 +38,7 @@ describe('LinksPageComponent', () => {
     providers: [
         HomeApiService,
         SettingsService,
-        provideHttpClient(withXhr(), withInterceptorsFromDi()),
+        provideHttpClient(withXhr()),
         provideHttpClientTesting()
     ]
 }).compileComponents();
