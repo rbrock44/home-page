@@ -153,4 +153,12 @@ describe('SettingsPageComponent', () => {
 
     // TODO: test reset button click - has mat dialog
   });
+
+  it('keeps the reset dialog inside a small screen', () => {
+    const open = vi.spyOn(component.dialog, 'open').mockReturnValue(undefined);
+
+    component.resetEverything();
+
+    expect(open.mock.calls[0][1]).toEqual(expect.objectContaining({width: '420px', maxWidth: 'calc(100vw - 32px)'}));
+  });
 });

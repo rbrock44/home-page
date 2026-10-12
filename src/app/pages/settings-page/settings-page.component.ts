@@ -94,7 +94,9 @@ export class SettingsPageComponent implements OnInit, OnDestroy {
         label: RESET_EVERYTHING_MESSAGE
       },
       id: 'confirmation-modal',
-      width: '35vw'
+      // fixed width on desktop, but never wider than the screen minus a 16px gutter each side
+      width: '420px',
+      maxWidth: 'calc(100vw - 32px)'
     });
     if (dialogRef) {
       dialogRef.afterClosed().subscribe(shouldReset => {
