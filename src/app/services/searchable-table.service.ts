@@ -21,6 +21,8 @@ export abstract class SearchableTableService<T> {
   protected abstract searchableText(row: T): string[];
 
   sortData(sort: MatSort): void {
+    // remembered so a later search keeps this order instead of falling back to date
+    this.sort = sort;
     this.dataSource.data = this.sortTable(this.dataSource.data, sort);
   }
 
@@ -41,6 +43,12 @@ export abstract class SearchableTableService<T> {
     }
 
     return data
+  }
+
+  /** Back to the full list in default order, matching a freshly built table. */
+  reset(): void {
+    this.sort = new MatSort();
+    this.search('');
   }
 
   search(value: string): void {

@@ -146,7 +146,27 @@ describe('MatchService', () => {
     });
   });
 
+  describe('reset', () => {
+    it('drops a search and sort left over from the last visit', () => {
+      service.sortData(sortWith('home', 'asc'));
+      service.search('zzz-no-match');
+
+      service.reset();
+
+      expect(homes()).toEqual(['Cardinals', 'Blues', 'Chiefs']);
+      expect(service.rowCount()).toBe(3);
+    });
+  });
+
   describe('sortData', () => {
+    it('keeps the chosen sort when searching afterwards', () => {
+      service.sortData(sortWith('home', 'asc'));
+
+      service.search('');
+
+      expect(homes()).toEqual(['Blues', 'Cardinals', 'Chiefs']);
+    });
+
     it('reorders the data source in place', () => {
       service.dataSource.data = [blues, cards, chiefs];
 

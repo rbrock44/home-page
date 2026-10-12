@@ -140,7 +140,27 @@ describe('ConcertService', () => {
     });
   });
 
+  describe('reset', () => {
+    it('drops a search and sort left over from the last visit', () => {
+      service.sortData(sortWith('name', 'asc'));
+      service.search('zzz-no-match');
+
+      service.reset();
+
+      expect(names()).toEqual(service.sortTable([nirvana, pearlJam, alice], null).map(it => it.name));
+      expect(service.rowCount()).toBe(3);
+    });
+  });
+
   describe('sortData', () => {
+    it('keeps the chosen sort when searching afterwards', () => {
+      service.sortData(sortWith('name', 'asc'));
+
+      service.search('');
+
+      expect(names()).toEqual(['Alice In Chains', 'Nirvana', 'Pearl Jam']);
+    });
+
     it('reorders the data source in place', () => {
       service.dataSource.data = [nirvana, pearlJam, alice];
 
