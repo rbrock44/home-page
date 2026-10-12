@@ -1,4 +1,4 @@
-import {DOCUMENT, inject, Injectable, OnDestroy} from '@angular/core';
+import {DOCUMENT, inject, Injectable} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 import {
   BUTTON_LIGHT_TEXT_COLORS,
@@ -18,7 +18,7 @@ import {WindowService} from "./window.service";
 @Injectable({
   providedIn: 'root'
 })
-export class SettingsService implements OnDestroy {
+export class SettingsService {
   private _settingsResetSubject: Subject<boolean> = new Subject<boolean>();
   private document = inject(DOCUMENT);
 
@@ -44,10 +44,6 @@ export class SettingsService implements OnDestroy {
   ) {
     this.readFromLocalStorage();
     this.showPrices = this.windowService.hasQueryParam('prices');
-  }
-
-  ngOnDestroy(): void {
-    this.saveToLocalStorage();
   }
 
   get settingsReset(): Observable<boolean> {

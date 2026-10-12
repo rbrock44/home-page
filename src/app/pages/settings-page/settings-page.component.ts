@@ -87,7 +87,6 @@ export class SettingsPageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscriptions.forEach(subscription => subscription.unsubscribe());
-    this.settingsService.ngOnDestroy();
   }
 
   resetEverything(): void {

@@ -83,6 +83,16 @@ describe('HomeComponent', () => {
       expect(windowService.setInterval).toHaveBeenCalledTimes(2);
     });
 
+    it('does not save settings when leaving the page', () => {
+      const setItem = spyOn(windowService, 'setItem');
+      fixture.detectChanges();
+      setItem.calls.reset();
+
+      fixture.destroy();
+
+      expect(setItem).not.toHaveBeenCalled();
+    });
+
     it('ignores settings resets after leaving the page', () => {
       fixture.detectChanges();
       fixture.destroy();

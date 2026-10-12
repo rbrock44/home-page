@@ -85,7 +85,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.windowService.clearInterval(this.refreshTimer);
     this.stopWatchingVisibility();
     this.settingsResetSubscription?.unsubscribe();
-    this.settingsService.ngOnDestroy();
   }
 
   getSubscriptionsStarted(): void {
