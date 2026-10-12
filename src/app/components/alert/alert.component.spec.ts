@@ -5,7 +5,7 @@ import {AlertService} from "../../services/alert.service";
 
 describe('AlertComponent', () => {
   let fixture: ComponentFixture<AlertComponent>;
-  let component;
+  let component: AlertComponent;
   let service: AlertService;
 
   beforeEach(async () => {

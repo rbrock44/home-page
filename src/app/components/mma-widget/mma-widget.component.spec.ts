@@ -16,7 +16,7 @@ import {FightCardComponent} from "../fight-card/fight-card.component";
 
 describe('MmaWidgetComponent', () => {
   let fixture: ComponentFixture<MmaWidgetComponent>;
-  let component;
+  let component: MmaWidgetComponent;
   let router: Router;
   let service: SettingsService;
   const expected = new FightCard({

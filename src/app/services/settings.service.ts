@@ -37,7 +37,7 @@ export class SettingsService {
   private document = inject(DOCUMENT);
 
   // a signal, so every view reading these getters re-renders when a setting changes
-  private readonly settings = signal<Settings>(undefined);
+  private readonly settings = signal<Settings>(this.storedSettings());
 
   get title(): string { return this.settings().title; }
   get showBasketball(): boolean { return this.settings().showBasketball; }
@@ -134,7 +134,13 @@ export class SettingsService {
   }
 
   private readFromLocalStorage(): void {
-    this.patch({
+    const stored = this.storedSettings();
+    this.settings.set(stored);
+    this.setColor(stored.color);
+  }
+
+  private storedSettings(): Settings {
+    return {
       title: this.windowService.getItem('home-page-title', TITLE_DEFAULT),
       refreshRate: +this.windowService.getItem('home-page-refresh-rate', REFRESH_RATE_DEFAULT),
       showBasketball: toBoolean(this.windowService.getItem('home-page-show-basketball', SHOW_SPORTS_DEFAULT)),
@@ -145,9 +151,8 @@ export class SettingsService {
       whichBasketball: toBoolean(this.windowService.getItem('home-page-which-basketball', WHICH_SELECTION_DEFAULT)),
       whichFootball: toBoolean(this.windowService.getItem('home-page-which-football', WHICH_SELECTION_DEFAULT)),
       whichMma: toBoolean(this.windowService.getItem('home-page-which-mma', WHICH_SELECTION_DEFAULT)),
-    });
-
-    this.setColor(this.windowService.getItem('home-page-color', COLOR_DEFAULT));
+      color: this.windowService.getItem('home-page-color', COLOR_DEFAULT),
+    };
   }
 
   private patch(changes: Partial<Settings>): void {

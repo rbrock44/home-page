@@ -16,7 +16,7 @@ import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/com
 
 describe('MediaSearchWidgetComponent', () => {
   let fixture: ComponentFixture<MediaSearchWidgetComponent>;
-  let component;
+  let component: MediaSearchWidgetComponent;
   let service: HomeApiService;
   const results = ['anything', 'other'];
   const criteria = 'search for this';

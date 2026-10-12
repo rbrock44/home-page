@@ -23,7 +23,7 @@ import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/com
 
 describe('HomeComponent', () => {
   let fixture: ComponentFixture<HomeComponent>;
-  let component;
+  let component: HomeComponent;
   let router: Router;
   let service: SettingsService;
 

@@ -39,11 +39,11 @@ import { MatSelect, MatOption } from '@angular/material/select';
     imports: [MatCheckbox, FormsModule, ReactiveFormsModule, MatFormField, MatSelect, MatOption, MatError]
 })
 export class ShowWhichRowComponent {
-  readonly showControl = input<UntypedFormControl>(undefined);
-  readonly whichControl = input<UntypedFormControl>(undefined);
-  readonly name = input<string>(undefined);
-  readonly showHtmlId = input<string>(undefined);
-  readonly whichHtmlId = input<string>(undefined);
+  readonly showControl = input.required<UntypedFormControl>();
+  readonly whichControl = input.required<UntypedFormControl>();
+  readonly name = input<string>();
+  readonly showHtmlId = input<string>();
+  readonly whichHtmlId = input<string>();
   readonly yesOption = input<string>('Yes');
   readonly noOption = input<string>('No');
 }

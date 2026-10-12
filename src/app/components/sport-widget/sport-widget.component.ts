@@ -16,7 +16,7 @@ export class SportWidgetComponent {
 
   @HostBinding('style.display')
   get hostDisplay(): string {
-    return this.shouldShow() && this.gamesPerDate()?.games?.length > 0 ? '' : 'none';
+    return this.shouldShow() && (this.gamesPerDate()?.games?.length ?? 0) > 0 ? '' : 'none';
   }
 
   constructor(

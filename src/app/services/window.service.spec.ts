@@ -71,7 +71,7 @@ describe('WindowService', () => {
 
   describe('openBlank', () => {
     it('opens the url in a new tab', () => {
-      vi.spyOn(window, 'open').mockImplementation(() => undefined);
+      vi.spyOn(window, 'open').mockImplementation(() => null);
 
       service.openBlank('https://directory.ryan-brock.com/');
 
@@ -81,7 +81,7 @@ describe('WindowService', () => {
 
   describe('setInterval', () => {
     it('registers the callback with the given timeout', () => {
-      vi.spyOn(window, 'setInterval').mockImplementation(() => undefined);
+      vi.spyOn(window, 'setInterval').mockImplementation(() => 0);
       const callback = () => undefined;
 
       service.setInterval(callback, 5000);
@@ -139,7 +139,7 @@ describe('WindowService during prerendering', () => {
   });
 
   it('does not start timers', () => {
-    vi.spyOn(window, 'setInterval').mockImplementation(() => undefined);
+    vi.spyOn(window, 'setInterval').mockImplementation(() => 0);
 
     service.setInterval(() => undefined, 5000);
 

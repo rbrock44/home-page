@@ -96,11 +96,11 @@ export const END_OF_MONTH_LINKS: string[] = [
   'https://www.netbenefits.com',
 ]
 
-export function isNullOrUndefined(str: string): boolean {
+export function isNullOrUndefined(str: string | null | undefined): boolean {
   return str == null || str === 'undefined' || str === 'null';
 }
 
-export function toBoolean(value): boolean {
+export function toBoolean(value: unknown): boolean {
   switch (value) {
     case true:
     case 'true':

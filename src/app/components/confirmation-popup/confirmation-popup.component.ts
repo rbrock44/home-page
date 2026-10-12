@@ -26,7 +26,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 export class ConfirmationPopupComponent implements OnInit {
   PERFORM_THIS_ACTION: string = 'Are you sure you want to perform this action?';
 
-  label: string;
+  label = '';
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
               public dialogRef: MatDialogRef<ConfirmationPopupComponent>) {

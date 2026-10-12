@@ -16,7 +16,7 @@ import {WindowService} from "../../services/window.service";
 
 describe('SportWidgetComponent', () => {
   let fixture: ComponentFixture<SportWidgetComponent>;
-  let component;
+  let component: SportWidgetComponent;
   let router: Router;
   let service: SettingsService;
   let windowService: WindowService
@@ -124,19 +124,19 @@ describe('SportWidgetComponent', () => {
     fixture.componentRef.setInput('gamesPerDate', expected);
     fixture.detectChanges();
     clickElementAtIndex(fixture, '.away-label', 0);
-    expect(spy).toHaveBeenCalledWith(expected.games[0].opponentTeamLink);
+    expect(spy).toHaveBeenCalledWith(expected.games![0].opponentTeamLink);
     clickElementAtIndex(fixture, '.home-label', 0);
-    expect(spy).toHaveBeenCalledWith(expected.games[0].homeTeamLink);
+    expect(spy).toHaveBeenCalledWith(expected.games![0].homeTeamLink);
   });
 
   function expectGames() {
-    expectElementToContainContent(fixture, '.date-label', expected.date);
-    expectElementToContainContentAtIndex(fixture, '.away-label', expected.games[0].opponent, 0);
-    expectElementToContainContentAtIndex(fixture, '.home-label', expected.games[0].home, 0);
+    expectElementToContainContent(fixture, '.date-label', expected.date!);
+    expectElementToContainContentAtIndex(fixture, '.away-label', expected.games![0].opponent, 0);
+    expectElementToContainContentAtIndex(fixture, '.home-label', expected.games![0].home, 0);
     expectElementToContainContentAtIndex(fixture, '.at-label', '@', 0);
-    expectElementToContainContentAtIndex(fixture, '.time-label', expected.games[0].time, 0);
-    expectElementToContainContentAtIndex(fixture, '.away-label', expected.games[1].opponent, 1);
-    expectElementToContainContentAtIndex(fixture, '.home-label', expected.games[1].home, 1);
+    expectElementToContainContentAtIndex(fixture, '.time-label', expected.games![0].time, 0);
+    expectElementToContainContentAtIndex(fixture, '.away-label', expected.games![1].opponent, 1);
+    expectElementToContainContentAtIndex(fixture, '.home-label', expected.games![1].home, 1);
     expectElementToContainContentAtIndex(fixture, '.at-label', '@', 1);
     expectElementToContainContentAtIndex(fixture, '.time-label', 'LIVE', 1);
   }

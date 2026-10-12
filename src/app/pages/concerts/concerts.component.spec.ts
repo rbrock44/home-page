@@ -18,7 +18,7 @@ import { provideHttpClient, withInterceptorsFromDi, withXhr } from "@angular/com
 
 describe('ConcertsComponent', () => {
   let fixture: ComponentFixture<ConcertComponent>;
-  let component;
+  let component: ConcertComponent;
   let router: Router;
   let settingsService: SettingsService;
   let alertService: AlertService;

@@ -22,7 +22,7 @@ import { provideHttpClient, withInterceptorsFromDi, withXhr } from "@angular/com
 
 describe('LinksPageComponent', () => {
   let fixture: ComponentFixture<LinkComponent>;
-  let component;
+  let component: LinkComponent;
   let router: Router;
   let settingsService: SettingsService;
   let alertService: AlertService;

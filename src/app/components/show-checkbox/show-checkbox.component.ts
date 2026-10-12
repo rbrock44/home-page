@@ -22,9 +22,9 @@ import { MatCheckbox } from '@angular/material/checkbox';
     imports: [MatCheckbox, FormsModule, ReactiveFormsModule]
 })
 export class ShowCheckboxComponent {
-  readonly control = input<UntypedFormControl>(undefined);
-  readonly name = input<string>(undefined);
-  readonly htmlId = input<string>(undefined);
+  readonly control = input.required<UntypedFormControl>();
+  readonly name = input<string>();
+  readonly htmlId = input<string>();
   @Output() changeEvent: EventEmitter<void> = new EventEmitter<void>();
 
   onChange(): void {

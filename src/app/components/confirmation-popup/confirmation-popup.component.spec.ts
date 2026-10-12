@@ -6,7 +6,7 @@ import {PERFORM_THIS_ACTION} from '../../constants/constants';
 
 describe('ConfirmationPopupComponent', () => {
   let fixture: ComponentFixture<ConfirmationPopupComponent>;
-  let component;
+  let component: ConfirmationPopupComponent;
   let label: string = 'label';
   let cancelButton: string = '[data-cancel-button]';
   let confirmButton: string = '[data-confirm-button]';

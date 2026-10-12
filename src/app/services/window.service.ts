@@ -41,8 +41,8 @@ export class WindowService {
   }
 
   public getItem<T extends string | number | boolean>(item: string, defaultValue: T): string | T {
-    const value: string = this.isBrowser ? window.localStorage.getItem(item) : null;
-    return !isNullOrUndefined(value) ? value : defaultValue;
+    const value: string | null = this.isBrowser ? window.localStorage.getItem(item) : null;
+    return isNullOrUndefined(value) ? defaultValue : value!;
   }
 
   public setItem(item: Item) {

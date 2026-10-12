@@ -22,7 +22,7 @@ import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/com
 
 describe('SettingsPageComponent', () => {
   let fixture: ComponentFixture<SettingsPageComponent>;
-  let component;
+  let component: SettingsPageComponent;
   let router: Router;
   let settingsService: SettingsService;
   let alertService: AlertService;
@@ -155,7 +155,7 @@ describe('SettingsPageComponent', () => {
   });
 
   it('keeps the reset dialog inside a small screen', () => {
-    const open = vi.spyOn(component.dialog, 'open').mockReturnValue(undefined);
+    const open = vi.spyOn(component.dialog, 'open').mockReturnValue(undefined as never);
 
     component.resetEverything();
 

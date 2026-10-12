@@ -6,7 +6,7 @@ import {Router} from '@angular/router';
 
 describe('HeaderComponent', () => {
   let fixture: ComponentFixture<HeaderComponent>;
-  let component;
+  let component: HeaderComponent;
   let router: Router;
   let links = [
     'Home',

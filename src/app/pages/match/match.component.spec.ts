@@ -18,7 +18,7 @@ import { provideHttpClient, withInterceptorsFromDi, withXhr } from "@angular/com
 
 describe('MatchComponent', () => {
   let fixture: ComponentFixture<MatchComponent>;
-  let component;
+  let component: MatchComponent;
   let router: Router;
   let settingsService: SettingsService;
   let alertService: AlertService;

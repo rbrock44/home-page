@@ -35,7 +35,7 @@ import { NgClass } from '@angular/common';
     imports: [MatFormField, MatSelect, FormsModule, ReactiveFormsModule, MatOption, NgClass, MatError]
 })
 export class YesNoDropdownComponent {
-  readonly control = input<UntypedFormControl>();
+  readonly control = input.required<UntypedFormControl>();
   readonly name = input<string>();
   readonly htmlId = input<string>();
   readonly yesOption = input('Yes');

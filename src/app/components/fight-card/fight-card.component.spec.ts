@@ -10,7 +10,7 @@ import {Fight} from "../../models/fight.model";
 
 describe('FightCardComponent', () => {
   let fixture: ComponentFixture<FightCardComponent>;
-  let component;
+  let component: FightCardComponent;
   let windowService: WindowService
   const expected = [
     new Fight({

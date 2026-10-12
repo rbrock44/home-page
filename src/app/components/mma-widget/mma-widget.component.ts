@@ -14,7 +14,7 @@ export class MmaWidgetComponent {
 
   @HostBinding('style.display')
   get hostDisplay(): string {
-    return this.settingsService.showMma && this.fightCard()?.main?.length > 0 ? '' : 'none';
+    return this.settingsService.showMma && (this.fightCard()?.main?.length ?? 0) > 0 ? '' : 'none';
   }
 
   constructor(public settingsService: SettingsService) { }

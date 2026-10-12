@@ -24,7 +24,7 @@ export abstract class SearchableTableService<T> {
     this.dataSource.data = this.sortTable(this.dataSource.data, sort);
   }
 
-  sortTable(data: T[], sort: MatSort): T[] {
+  sortTable(data: T[], sort: MatSort | null): T[] {
     switch (sort?.direction) {
       case 'asc':
         data = this.sortRows(data, sort.active as keyof T)

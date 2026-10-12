@@ -6,7 +6,7 @@ import {expectElementPresent, expectElementToContainContent} from '../../constan
 
 describe('YesNoDropdownComponent', () => {
   let fixture: ComponentFixture<YesNoDropdownComponent>;
-  let component;
+  let component: YesNoDropdownComponent;
   let name = 'name';
   let yesOption = 'yes';
   let noOption = 'no';
