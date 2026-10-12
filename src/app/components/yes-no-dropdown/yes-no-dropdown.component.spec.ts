@@ -1,7 +1,6 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {YesNoDropdownComponent} from './yes-no-dropdown.component';
 import {CommonModule} from '@angular/common';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {UntypedFormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {expectElementPresent, expectElementToContainContent} from '../../constants/expectations';
 
@@ -18,7 +17,6 @@ describe('YesNoDropdownComponent', () => {
     await TestBed.configureTestingModule({
     imports: [
         CommonModule,
-        NoopAnimationsModule,
         FormsModule,
         ReactiveFormsModule,
         YesNoDropdownComponent

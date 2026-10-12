@@ -79,14 +79,14 @@ describe('MmaWidgetComponent', () => {
   });
 
   it('should show mma when told so and fights exist', () => {
-    service.showMma = false;
+    service.updateSetting({showMma: false});
     fixture.detectChanges();
 
     elements.forEach(element => {
       expectElementAbsent(fixture, element);
     });
 
-    service.showMma = true;
+    service.updateSetting({showMma: true});
     fixture.detectChanges();
 
     elements.forEach(element => {

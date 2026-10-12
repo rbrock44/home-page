@@ -4,7 +4,6 @@ import {AppComponent} from './app.component';
 import {AlertComponent} from "./components/alert/alert.component";
 import {CommonModule} from "@angular/common";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 import {AlertService} from "./services/alert.service";
 import {HeaderComponent} from "./components/header/header.component";
 
@@ -14,7 +13,6 @@ describe('AppComponent', () => {
     imports: [
         CommonModule,
         FormsModule,
-        NoopAnimationsModule,
         ReactiveFormsModule,
         RouterTestingModule,
         AlertComponent,

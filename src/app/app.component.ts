@@ -1,4 +1,4 @@
-import {Component, ChangeDetectionStrategy, inject, PLATFORM_ID} from '@angular/core';
+import {Component, inject, PLATFORM_ID} from '@angular/core';
 import {isPlatformBrowser, Location} from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 import { AlertComponent } from './components/alert/alert.component';
@@ -9,7 +9,6 @@ import { filter, take } from 'rxjs';
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [HeaderComponent, AlertComponent, RouterOutlet]
 })
 export class AppComponent {

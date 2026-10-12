@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { WindowService } from '../../services/window.service';
 import { Link } from '../../models/link.model';
 import { END_OF_MONTH_LINKS, LINKS_FIRST_COLUMN, LINKS_SECOND_COLUMN } from 'src/app/constants/constants';
@@ -6,8 +6,7 @@ import { END_OF_MONTH_LINKS, LINKS_FIRST_COLUMN, LINKS_SECOND_COLUMN } from 'src
 @Component({
     selector: 'app-links-page',
     templateUrl: './links.component.html',
-    styleUrls: ['./links.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager
+    styleUrls: ['./links.component.scss']
 })
 export class LinkComponent {
   firstColumnLinks: Link[] = LINKS_FIRST_COLUMN;

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnDestroy, OnInit, signal } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { SingleEvent } from 'src/app/models/single-event.model';
 import { FightCard } from "../../models/fight-card.model";
@@ -19,17 +19,16 @@ import { AuctionWidgetComponent } from '../../components/auction-widget/auction-
     selector: 'app-home-page',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MediaSearchWidgetComponent, NgStyle, SportWidgetComponent, MmaWidgetComponent, AuctionWidgetComponent]
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  basketball: GamesPerDate = new GamesPerDate();
-  football: GamesPerDate = new GamesPerDate();
-  mma: FightCard = new FightCard();
-  auctions: Auction[] = [];
-  spotPrices: SpotPrice = new SpotPrice();
+  basketball = signal(new GamesPerDate());
+  football = signal(new GamesPerDate());
+  mma = signal(new FightCard());
+  auctions = signal<Auction[]>([]);
+  spotPrices = signal(new SpotPrice());
   gdqEvents: SingleEvent[] = GDQ_EVENTS;
-  refreshCount = 0;
+  refreshCount = signal(0);
   title: string = '';
   private refreshTimer: number | undefined;
   private settingsResetSubscription: Subscription | undefined;
@@ -72,7 +71,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.windowService.clearInterval(this.refreshTimer);
     this.refreshTimer = this.windowService.setInterval(() => {
       this.startUp(false);
-      this.refreshCount++;
+      this.refreshCount.update(count => count + 1);
     }, timeout);
   }
 
@@ -92,33 +91,23 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.homeApiService.getBasketballToday() :
       this.homeApiService.getBasketballUpcoming()
 
-    basketball.subscribe(games => {
-      this.basketball = games;
-    });
+    basketball.subscribe(games => this.basketball.set(games));
 
     const football = this.settingsService.whichFootball ?
       this.homeApiService.getFootballToday() :
       this.homeApiService.getFootballUpcoming()
 
-    football.subscribe(games => {
-      this.football = games;
-    });
+    football.subscribe(games => this.football.set(games));
 
     const mma = this.settingsService.whichMma ?
       this.homeApiService.getMmaToday() :
       this.homeApiService.getMmaUpcoming()
 
-    mma.subscribe(fightCard => {
-      this.mma = fightCard;
-    });
+    mma.subscribe(fightCard => this.mma.set(fightCard));
 
-    this.homeApiService.getAuctionsUpcoming().subscribe(auctions => {
-      this.auctions = auctions;
-    });
+    this.homeApiService.getAuctionsUpcoming().subscribe(auctions => this.auctions.set(auctions));
 
-    this.homeApiService.getSpotPrices().subscribe(prices => {
-      this.spotPrices = prices;
-    });
+    this.homeApiService.getSpotPrices().subscribe(prices => this.spotPrices.set(prices));
   }
 
   formatSpotPrice(pricePerToz: number): string {

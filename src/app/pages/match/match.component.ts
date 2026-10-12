@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { UntypedFormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime } from 'rxjs';
 import { MatchService } from 'src/app/services/match.service';
@@ -11,7 +11,6 @@ import { MatchTableComponent } from '../../components/match-table/match-table.co
     selector: 'app-match-page',
     templateUrl: './match.component.html',
     styleUrls: ['./match.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MatFormField, MatLabel, MatInput, FormsModule, ReactiveFormsModule, MatIcon, MatchTableComponent]
 })
 export class MatchComponent {

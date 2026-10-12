@@ -2,7 +2,6 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {HomeApiService} from "../../services/home-api.service";
 import {MediaSearchWidgetComponent} from "./media-search-widget.component";
 import { provideHttpClientTesting } from "@angular/common/http/testing";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {
   clickElement,
   clickElementAtIndex,
@@ -24,8 +23,7 @@ describe('MediaSearchWidgetComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [BrowserAnimationsModule,
-        FormsModule,
+    imports: [FormsModule,
         ReactiveFormsModule, MediaSearchWidgetComponent],
     providers: [
         HomeApiService,
@@ -65,7 +63,7 @@ describe('MediaSearchWidgetComponent', () => {
     expectElementAbsent(fixture, '.results');
 
     clickElement(fixture, 'mat-expansion-panel-header');
-    component.searchResults = results;
+    component.searchResults.set(results);
     fixture.changeDetectorRef.markForCheck();
 
     fixture.detectChanges();
@@ -89,7 +87,7 @@ describe('MediaSearchWidgetComponent', () => {
   it('should handle search for media results error', () => {
     expectElementAbsent(fixture, '.error');
 
-    component.hasError = true;
+    component.hasError.set(true);
     fixture.changeDetectorRef.markForCheck();
     fixture.detectChanges();
 
@@ -108,10 +106,10 @@ describe('MediaSearchWidgetComponent', () => {
   });
 
   it('should reset when closed', () => {
-    component.expanded = true;
-    component.hasSearched = true;
-    component.hasError = true;
-    component.searchResults = results;
+    component.expanded.set(true);
+    component.hasSearched.set(true);
+    component.hasError.set(true);
+    component.searchResults.set(results);
     component.control.setValue(results[0])
     fixture.changeDetectorRef.markForCheck();
     fixture.detectChanges();
@@ -120,10 +118,10 @@ describe('MediaSearchWidgetComponent', () => {
     fixture.changeDetectorRef.markForCheck();
     fixture.detectChanges();
 
-    expect(component.expanded).toBeFalsy();
-    expect(component.hasSearched).toBeFalsy();
-    expect(component.hasError).toBeFalsy();
-    expect(component.searchResults).toEqual([]);
+    expect(component.expanded()).toBeFalsy();
+    expect(component.hasSearched()).toBeFalsy();
+    expect(component.hasError()).toBeFalsy();
+    expect(component.searchResults()).toEqual([]);
     expect(component.control.value).toEqual('');
   });
 });

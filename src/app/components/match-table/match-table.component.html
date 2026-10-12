@@ -1,7 +1,7 @@
-@if (this.matchService.dataSource.data.length > 0) {
+@if (matchService.rowCount() > 0) {
   <div>
     <div class="center">
-      <p class="bold">{{matchService.dataSource.data.length}} Match(es)</p>
+      <p class="bold">{{matchService.rowCount()}} Match(es)</p>
     </div>
     <div class="center">
       <mat-table [dataSource]="this.matchService.dataSource" matSort class="mat-elevation-z8" (matSortChange)="this.matchService.sortData(this.sort)">

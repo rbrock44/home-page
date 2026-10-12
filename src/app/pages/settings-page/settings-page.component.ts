@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit, ChangeDetectionStrategy} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { UntypedFormControl, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {Subscription} from 'rxjs';
 import {debounceTime, filter} from 'rxjs/operators';
@@ -24,7 +24,6 @@ import { NgStyle } from '@angular/common';
     selector: 'app-settings-page',
     templateUrl: './settings-page.component.html',
     styleUrls: ['./settings-page.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MatFormField, MatInput, FormsModule, ReactiveFormsModule, MatError, MatSuffix, ShowWhichRowComponent, ShowCheckboxComponent, MatSelect, MatSelectTrigger, NgStyle, MatOption]
 })
 export class SettingsPageComponent implements OnInit, OnDestroy {

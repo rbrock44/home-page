@@ -12,7 +12,6 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^22.2.2",
     "@angular/cdk": "^22.2.2",
     "@angular/common": "^22.2.2",
     "@angular/compiler": "^22.2.2",
@@ -24,8 +23,7 @@
     "@angular/router": "^22.2.2",
     "@angular/ssr": "^22.2.2",
     "rxjs": "^7.0.0",
-    "tslib": "^2.3.0",
-    "zone.js": "^0.15.1"
+    "tslib": "^2.3.0"
   },
   "devDependencies": {
     "@angular/build": "^22.2.2",

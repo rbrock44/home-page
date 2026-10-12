@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { UntypedFormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime } from 'rxjs';
 import { ConcertService } from 'src/app/services/concert.service';
@@ -11,7 +11,6 @@ import { ConcertTableComponent } from '../../components/concert-table/concert-ta
     selector: 'app-concerts-page',
     templateUrl: './concerts.component.html',
     styleUrls: ['./concerts.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MatFormField, MatLabel, MatInput, FormsModule, ReactiveFormsModule, MatIcon, ConcertTableComponent]
 })
 export class ConcertComponent {

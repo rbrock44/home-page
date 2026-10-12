@@ -74,14 +74,14 @@ describe('SportWidgetComponent', () => {
   });
 
   it('should show basketball games when told so and games exist', () => {
-    service.showBasketball = false;
+    service.updateSetting({showBasketball: false});
     fixture.detectChanges();
 
     elements.forEach(element => {
       expectElementAbsent(fixture, element);
     });
 
-    service.showBasketball = true;
+    service.updateSetting({showBasketball: true});
     fixture.detectChanges();
 
     elements.forEach(element => {
@@ -96,7 +96,7 @@ describe('SportWidgetComponent', () => {
   });
 
   it('should show football games when told so and games exist', () => {
-    service.showFootball = false;
+    service.updateSetting({showFootball: false});
     fixture.componentRef.setInput('isBasketball', false);
     fixture.detectChanges();
 
@@ -104,7 +104,7 @@ describe('SportWidgetComponent', () => {
       expectElementAbsent(fixture, element);
     });
 
-    service.showFootball = true;
+    service.updateSetting({showFootball: true});
     fixture.detectChanges();
 
     elements.forEach(element => {
@@ -120,7 +120,7 @@ describe('SportWidgetComponent', () => {
 
   it('should route when team clicked', () => {
     const spy = vi.spyOn(windowService, 'openBlank').mockImplementation(() => undefined);
-    service.showBasketball = true;
+    service.updateSetting({showBasketball: true});
     fixture.componentRef.setInput('gamesPerDate', expected);
     fixture.detectChanges();
     clickElementAtIndex(fixture, '.away-label', 0);

@@ -28,24 +28,24 @@
   <div class="spot-prices-banner-wrapper">
     <div class="spot-prices-banner">
       <div class="spot-prices-div" aria-live="polite">
-        Gold: {{ this.formatSpotPrice(this.spotPrices.gold) }},
-        Silver: {{ this.formatSpotPrice(this.spotPrices.silver) }},
-        Platinum: {{ this.formatSpotPrice(this.spotPrices.platinum) }}
+        Gold: {{ this.formatSpotPrice(this.spotPrices().gold) }},
+        Silver: {{ this.formatSpotPrice(this.spotPrices().silver) }},
+        Platinum: {{ this.formatSpotPrice(this.spotPrices().platinum) }}
       </div>
     </div>
   </div>
 
   <div data-content-div>
-    <app-sport-widget [gamesPerDate]="this.basketball"></app-sport-widget>
-    <app-sport-widget [gamesPerDate]="this.football" [isBasketball]="false"></app-sport-widget>
-    <app-mma-widget [fightCard]="this.mma"></app-mma-widget>
+    <app-sport-widget [gamesPerDate]="this.basketball()"></app-sport-widget>
+    <app-sport-widget [gamesPerDate]="this.football()" [isBasketball]="false"></app-sport-widget>
+    <app-mma-widget [fightCard]="this.mma()"></app-mma-widget>
   </div>
 
   <div data-content-div>
-    <app-auction-widget [auctions]="this.auctions"></app-auction-widget>
+    <app-auction-widget [auctions]="this.auctions()"></app-auction-widget>
   </div>
 
   <div class="refresh-count-wrapper">
-    <span class="refresh-count" aria-live="polite">Refresh count: {{this.refreshCount}}</span>
+    <span class="refresh-count" aria-live="polite">Refresh count: {{this.refreshCount()}}</span>
   </div>
 </div>

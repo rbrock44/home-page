@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Match } from '../models/match.model';
@@ -10,6 +10,8 @@ import { MATCHES } from '../constants/constants-matches';
 export class MatchService {
   matchList: Match[] = MATCHES;
   dataSource = new MatTableDataSource<Match>(this.getList());
+  // the table is destroyed when a search finds nothing, so its count can't come from the table
+  rowCount = signal(this.dataSource.data.length);
   sort: MatSort = new MatSort();
 
   sortData(sort: MatSort): void {
@@ -37,6 +39,7 @@ export class MatchService {
 
   search(value: string): void {
     this.dataSource.data = this.matchessByCriteria(value);
+    this.rowCount.set(this.dataSource.data.length);
   }
 
   private matchessByCriteria(criteria: string): Match[] {

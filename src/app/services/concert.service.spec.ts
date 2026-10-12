@@ -31,6 +31,14 @@ describe('ConcertService', () => {
   });
 
   describe('search', () => {
+    it('keeps the row count in step with the results, including none', () => {
+      service.search('zzz-no-match');
+      expect(service.rowCount()).toBe(0);
+
+      service.search('');
+      expect(service.rowCount()).toBe(3);
+    });
+
     it('matches on concert name regardless of case', () => {
       service.search('nirvana');
 

@@ -1,4 +1,4 @@
-import {Component, ChangeDetectionStrategy} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {HomeApiService} from "../../services/home-api.service";
 import { UntypedFormControl, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle } from '@angular/material/expansion';
@@ -8,15 +8,14 @@ import { MatIcon } from '@angular/material/icon';
     selector: 'app-media-search-widget',
     templateUrl: './media-search-widget.component.html',
     styleUrls: ['./media-search-widget.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, MatIcon, FormsModule, ReactiveFormsModule]
 })
 export class MediaSearchWidgetComponent {
-  expanded = false;
-  refreshed = false;
-  hasSearched = false;
-  hasError = false;
-  searchResults: string[] = [];
+  expanded = signal(false);
+  refreshed = signal(false);
+  hasSearched = signal(false);
+  hasError = signal(false);
+  searchResults = signal<string[]>([]);
   control: UntypedFormControl = new UntypedFormControl('');
 
   constructor(
@@ -25,40 +24,40 @@ export class MediaSearchWidgetComponent {
   }
 
   search(): void {
-    this.hasError = false;
-    this.refreshed = false;
-    this.searchResults = [];
+    this.hasError.set(false);
+    this.refreshed.set(false);
+    this.searchResults.set([]);
     this.apiService.searchMedia(this.control.value).subscribe(
       results => {
-        this.hasSearched = true;
-        this.searchResults = results;
+        this.hasSearched.set(true);
+        this.searchResults.set(results);
       },
       () => {
-        this.hasError = true;
+        this.hasError.set(true);
       }
     );
   };
 
   refresh(event: Event): void {
     event.preventDefault();
-    this.refreshed = false;
-    this.hasError = false;
+    this.refreshed.set(false);
+    this.hasError.set(false);
     this.apiService.refreshMedia().subscribe(
       () => {
-        this.refreshed = true;
+        this.refreshed.set(true);
       },
       () => {
-        this.hasError = true;
+        this.hasError.set(true);
       }
     );
   }
 
   close(): void {
-    this.expanded = false;
-    this.refreshed = false;
-    this.hasSearched = false;
-    this.hasError = false;
-    this.searchResults = [];
+    this.expanded.set(false);
+    this.refreshed.set(false);
+    this.hasSearched.set(false);
+    this.hasError.set(false);
+    this.searchResults.set([]);
     this.control.setValue('');
   };
 }

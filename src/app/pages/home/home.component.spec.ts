@@ -19,7 +19,6 @@ import {AuctionWidgetComponent} from "../../components/auction-widget/auction-wi
 import {FightCardComponent} from "../../components/fight-card/fight-card.component";
 import {MediaSearchWidgetComponent} from "../../components/media-search-widget/media-search-widget.component";
 import {ReactiveFormsModule} from "@angular/forms";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 
 describe('HomeComponent', () => {
@@ -30,8 +29,7 @@ describe('HomeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [BrowserAnimationsModule,
-        ReactiveFormsModule,
+    imports: [ReactiveFormsModule,
         RouterTestingModule, HomeComponent,
         AuctionWidgetComponent,
         FightCardComponent,
@@ -189,7 +187,7 @@ describe('HomeComponent', () => {
     123
   ].forEach(item => {
     it(`should show the refresh count: ${item}`, () => {
-      component.refreshCount = item;
+      component.refreshCount.set(item);
       fixture.detectChanges();
       expectElementToContainContent(fixture, '.refresh-count', `Refresh count: ${item.toString()}`);
     });

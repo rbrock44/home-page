@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Concert } from '../models/concert.model';
@@ -10,6 +10,8 @@ import { CONCERTS } from '../constants/constants-concerts';
 export class ConcertService {
   concertList: Concert[] = CONCERTS;
   dataSource = new MatTableDataSource<Concert>(this.getList());
+  // the table is destroyed when a search finds nothing, so its count can't come from the table
+  rowCount = signal(this.dataSource.data.length);
   sort: MatSort = new MatSort();
 
   sortData(sort: MatSort): void {
@@ -37,6 +39,7 @@ export class ConcertService {
 
   search(value: string): void {
     this.dataSource.data = this.concertsByCriteria(value);
+    this.rowCount.set(this.dataSource.data.length);
   }
 
   private concertsByCriteria(criteria: string): Concert[] {

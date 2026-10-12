@@ -1,7 +1,7 @@
 <div class="sport-ctn media-search">
   <mat-accordion>
     <mat-expansion-panel
-      (opened)="expanded = true; refreshed = false"
+      (opened)="expanded.set(true); refreshed.set(false)"
       (closed)="close()"
       class="expansion"
       >
@@ -15,7 +15,7 @@
                         role="button"
                         tabindex="0"
                         aria-label="Refresh media library">refresh</mat-icon>
-              @if (refreshed) {
+              @if (refreshed()) {
                 <div class="results" role="status">
                   <p>Refreshed</p>
                 </div>
@@ -33,24 +33,24 @@
                     tabindex="0"
                     aria-label="Search">search</mat-icon>
         </div>
-        @if (searchResults?.length > 0 || hasSearched || hasError) {
+        @if (searchResults().length > 0 || hasSearched() || hasError()) {
           <div id="result-container" aria-live="polite">
-            @if (searchResults?.length > 0) {
+            @if (searchResults().length > 0) {
               <div class="center">
-                <p class="bold">{{searchResults.length}} Result(s)</p>
+                <p class="bold">{{searchResults().length}} Result(s)</p>
               </div>
             }
-            @for (result of searchResults; track result) {
+            @for (result of searchResults(); track result) {
               <div class="results">
                 <p>{{result}}</p>
               </div>
             }
-            @if (searchResults?.length === 0 && hasSearched) {
+            @if (searchResults().length === 0 && hasSearched()) {
               <div class="results">
                 <p>No Results</p>
               </div>
             }
-            @if (hasError) {
+            @if (hasError()) {
               <div class="results error">
                 <p>Error Occurred</p>
               </div>

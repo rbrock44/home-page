@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, OnInit, ChangeDetectionStrategy} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit, signal} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {NavigationStart, Router} from '@angular/router';
 import {AlertService} from "../../services/alert.service";
@@ -7,7 +7,7 @@ import {Alert, AlertType} from "../../models/alert.model";
 @Component({
     selector: 'app-alert',
     template: `
-    @for (alert of alerts; track alert) {
+    @for (alert of alerts(); track alert) {
       <div class="{{cssClass(alert)}}" data-alert-container>
         <a class="close" (click)="removeAlert(alert)" data-a>&times;</a>
         <span [innerHTML]="alert.message" data-span></span>
@@ -15,13 +15,12 @@ import {Alert, AlertType} from "../../models/alert.model";
     }
     `,
     styleUrls: ['./alert.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager
 })
 export class AlertComponent implements OnInit, OnDestroy {
   @Input() id = 'default-alert';
   @Input() fade = true;
 
-  alerts: Alert[] = [];
+  alerts = signal<Alert[]>([]);
   alertSubscription: Subscription;
   routeSubscription: Subscription;
 
@@ -35,15 +34,15 @@ export class AlertComponent implements OnInit, OnDestroy {
         // clear alerts when an empty alert is received
         if (!alert.message) {
           // filter out alerts without 'keepAfterRouteChange' flag
-          this.alerts = this.alerts.filter(x => x.keepAfterRouteChange);
+          this.alerts.update(alerts => alerts.filter(x => x.keepAfterRouteChange));
 
           // remove 'keepAfterRouteChange' flag on the rest
-          this.alerts.forEach(x => delete x.keepAfterRouteChange);
+          this.alerts().forEach(x => delete x.keepAfterRouteChange);
           return;
         }
 
         // add alert to array
-        this.alerts.push(alert);
+        this.alerts.update(alerts => [...alerts, alert]);
 
         // auto close alert if required
         if (alert.autoClose) {
@@ -69,21 +68,22 @@ export class AlertComponent implements OnInit, OnDestroy {
 
   removeAlert(alert: Alert): void {
     // check if already removed to prevent error on auto close
-    if (!this.alerts.includes(alert)) {
+    if (!this.alerts().includes(alert)) {
       return;
     }
 
     if (this.fade) {
       // fade out alert
-      this.alerts.find(x => x === alert).fade = true;
+      alert.fade = true;
+      this.alerts.update(alerts => [...alerts]);
 
       // remove alert after faded out
       setTimeout(() => {
-        this.alerts = this.alerts.filter(x => x !== alert);
+        this.alerts.update(alerts => alerts.filter(x => x !== alert));
       }, 250);
     } else {
       // remove alert
-      this.alerts = this.alerts.filter(x => x !== alert);
+      this.alerts.update(alerts => alerts.filter(x => x !== alert));
     }
   }
 

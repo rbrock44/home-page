@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output, ChangeDetectionStrategy} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import { UntypedFormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCheckbox } from '@angular/material/checkbox';
 
@@ -19,7 +19,6 @@ import { MatCheckbox } from '@angular/material/checkbox';
     </div>
     `,
     styleUrls: ['./show-checkbox.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MatCheckbox, FormsModule, ReactiveFormsModule]
 })
 export class ShowCheckboxComponent {

@@ -1,7 +1,7 @@
-@if (this.concertService.dataSource.data.length > 0) {
+@if (concertService.rowCount() > 0) {
   <div>
     <div class="center">
-      <p class="bold">{{concertService.dataSource.data.length}} Concert(s)</p>
+      <p class="bold">{{concertService.rowCount()}} Concert(s)</p>
     </div>
     <div class="center">
       <mat-table [dataSource]="this.concertService.dataSource" matSort class="mat-elevation-z8" (matSortChange)="this.concertService.sortData(this.sort)">

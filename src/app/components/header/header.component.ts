@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { SettingsService } from '../../services/settings.service';
 import { WindowService } from '../../services/window.service';
 import { RouterLink, RouterLinkActive } from '@angular/router';
@@ -62,7 +62,6 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
     </header>
   `,
     styleUrls: ['./header.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [RouterLink, RouterLinkActive]
 })
 export class HeaderComponent {

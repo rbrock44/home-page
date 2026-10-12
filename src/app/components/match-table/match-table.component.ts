@@ -1,4 +1,4 @@
-import { Component, OnChanges, SimpleChanges, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { MatchService } from 'src/app/services/match.service';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
@@ -10,7 +10,6 @@ import { CurrencyPipe } from '@angular/common';
     selector: 'app-match-table',
     templateUrl: './match-table.component.html',
     styleUrls: ['./match-table.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, MatCellDef, MatCell, MatTooltip, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, CurrencyPipe]
 })
 export class MatchTableComponent implements OnChanges {

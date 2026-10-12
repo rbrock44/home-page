@@ -1,4 +1,4 @@
-import {Component, Input, ChangeDetectionStrategy} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Fight} from '../../models/fight.model';
 import {WindowService} from "../../services/window.service";
 import { NgStyle } from '@angular/common';
@@ -7,7 +7,6 @@ import { NgStyle } from '@angular/common';
     selector: 'app-fight-card',
     templateUrl: './fight-card.component.html',
     styleUrls: ['./fight-card.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [NgStyle]
 })
 export class FightCardComponent {

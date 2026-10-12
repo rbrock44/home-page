@@ -1,6 +1,5 @@
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ConcertTableComponent } from './concert-table.component';
 import { SettingsService } from 'src/app/services/settings.service';
@@ -12,8 +11,7 @@ describe('RecipeTableComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [BrowserAnimationsModule,
-        RouterTestingModule, ConcertTableComponent],
+    imports: [RouterTestingModule, ConcertTableComponent],
     providers: [provideHttpClient(withXhr(), withInterceptorsFromDi()), provideHttpClientTesting()]
 }).compileComponents();
 

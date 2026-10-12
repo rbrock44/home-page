@@ -3,7 +3,6 @@ import {Location} from '@angular/common';
 import {provideLocationMocks, SpyLocation} from '@angular/common/testing';
 import {provideHttpClient, withXhr} from '@angular/common/http';
 import {provideHttpClientTesting} from '@angular/common/http/testing';
-import {provideNoopAnimations} from '@angular/platform-browser/animations';
 import {provideRouter, Router} from '@angular/router';
 import {Title} from '@angular/platform-browser';
 import {RouterTestingHarness} from '@angular/router/testing';
@@ -25,7 +24,6 @@ describe('routes', () => {
         provideLocationMocks(),
         provideHttpClient(withXhr()),
         provideHttpClientTesting(),
-        provideNoopAnimations(),
       ]
     });
     location = TestBed.inject(Location);

@@ -1,4 +1,4 @@
-import {Component, Input, HostBinding, ChangeDetectionStrategy} from '@angular/core';
+import {Component, Input, HostBinding} from '@angular/core';
 import {SettingsService} from "../../services/settings.service";
 import {GamesPerDate} from "../../models/games-per-date.model";
 import {Game} from '../../models/game.model';
@@ -8,8 +8,7 @@ import {liveTime} from "../../constants/constants";
 @Component({
     selector: 'app-sport-widget',
     templateUrl: './sport-widget.component.html',
-    styleUrls: ['./sport-widget.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager
+    styleUrls: ['./sport-widget.component.scss']
 })
 export class SportWidgetComponent {
   @Input() gamesPerDate: GamesPerDate = new GamesPerDate({games: []});
