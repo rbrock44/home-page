@@ -1,4 +1,4 @@
-import {Component, Input, HostBinding} from '@angular/core';
+import {Component, HostBinding, input} from '@angular/core';
 import {SettingsService} from "../../services/settings.service";
 import {GamesPerDate} from "../../models/games-per-date.model";
 import {Game} from '../../models/game.model';
@@ -11,12 +11,12 @@ import {liveTime} from "../../constants/constants";
     styleUrls: ['./sport-widget.component.scss']
 })
 export class SportWidgetComponent {
-  @Input() gamesPerDate: GamesPerDate = new GamesPerDate({games: []});
-  @Input() isBasketball: boolean = true;
+  readonly gamesPerDate = input(new GamesPerDate({games: []}));
+  readonly isBasketball = input<boolean>(true);
 
   @HostBinding('style.display')
   get hostDisplay(): string {
-    return this.shouldShow() && this.gamesPerDate?.games?.length > 0 ? '' : 'none';
+    return this.shouldShow() && this.gamesPerDate()?.games?.length > 0 ? '' : 'none';
   }
 
   constructor(
@@ -26,7 +26,7 @@ export class SportWidgetComponent {
   }
 
   shouldShow(): boolean {
-    return (this.isBasketball ? this.settingsService.showBasketball : this.settingsService.showFootball);
+    return (this.isBasketball() ? this.settingsService.showBasketball : this.settingsService.showFootball);
   }
 
   imgClick(game: Game, isHome: boolean = true): void {

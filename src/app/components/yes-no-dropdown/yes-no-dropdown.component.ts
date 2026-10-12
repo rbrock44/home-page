@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Output, input} from '@angular/core';
 import { UntypedFormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormField, MatError } from '@angular/material/form-field';
 import { MatSelect, MatOption } from '@angular/material/select';
@@ -9,20 +9,20 @@ import { NgClass } from '@angular/common';
     template: `
     <div class="setting-row">
       <div data-dropdown-label class="setting-row__label">
-        {{name}}
+        {{name()}}
       </div>
       <div class="setting-row__control">
         <mat-form-field appearance="outline" subscriptSizing="dynamic">
-          <mat-select [formControl]="control" (selectionChange)="onChange()"
-            [id]="htmlId">
+          <mat-select [formControl]="control()" (selectionChange)="onChange()"
+            [id]="htmlId()">
             <mat-option data-dropdown-option [value]="true" [ngClass]="className">
-              {{yesOption}}
+              {{yesOption()}}
             </mat-option>
             <mat-option data-dropdown-option [value]="false" [ngClass]="className">
-              {{noOption}}
+              {{noOption()}}
             </mat-option>
           </mat-select>
-          @if (control.invalid && control.touched) {
+          @if (control().invalid && control().touched) {
             <mat-error data-basic-error>
               Choose a value
             </mat-error>
@@ -35,16 +35,16 @@ import { NgClass } from '@angular/common';
     imports: [MatFormField, MatSelect, FormsModule, ReactiveFormsModule, MatOption, NgClass, MatError]
 })
 export class YesNoDropdownComponent {
-  @Input() control: UntypedFormControl;
-  @Input() name: string;
-  @Input() htmlId: string;
-  @Input() yesOption: string = 'Yes';
-  @Input() noOption: string = 'No';
+  readonly control = input<UntypedFormControl>();
+  readonly name = input<string>();
+  readonly htmlId = input<string>();
+  readonly yesOption = input('Yes');
+  readonly noOption = input('No');
   @Output() changeEvent: EventEmitter<void> = new EventEmitter<void>();
 
 
   get className(): string {
-    return this.htmlId + '-option';
+    return this.htmlId() + '-option';
   }
 
   constructor() {

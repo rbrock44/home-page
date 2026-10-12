@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, input} from '@angular/core';
 import {Fight} from '../../models/fight.model';
 import {WindowService} from "../../services/window.service";
 import { NgStyle } from '@angular/common';
@@ -10,7 +10,7 @@ import { NgStyle } from '@angular/common';
     imports: [NgStyle]
 })
 export class FightCardComponent {
-  @Input() fights: Fight[] = [];
+  readonly fights = input<Fight[]>([]);
 
   constructor(private windowService: WindowService) {}
 

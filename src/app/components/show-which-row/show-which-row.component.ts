@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, input} from '@angular/core';
 import { UntypedFormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { MatFormField, MatError } from '@angular/material/form-field';
@@ -8,25 +8,25 @@ import { MatSelect, MatOption } from '@angular/material/select';
     selector: 'app-show-which-row',
     template: `
     <div class="setting-row">
-      <label data-checkbox-label class="setting-row__label" [for]="showHtmlId">
-        {{name}}
+      <label data-checkbox-label class="setting-row__label" [for]="showHtmlId()">
+        {{name()}}
       </label>
       <div class="setting-row__control">
         <mat-checkbox data-show-checkbox
-          [formControl]="showControl"
-          [id]="showHtmlId">
+          [formControl]="showControl()"
+          [id]="showHtmlId()">
         </mat-checkbox>
         <mat-form-field appearance="outline" subscriptSizing="dynamic">
-          <mat-select [formControl]="whichControl"
-            [id]="whichHtmlId">
+          <mat-select [formControl]="whichControl()"
+            [id]="whichHtmlId()">
             <mat-option data-dropdown-option [value]="true">
-              {{yesOption}}
+              {{yesOption()}}
             </mat-option>
             <mat-option data-dropdown-option [value]="false">
-              {{noOption}}
+              {{noOption()}}
             </mat-option>
           </mat-select>
-          @if (whichControl.invalid && whichControl.touched) {
+          @if (whichControl().invalid && whichControl().touched) {
             <mat-error data-basic-error>
               Choose a value
             </mat-error>
@@ -39,11 +39,11 @@ import { MatSelect, MatOption } from '@angular/material/select';
     imports: [MatCheckbox, FormsModule, ReactiveFormsModule, MatFormField, MatSelect, MatOption, MatError]
 })
 export class ShowWhichRowComponent {
-  @Input() showControl: UntypedFormControl;
-  @Input() whichControl: UntypedFormControl;
-  @Input() name: string;
-  @Input() showHtmlId: string;
-  @Input() whichHtmlId: string;
-  @Input() yesOption: string = 'Yes';
-  @Input() noOption: string = 'No';
+  readonly showControl = input<UntypedFormControl>(undefined);
+  readonly whichControl = input<UntypedFormControl>(undefined);
+  readonly name = input<string>(undefined);
+  readonly showHtmlId = input<string>(undefined);
+  readonly whichHtmlId = input<string>(undefined);
+  readonly yesOption = input<string>('Yes');
+  readonly noOption = input<string>('No');
 }

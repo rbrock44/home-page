@@ -25,11 +25,11 @@ describe('YesNoDropdownComponent', () => {
 
     fixture = TestBed.createComponent(YesNoDropdownComponent);
     component = fixture.debugElement.componentInstance;
-    component.name = name;
-    component.htmlId = htmlId;
-    component.yesOption = yesOption;
-    component.noOption = noOption;
-    component.control = control;
+    fixture.componentRef.setInput('name', name);
+    fixture.componentRef.setInput('htmlId', htmlId);
+    fixture.componentRef.setInput('yesOption', yesOption);
+    fixture.componentRef.setInput('noOption', noOption);
+    fixture.componentRef.setInput('control', control);
     fixture.detectChanges();
   });
 

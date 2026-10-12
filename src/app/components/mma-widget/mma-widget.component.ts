@@ -1,4 +1,4 @@
-import { Component, Input, HostBinding } from '@angular/core';
+import { Component, HostBinding, input } from '@angular/core';
 import { SettingsService } from "../../services/settings.service";
 import { FightCard } from "../../models/fight-card.model";
 import { FightCardComponent } from '../fight-card/fight-card.component';
@@ -10,11 +10,11 @@ import { FightCardComponent } from '../fight-card/fight-card.component';
     imports: [FightCardComponent]
 })
 export class MmaWidgetComponent {
-  @Input() fightCard: FightCard = new FightCard();
+  readonly fightCard = input(new FightCard());
 
   @HostBinding('style.display')
   get hostDisplay(): string {
-    return this.settingsService.showMma && this.fightCard?.main?.length > 0 ? '' : 'none';
+    return this.settingsService.showMma && this.fightCard()?.main?.length > 0 ? '' : 'none';
   }
 
   constructor(public settingsService: SettingsService) { }

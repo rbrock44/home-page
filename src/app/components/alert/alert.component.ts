@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, OnInit, signal} from '@angular/core';
+import {Component, OnDestroy, OnInit, signal, input} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {NavigationStart, Router} from '@angular/router';
 import {AlertService} from "../../services/alert.service";
@@ -17,8 +17,8 @@ import {Alert, AlertType} from "../../models/alert.model";
     styleUrls: ['./alert.component.scss'],
 })
 export class AlertComponent implements OnInit, OnDestroy {
-  @Input() id = 'default-alert';
-  @Input() fade = true;
+  readonly id = input('default-alert');
+  readonly fade = input(true);
 
   alerts = signal<Alert[]>([]);
   alertSubscription: Subscription;
@@ -29,7 +29,7 @@ export class AlertComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     // subscribe to new alert notifications
-    this.alertSubscription = this.alertService.onAlert(this.id)
+    this.alertSubscription = this.alertService.onAlert(this.id())
       .subscribe(alert => {
         // clear alerts when an empty alert is received
         if (!alert.message) {
@@ -53,7 +53,7 @@ export class AlertComponent implements OnInit, OnDestroy {
     // clear alerts on location change
     this.routeSubscription = this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
-        this.alertService.clear(this.id);
+        this.alertService.clear(this.id());
       }
     });
   }
@@ -72,7 +72,7 @@ export class AlertComponent implements OnInit, OnDestroy {
       return;
     }
 
-    if (this.fade) {
+    if (this.fade()) {
       // fade out alert
       alert.fade = true;
       this.alerts.update(alerts => [...alerts]);

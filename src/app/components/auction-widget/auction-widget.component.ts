@@ -1,4 +1,4 @@
-import { Component, Input, HostBinding } from '@angular/core';
+import { Component, HostBinding, input } from '@angular/core';
 import { Auction } from 'src/app/models/auction.model';
 import { SettingsService } from "../../services/settings.service";
 import { WindowService } from '../../services/window.service';
@@ -9,11 +9,11 @@ import { WindowService } from '../../services/window.service';
     styleUrls: ['./auction-widget.component.scss']
 })
 export class AuctionWidgetComponent {
-  @Input() auctions: Auction[] = [];
+  readonly auctions = input<Auction[]>([]);
 
   @HostBinding('style.display')
   get hostDisplay(): string {
-    return this.settingsService.showAuctions && this.auctions.length > 0 ? '' : 'none';
+    return this.settingsService.showAuctions && this.auctions().length > 0 ? '' : 'none';
   }
 
   constructor(

@@ -1,9 +1,9 @@
-@if (shouldShow() && gamesPerDate?.games?.length > 0) {
+@if (shouldShow() && gamesPerDate()?.games?.length > 0) {
   <div class="sport-panel">
-    <div class="sport-title">{{ this.isBasketball ? 'Basketball' : 'Football' }}</div>
+    <div class="sport-title">{{ this.isBasketball() ? 'Basketball' : 'Football' }}</div>
     <div class="sport-game-ctn">
-      <span class="date-label">{{ gamesPerDate.date }}</span>
-      @for (game of gamesPerDate.games; track game) {
+      <span class="date-label">{{ gamesPerDate().date }}</span>
+      @for (game of gamesPerDate().games; track game) {
         <div class="game-row">
           <div class="column away-label right" [title]="game.opponent" (click)="imgClick(game, false)">{{ game.opponent }}</div>
           <div class="column at-label">&#64;</div>
