@@ -22,7 +22,7 @@ describe('ConcertService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({});
     service = TestBed.inject(ConcertService);
-    service.concertList = [nirvana, pearlJam, alice];
+    service.list = [nirvana, pearlJam, alice];
     service.sort = sortWith('', '');
   });
 
@@ -90,7 +90,7 @@ describe('ConcertService', () => {
     it('does not mutate the backing list', () => {
       service.search('nirvana');
 
-      expect(service.concertList.length).toBe(3);
+      expect(service.list.length).toBe(3);
     });
   });
 

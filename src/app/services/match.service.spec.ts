@@ -22,7 +22,7 @@ describe('MatchService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({});
     service = TestBed.inject(MatchService);
-    service.matchList = [blues, cards, chiefs];
+    service.list = [blues, cards, chiefs];
     service.sort = sortWith('', '');
   });
 
@@ -96,7 +96,7 @@ describe('MatchService', () => {
     it('does not mutate the backing list', () => {
       service.search('blues');
 
-      expect(service.matchList.length).toBe(3);
+      expect(service.list.length).toBe(3);
     });
   });
 

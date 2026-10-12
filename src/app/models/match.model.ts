@@ -20,8 +20,4 @@ export class Match {
     this.attendees = attendees;
     this.price = price;
   }
-
-  static getValue<K extends keyof Match>(column: K, match: Match): Match[K] {
-    return match[column]
-  }
 }
