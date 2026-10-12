@@ -87,7 +87,7 @@ Screenshots:
 
 - Framework: `Angular 22`
 - UI: `Angular Material`
-- Testing: `Karma` + `Jasmine`
+- Testing: `Vitest`
 - Deployment: `GitHub Pages`
 
 ---
@@ -131,7 +131,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ### Deploy
 
-Deployment happens automatically via the GitHub Actions workflow (`.github/workflows/deploy.yml`) on every push to `master`. To deploy manually instead, run `npm run prod` to build and push to the `gh-pages` branch directly - make sure `master` is up to date first.
+Deployment happens automatically via the GitHub Actions workflow (`.github/workflows/deploy.yml`) on every push to `master`.
 
 ---
 
