@@ -2,6 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://home-page.ryan-brock.com/</loc>
-    <lastmod>2026-08-03</lastmod>
+    <lastmod>2026-10-12</lastmod>
+  </url>
+  <url>
+    <loc>https://home-page.ryan-brock.com/concerts/</loc>
+    <lastmod>2026-10-12</lastmod>
+  </url>
+  <url>
+    <loc>https://home-page.ryan-brock.com/links/</loc>
+    <lastmod>2026-10-12</lastmod>
+  </url>
+  <url>
+    <loc>https://home-page.ryan-brock.com/matches/</loc>
+    <lastmod>2026-10-12</lastmod>
+  </url>
+  <url>
+    <loc>https://home-page.ryan-brock.com/settings/</loc>
+    <lastmod>2026-10-12</lastmod>
   </url>
 </urlset>
