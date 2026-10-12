@@ -139,4 +139,19 @@ describe('HomeApiService', () => {
     );
   });
 
+  [
+    {criteria: 'Fast & Furious', encoded: 'Fast%20%26%20Furious'},
+    {criteria: 'C++', encoded: 'C%2B%2B'},
+    {criteria: 'a#b', encoded: 'a%23b'},
+  ].forEach(({criteria, encoded}) => {
+    it(`should encode the media search term: ${criteria}`,
+      inject([HttpTestingController],
+        (httpMock: HttpTestingController) => {
+          service.searchMedia(criteria).subscribe();
+
+          httpMock.expectOne(environment.homePageApiUrl + `/home-media-search?criteria=${encoded}`).flush([]);
+        })
+    );
+  });
+
 });

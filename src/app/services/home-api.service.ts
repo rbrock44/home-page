@@ -23,7 +23,7 @@ export class HomeApiService {
   }
 
   searchMedia(criteria: string): Observable<string[]> {
-    return this.http.get<string[]>(`${this.homeUrl}/home-media-search?criteria=${criteria}`);
+    return this.http.get<string[]>(`${this.homeUrl}/home-media-search?criteria=${encodeURIComponent(criteria)}`);
   }
 
   refreshMedia(): Observable<void> {
