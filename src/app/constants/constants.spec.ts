@@ -1,7 +1,5 @@
 import {liveTime} from "./constants";
 
-export const HEADER = '[data-header-title]';
-
 describe('liveTime', () => {
   it('returns LIVE for an empty time', () => {
     expect(liveTime('')).toBe('LIVE');

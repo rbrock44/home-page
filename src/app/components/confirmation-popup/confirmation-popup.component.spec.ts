@@ -1,7 +1,7 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {ConfirmationPopupComponent} from './confirmation-popup.component';
 import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
-import {clickElement, expectElementToContainContent} from '../../constants/expectations.spec';
+import {clickElement, expectElementToContainContent} from '../../constants/expectations';
 import {PERFORM_THIS_ACTION} from '../../constants/constants';
 
 describe('ConfirmationPopupComponent', () => {
@@ -60,7 +60,7 @@ describe('ConfirmationPopupComponent', () => {
   });
 
   it('should cancel correctly', () => {
-    const spy = spyOn(component.dialogRef, 'close');
+    const spy = vi.spyOn(component.dialogRef, 'close').mockImplementation(() => undefined);
     clickElement(fixture, cancelButton);
     fixture.detectChanges();
     expect(spy).toHaveBeenCalledWith(false);
@@ -68,7 +68,7 @@ describe('ConfirmationPopupComponent', () => {
   });
 
   it('should confirm correctly', () => {
-    const spy = spyOn(component.dialogRef, 'close');
+    const spy = vi.spyOn(component.dialogRef, 'close').mockImplementation(() => undefined);
     clickElement(fixture, confirmButton);
     fixture.detectChanges();
     expect(spy).toHaveBeenCalledWith(true);

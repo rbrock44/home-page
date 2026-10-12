@@ -10,7 +10,7 @@ import {
   expectElementPresent,
   expectElementToContainContent,
   expectElementToContainContentAtIndex
-} from "../../constants/expectations.spec";
+} from "../../constants/expectations";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {of} from "rxjs";
 import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
@@ -77,7 +77,7 @@ describe('MediaSearchWidgetComponent', () => {
   });
 
   it('should search for media results', () => {
-    const spy = spyOn(service, 'searchMedia').and.returnValue(of(results))
+    const spy = vi.spyOn(service, 'searchMedia').mockReturnValue(of(results))
 
     component.control.setValue(criteria);
     clickElementAtIndex(fixture, 'mat-icon', 1);
@@ -98,7 +98,7 @@ describe('MediaSearchWidgetComponent', () => {
 
   it('should show no results when searched for media with no results', () => {
     expectElementAbsent(fixture, 'p')
-    spyOn(service, 'searchMedia').and.returnValue(of([]))
+    vi.spyOn(service, 'searchMedia').mockReturnValue(of([]))
 
     component.control.setValue(criteria);
     clickElementAtIndex(fixture, 'mat-icon', 1);

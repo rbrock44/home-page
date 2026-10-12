@@ -4,7 +4,7 @@ import {
   clickElementAtIndex,
   expectElementAbsent,
   expectElementToContainContentAtIndex
-} from "../../constants/expectations.spec";
+} from "../../constants/expectations";
 import {WindowService} from "../../services/window.service";
 import {Fight} from "../../models/fight.model";
 
@@ -61,7 +61,7 @@ describe('FightCardComponent', () => {
   });
 
   it('should route when fight clicked', () => {
-    const spy = spyOn(windowService, 'openBlank');
+    const spy = vi.spyOn(windowService, 'openBlank').mockImplementation(() => undefined);
     fixture.componentRef.setInput('fights', expected);
     fixture.detectChanges();
     clickElementAtIndex(fixture, '.cursor', 0);

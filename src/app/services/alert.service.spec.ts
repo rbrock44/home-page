@@ -57,8 +57,8 @@ describe('AlertService', () => {
     it('carries options through to the alert', () => {
       service.success('Saved', {autoClose: false, keepAfterRouteChange: true});
 
-      expect(received[0].autoClose).toBeFalse();
-      expect(received[0].keepAfterRouteChange).toBeTrue();
+      expect(received[0].autoClose).toBe(false);
+      expect(received[0].keepAfterRouteChange).toBe(true);
     });
 
     it('does not let options override the type', () => {

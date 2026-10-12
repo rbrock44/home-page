@@ -71,7 +71,7 @@ describe('WindowService', () => {
 
   describe('openBlank', () => {
     it('opens the url in a new tab', () => {
-      spyOn(window, 'open');
+      vi.spyOn(window, 'open').mockImplementation(() => undefined);
 
       service.openBlank('https://directory.ryan-brock.com/');
 
@@ -81,7 +81,7 @@ describe('WindowService', () => {
 
   describe('setInterval', () => {
     it('registers the callback with the given timeout', () => {
-      spyOn(window, 'setInterval');
+      vi.spyOn(window, 'setInterval').mockImplementation(() => undefined);
       const callback = () => undefined;
 
       service.setInterval(callback, 5000);
@@ -90,8 +90,8 @@ describe('WindowService', () => {
     });
 
     it('returns the id so the timer can be cleared', () => {
-      spyOn(window, 'setInterval').and.returnValue(42 as any);
-      spyOn(window, 'clearInterval');
+      vi.spyOn(window, 'setInterval').mockReturnValue(42 as any);
+      vi.spyOn(window, 'clearInterval').mockImplementation(() => undefined);
 
       service.clearInterval(service.setInterval(() => undefined, 5000));
 
@@ -101,14 +101,14 @@ describe('WindowService', () => {
 
   describe('onVisibilityChange', () => {
     it('reports when the tab is hidden or shown until stopped', () => {
-      const listener = jasmine.createSpy('listener');
+      const listener = vi.fn();
       const stop = service.onVisibilityChange(listener);
 
       document.dispatchEvent(new Event('visibilitychange'));
       stop();
       document.dispatchEvent(new Event('visibilitychange'));
 
-      expect(listener).toHaveBeenCalledOnceWith(document.hidden);
+      expect(listener).toHaveBeenCalledExactlyOnceWith(document.hidden);
     });
   });
 });
@@ -139,7 +139,7 @@ describe('WindowService during prerendering', () => {
   });
 
   it('does not start timers', () => {
-    spyOn(window, 'setInterval');
+    vi.spyOn(window, 'setInterval').mockImplementation(() => undefined);
 
     service.setInterval(() => undefined, 5000);
 
@@ -147,11 +147,11 @@ describe('WindowService during prerendering', () => {
   });
 
   it('reports no query params', () => {
-    expect(service.hasQueryParam('prices')).toBeFalse();
+    expect(service.hasQueryParam('prices')).toBe(false);
   });
 
   it('does not watch visibility', () => {
-    spyOn(document, 'addEventListener');
+    vi.spyOn(document, 'addEventListener').mockImplementation(() => undefined);
 
     service.onVisibilityChange(() => undefined)();
 

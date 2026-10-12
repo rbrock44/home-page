@@ -9,7 +9,7 @@ import {
   expectElementAbsent,
   expectElementToContainContent,
   expectElementToContainContentAtIndex
-} from "../../constants/expectations.spec";
+} from "../../constants/expectations";
 import {GamesPerDate} from "../../models/games-per-date.model";
 import {Game} from "../../models/game.model";
 import {WindowService} from "../../services/window.service";
@@ -119,7 +119,7 @@ describe('SportWidgetComponent', () => {
   });
 
   it('should route when team clicked', () => {
-    const spy = spyOn(windowService, 'openBlank');
+    const spy = vi.spyOn(windowService, 'openBlank').mockImplementation(() => undefined);
     service.showBasketball = true;
     fixture.componentRef.setInput('gamesPerDate', expected);
     fixture.detectChanges();

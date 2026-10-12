@@ -47,7 +47,7 @@ describe('SettingsService', () => {
       let color = COLOR_OPTIONS[3].value;
 
       const showLinks = array[3];
-      const spy = spyOn(windowService, 'setItem');
+      const spy = vi.spyOn(windowService, 'setItem').mockImplementation(() => undefined);
       service.applySettings(refreshRate, array, array, title, showLinks);
       service.setColor(color);
 
@@ -86,7 +86,7 @@ describe('SettingsService', () => {
     let refreshRate = 120;
     let color = COLOR_OPTIONS[3].value;
 
-    const spy = spyOn(windowService, 'setItem');
+    const spy = vi.spyOn(windowService, 'setItem').mockImplementation(() => undefined);
     service.applySettings(refreshRate, booleanArray[3], booleanArray[2], title, booleanArray[3][0]);
     service.setColor(color);
     service.resetEverything();
@@ -107,13 +107,13 @@ describe('SettingsService', () => {
     });
   });
 
-  it('should next subject when settings reset', (done) => {
-    service.settingsReset.subscribe(value => {
-      expect(value).toBeTruthy();
-      done();
-    })
+  it('should next subject when settings reset', () => {
+    const received: boolean[] = [];
+    service.settingsReset.subscribe(value => received.push(value));
 
     service.resetEverything();
+
+    expect(received).toEqual([true]);
   })
 
   function expectServiceValues(

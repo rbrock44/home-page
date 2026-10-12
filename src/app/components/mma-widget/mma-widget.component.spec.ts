@@ -9,7 +9,7 @@ import {
   expectElementPresentAtIndex,
   expectElementToContainContent,
   expectElementToContainContentAtIndex
-} from "../../constants/expectations.spec";
+} from "../../constants/expectations";
 import {Fight} from "../../models/fight.model";
 import {FightCard} from "../../models/fight-card.model";
 import {FightCardComponent} from "../fight-card/fight-card.component";

@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {Router} from '@angular/router';
 import { provideHttpClientTesting } from "@angular/common/http/testing";
@@ -14,8 +14,8 @@ import {
   expectElementPresentAtIndex,
   expectElementToContainContent,
   expectElementToContainContentAtIndex
-} from "../../constants/expectations.spec";
-import {HEADER} from "../../constants/constants.spec";
+} from "../../constants/expectations";
+import {HEADER} from "../../constants/expectations";
 import {AlertService} from "../../services/alert.service";
 import {DateService} from "../../services/date.service";
 import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
@@ -48,7 +48,7 @@ describe('SettingsPageComponent', () => {
     router = TestBed.inject(Router);
     alertService = TestBed.inject(AlertService);
     dateService = TestBed.inject(DateService);
-    spyOn(dateService, 'now').and.returnValue(1);
+    vi.spyOn(dateService, 'now').mockReturnValue(1);
     settingsService = TestBed.inject(SettingsService);
     fixture = TestBed.createComponent(SettingsPageComponent);
     component = fixture.debugElement.componentInstance;
@@ -94,7 +94,7 @@ describe('SettingsPageComponent', () => {
   });
 
   it('should apply color', () => {
-    const settingSpy = spyOn(settingsService, 'setColor');
+    const settingSpy = vi.spyOn(settingsService, 'setColor').mockImplementation(() => undefined);
 
     component.setColor();
 
@@ -103,7 +103,7 @@ describe('SettingsPageComponent', () => {
 
   it('should save show/which toggles instantly', () => {
     fixture.detectChanges();
-    const settingSpy = spyOn(settingsService, 'updateSetting');
+    const settingSpy = vi.spyOn(settingsService, 'updateSetting').mockImplementation(() => undefined);
 
     component.showBasketballControl.setValue(false);
     expect(settingSpy).toHaveBeenCalledWith({showBasketball: false});
@@ -115,35 +115,38 @@ describe('SettingsPageComponent', () => {
     expect(settingSpy).toHaveBeenCalledWith({showLinks: true});
   });
 
-  it('should save a valid title after it settles', fakeAsync(() => {
+  it('should save a valid title after it settles', () => {
+    vi.useFakeTimers();
     fixture.detectChanges();
-    const settingSpy = spyOn(settingsService, 'updateSetting');
+    const settingSpy = vi.spyOn(settingsService, 'updateSetting').mockImplementation(() => undefined);
 
     component.titleControl.setValue('new title');
-    tick(400);
+    vi.advanceTimersByTime(400);
 
     expect(settingSpy).toHaveBeenCalledWith({title: 'new title'});
-  }));
+  });
 
-  it('should not save an invalid title', fakeAsync(() => {
+  it('should not save an invalid title', () => {
+    vi.useFakeTimers();
     fixture.detectChanges();
-    const settingSpy = spyOn(settingsService, 'updateSetting');
+    const settingSpy = vi.spyOn(settingsService, 'updateSetting').mockImplementation(() => undefined);
 
     component.titleControl.setValue('');
-    tick(400);
+    vi.advanceTimersByTime(400);
 
     expect(settingSpy).not.toHaveBeenCalled();
-  }));
+  });
 
-  it('should save a valid refresh rate after it settles', fakeAsync(() => {
+  it('should save a valid refresh rate after it settles', () => {
+    vi.useFakeTimers();
     fixture.detectChanges();
-    const settingSpy = spyOn(settingsService, 'updateSetting');
+    const settingSpy = vi.spyOn(settingsService, 'updateSetting').mockImplementation(() => undefined);
 
     component.refreshRateControl.setValue('30');
-    tick(400);
+    vi.advanceTimersByTime(400);
 
     expect(settingSpy).toHaveBeenCalledWith({refreshRate: 30});
-  }));
+  });
 
   it('should contain reset button', () => {
     expectElementToContainContentAtIndex(fixture, 'button', 'Reset everything', 0);

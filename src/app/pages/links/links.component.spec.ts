@@ -5,14 +5,14 @@ import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { YesNoDropdownComponent } from "../../components/yes-no-dropdown/yes-no-dropdown.component";
 import { APPLY_SETTING_SUCCESS_MESSAGE } from "../../constants/constants";
-import { HEADER } from "../../constants/constants.spec";
+import { HEADER } from "../../constants/expectations";
 import {
   clickElementAtIndex,
   expectElementPresent,
   expectElementPresentAtIndex,
   expectElementToContainContent,
   expectElementToContainContentAtIndex
-} from "../../constants/expectations.spec";
+} from "../../constants/expectations";
 import { AlertService } from "../../services/alert.service";
 import { DateService } from "../../services/date.service";
 import { HomeApiService } from "../../services/home-api.service";
@@ -46,7 +46,7 @@ describe('LinksPageComponent', () => {
     router = TestBed.inject(Router);
     alertService = TestBed.inject(AlertService);
     dateService = TestBed.inject(DateService);
-    spyOn(dateService, 'now').and.returnValue(1);
+    vi.spyOn(dateService, 'now').mockReturnValue(1);
     settingsService = TestBed.inject(SettingsService);
     fixture = TestBed.createComponent(LinkComponent);
     component = fixture.debugElement.componentInstance;

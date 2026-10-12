@@ -1,3 +1,4 @@
+import type {Mock} from 'vitest';
 import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {Router} from '@angular/router';
@@ -9,8 +10,8 @@ import {
   expectElementPresent,
   expectElementPresentAtIndex,
   expectElementToContainContent
-} from "../../constants/expectations.spec";
-import {HEADER} from "../../constants/constants.spec";
+} from "../../constants/expectations";
+import {HEADER} from "../../constants/expectations";
 import {SportWidgetComponent} from "../../components/sport-widget/sport-widget.component";
 import {REFRESH_RATE_DEFAULT} from "../../constants/constants";
 import {MmaWidgetComponent} from "../../components/mma-widget/mma-widget.component";
@@ -56,8 +57,8 @@ describe('HomeComponent', () => {
     beforeEach(() => {
       windowService = TestBed.inject(WindowService);
       nextId = 0;
-      spyOn(windowService, 'setInterval').and.callFake(() => ++nextId);
-      spyOn(windowService, 'clearInterval');
+      vi.spyOn(windowService, 'setInterval').mockImplementation(() => ++nextId);
+      vi.spyOn(windowService, 'clearInterval').mockImplementation(() => undefined);
     });
 
     it('starts one refresh loop on load', () => {
@@ -84,9 +85,9 @@ describe('HomeComponent', () => {
     });
 
     it('does not save settings when leaving the page', () => {
-      const setItem = spyOn(windowService, 'setItem');
+      const setItem = vi.spyOn(windowService, 'setItem').mockImplementation(() => undefined);
       fixture.detectChanges();
-      setItem.calls.reset();
+      setItem.mockClear();
 
       fixture.destroy();
 
@@ -104,11 +105,11 @@ describe('HomeComponent', () => {
 
     describe('when the tab is hidden', () => {
       let visibilityChanged: (hidden: boolean) => void;
-      let stopWatching: jasmine.Spy;
+      let stopWatching: Mock;
 
       beforeEach(() => {
-        stopWatching = jasmine.createSpy('stopWatching');
-        spyOn(windowService, 'onVisibilityChange').and.callFake(listener => {
+        stopWatching = vi.fn();
+        vi.spyOn(windowService, 'onVisibilityChange').mockImplementation(listener => {
           visibilityChanged = listener;
           return stopWatching;
         });
@@ -122,7 +123,7 @@ describe('HomeComponent', () => {
       });
 
       it('refreshes and restarts the loop when shown again', () => {
-        const getSpotPrices = spyOn(component.homeApiService, 'getSpotPrices').and.callThrough();
+        const getSpotPrices = vi.spyOn(component.homeApiService, 'getSpotPrices');
         visibilityChanged(true);
 
         visibilityChanged(false);

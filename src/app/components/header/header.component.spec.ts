@@ -1,6 +1,6 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {HeaderComponent} from './header.component';
-import {expectElementToContainContentAtIndex} from '../../constants/expectations.spec';
+import {expectElementToContainContentAtIndex} from '../../constants/expectations';
 import {RouterTestingModule} from '@angular/router/testing';
 import {Router} from '@angular/router';
 

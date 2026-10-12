@@ -4,10 +4,10 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { YesNoDropdownComponent } from "../../components/yes-no-dropdown/yes-no-dropdown.component";
-import { HEADER } from "../../constants/constants.spec";
+import { HEADER } from "../../constants/expectations";
 import {
   expectElementToContainContent
-} from "../../constants/expectations.spec";
+} from "../../constants/expectations";
 import { AlertService } from "../../services/alert.service";
 import { DateService } from "../../services/date.service";
 import { HomeApiService } from "../../services/home-api.service";
@@ -41,7 +41,7 @@ describe('ConcertsComponent', () => {
     router = TestBed.inject(Router);
     alertService = TestBed.inject(AlertService);
     dateService = TestBed.inject(DateService);
-    spyOn(dateService, 'now').and.returnValue(1);
+    vi.spyOn(dateService, 'now').mockReturnValue(1);
     settingsService = TestBed.inject(SettingsService);
     fixture = TestBed.createComponent(ConcertComponent);
     component = fixture.debugElement.componentInstance;
