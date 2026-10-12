@@ -98,6 +98,19 @@ describe('WindowService', () => {
       expect(window.clearInterval).toHaveBeenCalledWith(42);
     });
   });
+
+  describe('onVisibilityChange', () => {
+    it('reports when the tab is hidden or shown until stopped', () => {
+      const listener = jasmine.createSpy('listener');
+      const stop = service.onVisibilityChange(listener);
+
+      document.dispatchEvent(new Event('visibilitychange'));
+      stop();
+      document.dispatchEvent(new Event('visibilitychange'));
+
+      expect(listener).toHaveBeenCalledOnceWith(document.hidden);
+    });
+  });
 });
 
 describe('WindowService during prerendering', () => {
@@ -135,5 +148,13 @@ describe('WindowService during prerendering', () => {
 
   it('reports no query params', () => {
     expect(service.hasQueryParam('prices')).toBeFalse();
+  });
+
+  it('does not watch visibility', () => {
+    spyOn(document, 'addEventListener');
+
+    service.onVisibilityChange(() => undefined)();
+
+    expect(document.addEventListener).not.toHaveBeenCalled();
   });
 });

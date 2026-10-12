@@ -33,6 +33,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   title: string = '';
   private refreshTimer: number | undefined;
   private settingsResetSubscription: Subscription | undefined;
+  private stopWatchingVisibility: () => void = () => undefined;
 
   constructor(
     public homeApiService: HomeApiService,
@@ -50,6 +51,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.startUp()
     this.settingsResetSubscription = this.settingsService.settingsReset.subscribe(() => {
       this.startUp()
+    });
+    // no point refreshing a background tab; catch up as soon as it's looked at again
+    this.stopWatchingVisibility = this.windowService.onVisibilityChange(hidden => {
+      hidden ? this.pauseRefresh() : this.startUp();
     });
   }
 
@@ -71,8 +76,14 @@ export class HomeComponent implements OnInit, OnDestroy {
     }, timeout);
   }
 
+  pauseRefresh(): void {
+    this.windowService.clearInterval(this.refreshTimer);
+    this.refreshTimer = undefined;
+  }
+
   ngOnDestroy(): void {
     this.windowService.clearInterval(this.refreshTimer);
+    this.stopWatchingVisibility();
     this.settingsResetSubscription?.unsubscribe();
     this.settingsService.ngOnDestroy();
   }

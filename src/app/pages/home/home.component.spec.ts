@@ -91,6 +91,42 @@ describe('HomeComponent', () => {
 
       expect(windowService.setInterval).toHaveBeenCalledTimes(1);
     });
+
+    describe('when the tab is hidden', () => {
+      let visibilityChanged: (hidden: boolean) => void;
+      let stopWatching: jasmine.Spy;
+
+      beforeEach(() => {
+        stopWatching = jasmine.createSpy('stopWatching');
+        spyOn(windowService, 'onVisibilityChange').and.callFake(listener => {
+          visibilityChanged = listener;
+          return stopWatching;
+        });
+        fixture.detectChanges();
+      });
+
+      it('pauses the refresh loop', () => {
+        visibilityChanged(true);
+
+        expect(windowService.clearInterval).toHaveBeenCalledWith(1);
+      });
+
+      it('refreshes and restarts the loop when shown again', () => {
+        const getSpotPrices = spyOn(component.homeApiService, 'getSpotPrices').and.callThrough();
+        visibilityChanged(true);
+
+        visibilityChanged(false);
+
+        expect(getSpotPrices).toHaveBeenCalledTimes(1);
+        expect(windowService.setInterval).toHaveBeenCalledTimes(2);
+      });
+
+      it('stops watching when leaving the page', () => {
+        fixture.destroy();
+
+        expect(stopWatching).toHaveBeenCalled();
+      });
+    });
   });
 
   it('should create the component', () => {

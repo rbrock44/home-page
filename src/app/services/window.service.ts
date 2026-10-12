@@ -21,6 +21,17 @@ export class WindowService {
     }
   }
 
+  /** Calls `listener` with `document.hidden` whenever the tab is hidden or shown. Returns a function that stops listening. */
+  public onVisibilityChange(listener: (hidden: boolean) => void): () => void {
+    if (!this.isBrowser) {
+      return () => undefined;
+    }
+
+    const handler = () => listener(document.hidden);
+    document.addEventListener('visibilitychange', handler);
+    return () => document.removeEventListener('visibilitychange', handler);
+  }
+
   public openBlank(url: string) {
     window.open(url, "_blank");
   }
