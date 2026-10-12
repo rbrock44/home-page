@@ -83,8 +83,7 @@
 @include settingsRow;
 @include settingsFormField;
 
-.settings-section > .setting-row--last,
-.settings-section > app-yes-no-dropdown:last-child {
+.settings-section > .setting-row--last {
   --set-row-rule: none;
 }
 

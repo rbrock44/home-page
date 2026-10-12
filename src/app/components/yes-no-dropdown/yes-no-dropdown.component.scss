@@ -1,8 +1,0 @@
-@use '../../../settings-controls' as *;
-
-:host {
-  display: block;
-}
-
-@include settingsRow;
-@include settingsFormField;

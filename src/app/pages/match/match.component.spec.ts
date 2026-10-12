@@ -3,7 +3,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-import { YesNoDropdownComponent } from "../../components/yes-no-dropdown/yes-no-dropdown.component";
 import { HEADER } from "../../constants/expectations";
 import {
   expectElementToContainContent
@@ -29,8 +28,7 @@ describe('MatchComponent', () => {
     imports: [FormsModule,
         ReactiveFormsModule,
         RouterTestingModule,
-        MatchComponent,
-        YesNoDropdownComponent],
+        MatchComponent],
     providers: [
         HomeApiService,
         SettingsService,

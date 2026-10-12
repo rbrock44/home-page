@@ -5,7 +5,6 @@ import { provideHttpClientTesting } from "@angular/common/http/testing";
 import {HomeApiService} from "../../services/home-api.service";
 import {SettingsService} from "../../services/settings.service";
 import {SettingsPageComponent} from "./settings-page.component";
-import {YesNoDropdownComponent} from "../../components/yes-no-dropdown/yes-no-dropdown.component";
 import {ShowCheckboxComponent} from "../../components/show-checkbox/show-checkbox.component";
 import {ShowWhichRowComponent} from "../../components/show-which-row/show-which-row.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -35,8 +34,7 @@ describe('SettingsPageComponent', () => {
         RouterTestingModule,
         SettingsPageComponent,
         ShowCheckboxComponent,
-        ShowWhichRowComponent,
-        YesNoDropdownComponent],
+        ShowWhichRowComponent],
     providers: [
         HomeApiService,
         SettingsService,

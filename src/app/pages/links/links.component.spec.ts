@@ -3,7 +3,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-import { YesNoDropdownComponent } from "../../components/yes-no-dropdown/yes-no-dropdown.component";
 import { APPLY_SETTING_SUCCESS_MESSAGE } from "../../constants/constants";
 import { HEADER } from "../../constants/expectations";
 import {
@@ -33,8 +32,7 @@ describe('LinksPageComponent', () => {
     imports: [FormsModule,
         ReactiveFormsModule,
         RouterTestingModule,
-        LinkComponent,
-        YesNoDropdownComponent],
+        LinkComponent],
     providers: [
         HomeApiService,
         SettingsService,
