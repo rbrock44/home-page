@@ -30,7 +30,7 @@
     "@angular/cli": "^22.2.2",
     "@angular/compiler-cli": "^22.2.2",
     "@angular/language-service": "^22.2.2",
-    "@types/node": "^24.19.2",
+    "@types/node": "^26.6.5",
     "jsdom": "^27.4.0",
     "typescript": "~6.0.3",
     "vitest": "^4.1.11"
