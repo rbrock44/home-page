@@ -52,6 +52,14 @@
   background: color-mix(in srgb, var(--buttonColor) 22%, transparent);
 }
 
+.auction-card.local {
+  border-left: 3px solid var(--buttonColor);
+}
+
+.auction-card.local .auction-name {
+  color: var(--buttonColor);
+}
+
 .auction-name {
   font-size: 1rem;
   font-weight: 600;

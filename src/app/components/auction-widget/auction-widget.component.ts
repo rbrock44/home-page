@@ -32,6 +32,10 @@ export class AuctionWidgetComponent {
     return `${auction.service ?? ''} ${auction.name ?? ''}`.toLowerCase().includes('brucker');
   }
 
+  isBruckerCape(auction: Auction): boolean {
+    return this.isBrucker(auction) && `${auction.location ?? ''} ${auction.name ?? ''}`.toLowerCase().includes('cape girardeau');
+  }
+
   navigate(url: string): void {
     this.windowService.openBlank(url);
   }

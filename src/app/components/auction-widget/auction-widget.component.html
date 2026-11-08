@@ -3,7 +3,7 @@
     <div class="sport-title">Auctions</div>
     <div class="auction-list">
       @for (auction of this.auctions(); track auction) {
-        <div class="auction-card" [class.brucker]="this.isBrucker(auction)" (click)="this.navigate(auction.url)">
+        <div class="auction-card" [class.brucker]="this.isBrucker(auction)" [class.local]="this.isBruckerCape(auction)" (click)="this.navigate(auction.url)">
           <div class="auction-name">{{ auction.name }}</div>
           <div class="auction-service">{{ auction.service }}</div>
           <div class="auction-details">
