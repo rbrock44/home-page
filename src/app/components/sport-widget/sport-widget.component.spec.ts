@@ -13,6 +13,9 @@ import {
 import {GamesPerDate} from "../../models/games-per-date.model";
 import {Game} from "../../models/game.model";
 import {WindowService} from "../../services/window.service";
+import {provideHttpClient} from "@angular/common/http";
+import {provideHttpClientTesting} from "@angular/common/http/testing";
+import {of} from "rxjs";
 
 describe('SportWidgetComponent', () => {
   let fixture: ComponentFixture<SportWidgetComponent>;
@@ -20,6 +23,7 @@ describe('SportWidgetComponent', () => {
   let router: Router;
   let service: SettingsService;
   let windowService: WindowService
+  let homeApiService: HomeApiService;
   const expected = new GamesPerDate({
     games: [
       new Game({
@@ -41,7 +45,13 @@ describe('SportWidgetComponent', () => {
         time: ''
       }),
     ],
-    date: '11/28/2022'
+    date: '11/28/2022',
+    day: '20221128'
+  });
+  const nextDay = new GamesPerDate({
+    games: [new Game({opponent: 'NextAway', home: 'NextHome', time: 'NXT 1, HOM 2'})],
+    date: 'Tuesday, November 29, 2022',
+    day: '20221129'
   });
   const elements = [
     '.sports-title',
@@ -59,11 +69,14 @@ describe('SportWidgetComponent', () => {
     ],
     providers: [
         HomeApiService,
+        provideHttpClient(),
+        provideHttpClientTesting(),
     ]
 }).compileComponents();
 
     service = TestBed.inject(SettingsService);
     windowService = TestBed.inject(WindowService)
+    homeApiService = TestBed.inject(HomeApiService);
     router = TestBed.inject(Router);
     fixture = TestBed.createComponent(SportWidgetComponent);
     component = fixture.debugElement.componentInstance;
@@ -127,6 +140,55 @@ describe('SportWidgetComponent', () => {
     expect(spy).toHaveBeenCalledWith(expected.games![0].opponentTeamLink);
     clickElementAtIndex(fixture, '.home-label', 0);
     expect(spy).toHaveBeenCalledWith(expected.games![0].homeTeamLink);
+  });
+
+  it('should page to the next game day and back', () => {
+    const spy = vi.spyOn(homeApiService, 'getAdjacentGameDay').mockImplementation(
+      (_isBasketball, _day, forward) => of(forward ? nextDay : expected));
+    service.updateSetting({showBasketball: true});
+    fixture.componentRef.setInput('gamesPerDate', expected);
+    fixture.detectChanges();
+
+    clickElementAtIndex(fixture, '.next-day', 0);
+    fixture.detectChanges();
+    expect(spy).toHaveBeenCalledWith(true, '20221128', true);
+    expectElementToContainContent(fixture, '.date-label', nextDay.date!);
+    expectElementToContainContentAtIndex(fixture, '.home-label', 'NextHome', 0);
+
+    clickElementAtIndex(fixture, '.prev-day', 0);
+    fixture.detectChanges();
+    expect(spy).toHaveBeenCalledWith(true, '20221129', false);
+    expectGames();
+    expect(component.isBrowsing()).toBe(false);
+  });
+
+  it('should return to the current games when the browsed date is clicked', () => {
+    vi.spyOn(homeApiService, 'getAdjacentGameDay').mockReturnValue(of(nextDay));
+    service.updateSetting({showFootball: true});
+    fixture.componentRef.setInput('isBasketball', false);
+    fixture.componentRef.setInput('gamesPerDate', expected);
+    fixture.detectChanges();
+
+    clickElementAtIndex(fixture, '.next-day', 0);
+    fixture.detectChanges();
+    clickElementAtIndex(fixture, '.date-label', 0);
+    fixture.detectChanges();
+    expectGames();
+  });
+
+  it('should disable an arrow once there are no more game days that way', () => {
+    const spy = vi.spyOn(homeApiService, 'getAdjacentGameDay').mockReturnValue(of(new GamesPerDate({games: [], date: ''})));
+    service.updateSetting({showBasketball: true});
+    fixture.componentRef.setInput('gamesPerDate', expected);
+    fixture.detectChanges();
+
+    clickElementAtIndex(fixture, '.next-day', 0);
+    fixture.detectChanges();
+    expectGames();
+    expect(component.canStep(true)).toBe(false);
+    expect(component.canStep(false)).toBe(true);
+    clickElementAtIndex(fixture, '.next-day', 0);
+    expect(spy).toHaveBeenCalledTimes(1);
   });
 
   function expectGames() {

@@ -2,8 +2,19 @@
   <div class="sport-panel">
     <div class="sport-title">{{ this.isBasketball() ? 'Basketball' : 'Football' }}</div>
     <div class="sport-game-ctn">
-      <span class="date-label">{{ gamesPerDate().date }}</span>
-      @for (game of gamesPerDate().games; track game) {
+      <div class="date-nav">
+        <button type="button" class="day-arrow prev-day" aria-label="Previous game day"
+                [disabled]="!canStep(false)" (click)="step(false)">&#8249;</button>
+        @if (isBrowsing()) {
+          <button type="button" class="date-label browsing" title="Back to current games"
+                  (click)="backToCurrent()">{{ shown().date }}</button>
+        } @else {
+          <span class="date-label">{{ shown().date }}</span>
+        }
+        <button type="button" class="day-arrow next-day" aria-label="Next game day"
+                [disabled]="!canStep(true)" (click)="step(true)">&#8250;</button>
+      </div>
+      @for (game of shown().games; track game) {
         <div class="game-row">
           <div class="column away-label right" [title]="game.opponent" (click)="imgClick(game, false)">{{ game.opponent }}</div>
           <div class="column at-label">&#64;</div>

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
-import { Observable } from 'rxjs'
+import { Observable, catchError, shareReplay, throwError } from 'rxjs'
 import { environment } from 'src/environments/environment'
 import { Auction } from '../models/auction.model'
 import { FightCard } from '../models/fight-card.model'
@@ -14,6 +14,8 @@ export class HomeApiService {
   homeUrl: string = environment.homePageApiUrl
   gamesPerDate = 'games-per-date/'
   fightCard = 'fight-card'
+  // adjacent game days only change by the minute for live games, so keep them for as long as the app is open
+  private gameDayCache = new Map<string, Observable<GamesPerDate>>()
 
   constructor(
     private http: HttpClient
@@ -42,6 +44,25 @@ export class HomeApiService {
 
   getFootballUpcoming(): Observable<GamesPerDate> {
     return this.http.get<GamesPerDate>(this.getFootballUrl(false));
+  }
+
+  getAdjacentGameDay(isBasketball: boolean, day: string, forward: boolean): Observable<GamesPerDate> {
+    const sport = isBasketball ? 'basketball' : 'football'
+    const url = `${this.homeUrl}/${this.gamesPerDate}${sport}/${forward ? 'next' : 'previous'}?day=${encodeURIComponent(day)}`
+
+    let cached = this.gameDayCache.get(url)
+    if (!cached) {
+      cached = this.http.get<GamesPerDate>(url).pipe(
+        // a failed call shouldn't stick - let the next click try again
+        catchError(error => {
+          this.gameDayCache.delete(url)
+          return throwError(() => error)
+        }),
+        shareReplay(1)
+      )
+      this.gameDayCache.set(url, cached)
+    }
+    return cached
   }
 
   getMmaToday(): Observable<FightCard> {

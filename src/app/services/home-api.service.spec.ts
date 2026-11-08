@@ -39,6 +39,39 @@ describe('HomeApiService', () => {
       })
   );
 
+  it('should call the next/previous game day urls once and reuse the result',
+    inject([HttpTestingController, HomeApiService],
+      (httpMock: HttpTestingController) => {
+        const nextUrl = environment.homePageApiUrl + '/games-per-date/basketball/next?day=20261108';
+        const previousUrl = environment.homePageApiUrl + '/games-per-date/football/previous?day=20261108';
+        const results: GamesPerDate[] = [];
+
+        service.getAdjacentGameDay(true, '20261108', true).subscribe(games => results.push(games));
+        httpMock.expectOne(nextUrl).flush(expectedGames);
+        service.getAdjacentGameDay(true, '20261108', true).subscribe(games => results.push(games));
+        httpMock.expectNone(nextUrl);
+
+        service.getAdjacentGameDay(false, '20261108', false).subscribe(games => results.push(games));
+        httpMock.expectOne(previousUrl).flush(expectedGames);
+
+        expect(results).toEqual([expectedGames, expectedGames, expectedGames]);
+        httpMock.verify();
+      })
+  );
+
+  it('should retry a failed game day call instead of caching the error',
+    inject([HttpTestingController, HomeApiService],
+      (httpMock: HttpTestingController) => {
+        const nextUrl = environment.homePageApiUrl + '/games-per-date/football/next?day=20261108';
+
+        service.getAdjacentGameDay(false, '20261108', true).subscribe({error: () => undefined});
+        httpMock.expectOne(nextUrl).flush('down', {status: 500, statusText: 'Server Error'});
+
+        service.getAdjacentGameDay(false, '20261108', true).subscribe(games => expect(games).toEqual(expectedGames));
+        httpMock.expectOne(nextUrl).flush(expectedGames);
+      })
+  );
+
   it('should call url for basketball games today',
     inject([HttpTestingController, HomeApiService],
       (httpMock: HttpTestingController) => {
