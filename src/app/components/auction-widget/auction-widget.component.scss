@@ -44,6 +44,14 @@
   border-color: var(--panel-border-strong);
 }
 
+.auction-card.brucker {
+  background: color-mix(in srgb, var(--buttonColor) 14%, transparent);
+}
+
+.auction-card.brucker:hover {
+  background: color-mix(in srgb, var(--buttonColor) 22%, transparent);
+}
+
 .auction-name {
   font-size: 1rem;
   font-weight: 600;

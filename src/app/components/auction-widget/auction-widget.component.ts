@@ -28,6 +28,10 @@ export class AuctionWidgetComponent {
     return date.toLocaleDateString('en-US', options);
   }
 
+  isBrucker(auction: Auction): boolean {
+    return `${auction.service ?? ''} ${auction.name ?? ''}`.toLowerCase().includes('brucker');
+  }
+
   navigate(url: string): void {
     this.windowService.openBlank(url);
   }
