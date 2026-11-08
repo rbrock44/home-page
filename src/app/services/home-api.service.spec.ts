@@ -72,6 +72,21 @@ describe('HomeApiService', () => {
       })
   );
 
+  it('should call the all fight cards url once and reuse the result',
+    inject([HttpTestingController, HomeApiService],
+      (httpMock: HttpTestingController) => {
+        const url = environment.homePageApiUrl + '/fight-card/all';
+        const results: FightCard[][] = [];
+
+        service.getAllFightCards().subscribe(cards => results.push(cards));
+        httpMock.expectOne(url).flush([expectedFights]);
+        service.getAllFightCards().subscribe(cards => results.push(cards));
+        httpMock.expectNone(url);
+
+        expect(results).toEqual([[expectedFights], [expectedFights]]);
+      })
+  );
+
   it('should call url for basketball games today',
     inject([HttpTestingController, HomeApiService],
       (httpMock: HttpTestingController) => {

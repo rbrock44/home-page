@@ -2,17 +2,28 @@
   <div class="sport-panel">
     <div class="sport-title">MMA</div>
     <div class="sport-game-ctn">
-      <div class="date-label">{{ addDay(fightCard().date) }}</div>
+      <div class="date-nav">
+        <button type="button" class="day-arrow prev-card" aria-label="Previous fight card"
+                [disabled]="!canStep(false)" (click)="step(false)">&#8249;</button>
+        @if (isBrowsing()) {
+          <button type="button" class="date-label browsing" title="Back to current card"
+                  (click)="backToCurrent()">{{ addDay(shown().date) }}</button>
+        } @else {
+          <div class="date-label">{{ addDay(shown().date) }}</div>
+        }
+        <button type="button" class="day-arrow next-card" aria-label="Next fight card"
+                [disabled]="!canStep(true)" (click)="step(true)">&#8250;</button>
+      </div>
       <!--            MAIN CARD-->
       <div class="card-label">Main Card</div>
-      <app-fight-card [fights]="fightCard().main"></app-fight-card>
+      <app-fight-card [fights]="shown().main"></app-fight-card>
       <!--            UNDER CARD-->
-      @if (fightCard()?.under?.length > 0) {
+      @if (shown()?.under?.length > 0) {
         <div class="card-label">
           Under Card
         </div>
       }
-      <app-fight-card [fights]="fightCard().under"></app-fight-card>
+      <app-fight-card [fights]="shown().under"></app-fight-card>
     </div>
   </div>
 }
