@@ -15,11 +15,16 @@
                 [disabled]="!canStep(true)" (click)="step(true)">&#8250;</button>
       </div>
       @for (game of shown().games; track game) {
-        <div class="game-row">
+        <div class="game-row" [class.live]="game.live">
           <div class="column away-label right" [title]="game.opponent" (click)="imgClick(game, false)">{{ game.opponent }}</div>
           <div class="column at-label">&#64;</div>
           <div class="column home-label left" [title]="game.home" (click)="imgClick(game)">{{ game.home }}</div>
-          <div class="column time-label">{{ this.liveTime(game.time) }}</div>
+          <div class="column time-label">
+            @if (game.live) {
+              <span class="live-dot" title="In progress"></span>
+            }
+            {{ this.liveTime(game.time) }}
+          </div>
         </div>
       }
     </div>

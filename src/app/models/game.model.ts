@@ -8,6 +8,8 @@ export class Game {
   homeTeamLink!: string;
   homeRecord!: string;
   time!: string;
+  // the game is being played right now
+  live?: boolean;
 
   public constructor(init?: Partial<Game>) {
     Object.assign(this, init);

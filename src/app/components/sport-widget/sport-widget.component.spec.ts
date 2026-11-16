@@ -191,6 +191,25 @@ describe('SportWidgetComponent', () => {
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
+  it('should highlight games in progress', () => {
+    service.updateSetting({showBasketball: true});
+    fixture.componentRef.setInput('gamesPerDate', new GamesPerDate({
+      games: [
+        new Game({opponent: 'Away1', home: 'Home1', time: '7:00 PM'}),
+        new Game({opponent: 'Away2', home: 'Home2', time: '5:12 - 3rd', live: true}),
+      ],
+      date: 'Monday, November 16, 2026',
+      day: '20261116'
+    }));
+    fixture.detectChanges();
+
+    const rows = fixture.nativeElement.querySelectorAll('.game-row');
+    expect(rows[0].classList.contains('live')).toBe(false);
+    expect(rows[1].classList.contains('live')).toBe(true);
+    expect(fixture.nativeElement.querySelectorAll('.live-dot').length).toBe(1);
+    expect(rows[1].querySelector('.live-dot')).not.toBeNull();
+  });
+
   function expectGames() {
     expectElementToContainContent(fixture, '.date-label', expected.date!);
     expectElementToContainContentAtIndex(fixture, '.away-label', expected.games![0].opponent, 0);

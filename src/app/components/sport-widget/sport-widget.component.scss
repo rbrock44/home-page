@@ -102,6 +102,45 @@
   border-color: var(--panel-border-strong);
 }
 
+// in-progress game: red accent, tinted row, pulsing dot by the clock
+.game-row.live {
+  background: rgba(var(--red-color-rgb), 0.08);
+  border-color: rgba(var(--red-color-rgb), 0.45);
+  box-shadow: inset 3px 0 0 var(--red-color);
+
+  .time-label {
+    color: var(--red-color);
+    font-weight: 700;
+  }
+
+  &:hover {
+    background: rgba(var(--red-color-rgb), 0.14);
+    border-color: var(--red-color);
+  }
+}
+
+.live-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 5px;
+  border-radius: 50%;
+  background: var(--red-color);
+  vertical-align: middle;
+  animation: live-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes live-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(var(--red-color-rgb), 0.7); }
+  50% { box-shadow: 0 0 0 4px rgba(var(--red-color-rgb), 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .live-dot {
+    animation: none;
+  }
+}
+
 .column {
   text-align: center;
   font-size: 0.85rem;
