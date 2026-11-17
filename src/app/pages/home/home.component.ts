@@ -8,7 +8,7 @@ import { SettingsService } from "../../services/settings.service";
 import { WindowService } from '../../services/window.service';
 import { Auction } from 'src/app/models/auction.model';
 import { SpotPrice } from 'src/app/models/spot-price.model';
-import { GDQ_EVENTS } from 'src/app/constants/constants-gdq';
+import { GDQ_EVENTS, GDQ_HOME_URL } from 'src/app/constants/constants-gdq';
 import { MediaSearchWidgetComponent } from '../../components/media-search-widget/media-search-widget.component';
 import { NgStyle } from '@angular/common';
 import { SportWidgetComponent } from '../../components/sport-widget/sport-widget.component';
@@ -28,6 +28,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   auctions = signal<Auction[]>([]);
   spotPrices = signal(new SpotPrice());
   gdqEvents: SingleEvent[] = GDQ_EVENTS;
+  readonly gdqHomeUrl = GDQ_HOME_URL;
   refreshCount = signal(0);
   title: string = '';
   private refreshTimer: number | undefined;

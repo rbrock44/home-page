@@ -142,6 +142,17 @@ describe('HomeComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('opens the gdq site when the empty gdq banner is clicked', () => {
+    const windowService = TestBed.inject(WindowService);
+    vi.spyOn(windowService, 'openBlank').mockImplementation(() => undefined);
+    component.gdqEvents = [];
+    fixture.detectChanges();
+
+    fixture.nativeElement.querySelector('.gdq-empty').click();
+
+    expect(windowService.openBlank).toHaveBeenCalledWith('https://gamesdonequick.com');
+  });
+
   it('should have widgets for basketball and football', () => {
     expectElementPresentAtIndex(fixture, 'app-sport-widget', 0);
     expectElementPresentAtIndex(fixture, 'app-sport-widget', 1);

@@ -1,5 +1,7 @@
 import { SingleEvent } from "../models/single-event.model";
 
+export const GDQ_HOME_URL = 'https://gamesdonequick.com';
+
 export const GDQ_EVENTS: SingleEvent[] = [
   new SingleEvent({
     name: 'Disaster Relief Done Quick 2024',

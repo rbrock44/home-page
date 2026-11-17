@@ -18,8 +18,10 @@
       }
 
       @if (this.upcomingOrOngoingEvents().length == 0) {
-        <div>
-          Go Add GDQ Events to list
+        <div class="gdq-highlight gdq-empty" (click)="gdqClick(gdqHomeUrl)" (keydown.enter)="gdqClick(gdqHomeUrl)" role="link" tabindex="0" aria-label="Open Games Done Quick">
+          <div class="gdq-div">
+            Go Add GDQ Events to list
+          </div>
         </div>
       }
     </div>
