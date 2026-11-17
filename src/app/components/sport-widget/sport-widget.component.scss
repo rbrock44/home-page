@@ -165,10 +165,19 @@
 .away-label,
 .home-label {
   font-weight: 600;
-  cursor: pointer;
   overflow: hidden;
   white-space: nowrap;
+}
+
+// only the name itself opens the team page; the rest of the cell falls
+// through to the row and opens the matchup
+.team-name {
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
   text-overflow: ellipsis;
+  vertical-align: bottom;
+  cursor: pointer;
 
   &:hover {
     color: var(--buttonColor);

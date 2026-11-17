@@ -19,9 +19,9 @@
              (click)="gameClick(game)" (keydown.enter)="gameClick(game)"
              [attr.role]="game.gameLink ? 'link' : null" [attr.tabindex]="game.gameLink ? 0 : null"
              [attr.aria-label]="game.gameLink ? 'Open ' + game.opponent + ' at ' + game.home + ' on ESPN' : null">
-          <div class="column away-label right" [title]="game.opponent" (click)="imgClick(game, false, $event)">{{ game.opponent }}</div>
+          <div class="column away-label right"><span class="team-name" [title]="game.opponent" (click)="imgClick(game, false, $event)">{{ game.opponent }}</span></div>
           <div class="column at-label">&#64;</div>
-          <div class="column home-label left" [title]="game.home" (click)="imgClick(game, true, $event)">{{ game.home }}</div>
+          <div class="column home-label left"><span class="team-name" [title]="game.home" (click)="imgClick(game, true, $event)">{{ game.home }}</span></div>
           <div class="column time-label">
             @if (game.live) {
               <span class="live-dot" title="In progress"></span>
