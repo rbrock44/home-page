@@ -69,9 +69,17 @@ export class SportWidgetComponent {
     this.browsed.set(null);
   }
 
-  imgClick(game: Game, isHome: boolean = true): void {
+  imgClick(game: Game, isHome: boolean = true, event?: Event): void {
+    // a team name opens the team page, not the row's matchup
+    event?.stopPropagation();
     let url = isHome ? game.homeTeamLink : game.opponentTeamLink
     this.windowService.openBlank(url);
+  }
+
+  gameClick(game: Game): void {
+    if (game.gameLink) {
+      this.windowService.openBlank(game.gameLink);
+    }
   }
 
   getImage(game: Game, isHome: boolean = true): String {

@@ -33,7 +33,8 @@ describe('SportWidgetComponent', () => {
         home: 'home1',
         homeImageLink: 'homeImageLink1',
         homeTeamLink: 'homeTeamLink1',
-        time: '6:00'
+        time: '6:00',
+        gameLink: 'gameLink1'
       }),
       new Game({
         opponent: 'Opponent2',
@@ -140,6 +141,36 @@ describe('SportWidgetComponent', () => {
     expect(spy).toHaveBeenCalledWith(expected.games![0].opponentTeamLink);
     clickElementAtIndex(fixture, '.home-label', 0);
     expect(spy).toHaveBeenCalledWith(expected.games![0].homeTeamLink);
+  });
+
+  it('should open the matchup when the row is clicked, but not when a team is', () => {
+    const spy = vi.spyOn(windowService, 'openBlank').mockImplementation(() => undefined);
+    service.updateSetting({showBasketball: true});
+    fixture.componentRef.setInput('gamesPerDate', expected);
+    fixture.detectChanges();
+
+    const row = fixture.nativeElement.querySelectorAll('.game-row')[0];
+    row.querySelector('.time-label').click();
+    expect(spy).toHaveBeenCalledWith('gameLink1');
+
+    spy.mockClear();
+    row.querySelector('.home-label').click();
+    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledWith(expected.games![0].homeTeamLink);
+  });
+
+  it('should do nothing when a row without a matchup link is clicked', () => {
+    const spy = vi.spyOn(windowService, 'openBlank').mockImplementation(() => undefined);
+    service.updateSetting({showBasketball: true});
+    fixture.componentRef.setInput('gamesPerDate', expected);
+    fixture.detectChanges();
+
+    const rows = fixture.nativeElement.querySelectorAll('.game-row');
+    expect(rows[0].classList.contains('has-link')).toBe(true);
+    expect(rows[1].classList.contains('has-link')).toBe(false);
+
+    rows[1].click();
+    expect(spy).not.toHaveBeenCalled();
   });
 
   it('should page to the next game day and back', () => {

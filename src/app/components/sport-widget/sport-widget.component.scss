@@ -97,6 +97,10 @@
   transition: background-color 0.15s ease, border-color 0.15s ease;
 }
 
+.game-row.has-link {
+  cursor: pointer;
+}
+
 .game-row:hover {
   background: var(--panel-row-bg-hover);
   border-color: var(--panel-border-strong);
