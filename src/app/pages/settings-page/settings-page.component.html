@@ -65,30 +65,18 @@
       <div class="settings-section">
         <h2 class="section-eyebrow">What to show</h2>
 
-        <app-show-which-row [showControl]="showBasketballControl"
-          [whichControl]="whichBasketballControl"
-          [showHtmlId]="'show-basketball'"
-          [whichHtmlId]="'which-basketball'"
-          [yesOption]="this.settingsService.TODAY"
-          [noOption]="this.settingsService.UPCOMING"
+        <app-show-checkbox [control]="showBasketballControl"
+          [htmlId]="'show-basketball'"
           [name]="'Basketball games'"
-        ></app-show-which-row>
-        <app-show-which-row [showControl]="showFootballControl"
-          [whichControl]="whichFootballControl"
-          [showHtmlId]="'show-football'"
-          [whichHtmlId]="'which-football'"
-          [yesOption]="this.settingsService.TODAY"
-          [noOption]="this.settingsService.UPCOMING"
+        ></app-show-checkbox>
+        <app-show-checkbox [control]="showFootballControl"
+          [htmlId]="'show-football'"
           [name]="'Football games'"
-        ></app-show-which-row>
-        <app-show-which-row [showControl]="showMmaControl"
-          [whichControl]="whichMmaControl"
-          [showHtmlId]="'show-mma'"
-          [whichHtmlId]="'which-mma'"
-          [yesOption]="this.settingsService.TODAY"
-          [noOption]="this.settingsService.UPCOMING"
+        ></app-show-checkbox>
+        <app-show-checkbox [control]="showMmaControl"
+          [htmlId]="'show-mma'"
           [name]="'MMA fights'"
-        ></app-show-which-row>
+        ></app-show-checkbox>
         <app-show-checkbox [control]="showAuctionsControl"
           [htmlId]="'show-auctions'"
           [name]="'Auctions'"

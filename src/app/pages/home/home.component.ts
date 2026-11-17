@@ -88,23 +88,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   getSubscriptionsStarted(): void {
-    const basketball = this.settingsService.whichBasketball ?
-      this.homeApiService.getBasketballToday() :
-      this.homeApiService.getBasketballUpcoming()
-
-    basketball.subscribe(games => this.basketball.set(games));
-
-    const football = this.settingsService.whichFootball ?
-      this.homeApiService.getFootballToday() :
-      this.homeApiService.getFootballUpcoming()
-
-    football.subscribe(games => this.football.set(games));
-
-    const mma = this.settingsService.whichMma ?
-      this.homeApiService.getMmaToday() :
-      this.homeApiService.getMmaUpcoming()
-
-    mma.subscribe(fightCard => this.mma.set(fightCard));
+    this.homeApiService.getBasketballUpcoming().subscribe(games => this.basketball.set(games));
+    this.homeApiService.getFootballUpcoming().subscribe(games => this.football.set(games));
+    this.homeApiService.getMmaUpcoming().subscribe(fightCard => this.mma.set(fightCard));
 
     this.homeApiService.getAuctionsUpcoming().subscribe(auctions => this.auctions.set(auctions));
 

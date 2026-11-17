@@ -6,7 +6,6 @@ import {HomeApiService} from "../../services/home-api.service";
 import {SettingsService} from "../../services/settings.service";
 import {SettingsPageComponent} from "./settings-page.component";
 import {ShowCheckboxComponent} from "../../components/show-checkbox/show-checkbox.component";
-import {ShowWhichRowComponent} from "../../components/show-which-row/show-which-row.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {
   expectElementPresent,
@@ -33,8 +32,7 @@ describe('SettingsPageComponent', () => {
         ReactiveFormsModule,
         RouterTestingModule,
         SettingsPageComponent,
-        ShowCheckboxComponent,
-        ShowWhichRowComponent],
+        ShowCheckboxComponent],
     providers: [
         HomeApiService,
         SettingsService,
@@ -72,15 +70,10 @@ describe('SettingsPageComponent', () => {
     expectElementPresentAtIndex(fixture, 'input', 1);
   });
 
-  it('should contain 3 show/which rows', () => {
-    for (let i = 0; i < 3; i++) {
-      expectElementPresentAtIndex(fixture, 'app-show-which-row', i);
+  it('should contain show checkboxes for basketball, football, mma, auctions and links', () => {
+    for (let i = 0; i < 5; i++) {
+      expectElementPresentAtIndex(fixture, 'app-show-checkbox', i);
     }
-  });
-
-  it('should contain show checkboxes for auctions and links', () => {
-    expectElementPresentAtIndex(fixture, 'app-show-checkbox', 0);
-    expectElementPresentAtIndex(fixture, 'app-show-checkbox', 1);
   });
 
   it('should have color dropdown', () => {
@@ -99,15 +92,12 @@ describe('SettingsPageComponent', () => {
     expect(settingSpy).toHaveBeenCalledWith(component.colorControl.value);
   });
 
-  it('should save show/which toggles instantly', () => {
+  it('should save show toggles instantly', () => {
     fixture.detectChanges();
     const settingSpy = vi.spyOn(settingsService, 'updateSetting').mockImplementation(() => undefined);
 
     component.showBasketballControl.setValue(false);
     expect(settingSpy).toHaveBeenCalledWith({showBasketball: false});
-
-    component.whichBasketballControl.setValue(true);
-    expect(settingSpy).toHaveBeenCalledWith({whichBasketball: true});
 
     component.showLinksControl.setValue(true);
     expect(settingSpy).toHaveBeenCalledWith({showLinks: true});

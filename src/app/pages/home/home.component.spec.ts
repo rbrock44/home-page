@@ -179,11 +179,6 @@ describe('HomeComponent', () => {
           true,
           true
         ],
-        [
-          true,
-          true,
-          true
-        ],
         item,
         false
       );

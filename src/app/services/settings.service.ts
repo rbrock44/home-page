@@ -8,9 +8,6 @@ import {
   SHOW_SPORTS_DEFAULT,
   TITLE_DEFAULT,
   toBoolean,
-  TODAY,
-  UPCOMING,
-  WHICH_SELECTION_DEFAULT,
 } from "../constants/constants";
 import {Item} from "../models/item.model";
 import {WindowService} from "./window.service";
@@ -22,9 +19,6 @@ interface Settings {
   showMma: boolean;
   showAuctions: boolean;
   showLinks: boolean;
-  whichBasketball: boolean;
-  whichFootball: boolean;
-  whichMma: boolean;
   refreshRate: number;
   color: string;
 }
@@ -45,17 +39,11 @@ export class SettingsService {
   get showMma(): boolean { return this.settings().showMma; }
   get showAuctions(): boolean { return this.settings().showAuctions; }
   get showLinks(): boolean { return this.settings().showLinks; }
-  get whichBasketball(): boolean { return this.settings().whichBasketball; }
-  get whichFootball(): boolean { return this.settings().whichFootball; }
-  get whichMma(): boolean { return this.settings().whichMma; }
   get refreshRate(): number { return this.settings().refreshRate; }
   get color(): string { return this.settings().color; }
 
   // read once on load; router navigation drops query params
   showPrices: boolean;
-
-  TODAY: string = TODAY;
-  UPCOMING: string = UPCOMING;
 
   constructor(
     private windowService: WindowService,
@@ -87,7 +75,6 @@ export class SettingsService {
   applySettings(
     refreshRate: number,
     showSports: boolean[],
-    whichSelection: boolean[],
     title: string,
     showLinks: boolean,
   ) {
@@ -98,9 +85,6 @@ export class SettingsService {
       showFootball: showSports[1],
       showMma: showSports[2],
       showAuctions: showSports[3],
-      whichBasketball: whichSelection[0],
-      whichFootball: whichSelection[1],
-      whichMma: whichSelection[2],
       showLinks,
     });
 
@@ -115,9 +99,6 @@ export class SettingsService {
       showFootball: SHOW_SPORTS_DEFAULT,
       showMma: SHOW_SPORTS_DEFAULT,
       showAuctions: SHOW_SPORTS_DEFAULT,
-      whichBasketball: WHICH_SELECTION_DEFAULT,
-      whichFootball: WHICH_SELECTION_DEFAULT,
-      whichMma: WHICH_SELECTION_DEFAULT,
       showLinks: SHOW_LINKS_DEFAULT,
       refreshRate: REFRESH_RATE_DEFAULT,
       title: TITLE_DEFAULT,
@@ -148,9 +129,6 @@ export class SettingsService {
       showMma: toBoolean(this.windowService.getItem('home-page-show-mma', SHOW_SPORTS_DEFAULT)),
       showAuctions: toBoolean(this.windowService.getItem('home-page-show-auctions', SHOW_SPORTS_DEFAULT)),
       showLinks: toBoolean(this.windowService.getItem('home-page-show-links', SHOW_LINKS_DEFAULT)),
-      whichBasketball: toBoolean(this.windowService.getItem('home-page-which-basketball', WHICH_SELECTION_DEFAULT)),
-      whichFootball: toBoolean(this.windowService.getItem('home-page-which-football', WHICH_SELECTION_DEFAULT)),
-      whichMma: toBoolean(this.windowService.getItem('home-page-which-mma', WHICH_SELECTION_DEFAULT)),
       color: this.windowService.getItem('home-page-color', COLOR_DEFAULT),
     };
   }
@@ -166,9 +144,6 @@ export class SettingsService {
       new Item('home-page-show-mma', this.showMma.toString()),
       new Item('home-page-show-auctions', this.showAuctions.toString()),
       new Item('home-page-show-links', this.showLinks.toString()),
-      new Item('home-page-which-basketball', this.whichBasketball.toString()),
-      new Item('home-page-which-football', this.whichFootball.toString()),
-      new Item('home-page-which-mma', this.whichMma.toString()),
       new Item('home-page-title', this.title),
       new Item('home-page-refresh-rate', this.refreshRate.toString())
     ].forEach(item => {

@@ -30,20 +30,12 @@ export class HomeApiService {
     return this.http.get<void>(`${this.homeUrl}/media/update`);
   }
 
-  getBasketballToday(): Observable<GamesPerDate> {
-    return this.http.get<GamesPerDate>(this.getBasketballUrl());
-  }
-
   getBasketballUpcoming(): Observable<GamesPerDate> {
-    return this.http.get<GamesPerDate>(this.getBasketballUrl(false))
-  }
-
-  getFootballToday(): Observable<GamesPerDate> {
-    return this.http.get<GamesPerDate>(this.getFootballUrl());
+    return this.http.get<GamesPerDate>(this.getUpcomingUrl('basketball'))
   }
 
   getFootballUpcoming(): Observable<GamesPerDate> {
-    return this.http.get<GamesPerDate>(this.getFootballUrl(false));
+    return this.http.get<GamesPerDate>(this.getUpcomingUrl('football'));
   }
 
   getAdjacentGameDay(isBasketball: boolean, day: string, forward: boolean): Observable<GamesPerDate> {
@@ -56,12 +48,8 @@ export class HomeApiService {
     return this.getCached<FightCard[]>(`${this.homeUrl}/${this.fightCard}/all`)
   }
 
-  getMmaToday(): Observable<FightCard> {
-    return this.http.get<FightCard>(this.getMmaUrl());
-  }
-
   getMmaUpcoming(): Observable<FightCard> {
-    return this.http.get<FightCard>(this.getMmaUrl(false));
+    return this.http.get<FightCard>(`${this.homeUrl}/${this.fightCard}/upcoming`);
   }
 
   getAuctionsUpcoming(): Observable<Auction[]> {
@@ -88,19 +76,7 @@ export class HomeApiService {
     return cached
   }
 
-  private getBasketballUrl(today: boolean = true): string {
-    return this.getUrl('basketball', today)
-  }
-
-  private getFootballUrl(today: boolean = true): string {
-    return this.getUrl('football', today)
-  }
-
-  private getMmaUrl(today: boolean = true): string {
-    return `${this.homeUrl}/${this.fightCard}/` + (today ? 'today' : 'upcoming')
-  }
-
-  private getUrl(sport: string, today: boolean = true): string {
-    return `${this.homeUrl}/${this.gamesPerDate}${sport}/` + (today ? 'today' : 'upcoming')
+  private getUpcomingUrl(sport: string): string {
+    return `${this.homeUrl}/${this.gamesPerDate}${sport}/upcoming`
   }
 }

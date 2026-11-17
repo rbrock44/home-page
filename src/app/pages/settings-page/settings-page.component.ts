@@ -15,7 +15,6 @@ import {DateService} from "../../services/date.service";
 import { MatDialog } from '@angular/material/dialog';
 import { MatFormField, MatError, MatSuffix } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
-import { ShowWhichRowComponent } from '../../components/show-which-row/show-which-row.component';
 import { ShowCheckboxComponent } from '../../components/show-checkbox/show-checkbox.component';
 import { MatSelect, MatSelectTrigger, MatOption } from '@angular/material/select';
 import { NgStyle } from '@angular/common';
@@ -24,7 +23,7 @@ import { NgStyle } from '@angular/common';
     selector: 'app-settings-page',
     templateUrl: './settings-page.component.html',
     styleUrls: ['./settings-page.component.scss'],
-    imports: [MatFormField, MatInput, FormsModule, ReactiveFormsModule, MatError, MatSuffix, ShowWhichRowComponent, ShowCheckboxComponent, MatSelect, MatSelectTrigger, NgStyle, MatOption]
+    imports: [MatFormField, MatInput, FormsModule, ReactiveFormsModule, MatError, MatSuffix, ShowCheckboxComponent, MatSelect, MatSelectTrigger, NgStyle, MatOption]
 })
 export class SettingsPageComponent implements OnInit, OnDestroy {
   colors = COLOR_OPTIONS;
@@ -42,9 +41,6 @@ export class SettingsPageComponent implements OnInit, OnDestroy {
   showMmaControl: UntypedFormControl = new UntypedFormControl('', [Validators.required]);
   showAuctionsControl: UntypedFormControl = new UntypedFormControl('', [Validators.required]);
   showLinksControl: UntypedFormControl = new UntypedFormControl('', [Validators.required]);
-  whichFootballControl: UntypedFormControl = new UntypedFormControl('', [Validators.required]);
-  whichBasketballControl: UntypedFormControl = new UntypedFormControl('', [Validators.required]);
-  whichMmaControl: UntypedFormControl = new UntypedFormControl('', [Validators.required]);
   colorControl: UntypedFormControl = new UntypedFormControl('', [Validators.required]);
 
   private subscriptions: Subscription[] = [];
@@ -65,9 +61,6 @@ export class SettingsPageComponent implements OnInit, OnDestroy {
       this.showMmaControl.valueChanges.subscribe(value => this.settingsService.updateSetting({showMma: value})),
       this.showAuctionsControl.valueChanges.subscribe(value => this.settingsService.updateSetting({showAuctions: value})),
       this.showLinksControl.valueChanges.subscribe(value => this.settingsService.updateSetting({showLinks: value})),
-      this.whichBasketballControl.valueChanges.subscribe(value => this.settingsService.updateSetting({whichBasketball: value})),
-      this.whichFootballControl.valueChanges.subscribe(value => this.settingsService.updateSetting({whichFootball: value})),
-      this.whichMmaControl.valueChanges.subscribe(value => this.settingsService.updateSetting({whichMma: value})),
     );
 
     // Text/number fields debounce and only save once the value is valid, so a
@@ -117,9 +110,6 @@ export class SettingsPageComponent implements OnInit, OnDestroy {
     this.showMmaControl.setValue(this.settingsService.showMma);
     this.showAuctionsControl.setValue(this.settingsService.showAuctions);
     this.showLinksControl.setValue(this.settingsService.showLinks);
-    this.whichBasketballControl.setValue(this.settingsService.whichBasketball);
-    this.whichFootballControl.setValue(this.settingsService.whichFootball);
-    this.whichMmaControl.setValue(this.settingsService.whichMma);
 
     this.titleControl.setValue(this.settingsService.title);
     this.refreshRateControl.setValue(this.settingsService.refreshRate);

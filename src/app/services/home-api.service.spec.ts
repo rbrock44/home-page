@@ -87,20 +87,6 @@ describe('HomeApiService', () => {
       })
   );
 
-  it('should call url for basketball games today',
-    inject([HttpTestingController, HomeApiService],
-      (httpMock: HttpTestingController) => {
-        const searchUrl = environment.homePageApiUrl + '/games-per-date/basketball/today';
-
-        service.getBasketballToday().subscribe(games => {
-          expect(expectedGames).toEqual(games);
-        });
-
-        const req = httpMock.expectOne(searchUrl);
-        expect(req.request.method).toEqual('GET');
-        req.flush(expectedGames);
-      })
-  );
 
   it('should call url for upcoming football games',
     inject([HttpTestingController, HomeApiService],
@@ -117,20 +103,6 @@ describe('HomeApiService', () => {
       })
   );
 
-  it('should call url for football games today',
-    inject([HttpTestingController, HomeApiService],
-      (httpMock: HttpTestingController) => {
-        const searchUrl = environment.homePageApiUrl + '/games-per-date/football/today';
-
-        service.getFootballToday().subscribe(games => {
-          expect(expectedGames).toEqual(games);
-        });
-
-        const req = httpMock.expectOne(searchUrl);
-        expect(req.request.method).toEqual('GET');
-        req.flush(expectedGames);
-      })
-  );
 
   it('should call url for upcoming mma fights',
     inject([HttpTestingController, HomeApiService],
@@ -147,20 +119,6 @@ describe('HomeApiService', () => {
       })
   );
 
-  it('should call url for mma fights today',
-    inject([HttpTestingController, HomeApiService],
-      (httpMock: HttpTestingController) => {
-        const searchUrl = environment.homePageApiUrl + '/fight-card/today';
-
-        service.getMmaToday().subscribe(fights => {
-          expect(expectedFights).toEqual(fights);
-        });
-
-        const req = httpMock.expectOne(searchUrl);
-        expect(req.request.method).toEqual('GET');
-        req.flush(expectedFights);
-      })
-  );
 
   [
     'abc',

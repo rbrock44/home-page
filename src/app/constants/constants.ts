@@ -64,9 +64,6 @@ export const COLOR_DEFAULT = '--blue-color-';
 export const REFRESH_RATE_DEFAULT = 60;
 export const SHOW_SPORTS_DEFAULT = true;
 export const SHOW_LINKS_DEFAULT = false;
-export const WHICH_SELECTION_DEFAULT = false;
-export const TODAY: string = 'Today';
-export const UPCOMING: string = 'Upcoming';
 
 export const LINKS_FIRST_COLUMN: Link[] = [
   new Link('Bank of Missouri', '', 'https://my.bankofmissouri.com/login'),
