@@ -29,7 +29,7 @@ export const redirectLegacyPage: CanActivateFn = route => {
   return inject(Router).createUrlTree(['/', path], { queryParams });
 };
 
-const SITE_TITLE = "Ryan's Home Page";
+const SITE_TITLE = "Ryan Brock's Home Page";
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent, canActivate: [redirectLegacyPage], title: SITE_TITLE },

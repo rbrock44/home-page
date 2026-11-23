@@ -46,11 +46,11 @@ describe('routes', () => {
   });
 
   [
-    {url: '/', title: "Ryan's Home Page"},
-    {url: '/settings', title: "Settings – Ryan's Home Page"},
-    {url: '/links', title: "Links – Ryan's Home Page"},
-    {url: '/concerts', title: "Concerts – Ryan's Home Page"},
-    {url: '/matches', title: "Matches – Ryan's Home Page"},
+    {url: '/', title: "Ryan Brock's Home Page"},
+    {url: '/settings', title: "Settings – Ryan Brock's Home Page"},
+    {url: '/links', title: "Links – Ryan Brock's Home Page"},
+    {url: '/concerts', title: "Concerts – Ryan Brock's Home Page"},
+    {url: '/matches', title: "Matches – Ryan Brock's Home Page"},
   ].forEach(({url, title}) => {
     it(`titles ${url} as "${title}"`, async () => {
       const harness = await RouterTestingHarness.create();
