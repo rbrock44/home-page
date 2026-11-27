@@ -15,17 +15,17 @@ import {DateService} from "../../services/date.service";
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatFormField, MatError, MatSuffix } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
-import { ShowCheckboxComponent } from '../../components/show-checkbox/show-checkbox.component';
+import { ShowCheckboxComponent } from '../show-checkbox/show-checkbox.component';
 import { MatSelect, MatSelectTrigger, MatOption } from '@angular/material/select';
 import { NgStyle } from '@angular/common';
 
 @Component({
-    selector: 'app-settings-page',
-    templateUrl: './settings-page.component.html',
-    styleUrls: ['./settings-page.component.scss'],
+    selector: 'app-settings-popup',
+    templateUrl: './settings-popup.component.html',
+    styleUrls: ['./settings-popup.component.scss'],
     imports: [MatFormField, MatInput, FormsModule, ReactiveFormsModule, MatError, MatSuffix, ShowCheckboxComponent, MatSelect, MatSelectTrigger, NgStyle, MatOption]
 })
-export class SettingsPageComponent implements OnInit, OnDestroy {
+export class SettingsPopupComponent implements OnInit, OnDestroy {
   colors = COLOR_OPTIONS;
 
   refreshRateControl: UntypedFormControl = new UntypedFormControl('', [
@@ -46,7 +46,7 @@ export class SettingsPageComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
 
   // set when shown as the settings popup; absent when rendered on its own
-  readonly dialogRef = inject(MatDialogRef<SettingsPageComponent>, {optional: true});
+  readonly dialogRef = inject(MatDialogRef<SettingsPopupComponent>, {optional: true});
 
   constructor(public dialog: MatDialog,
               private alertService: AlertService,

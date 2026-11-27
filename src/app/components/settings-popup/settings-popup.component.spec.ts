@@ -4,8 +4,8 @@ import {Router} from '@angular/router';
 import { provideHttpClientTesting } from "@angular/common/http/testing";
 import {HomeApiService} from "../../services/home-api.service";
 import {SettingsService} from "../../services/settings.service";
-import {SettingsPageComponent} from "./settings-page.component";
-import {ShowCheckboxComponent} from "../../components/show-checkbox/show-checkbox.component";
+import {SettingsPopupComponent} from "./settings-popup.component";
+import {ShowCheckboxComponent} from "../show-checkbox/show-checkbox.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {
   expectElementPresent,
@@ -19,9 +19,9 @@ import {DateService} from "../../services/date.service";
 import { provideHttpClient, withXhr } from '@angular/common/http';
 import { MatDialogRef } from '@angular/material/dialog';
 
-describe('SettingsPageComponent', () => {
-  let fixture: ComponentFixture<SettingsPageComponent>;
-  let component: SettingsPageComponent;
+describe('SettingsPopupComponent', () => {
+  let fixture: ComponentFixture<SettingsPopupComponent>;
+  let component: SettingsPopupComponent;
   let router: Router;
   let settingsService: SettingsService;
   let alertService: AlertService;
@@ -32,7 +32,7 @@ describe('SettingsPageComponent', () => {
     imports: [FormsModule,
         ReactiveFormsModule,
         RouterTestingModule,
-        SettingsPageComponent,
+        SettingsPopupComponent,
         ShowCheckboxComponent],
     providers: [
         HomeApiService,
@@ -47,7 +47,7 @@ describe('SettingsPageComponent', () => {
     dateService = TestBed.inject(DateService);
     vi.spyOn(dateService, 'now').mockReturnValue(1);
     settingsService = TestBed.inject(SettingsService);
-    fixture = TestBed.createComponent(SettingsPageComponent);
+    fixture = TestBed.createComponent(SettingsPopupComponent);
     component = fixture.debugElement.componentInstance;
   });
 
@@ -161,14 +161,14 @@ describe('SettingsPageComponent', () => {
     const dialogRef = {close: vi.fn()};
     TestBed.resetTestingModule();
     await TestBed.configureTestingModule({
-      imports: [SettingsPageComponent],
+      imports: [SettingsPopupComponent],
       providers: [
         {provide: MatDialogRef, useValue: dialogRef},
         provideHttpClient(withXhr()),
         provideHttpClientTesting()
       ]
     }).compileComponents();
-    const popupFixture = TestBed.createComponent(SettingsPageComponent);
+    const popupFixture = TestBed.createComponent(SettingsPopupComponent);
     popupFixture.detectChanges();
 
     popupFixture.nativeElement.querySelector('[data-close-button]').click();

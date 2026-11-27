@@ -1,7 +1,7 @@
 import {TestBed} from '@angular/core/testing';
 import {MatDialog} from '@angular/material/dialog';
 import {SETTINGS_DIALOG_ID, SettingsDialogService} from './settings-dialog.service';
-import {SettingsPageComponent} from '../pages/settings-page/settings-page.component';
+import {SettingsPopupComponent} from '../components/settings-popup/settings-popup.component';
 
 describe('SettingsDialogService', () => {
   let service: SettingsDialogService;
@@ -17,7 +17,7 @@ describe('SettingsDialogService', () => {
 
     service.open();
 
-    expect(open.mock.calls[0][0]).toBe(SettingsPageComponent);
+    expect(open.mock.calls[0][0]).toBe(SettingsPopupComponent);
     expect(open.mock.calls[0][1]).toEqual(expect.objectContaining({
       id: SETTINGS_DIALOG_ID,
       maxWidth: 'calc(100vw - 32px)',

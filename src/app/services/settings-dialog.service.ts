@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
-import {SettingsPageComponent} from '../pages/settings-page/settings-page.component';
+import {SettingsPopupComponent} from '../components/settings-popup/settings-popup.component';
 
 export const SETTINGS_DIALOG_ID = 'settings-modal';
 
@@ -13,13 +13,13 @@ export class SettingsDialogService {
   }
 
   /** Opens the settings popup, or hands back the one already open. */
-  open(): MatDialogRef<SettingsPageComponent> {
+  open(): MatDialogRef<SettingsPopupComponent> {
     const existing = this.dialog.getDialogById(SETTINGS_DIALOG_ID);
     if (existing) {
       return existing;
     }
 
-    return this.dialog.open(SettingsPageComponent, {
+    return this.dialog.open(SettingsPopupComponent, {
       id: SETTINGS_DIALOG_ID,
       panelClass: 'settings-dialog',
       ariaLabel: 'Settings',
