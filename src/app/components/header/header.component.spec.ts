@@ -56,7 +56,9 @@ describe('HeaderComponent', () => {
     const open = vi.spyOn(TestBed.inject(SettingsDialogService), 'open').mockReturnValue(undefined as never);
     fixture.detectChanges();
 
-    const gear = fixture.nativeElement.querySelector('.secondary-nav [data-settings-nav]');
+    const gear = fixture.nativeElement.querySelector('.header-actions [data-settings-nav]');
+    // left of the outbound links, and not counted as one of them
+    expect(gear.nextElementSibling.classList.contains('secondary-nav')).toBe(true);
     expect(gear.getAttribute('aria-label')).toBe('Settings');
     gear.click();
 

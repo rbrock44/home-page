@@ -48,6 +48,14 @@
   min-width: 0;
 }
 
+// settings sits apart, left of the outbound links
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: none;
+}
+
 .secondary-nav {
   display: flex;
   align-items: center;
@@ -218,9 +226,12 @@ a {
     flex: none;
   }
 
-  .secondary-nav {
+  .header-actions {
     order: 3;
     width: 100%;
+  }
+
+  .secondary-nav {
     justify-content: flex-start;
     flex-wrap: wrap;
   }
