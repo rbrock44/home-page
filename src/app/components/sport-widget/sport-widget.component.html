@@ -22,11 +22,16 @@
           <div class="column away-label right"><span class="team-name" [title]="game.opponent" (click)="imgClick(game, false, $event)">{{ game.opponent }}</span></div>
           <div class="column at-label">&#64;</div>
           <div class="column home-label left"><span class="team-name" [title]="game.home" (click)="imgClick(game, true, $event)">{{ game.home }}</span></div>
-          <div class="column time-label">
-            @if (game.live) {
-              <span class="live-dot" title="In progress"></span>
+          <div class="column time-label" [class.has-score]="game.live && !!game.score">
+            @if (game.live && game.score) {
+              <span class="live-score">{{ game.score }}</span>
             }
-            {{ this.liveTime(game.time) }}
+            <span class="live-clock">
+              @if (game.live) {
+                <span class="live-dot" title="In progress"></span>
+              }
+              {{ this.liveTime(game.time) }}
+            </span>
           </div>
         </div>
       }

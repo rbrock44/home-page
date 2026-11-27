@@ -255,6 +255,26 @@ describe('SportWidgetComponent', () => {
     expect(rows[1].querySelector('.live-dot')).not.toBeNull();
   });
 
+  it('should show score and clock together for a live game', () => {
+    service.updateSetting({showBasketball: true});
+    fixture.componentRef.setInput('gamesPerDate', new GamesPerDate({
+      games: [
+        new Game({opponent: 'Away1', home: 'Home1', time: '7:00 PM'}),
+        new Game({opponent: 'Away2', home: 'Home2', time: '5:12 - 3rd', live: true, score: 'AWY 88, HOM 91'}),
+      ],
+      date: 'Monday, November 16, 2026',
+      day: '20261116'
+    }));
+    fixture.detectChanges();
+
+    const labels = fixture.nativeElement.querySelectorAll('.time-label');
+    expect(labels[0].classList.contains('has-score')).toBe(false);
+    expect(labels[0].querySelector('.live-score')).toBeNull();
+    expect(labels[1].classList.contains('has-score')).toBe(true);
+    expect(labels[1].querySelector('.live-score').textContent).toContain('AWY 88, HOM 91');
+    expect(labels[1].querySelector('.live-clock').textContent).toContain('5:12 - 3rd');
+  });
+
   function expectGames() {
     expectElementToContainContent(fixture, '.date-label', expected.date!);
     expectElementToContainContentAtIndex(fixture, '.away-label', expected.games![0].opponent, 0);
