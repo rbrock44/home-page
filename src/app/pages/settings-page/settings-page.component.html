@@ -1,129 +1,134 @@
-<div class="settings-page">
-  <div class="settings-backdrop">
-  <section class="settings-panel">
+<section class="settings-panel">
 
-    <div class="header-div">
+  <div class="header-div">
+    <div>
       <h1 data-header-title>Settings</h1>
       <p class="panel-subhead">Choose what the dashboard shows and how often it reloads. Changes save instantly.</p>
     </div>
-
-    <div data-settings-input>
-
-      <!-- PAGE -->
-      <div class="settings-section">
-        <h2 class="section-eyebrow">Page</h2>
-
-        <!-- TITLE -->
-        <div class="setting-row">
-          <label data-title-label class="setting-row__label" for="settings-title">
-            Title
-            <span class="setting-row__hint">Shown in the header at the top of every page.</span>
-          </label>
-          <div class="setting-row__control">
-            <mat-form-field appearance="outline" subscriptSizing="dynamic">
-              <input matInput data-title
-                id="settings-title"
-                type="text"
-                [formControl]="titleControl"
-                >
-              @if (titleControl.invalid && titleControl.touched) {
-                <mat-error data-basic-error>Enter a title</mat-error>
-              }
-            </mat-form-field>
-          </div>
-        </div>
-
-        <!-- REFRESH RATE -->
-        <div class="setting-row setting-row--last">
-          <label data-refresh-rate-input-label class="setting-row__label" for="settings-refresh-rate">
-            Refresh rate
-            <span class="setting-row__hint">How long the dashboard waits before reloading its data.</span>
-          </label>
-          <div class="setting-row__control">
-            <mat-form-field appearance="outline" subscriptSizing="dynamic">
-              <input matInput data-refresh-rate-input
-                id="settings-refresh-rate"
-                type="number"
-                [formControl]="refreshRateControl"
-                >
-              <span matTextSuffix>min</span>
-              @if (refreshRateControl.hasError('required') && refreshRateControl.touched) {
-                <mat-error data-basic-error>Enter a refresh rate</mat-error>
-              }
-              @if (refreshRateControl.hasError('max')) {
-                <mat-error data-max-error>Use 1000 or less</mat-error>
-              }
-              @if (refreshRateControl.hasError('min') || refreshRateControl.hasError('pattern')) {
-                <mat-error data-min-error>Use a whole number, 1 or more</mat-error>
-              }
-            </mat-form-field>
-          </div>
-        </div>
-      </div>
-
-      <!-- WHAT TO SHOW -->
-      <div class="settings-section">
-        <h2 class="section-eyebrow">What to show</h2>
-
-        <app-show-checkbox [control]="showBasketballControl"
-          [htmlId]="'show-basketball'"
-          [name]="'Basketball games'"
-        ></app-show-checkbox>
-        <app-show-checkbox [control]="showFootballControl"
-          [htmlId]="'show-football'"
-          [name]="'Football games'"
-        ></app-show-checkbox>
-        <app-show-checkbox [control]="showMmaControl"
-          [htmlId]="'show-mma'"
-          [name]="'MMA fights'"
-        ></app-show-checkbox>
-        <app-show-checkbox [control]="showAuctionsControl"
-          [htmlId]="'show-auctions'"
-          [name]="'Auctions'"
-        ></app-show-checkbox>
-        <app-show-checkbox [control]="showLinksControl"
-          [htmlId]="'show-links'"
-          [name]="'Links'"
-        ></app-show-checkbox>
-      </div>
-
-      <!-- APPEARANCE -->
-      <div class="settings-section">
-        <h2 class="section-eyebrow">Appearance</h2>
-
-        <div class="setting-row setting-row--last">
-          <div data-dropdown-label class="setting-row__label">
-            Color
-          </div>
-          <div class="setting-row__control">
-            <mat-form-field appearance="outline" subscriptSizing="dynamic" class="color-field">
-              <mat-select [formControl]="colorControl" (selectionChange)="setColor()">
-                <mat-select-trigger>
-                  <span class="color-swatch"
-                    [ngStyle]="{'background-color': getBackgroundColor(this.colorControl.value)}"></span>{{selectedColorName}}
-                </mat-select-trigger>
-                @for (color of this.colors; track color) {
-                  <mat-option data-dropdown-option [value]="color.value"
-                    [ngStyle]="{'background-color': getBackgroundColor(color.value)}"
-                    >
-                    {{color.name}}
-                  </mat-option>
-                }
-              </mat-select>
-            </mat-form-field>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="buttons">
-      <button data-button-reset-everything
-        type="button"
-        (click)="resetEverything()"
-        class="btn btn--danger reset-button">Reset everything
+    @if (dialogRef) {
+      <button data-close-button type="button" class="close-button" aria-label="Close settings" (click)="close()">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+          <path fill="currentColor" d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+        </svg>
       </button>
+    }
+  </div>
+
+  <div data-settings-input>
+
+    <!-- PAGE -->
+    <div class="settings-section">
+      <h2 class="section-eyebrow">Page</h2>
+
+      <!-- TITLE -->
+      <div class="setting-row">
+        <label data-title-label class="setting-row__label" for="settings-title">
+          Title
+          <span class="setting-row__hint">Shown in the header at the top of every page.</span>
+        </label>
+        <div class="setting-row__control">
+          <mat-form-field appearance="outline" subscriptSizing="dynamic">
+            <input matInput data-title
+              id="settings-title"
+              type="text"
+              [formControl]="titleControl"
+              >
+            @if (titleControl.invalid && titleControl.touched) {
+              <mat-error data-basic-error>Enter a title</mat-error>
+            }
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- REFRESH RATE -->
+      <div class="setting-row setting-row--last">
+        <label data-refresh-rate-input-label class="setting-row__label" for="settings-refresh-rate">
+          Refresh rate
+          <span class="setting-row__hint">How long the dashboard waits before reloading its data.</span>
+        </label>
+        <div class="setting-row__control">
+          <mat-form-field appearance="outline" subscriptSizing="dynamic">
+            <input matInput data-refresh-rate-input
+              id="settings-refresh-rate"
+              type="number"
+              [formControl]="refreshRateControl"
+              >
+            <span matTextSuffix>min</span>
+            @if (refreshRateControl.hasError('required') && refreshRateControl.touched) {
+              <mat-error data-basic-error>Enter a refresh rate</mat-error>
+            }
+            @if (refreshRateControl.hasError('max')) {
+              <mat-error data-max-error>Use 1000 or less</mat-error>
+            }
+            @if (refreshRateControl.hasError('min') || refreshRateControl.hasError('pattern')) {
+              <mat-error data-min-error>Use a whole number, 1 or more</mat-error>
+            }
+          </mat-form-field>
+        </div>
+      </div>
     </div>
 
-  </section>
+    <!-- WHAT TO SHOW -->
+    <div class="settings-section">
+      <h2 class="section-eyebrow">What to show</h2>
+
+      <app-show-checkbox [control]="showBasketballControl"
+        [htmlId]="'show-basketball'"
+        [name]="'Basketball games'"
+      ></app-show-checkbox>
+      <app-show-checkbox [control]="showFootballControl"
+        [htmlId]="'show-football'"
+        [name]="'Football games'"
+      ></app-show-checkbox>
+      <app-show-checkbox [control]="showMmaControl"
+        [htmlId]="'show-mma'"
+        [name]="'MMA fights'"
+      ></app-show-checkbox>
+      <app-show-checkbox [control]="showAuctionsControl"
+        [htmlId]="'show-auctions'"
+        [name]="'Auctions'"
+      ></app-show-checkbox>
+      <app-show-checkbox [control]="showLinksControl"
+        [htmlId]="'show-links'"
+        [name]="'Links'"
+      ></app-show-checkbox>
+    </div>
+
+    <!-- APPEARANCE -->
+    <div class="settings-section">
+      <h2 class="section-eyebrow">Appearance</h2>
+
+      <div class="setting-row setting-row--last">
+        <div data-dropdown-label class="setting-row__label">
+          Color
+        </div>
+        <div class="setting-row__control">
+          <mat-form-field appearance="outline" subscriptSizing="dynamic" class="color-field">
+            <mat-select [formControl]="colorControl" (selectionChange)="setColor()">
+              <mat-select-trigger>
+                <span class="color-swatch"
+                  [ngStyle]="{'background-color': getBackgroundColor(this.colorControl.value)}"></span>{{selectedColorName}}
+              </mat-select-trigger>
+              @for (color of this.colors; track color) {
+                <mat-option data-dropdown-option [value]="color.value"
+                  [ngStyle]="{'background-color': getBackgroundColor(color.value)}"
+                  >
+                  {{color.name}}
+                </mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+
+  <div class="buttons">
+    <button data-button-reset-everything
+      type="button"
+      (click)="resetEverything()"
+      class="btn btn--danger reset-button">Reset everything
+    </button>
+  </div>
+
+</section>

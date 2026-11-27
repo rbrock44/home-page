@@ -1,21 +1,5 @@
 @use '../../../settings-controls' as *;
 
-.settings-page {
-  display: flex;
-  justify-content: center;
-  padding: 40px 20px 64px;
-}
-
-.settings-backdrop {
-  box-sizing: border-box;
-  width: 100%;
-  max-width: 752px;
-  border-radius: 20px;
-  box-shadow:
-    0 1px 2px rgba(6, 48, 46, 0.12),
-    0 18px 40px -18px rgba(6, 48, 46, 0.55);
-}
-
 .settings-panel {
   @include settingsTokens;
 
@@ -28,7 +12,38 @@
 }
 
 .header-div {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
   margin-bottom: 20px;
+}
+
+.close-button {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin: -4px -10px 0 0;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  background: transparent;
+  color: var(--set-muted);
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+
+  &:hover {
+    color: var(--set-ink);
+    border-color: var(--set-line-strong);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--set-ink);
+    outline-offset: 2px;
+  }
 }
 
 [data-header-title] {
@@ -141,15 +156,6 @@
 }
 
 @media only screen and (max-width: 620px) {
-  .settings-page {
-    padding: 16px 12px 36px;
-  }
-
-  .settings-backdrop {
-    padding: 8px;
-    border-radius: 16px;
-  }
-
   .settings-panel {
     padding: 22px 18px 18px;
     border-radius: 10px;
@@ -166,7 +172,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .btn {
+  .btn,
+  .close-button {
     transition: none;
   }
 

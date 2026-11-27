@@ -44,6 +44,16 @@ h1, h2, h3 {
   border-top: 2px solid var(--buttonColor);
 }
 
+// the settings panel brings its own surface, so the dialog chrome steps aside
+.settings-dialog .mat-mdc-dialog-surface {
+  background: transparent !important;
+  border: none;
+  border-radius: 14px;
+  box-shadow:
+    0 1px 2px rgba(6, 48, 46, 0.12),
+    0 18px 40px -18px rgba(6, 48, 46, 0.55);
+}
+
 .mat-mdc-select-panel {
   background: var(--panel-bg-raised) !important;
   border: 1px solid var(--panel-border-strong);

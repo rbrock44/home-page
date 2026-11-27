@@ -1,7 +1,8 @@
-import { inject } from '@angular/core';
+import { inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { CanActivateFn, Router, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
-import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
+import { SettingsDialogService } from './services/settings-dialog.service';
 import { LinkComponent } from './pages/links/links.component';
 import { ConcertComponent } from './pages/concerts/concerts.component';
 import { MatchComponent } from './pages/match/match.component';
@@ -29,11 +30,21 @@ export const redirectLegacyPage: CanActivateFn = route => {
   return inject(Router).createUrlTree(['/', path], { queryParams });
 };
 
+/**
+ * Settings is a popup now, not a page. Old `/settings` links land on Home with the popup open.
+ */
+export const openSettingsPopup: CanActivateFn = () => {
+  if (isPlatformBrowser(inject(PLATFORM_ID))) {
+    inject(SettingsDialogService).open();
+  }
+  return inject(Router).createUrlTree(['/']);
+};
+
 const SITE_TITLE = "Ryan Brock's Home Page";
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent, canActivate: [redirectLegacyPage], title: SITE_TITLE },
-  { path: 'settings', component: SettingsPageComponent, title: `Settings – ${SITE_TITLE}`, data: { noindex: true } },
+  { path: 'settings', canActivate: [openSettingsPopup], children: [] },
   { path: 'links', component: LinkComponent, title: `Links – ${SITE_TITLE}`, data: { noindex: true } },
   { path: 'concerts', component: ConcertComponent, title: `Concerts – ${SITE_TITLE}` },
   { path: 'matches', component: MatchComponent, title: `Matches – ${SITE_TITLE}` },

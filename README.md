@@ -39,12 +39,12 @@ Pages
 - `Home Page`
     - Navigation Banner - quick navigation to all pages and a few links
         - `Home` - goes to home page
-        - `Settings` - goes to settings page
         - `Links` - goes to links page, this holds links/bookmarks I need
         - `Concerts` - goes to concerts page, this holds a table of concerts attended
         - `Matches` - goes to matches page, this holds a table of matches (Basketball, Football, Hockey, etc) attended
         - `Directory` - link to [Ryan's Website Directory](https://directory.ryan-brock.com/)
         - `Homarr` - link to local Homarr dashboard (only reachable while on the home network)
+        - Gear icon - opens the settings popup
     - Media Search
         - use this to see if the movie (or tv show) is in my collection
         - Refresh button - refreshes database with source (will take a minute or so to fully update)
@@ -55,7 +55,7 @@ Pages
         - Football - shows today's or upcoming football games
         - MMA - shows today's or upcoming mma events
     - Auction Widget
-- `Settings`
+- `Settings` (popup, opened from the gear icon)
   - Title - Title displayed on home page
   - Refresh Rate - how often the website should update information on it
   - Show Basketball Games - YES/NO option to display basketball widget

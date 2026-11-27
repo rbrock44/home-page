@@ -10,10 +10,10 @@ import {routes} from './app.routes';
 import {PageMetaStrategy} from './services/page-meta.strategy';
 import {AppComponent} from './app.component';
 import {HomeComponent} from './pages/home/home.component';
-import {SettingsPageComponent} from './pages/settings-page/settings-page.component';
 import {LinkComponent} from './pages/links/links.component';
 import {ConcertComponent} from './pages/concerts/concerts.component';
 import {MatchComponent} from './pages/match/match.component';
+import {SettingsDialogService} from './services/settings-dialog.service';
 
 describe('routes', () => {
   let location: Location;
@@ -33,7 +33,6 @@ describe('routes', () => {
 
   [
     {url: '/', component: HomeComponent},
-    {url: '/settings', component: SettingsPageComponent},
     {url: '/links', component: LinkComponent},
     {url: '/concerts', component: ConcertComponent},
     {url: '/matches', component: MatchComponent},
@@ -47,7 +46,6 @@ describe('routes', () => {
 
   [
     {url: '/', title: "Ryan Brock's Home Page"},
-    {url: '/settings', title: "Settings – Ryan Brock's Home Page"},
     {url: '/links', title: "Links – Ryan Brock's Home Page"},
     {url: '/concerts', title: "Concerts – Ryan Brock's Home Page"},
     {url: '/matches', title: "Matches – Ryan Brock's Home Page"},
@@ -63,7 +61,6 @@ describe('routes', () => {
 
   [
     {url: '/', robots: 'index, follow'},
-    {url: '/settings', robots: 'noindex'},
     {url: '/links', robots: 'noindex'},
     {url: '/concerts', robots: 'index, follow'},
     {url: '/matches', robots: 'index, follow'},
@@ -80,10 +77,20 @@ describe('routes', () => {
   it('marks a page indexable again after leaving a noindex page', async () => {
     const harness = await RouterTestingHarness.create();
 
-    await harness.navigateByUrl('/settings');
+    await harness.navigateByUrl('/links');
     await harness.navigateByUrl('/concerts');
 
     expect(TestBed.inject(Meta).getTag('name="robots"')?.content).toBe('index, follow');
+  });
+
+  it('opens the settings popup on home for old /settings links', async () => {
+    const open = vi.spyOn(TestBed.inject(SettingsDialogService), 'open').mockReturnValue(undefined as never);
+    const harness = await RouterTestingHarness.create();
+
+    expect(await harness.navigateByUrl('/settings')).toBeInstanceOf(HomeComponent);
+
+    expect(location.path()).toBe('/');
+    expect(open).toHaveBeenCalledTimes(1);
   });
 
   it('sends unknown paths home', async () => {
@@ -95,7 +102,7 @@ describe('routes', () => {
   });
 
   [
-    {page: 'Settings', path: '/settings'},
+    {page: 'Settings', path: '/'},
     {page: 'Links', path: '/links'},
     {page: 'Concerts', path: '/concerts'},
     {page: 'Matches', path: '/matches'},

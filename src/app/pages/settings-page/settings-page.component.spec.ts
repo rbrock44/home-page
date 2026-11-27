@@ -17,6 +17,7 @@ import {HEADER} from "../../constants/expectations";
 import {AlertService} from "../../services/alert.service";
 import {DateService} from "../../services/date.service";
 import { provideHttpClient, withXhr } from '@angular/common/http';
+import { MatDialogRef } from '@angular/material/dialog';
 
 describe('SettingsPageComponent', () => {
   let fixture: ComponentFixture<SettingsPageComponent>;
@@ -148,5 +149,30 @@ describe('SettingsPageComponent', () => {
     component.resetEverything();
 
     expect(open.mock.calls[0][1]).toEqual(expect.objectContaining({width: '420px', maxWidth: 'calc(100vw - 32px)'}));
+  });
+
+  it('should not show a close button outside the popup', () => {
+    fixture.detectChanges();
+
+    expect(fixture.nativeElement.querySelector('[data-close-button]')).toBeNull();
+  });
+
+  it('should close the popup from the close button', async () => {
+    const dialogRef = {close: vi.fn()};
+    TestBed.resetTestingModule();
+    await TestBed.configureTestingModule({
+      imports: [SettingsPageComponent],
+      providers: [
+        {provide: MatDialogRef, useValue: dialogRef},
+        provideHttpClient(withXhr()),
+        provideHttpClientTesting()
+      ]
+    }).compileComponents();
+    const popupFixture = TestBed.createComponent(SettingsPageComponent);
+    popupFixture.detectChanges();
+
+    popupFixture.nativeElement.querySelector('[data-close-button]').click();
+
+    expect(dialogRef.close).toHaveBeenCalledTimes(1);
   });
 });

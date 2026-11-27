@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, inject} from '@angular/core';
 import { UntypedFormControl, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {Subscription} from 'rxjs';
 import {debounceTime, filter} from 'rxjs/operators';
@@ -12,7 +12,7 @@ import {
   RESET_SETTINGS_SUCCESS_MESSAGE
 } from "../../constants/constants";
 import {DateService} from "../../services/date.service";
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatFormField, MatError, MatSuffix } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { ShowCheckboxComponent } from '../../components/show-checkbox/show-checkbox.component';
@@ -44,6 +44,9 @@ export class SettingsPageComponent implements OnInit, OnDestroy {
   colorControl: UntypedFormControl = new UntypedFormControl('', [Validators.required]);
 
   private subscriptions: Subscription[] = [];
+
+  // set when shown as the settings popup; absent when rendered on its own
+  readonly dialogRef = inject(MatDialogRef<SettingsPageComponent>, {optional: true});
 
   constructor(public dialog: MatDialog,
               private alertService: AlertService,
@@ -79,6 +82,10 @@ export class SettingsPageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscriptions.forEach(subscription => subscription.unsubscribe());
+  }
+
+  close(): void {
+    this.dialogRef?.close();
   }
 
   resetEverything(): void {
